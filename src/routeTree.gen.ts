@@ -9,10 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProRouteImport } from './routes/pro'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProIndexRouteImport } from './routes/pro.index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as ProPacientesRouteImport } from './routes/pro.pacientes'
 import { Route as AppTimelineRouteImport } from './routes/app.timeline'
 import { Route as AppRotinasRouteImport } from './routes/app.rotinas'
 import { Route as AppRelatoriosRouteImport } from './routes/app.relatorios'
@@ -27,7 +30,13 @@ import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes
 import { Route as AppComportamentoRouteImport } from './routes/app.comportamento'
 import { Route as AppCalendarioRouteImport } from './routes/app.calendario'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ProPacientesChildIdRouteImport } from './routes/pro.pacientes.$childId'
 
+const ProRoute = ProRouteImport.update({
+  id: '/pro',
+  path: '/pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -43,10 +52,20 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProIndexRoute = ProIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProRoute,
+} as any)
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppRoute,
+} as any)
+const ProPacientesRoute = ProPacientesRouteImport.update({
+  id: '/pacientes',
+  path: '/pacientes',
+  getParentRoute: () => ProRoute,
 } as any)
 const AppTimelineRoute = AppTimelineRouteImport.update({
   id: '/timeline',
@@ -118,11 +137,17 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProPacientesChildIdRoute = ProPacientesChildIdRouteImport.update({
+  id: '/$childId',
+  path: '/$childId',
+  getParentRoute: () => ProPacientesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/pro': typeof ProRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
@@ -137,7 +162,10 @@ export interface FileRoutesByFullPath {
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/rotinas': typeof AppRotinasRoute
   '/app/timeline': typeof AppTimelineRoute
+  '/pro/pacientes': typeof ProPacientesRouteWithChildren
   '/app/': typeof AppIndexRoute
+  '/pro/': typeof ProIndexRoute
+  '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -156,13 +184,17 @@ export interface FileRoutesByTo {
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/rotinas': typeof AppRotinasRoute
   '/app/timeline': typeof AppTimelineRoute
+  '/pro/pacientes': typeof ProPacientesRouteWithChildren
   '/app': typeof AppIndexRoute
+  '/pro': typeof ProIndexRoute
+  '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/pro': typeof ProRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
@@ -177,7 +209,10 @@ export interface FileRoutesById {
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/rotinas': typeof AppRotinasRoute
   '/app/timeline': typeof AppTimelineRoute
+  '/pro/pacientes': typeof ProPacientesRouteWithChildren
   '/app/': typeof AppIndexRoute
+  '/pro/': typeof ProIndexRoute
+  '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -185,6 +220,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/auth'
+    | '/pro'
     | '/api/chat'
     | '/app/calendario'
     | '/app/comportamento'
@@ -199,7 +235,10 @@ export interface FileRouteTypes {
     | '/app/relatorios'
     | '/app/rotinas'
     | '/app/timeline'
+    | '/pro/pacientes'
     | '/app/'
+    | '/pro/'
+    | '/pro/pacientes/$childId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -218,12 +257,16 @@ export interface FileRouteTypes {
     | '/app/relatorios'
     | '/app/rotinas'
     | '/app/timeline'
+    | '/pro/pacientes'
     | '/app'
+    | '/pro'
+    | '/pro/pacientes/$childId'
   id:
     | '__root__'
     | '/'
     | '/app'
     | '/auth'
+    | '/pro'
     | '/api/chat'
     | '/app/calendario'
     | '/app/comportamento'
@@ -238,18 +281,29 @@ export interface FileRouteTypes {
     | '/app/relatorios'
     | '/app/rotinas'
     | '/app/timeline'
+    | '/pro/pacientes'
     | '/app/'
+    | '/pro/'
+    | '/pro/pacientes/$childId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ProRoute: typeof ProRouteWithChildren
   ApiChatRoute: typeof ApiChatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/pro': {
+      id: '/pro'
+      path: '/pro'
+      fullPath: '/pro'
+      preLoaderRoute: typeof ProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -271,12 +325,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pro/': {
+      id: '/pro/'
+      path: '/'
+      fullPath: '/pro/'
+      preLoaderRoute: typeof ProIndexRouteImport
+      parentRoute: typeof ProRoute
+    }
     '/app/': {
       id: '/app/'
       path: '/'
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
+    }
+    '/pro/pacientes': {
+      id: '/pro/pacientes'
+      path: '/pacientes'
+      fullPath: '/pro/pacientes'
+      preLoaderRoute: typeof ProPacientesRouteImport
+      parentRoute: typeof ProRoute
     }
     '/app/timeline': {
       id: '/app/timeline'
@@ -376,6 +444,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pro/pacientes/$childId': {
+      id: '/pro/pacientes/$childId'
+      path: '/$childId'
+      fullPath: '/pro/pacientes/$childId'
+      preLoaderRoute: typeof ProPacientesChildIdRouteImport
+      parentRoute: typeof ProPacientesRoute
+    }
   }
 }
 
@@ -415,10 +490,35 @@ const AppRouteChildren: AppRouteChildren = {
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
+interface ProPacientesRouteChildren {
+  ProPacientesChildIdRoute: typeof ProPacientesChildIdRoute
+}
+
+const ProPacientesRouteChildren: ProPacientesRouteChildren = {
+  ProPacientesChildIdRoute: ProPacientesChildIdRoute,
+}
+
+const ProPacientesRouteWithChildren = ProPacientesRoute._addFileChildren(
+  ProPacientesRouteChildren,
+)
+
+interface ProRouteChildren {
+  ProPacientesRoute: typeof ProPacientesRouteWithChildren
+  ProIndexRoute: typeof ProIndexRoute
+}
+
+const ProRouteChildren: ProRouteChildren = {
+  ProPacientesRoute: ProPacientesRouteWithChildren,
+  ProIndexRoute: ProIndexRoute,
+}
+
+const ProRouteWithChildren = ProRoute._addFileChildren(ProRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRoute,
+  ProRoute: ProRouteWithChildren,
   ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
