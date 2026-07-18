@@ -134,7 +134,7 @@
   },
   "scales": {
     "title": "Escalas e instrumentos",
-    "subtitle": "Cadastre qualquer instrumento de avaliação — arquitetura aberta.",
+    "subtitle": "Cadastre qualquer instrumento de avaliação. Arquitetura aberta.",
     "new": "Nova escala",
     "applications": "Aplicações"
   },
@@ -231,6 +231,6 @@
     "caregiver": "Cuidador(a)"
   },
   "banner": {
-    "previewMode": "Prévia — as tabelas do Módulo Profissionais entram assim que o Lovable Cloud for reativado. Nenhum dado é persistido."
+    "previewMode": "Prévia. As tabelas do Módulo Profissionais entram assim que o Lovable Cloud for reativado. Nenhum dado é persistido."
   }
 }
