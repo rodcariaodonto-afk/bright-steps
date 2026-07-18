@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "name": "ATLAS",
+    "tagline": "O ecossistema do desenvolvimento infantil"
+  },
+  "actions": {
+    "getStarted": "Começar agora",
+    "signIn": "Entrar",
+    "signUp": "Criar conta",
+    "signOut": "Sair",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "continue": "Continuar",
+    "back": "Voltar",
+    "learnMore": "Saiba mais",
+    "openApp": "Abrir aplicativo"
+  },
+  "nav": {
+    "product": "Produto",
+    "family": "Família",
+    "child": "Criança",
+    "professionals": "Profissionais",
+    "ai": "Inteligência Artificial",
+    "security": "Segurança",
+    "pricing": "Planos"
+  },
+  "status": {
+    "comingSoon": "Em breve",
+    "beta": "Beta",
+    "preview": "Prévia"
+  },
+  "banner": {
+    "cloudPending": "Modo prévia — funcionalidades com backend serão ativadas assim que o Lovable Cloud for habilitado."
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados.",
+    "lgpd": "LGPD",
+    "privacy": "Privacidade",
+    "terms": "Termos"
+  },
+  "language": {
+    "label": "Idioma",
+    "pt-BR": "Português (Brasil)",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "it": "Italiano",
+    "de": "Deutsch"
+  }
+}
