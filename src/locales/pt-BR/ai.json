@@ -1,0 +1,14 @@
+{
+  "personas": {
+    "family": "Atlas Família",
+    "clinical": "Atlas Clínico",
+    "child": "Atlas Amigo",
+    "school": "Atlas Escola",
+    "admin": "Atlas Admin"
+  },
+  "guardrails": {
+    "notDiagnosis": "O Atlas nunca emite diagnóstico. Sempre consulte o profissional de saúde.",
+    "notSubstitute": "Ferramenta de apoio. Não substitui médicos, terapeutas, psicólogos ou pedagogos.",
+    "risk": "Em situações de risco, acione CVV 188, SAMU 192 ou Conselho Tutelar 100."
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "sidebar": {
+    "sections": {
+      "overview": "Visão Geral",
+      "people": "Pessoas",
+      "content": "Conteúdo",
+      "commerce": "Comércio",
+      "operations": "Operações",
+      "settings": "Sistema"
+    },
+    "dashboard": "Dashboard",
+    "users": "Usuários",
+    "families": "Famílias",
+    "children": "Crianças",
+    "professionals": "Profissionais",
+    "schools": "Escolas",
+    "cms": "Conteúdo & CMS",
+    "stories": "Histórias",
+    "games": "Jogos",
+    "missions": "Missões",
+    "achievements": "Conquistas",
+    "marketplace": "Marketplace",
+    "community": "Comunidade",
+    "subscriptions": "Assinaturas",
+    "finance": "Financeiro",
+    "coupons": "Cupons",
+    "notifications": "Notificações",
+    "analytics": "Analytics",
+    "reports": "Relatórios",
+    "ai": "IA",
+    "logs": "Logs",
+    "flags": "Feature Flags",
+    "permissions": "Permissões",
+    "backups": "Backups",
+    "settings_global": "Configurações Globais"
+  },
+  "topbar": {
+    "title": "Painel Administrativo",
+    "backToFamily": "Família",
+    "backToPro": "Profissionais"
+  },
+  "banner": {
+    "message": "Painel Admin em modo prévia — dados reais, RBAC e analytics entram quando o Lovable Cloud reativar."
+  },
+  "dashboard": {
+    "title": "Visão geral",
+    "subtitle": "Saúde da plataforma em tempo real",
+    "cards": {
+      "mau": "Usuários ativos (mês)",
+      "dau": "Usuários ativos (dia)",
+      "families": "Famílias cadastradas",
+      "professionals": "Profissionais ativos",
+      "children": "Crianças acompanhadas",
+      "revenue": "Receita recorrente",
+      "aiCost": "Custo IA (30d)",
+      "conversion": "Conversão trial → pago"
+    }
+  },
+  "placeholder": {
+    "back": "Voltar ao dashboard admin",
+    "message": "Essa área será conectada quando o Lovable Cloud reativar. A estrutura, tabelas e políticas RLS já estão desenhadas."
+  }
+}

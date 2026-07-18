@@ -23,7 +23,10 @@ function AtlasChatPage() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const { messages, sendMessage, status } = useChat({
-    transport: new DefaultChatTransport({ api: "/api/chat" }),
+    transport: new DefaultChatTransport({
+      api: "/api/chat",
+      body: { persona: "family" },
+    }),
     onError: (err) => setError(err.message || "Erro ao conversar com a IA."),
   });
 
