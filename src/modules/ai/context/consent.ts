@@ -36,8 +36,9 @@ export async function filterByConsent<T extends { field: ConsentField }>(
   items: T[],
   ctx: ConsentContext,
 ): Promise<T[]> {
-  const checked = await Promise.all(
-    items.map(async (item) => ((await hasConsent(item.field, ctx)) ? item : null)),
-  );
-  return checked.filter((x): x is T => x !== null) as T[];
+  const results: T[] = [];
+  for (const item of items) {
+    if (await hasConsent(item.field, ctx)) results.push(item);
+  }
+  return results;
 }
