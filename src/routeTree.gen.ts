@@ -43,6 +43,30 @@ import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes
 import { Route as AppComportamentoRouteImport } from './routes/app.comportamento'
 import { Route as AppCalendarioRouteImport } from './routes/app.calendario'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminSubscriptionsRouteImport } from './routes/admin.subscriptions'
+import { Route as AdminStoriesRouteImport } from './routes/admin.stories'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminSchoolsRouteImport } from './routes/admin.schools'
+import { Route as AdminReportsRouteImport } from './routes/admin.reports'
+import { Route as AdminProfessionalsRouteImport } from './routes/admin.professionals'
+import { Route as AdminPermissionsRouteImport } from './routes/admin.permissions'
+import { Route as AdminNotificationsRouteImport } from './routes/admin.notifications'
+import { Route as AdminMissionsRouteImport } from './routes/admin.missions'
+import { Route as AdminMarketplaceRouteImport } from './routes/admin.marketplace'
+import { Route as AdminLogsRouteImport } from './routes/admin.logs'
+import { Route as AdminGamesRouteImport } from './routes/admin.games'
+import { Route as AdminFlagsRouteImport } from './routes/admin.flags'
+import { Route as AdminFinanceRouteImport } from './routes/admin.finance'
+import { Route as AdminFamiliesRouteImport } from './routes/admin.families'
+import { Route as AdminCouponsRouteImport } from './routes/admin.coupons'
+import { Route as AdminCommunityRouteImport } from './routes/admin.community'
+import { Route as AdminCmsRouteImport } from './routes/admin.cms'
+import { Route as AdminChildrenRouteImport } from './routes/admin.children'
+import { Route as AdminBackupsRouteImport } from './routes/admin.backups'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
+import { Route as AdminAiRouteImport } from './routes/admin.ai'
+import { Route as AdminAchievementsRouteImport } from './routes/admin.achievements'
 import { Route as ProSessoesNovaRouteImport } from './routes/pro.sessoes.nova'
 import { Route as ProSessoesIdRouteImport } from './routes/pro.sessoes.$id'
 import { Route as ProPacientesChildIdRouteImport } from './routes/pro.pacientes.$childId'
@@ -217,6 +241,126 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSubscriptionsRoute = AdminSubscriptionsRouteImport.update({
+  id: '/subscriptions',
+  path: '/subscriptions',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminStoriesRoute = AdminStoriesRouteImport.update({
+  id: '/stories',
+  path: '/stories',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSchoolsRoute = AdminSchoolsRouteImport.update({
+  id: '/schools',
+  path: '/schools',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProfessionalsRoute = AdminProfessionalsRouteImport.update({
+  id: '/professionals',
+  path: '/professionals',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPermissionsRoute = AdminPermissionsRouteImport.update({
+  id: '/permissions',
+  path: '/permissions',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMissionsRoute = AdminMissionsRouteImport.update({
+  id: '/missions',
+  path: '/missions',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMarketplaceRoute = AdminMarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLogsRoute = AdminLogsRouteImport.update({
+  id: '/logs',
+  path: '/logs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminGamesRoute = AdminGamesRouteImport.update({
+  id: '/games',
+  path: '/games',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminFlagsRoute = AdminFlagsRouteImport.update({
+  id: '/flags',
+  path: '/flags',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminFinanceRoute = AdminFinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminFamiliesRoute = AdminFamiliesRouteImport.update({
+  id: '/families',
+  path: '/families',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCouponsRoute = AdminCouponsRouteImport.update({
+  id: '/coupons',
+  path: '/coupons',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCommunityRoute = AdminCommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCmsRoute = AdminCmsRouteImport.update({
+  id: '/cms',
+  path: '/cms',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminChildrenRoute = AdminChildrenRouteImport.update({
+  id: '/children',
+  path: '/children',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBackupsRoute = AdminBackupsRouteImport.update({
+  id: '/backups',
+  path: '/backups',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAiRoute = AdminAiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAchievementsRoute = AdminAchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
+  getParentRoute: () => AdminRoute,
+} as any)
 const ProSessoesNovaRoute = ProSessoesNovaRouteImport.update({
   id: '/sessoes/nova',
   path: '/sessoes/nova',
@@ -239,6 +383,30 @@ export interface FileRoutesByFullPath {
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/pro': typeof ProRouteWithChildren
+  '/admin/achievements': typeof AdminAchievementsRoute
+  '/admin/ai': typeof AdminAiRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/backups': typeof AdminBackupsRoute
+  '/admin/children': typeof AdminChildrenRoute
+  '/admin/cms': typeof AdminCmsRoute
+  '/admin/community': typeof AdminCommunityRoute
+  '/admin/coupons': typeof AdminCouponsRoute
+  '/admin/families': typeof AdminFamiliesRoute
+  '/admin/finance': typeof AdminFinanceRoute
+  '/admin/flags': typeof AdminFlagsRoute
+  '/admin/games': typeof AdminGamesRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/marketplace': typeof AdminMarketplaceRoute
+  '/admin/missions': typeof AdminMissionsRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/permissions': typeof AdminPermissionsRoute
+  '/admin/professionals': typeof AdminProfessionalsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/schools': typeof AdminSchoolsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/stories': typeof AdminStoriesRoute
+  '/admin/subscriptions': typeof AdminSubscriptionsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/api/chat': typeof ApiChatRoute
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
@@ -275,6 +443,30 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/admin/achievements': typeof AdminAchievementsRoute
+  '/admin/ai': typeof AdminAiRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/backups': typeof AdminBackupsRoute
+  '/admin/children': typeof AdminChildrenRoute
+  '/admin/cms': typeof AdminCmsRoute
+  '/admin/community': typeof AdminCommunityRoute
+  '/admin/coupons': typeof AdminCouponsRoute
+  '/admin/families': typeof AdminFamiliesRoute
+  '/admin/finance': typeof AdminFinanceRoute
+  '/admin/flags': typeof AdminFlagsRoute
+  '/admin/games': typeof AdminGamesRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/marketplace': typeof AdminMarketplaceRoute
+  '/admin/missions': typeof AdminMissionsRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/permissions': typeof AdminPermissionsRoute
+  '/admin/professionals': typeof AdminProfessionalsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/schools': typeof AdminSchoolsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/stories': typeof AdminStoriesRoute
+  '/admin/subscriptions': typeof AdminSubscriptionsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/api/chat': typeof ApiChatRoute
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
@@ -315,6 +507,30 @@ export interface FileRoutesById {
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/pro': typeof ProRouteWithChildren
+  '/admin/achievements': typeof AdminAchievementsRoute
+  '/admin/ai': typeof AdminAiRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/backups': typeof AdminBackupsRoute
+  '/admin/children': typeof AdminChildrenRoute
+  '/admin/cms': typeof AdminCmsRoute
+  '/admin/community': typeof AdminCommunityRoute
+  '/admin/coupons': typeof AdminCouponsRoute
+  '/admin/families': typeof AdminFamiliesRoute
+  '/admin/finance': typeof AdminFinanceRoute
+  '/admin/flags': typeof AdminFlagsRoute
+  '/admin/games': typeof AdminGamesRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/marketplace': typeof AdminMarketplaceRoute
+  '/admin/missions': typeof AdminMissionsRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/permissions': typeof AdminPermissionsRoute
+  '/admin/professionals': typeof AdminProfessionalsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/schools': typeof AdminSchoolsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/stories': typeof AdminStoriesRoute
+  '/admin/subscriptions': typeof AdminSubscriptionsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/api/chat': typeof ApiChatRoute
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
@@ -356,6 +572,30 @@ export interface FileRouteTypes {
     | '/app'
     | '/auth'
     | '/pro'
+    | '/admin/achievements'
+    | '/admin/ai'
+    | '/admin/analytics'
+    | '/admin/backups'
+    | '/admin/children'
+    | '/admin/cms'
+    | '/admin/community'
+    | '/admin/coupons'
+    | '/admin/families'
+    | '/admin/finance'
+    | '/admin/flags'
+    | '/admin/games'
+    | '/admin/logs'
+    | '/admin/marketplace'
+    | '/admin/missions'
+    | '/admin/notifications'
+    | '/admin/permissions'
+    | '/admin/professionals'
+    | '/admin/reports'
+    | '/admin/schools'
+    | '/admin/settings'
+    | '/admin/stories'
+    | '/admin/subscriptions'
+    | '/admin/users'
     | '/api/chat'
     | '/app/calendario'
     | '/app/comportamento'
@@ -392,6 +632,30 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/admin/achievements'
+    | '/admin/ai'
+    | '/admin/analytics'
+    | '/admin/backups'
+    | '/admin/children'
+    | '/admin/cms'
+    | '/admin/community'
+    | '/admin/coupons'
+    | '/admin/families'
+    | '/admin/finance'
+    | '/admin/flags'
+    | '/admin/games'
+    | '/admin/logs'
+    | '/admin/marketplace'
+    | '/admin/missions'
+    | '/admin/notifications'
+    | '/admin/permissions'
+    | '/admin/professionals'
+    | '/admin/reports'
+    | '/admin/schools'
+    | '/admin/settings'
+    | '/admin/stories'
+    | '/admin/subscriptions'
+    | '/admin/users'
     | '/api/chat'
     | '/app/calendario'
     | '/app/comportamento'
@@ -431,6 +695,30 @@ export interface FileRouteTypes {
     | '/app'
     | '/auth'
     | '/pro'
+    | '/admin/achievements'
+    | '/admin/ai'
+    | '/admin/analytics'
+    | '/admin/backups'
+    | '/admin/children'
+    | '/admin/cms'
+    | '/admin/community'
+    | '/admin/coupons'
+    | '/admin/families'
+    | '/admin/finance'
+    | '/admin/flags'
+    | '/admin/games'
+    | '/admin/logs'
+    | '/admin/marketplace'
+    | '/admin/missions'
+    | '/admin/notifications'
+    | '/admin/permissions'
+    | '/admin/professionals'
+    | '/admin/reports'
+    | '/admin/schools'
+    | '/admin/settings'
+    | '/admin/stories'
+    | '/admin/subscriptions'
+    | '/admin/users'
     | '/api/chat'
     | '/app/calendario'
     | '/app/comportamento'
@@ -714,6 +1002,174 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/subscriptions': {
+      id: '/admin/subscriptions'
+      path: '/subscriptions'
+      fullPath: '/admin/subscriptions'
+      preLoaderRoute: typeof AdminSubscriptionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/stories': {
+      id: '/admin/stories'
+      path: '/stories'
+      fullPath: '/admin/stories'
+      preLoaderRoute: typeof AdminStoriesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/schools': {
+      id: '/admin/schools'
+      path: '/schools'
+      fullPath: '/admin/schools'
+      preLoaderRoute: typeof AdminSchoolsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/professionals': {
+      id: '/admin/professionals'
+      path: '/professionals'
+      fullPath: '/admin/professionals'
+      preLoaderRoute: typeof AdminProfessionalsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/permissions': {
+      id: '/admin/permissions'
+      path: '/permissions'
+      fullPath: '/admin/permissions'
+      preLoaderRoute: typeof AdminPermissionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/missions': {
+      id: '/admin/missions'
+      path: '/missions'
+      fullPath: '/admin/missions'
+      preLoaderRoute: typeof AdminMissionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/marketplace': {
+      id: '/admin/marketplace'
+      path: '/marketplace'
+      fullPath: '/admin/marketplace'
+      preLoaderRoute: typeof AdminMarketplaceRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/logs': {
+      id: '/admin/logs'
+      path: '/logs'
+      fullPath: '/admin/logs'
+      preLoaderRoute: typeof AdminLogsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/games': {
+      id: '/admin/games'
+      path: '/games'
+      fullPath: '/admin/games'
+      preLoaderRoute: typeof AdminGamesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/flags': {
+      id: '/admin/flags'
+      path: '/flags'
+      fullPath: '/admin/flags'
+      preLoaderRoute: typeof AdminFlagsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/finance': {
+      id: '/admin/finance'
+      path: '/finance'
+      fullPath: '/admin/finance'
+      preLoaderRoute: typeof AdminFinanceRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/families': {
+      id: '/admin/families'
+      path: '/families'
+      fullPath: '/admin/families'
+      preLoaderRoute: typeof AdminFamiliesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/coupons': {
+      id: '/admin/coupons'
+      path: '/coupons'
+      fullPath: '/admin/coupons'
+      preLoaderRoute: typeof AdminCouponsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/community': {
+      id: '/admin/community'
+      path: '/community'
+      fullPath: '/admin/community'
+      preLoaderRoute: typeof AdminCommunityRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/cms': {
+      id: '/admin/cms'
+      path: '/cms'
+      fullPath: '/admin/cms'
+      preLoaderRoute: typeof AdminCmsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/children': {
+      id: '/admin/children'
+      path: '/children'
+      fullPath: '/admin/children'
+      preLoaderRoute: typeof AdminChildrenRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/backups': {
+      id: '/admin/backups'
+      path: '/backups'
+      fullPath: '/admin/backups'
+      preLoaderRoute: typeof AdminBackupsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/ai': {
+      id: '/admin/ai'
+      path: '/ai'
+      fullPath: '/admin/ai'
+      preLoaderRoute: typeof AdminAiRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/achievements': {
+      id: '/admin/achievements'
+      path: '/achievements'
+      fullPath: '/admin/achievements'
+      preLoaderRoute: typeof AdminAchievementsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/pro/sessoes/nova': {
       id: '/pro/sessoes/nova'
       path: '/sessoes/nova'
@@ -739,10 +1195,58 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminAchievementsRoute: typeof AdminAchievementsRoute
+  AdminAiRoute: typeof AdminAiRoute
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
+  AdminBackupsRoute: typeof AdminBackupsRoute
+  AdminChildrenRoute: typeof AdminChildrenRoute
+  AdminCmsRoute: typeof AdminCmsRoute
+  AdminCommunityRoute: typeof AdminCommunityRoute
+  AdminCouponsRoute: typeof AdminCouponsRoute
+  AdminFamiliesRoute: typeof AdminFamiliesRoute
+  AdminFinanceRoute: typeof AdminFinanceRoute
+  AdminFlagsRoute: typeof AdminFlagsRoute
+  AdminGamesRoute: typeof AdminGamesRoute
+  AdminLogsRoute: typeof AdminLogsRoute
+  AdminMarketplaceRoute: typeof AdminMarketplaceRoute
+  AdminMissionsRoute: typeof AdminMissionsRoute
+  AdminNotificationsRoute: typeof AdminNotificationsRoute
+  AdminPermissionsRoute: typeof AdminPermissionsRoute
+  AdminProfessionalsRoute: typeof AdminProfessionalsRoute
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminSchoolsRoute: typeof AdminSchoolsRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminStoriesRoute: typeof AdminStoriesRoute
+  AdminSubscriptionsRoute: typeof AdminSubscriptionsRoute
+  AdminUsersRoute: typeof AdminUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminAchievementsRoute: AdminAchievementsRoute,
+  AdminAiRoute: AdminAiRoute,
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
+  AdminBackupsRoute: AdminBackupsRoute,
+  AdminChildrenRoute: AdminChildrenRoute,
+  AdminCmsRoute: AdminCmsRoute,
+  AdminCommunityRoute: AdminCommunityRoute,
+  AdminCouponsRoute: AdminCouponsRoute,
+  AdminFamiliesRoute: AdminFamiliesRoute,
+  AdminFinanceRoute: AdminFinanceRoute,
+  AdminFlagsRoute: AdminFlagsRoute,
+  AdminGamesRoute: AdminGamesRoute,
+  AdminLogsRoute: AdminLogsRoute,
+  AdminMarketplaceRoute: AdminMarketplaceRoute,
+  AdminMissionsRoute: AdminMissionsRoute,
+  AdminNotificationsRoute: AdminNotificationsRoute,
+  AdminPermissionsRoute: AdminPermissionsRoute,
+  AdminProfessionalsRoute: AdminProfessionalsRoute,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminSchoolsRoute: AdminSchoolsRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminStoriesRoute: AdminStoriesRoute,
+  AdminSubscriptionsRoute: AdminSubscriptionsRoute,
+  AdminUsersRoute: AdminUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
