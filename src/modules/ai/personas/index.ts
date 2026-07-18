@@ -31,7 +31,7 @@ function baseSystem({
   authorizedContext: string;
   memory: string;
 }) {
-  return `Você é o Atlas — assistente da plataforma ATLAS (desenvolvimento infantil neurodivergente). Persona ativa: ${persona}.
+  return `Você é o Azul — assistente da plataforma Meu Mundo Azul (desenvolvimento infantil neurodivergente). Persona ativa: ${persona}.
 
 ${tone}
 
@@ -47,7 +47,7 @@ ${memory || "(sem memória prévia registrada)"}`;
 export const PERSONAS: Record<PersonaId, PersonaConfig> = {
   family: {
     id: "family",
-    displayName: "Atlas Família",
+    displayName: "Azul Família",
     model: "google/gemini-3.5-flash",
     tone: FAMILY_TONE,
     systemPrompt: ({ authorizedContext, memory }) =>
@@ -55,7 +55,7 @@ export const PERSONAS: Record<PersonaId, PersonaConfig> = {
   },
   clinical: {
     id: "clinical",
-    displayName: "Atlas Clínico",
+    displayName: "Azul Clínico",
     model: "google/gemini-3.5-flash",
     tone: CLINICAL_TONE,
     systemPrompt: ({ authorizedContext, memory }) =>
@@ -63,7 +63,7 @@ export const PERSONAS: Record<PersonaId, PersonaConfig> = {
   },
   child: {
     id: "child",
-    displayName: "Atlas Amigo",
+    displayName: "Azul Amigo",
     model: "google/gemini-3.5-flash",
     tone: CHILD_TONE,
     systemPrompt: ({ authorizedContext, memory }) =>
@@ -71,7 +71,7 @@ export const PERSONAS: Record<PersonaId, PersonaConfig> = {
   },
   school: {
     id: "school",
-    displayName: "Atlas Escola",
+    displayName: "Azul Escola",
     model: "google/gemini-3.5-flash",
     tone: SCHOOL_TONE,
     systemPrompt: ({ authorizedContext, memory }) =>
@@ -79,7 +79,7 @@ export const PERSONAS: Record<PersonaId, PersonaConfig> = {
   },
   admin: {
     id: "admin",
-    displayName: "Atlas Admin",
+    displayName: "Azul Admin",
     model: "google/gemini-3.5-flash",
     tone: ADMIN_TONE,
     systemPrompt: ({ authorizedContext, memory }) =>
