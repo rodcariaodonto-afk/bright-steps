@@ -12,9 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProRouteImport } from './routes/pro'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppRouteImport } from './routes/app'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProIndexRouteImport } from './routes/pro.index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as ProRelatoriosRouteImport } from './routes/pro.relatorios'
 import { Route as ProPacientesRouteImport } from './routes/pro.pacientes'
 import { Route as ProObjetivosRouteImport } from './routes/pro.objetivos'
@@ -60,6 +62,11 @@ const AppRoute = AppRouteImport.update({
   path: '/app',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -74,6 +81,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppRoute,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
 } as any)
 const ProRelatoriosRoute = ProRelatoriosRouteImport.update({
   id: '/relatorios',
@@ -223,6 +235,7 @@ const ProPacientesChildIdRoute = ProPacientesChildIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/pro': typeof ProRouteWithChildren
@@ -252,6 +265,7 @@ export interface FileRoutesByFullPath {
   '/pro/objetivos': typeof ProObjetivosRoute
   '/pro/pacientes': typeof ProPacientesRouteWithChildren
   '/pro/relatorios': typeof ProRelatoriosRoute
+  '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
   '/pro/': typeof ProIndexRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
@@ -287,6 +301,7 @@ export interface FileRoutesByTo {
   '/pro/objetivos': typeof ProObjetivosRoute
   '/pro/pacientes': typeof ProPacientesRouteWithChildren
   '/pro/relatorios': typeof ProRelatoriosRoute
+  '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
   '/pro': typeof ProIndexRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
@@ -296,6 +311,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/pro': typeof ProRouteWithChildren
@@ -325,6 +341,7 @@ export interface FileRoutesById {
   '/pro/objetivos': typeof ProObjetivosRoute
   '/pro/pacientes': typeof ProPacientesRouteWithChildren
   '/pro/relatorios': typeof ProRelatoriosRoute
+  '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
   '/pro/': typeof ProIndexRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
@@ -335,6 +352,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/app'
     | '/auth'
     | '/pro'
@@ -364,6 +382,7 @@ export interface FileRouteTypes {
     | '/pro/objetivos'
     | '/pro/pacientes'
     | '/pro/relatorios'
+    | '/admin/'
     | '/app/'
     | '/pro/'
     | '/pro/pacientes/$childId'
@@ -399,6 +418,7 @@ export interface FileRouteTypes {
     | '/pro/objetivos'
     | '/pro/pacientes'
     | '/pro/relatorios'
+    | '/admin'
     | '/app'
     | '/pro'
     | '/pro/pacientes/$childId'
@@ -407,6 +427,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/app'
     | '/auth'
     | '/pro'
@@ -436,6 +457,7 @@ export interface FileRouteTypes {
     | '/pro/objetivos'
     | '/pro/pacientes'
     | '/pro/relatorios'
+    | '/admin/'
     | '/app/'
     | '/pro/'
     | '/pro/pacientes/$childId'
@@ -445,6 +467,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRoute
   ProRoute: typeof ProRouteWithChildren
@@ -474,6 +497,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -494,6 +524,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/pro/relatorios': {
       id: '/pro/relatorios'
@@ -701,6 +738,16 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 interface AppRouteChildren {
   AppCalendarioRoute: typeof AppCalendarioRoute
   AppComportamentoRoute: typeof AppComportamentoRoute
@@ -789,6 +836,7 @@ const ProRouteWithChildren = ProRoute._addFileChildren(ProRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRoute,
   ProRoute: ProRouteWithChildren,
