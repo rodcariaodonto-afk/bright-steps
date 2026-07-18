@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "ATLAS — Plataforma para o desenvolvimento infantil e o neurodesenvolvimento",
+          "Meu Mundo Azul — Plataforma para o desenvolvimento infantil e o neurodesenvolvimento",
       },
       {
         name: "description",
@@ -51,7 +51,7 @@ function Landing() {
       {/* Nav */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
         <div className="container-atlas flex h-16 items-center justify-between">
-          <Link to="/" aria-label="ATLAS">
+          <Link to="/" aria-label="Meu Mundo Azul">
             <AtlasLogo />
           </Link>
           <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
@@ -289,7 +289,7 @@ function Landing() {
       <footer className="border-t border-border/60 py-10">
         <div className="container-atlas flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
           <AtlasLogo />
-          <p>© {new Date().getFullYear()} ATLAS · {t("common:footer.rights")}</p>
+          <p>© {new Date().getFullYear()} Meu Mundo Azul · {t("common:footer.rights")}</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-foreground">{t("common:footer.lgpd")}</a>
             <a href="#" className="hover:text-foreground">{t("common:footer.privacy")}</a>
@@ -342,7 +342,7 @@ function HeroPreview() {
 
         <div className="mt-5 rounded-2xl bg-primary-soft/70 p-4">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-            Atlas IA
+            Azul IA
           </p>
           <p className="mt-1 text-sm leading-relaxed text-foreground">
             O sono do Bento melhorou 22% esta semana. Continuemos com a rotina
@@ -391,7 +391,7 @@ function AIChatPreview() {
           <Sparkles className="h-4 w-4" aria-hidden="true" />
         </div>
         <div>
-          <p className="font-display text-sm font-bold">Atlas IA</p>
+          <p className="font-display text-sm font-bold">Azul IA</p>
           <p className="text-xs text-muted-foreground">Contexto ativo · Bento, 6 anos</p>
         </div>
       </div>

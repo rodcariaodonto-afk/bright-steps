@@ -1,6 +1,6 @@
 {
   "brand": {
-    "name": "ATLAS Clínico",
+    "name": "Meu Mundo Azul Clínico",
     "tagline": "Espaço de trabalho para profissionais do desenvolvimento infantil"
   },
   "sidebar": {
@@ -22,7 +22,7 @@
     "messages": "Mensagens",
     "school": "Escola",
     "indicators": "Indicadores",
-    "ai": "Atlas Clínico",
+    "ai": "Azul Clínico",
     "settings": "Configurações",
     "newSession": "Nova sessão"
   },
@@ -53,7 +53,7 @@
       "newSession": "Registrar sessão",
       "newReport": "Gerar relatório",
       "newAppointment": "Agendar atendimento",
-      "askAI": "Perguntar ao Atlas Clínico"
+      "askAI": "Perguntar ao Azul Clínico"
     }
   },
   "patients": {
@@ -194,7 +194,7 @@
     }
   },
   "ai": {
-    "title": "Atlas Clínico",
+    "title": "Azul Clínico",
     "subtitle": "Assistente para resumir evoluções, comparar períodos, sugerir atividades e rascunhar relatórios.",
     "disclaimer": "A IA apoia o raciocínio clínico. Nunca diagnostica e nunca substitui a decisão do profissional.",
     "suggestions": [

@@ -98,7 +98,7 @@ const BUNDLES: Record<InterestTheme, PersonalizationBundle> = {
   },
   neutral: {
     theme: "neutral",
-    narrator: "Atlas",
+    narrator: "Azul",
     paletteHint: "verde-sálvia acolhedor, coral suave, off-white",
     rewardIcon: "⭐",
     greeting: "Olá! Que bom te ver por aqui.",

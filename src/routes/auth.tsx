@@ -12,10 +12,10 @@ import { AtlasLogo } from "@/components/atlas/atlas-logo";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Entrar · ATLAS" },
+      { title: "Entrar · Meu Mundo Azul" },
       {
         name: "description",
-        content: "Acesse o ATLAS para acompanhar a jornada da sua família.",
+        content: "Acesse o Meu Mundo Azul para acompanhar a jornada da sua família.",
       },
     ],
   }),
@@ -47,7 +47,7 @@ function AuthPage() {
             }}
           />
           <div className="relative">
-            <Link to="/" aria-label="ATLAS">
+            <Link to="/" aria-label="Meu Mundo Azul">
               <AtlasLogo />
             </Link>
           </div>
@@ -57,7 +57,7 @@ function AuthPage() {
             </p>
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight">
               Cada criança é única.
-              <br />O ATLAS caminha ao lado.
+              <br />O Meu Mundo Azul caminha ao lado.
             </h1>
             <p className="mt-6 max-w-md text-base opacity-90">
               Reúna rotina, terapias, humor e evolução em um lugar acolhedor,
@@ -74,7 +74,7 @@ function AuthPage() {
         <div className="flex items-center justify-center px-6 py-10 sm:px-10">
           <div className="w-full max-w-sm">
             <div className="lg:hidden">
-              <Link to="/" aria-label="ATLAS">
+              <Link to="/" aria-label="Meu Mundo Azul">
                 <AtlasLogo />
               </Link>
               <div className="mt-6" />

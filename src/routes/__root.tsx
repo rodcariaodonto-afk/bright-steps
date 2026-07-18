@@ -20,7 +20,7 @@ function NotFoundComponent() {
     <div className="flex min-h-dvh items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-          ATLAS
+          Meu Mundo Azul
         </p>
         <h1 className="mt-3 text-6xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">
@@ -87,18 +87,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         title:
-          "ATLAS — Plataforma para desenvolvimento infantil e acompanhamento terapêutico",
+          "Meu Mundo Azul — Plataforma para desenvolvimento infantil e acompanhamento terapêutico",
       },
       {
         name: "description",
         content:
-          "ATLAS conecta famílias, crianças, profissionais e escolas com IA, rotinas, terapias e relatórios em um único ecossistema. Feito para o neurodesenvolvimento.",
+          "Meu Mundo Azul conecta famílias, crianças, profissionais e escolas com IA, rotinas, terapias e relatórios em um único ecossistema. Feito para o neurodesenvolvimento.",
       },
-      { name: "author", content: "ATLAS" },
+      { name: "author", content: "Meu Mundo Azul" },
       { name: "theme-color", content: "#7fb8a6" },
       {
         property: "og:title",
-        content: "ATLAS — Ecossistema para o desenvolvimento infantil",
+        content: "Meu Mundo Azul — Ecossistema para o desenvolvimento infantil",
       },
       {
         property: "og:description",
