@@ -10,7 +10,7 @@ export interface PersonaConfig {
   systemPrompt: (ctx: { authorizedContext: string; memory: string }) => string;
 }
 
-const FAMILY_TONE = `Tom: acolhedor, prático, específico. Escreva como quem senta ao lado da família — sem jargão, sem lição de moral. Sempre ofereça 2-3 estratégias concretas quando fizer sentido, e nomeie explicitamente quando um profissional deve ser consultado.`;
+const FAMILY_TONE = `Tom: acolhedor, prático, específico. Escreva como quem senta ao lado da família, sem jargão, sem lição de moral. Sempre ofereça 2-3 estratégias concretas quando fizer sentido, e nomeie explicitamente quando um profissional deve ser consultado.`;
 
 const CLINICAL_TONE = `Tom: técnico, objetivo, direto. Fala com profissional de saúde/educação: use termos corretos, cite instrumentos/escalas quando pertinente, seja conciso, sinalize hipóteses como HIPÓTESES (nunca conclusões). A decisão clínica é SEMPRE do profissional.`;
 
@@ -31,7 +31,7 @@ function baseSystem({
   authorizedContext: string;
   memory: string;
 }) {
-  return `Você é o Azul — assistente da plataforma Meu Mundo Azul (desenvolvimento infantil neurodivergente). Persona ativa: ${persona}.
+  return `Você é o Azul, assistente da plataforma Meu Mundo Azul (desenvolvimento infantil neurodivergente). Persona ativa: ${persona}.
 
 ${tone}
 
