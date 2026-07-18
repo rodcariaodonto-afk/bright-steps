@@ -29,7 +29,7 @@ function EvolutionPage() {
                   Há {i * 3} dias · Bento Alves
                 </p>
                 <p className="mt-1 text-sm text-foreground">
-                  Registro de evolução ilustrativo — o feed real entra quando o
+                  Registro de evolução ilustrativo. O feed real entra quando o
                   Cloud for ativado.
                 </p>
                 <div className="mt-2 flex gap-1.5">

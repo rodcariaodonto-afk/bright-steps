@@ -206,19 +206,19 @@ function ProDashboard() {
         <ProCard title={t("dashboard.cards.pending")}>
           <ul className="space-y-2 text-xs">
             <li className="flex items-center justify-between rounded-lg border border-border/60 px-3 py-2">
-              <span>Relatório mensal — Miguel</span>
+              <span>Relatório mensal de Miguel</span>
               <Link to="/pro/relatorios" className="text-primary hover:underline">
                 abrir
               </Link>
             </li>
             <li className="flex items-center justify-between rounded-lg border border-border/60 px-3 py-2">
-              <span>Nova escala aplicada — aguarda revisão</span>
+              <span>Nova escala aplicada, aguarda revisão</span>
               <Link to="/pro/escalas" className="text-primary hover:underline">
                 abrir
               </Link>
             </li>
             <li className="flex items-center justify-between rounded-lg border border-border/60 px-3 py-2">
-              <span>Documento recebido da família — Aurora</span>
+              <span>Documento recebido da família de Aurora</span>
               <Link to="/pro/documentos" className="text-primary hover:underline">
                 abrir
               </Link>

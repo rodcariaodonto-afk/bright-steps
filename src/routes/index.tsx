@@ -346,7 +346,7 @@ function HeroPreview() {
           </p>
           <p className="mt-1 text-sm leading-relaxed text-foreground">
             O sono do Bento melhorou 22% esta semana. Continuemos com a rotina
-            das 20h30 — funcionou nos últimos 5 dias.
+            das 20h30, funcionou nos últimos 5 dias.
           </p>
         </div>
       </div>

@@ -185,7 +185,7 @@ export function ProShell({ children }: { children: ReactNode }) {
           className="fixed inset-0 z-40 bg-black/40"
         >
           <div className="pointer-events-none absolute left-1/2 top-24 w-full max-w-lg -translate-x-1/2 rounded-xl border border-border bg-card p-4 text-left text-sm text-muted-foreground shadow-2xl">
-            {t("topbar.search")} — a busca global entra na Onda 2 (com Cloud ativo).
+            {t("topbar.search")}. A busca global entra na Onda 2 (com Cloud ativo).
           </div>
         </button>
       )}
