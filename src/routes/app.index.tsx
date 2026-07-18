@@ -74,7 +74,7 @@ function Dashboard() {
             </div>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-foreground/90">
-            Nos últimos 7 dias o Bento dormiu em média 9h20 — 22% acima da
+            Nos últimos 7 dias o Bento dormiu em média 9h20, 22% acima da
             semana anterior. Continue com a rotina noturna das 20h30. O humor
             oscilou nos dias sem terapia; considere combinar dias fixos.
           </p>

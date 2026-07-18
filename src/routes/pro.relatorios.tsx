@@ -34,7 +34,7 @@ function ReportsPage() {
       </ProCard>
       <ProCard title="Biblioteca">
         <ul className="divide-y divide-border/60 text-sm">
-          {["Relatório mensal — Miguel", "Sessão 12/06 — Bento", "Trimestral — Aurora"].map(
+          {["Relatório mensal de Miguel", "Sessão 12/06 de Bento", "Trimestral de Aurora"].map(
             (label) => (
               <li key={label} className="flex items-center justify-between py-3">
                 <span className="flex items-center gap-2">

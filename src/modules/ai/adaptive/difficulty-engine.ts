@@ -48,10 +48,10 @@ export function decideNextChallenge(signals: AdaptiveSignals): AdaptiveDecision 
     reason = "alta precisão e respostas rápidas";
   } else if (accuracy < 0.5 && signals.persistenceScore < 0.3) {
     level = Math.max(1, signals.currentLevel - 1);
-    reason = "baixa precisão e baixa persistência — reduzindo desafio";
+    reason = "baixa precisão e baixa persistência, reduzindo desafio";
   } else if (tired || lateHours) {
     level = Math.max(1, signals.currentLevel - 1);
-    reason = tired ? "sessão longa — descanso preventivo" : "horário tardio — modo calmo";
+    reason = tired ? "sessão longa, descanso preventivo" : "horário tardio, modo calmo";
   }
 
   const complexityIndex = Math.min(
