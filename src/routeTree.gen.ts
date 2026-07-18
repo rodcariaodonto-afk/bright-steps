@@ -9,10 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProRouteImport } from './routes/pro'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProIndexRouteImport } from './routes/pro.index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as ProRelatoriosRouteImport } from './routes/pro.relatorios'
+import { Route as ProPacientesRouteImport } from './routes/pro.pacientes'
+import { Route as ProObjetivosRouteImport } from './routes/pro.objetivos'
+import { Route as ProMensagensRouteImport } from './routes/pro.mensagens'
+import { Route as ProIndicadoresRouteImport } from './routes/pro.indicadores'
+import { Route as ProIaRouteImport } from './routes/pro.ia'
+import { Route as ProEvolucaoRouteImport } from './routes/pro.evolucao'
+import { Route as ProEscolaRouteImport } from './routes/pro.escola'
+import { Route as ProEscalasRouteImport } from './routes/pro.escalas'
+import { Route as ProDocumentosRouteImport } from './routes/pro.documentos'
+import { Route as ProConfiguracoesRouteImport } from './routes/pro.configuracoes'
+import { Route as ProAgendaRouteImport } from './routes/pro.agenda'
 import { Route as AppTimelineRouteImport } from './routes/app.timeline'
 import { Route as AppRotinasRouteImport } from './routes/app.rotinas'
 import { Route as AppRelatoriosRouteImport } from './routes/app.relatorios'
@@ -27,7 +41,15 @@ import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes
 import { Route as AppComportamentoRouteImport } from './routes/app.comportamento'
 import { Route as AppCalendarioRouteImport } from './routes/app.calendario'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ProSessoesNovaRouteImport } from './routes/pro.sessoes.nova'
+import { Route as ProSessoesIdRouteImport } from './routes/pro.sessoes.$id'
+import { Route as ProPacientesChildIdRouteImport } from './routes/pro.pacientes.$childId'
 
+const ProRoute = ProRouteImport.update({
+  id: '/pro',
+  path: '/pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -43,10 +65,75 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProIndexRoute = ProIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProRoute,
+} as any)
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppRoute,
+} as any)
+const ProRelatoriosRoute = ProRelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProPacientesRoute = ProPacientesRouteImport.update({
+  id: '/pacientes',
+  path: '/pacientes',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProObjetivosRoute = ProObjetivosRouteImport.update({
+  id: '/objetivos',
+  path: '/objetivos',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProMensagensRoute = ProMensagensRouteImport.update({
+  id: '/mensagens',
+  path: '/mensagens',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProIndicadoresRoute = ProIndicadoresRouteImport.update({
+  id: '/indicadores',
+  path: '/indicadores',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProIaRoute = ProIaRouteImport.update({
+  id: '/ia',
+  path: '/ia',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProEvolucaoRoute = ProEvolucaoRouteImport.update({
+  id: '/evolucao',
+  path: '/evolucao',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProEscolaRoute = ProEscolaRouteImport.update({
+  id: '/escola',
+  path: '/escola',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProEscalasRoute = ProEscalasRouteImport.update({
+  id: '/escalas',
+  path: '/escalas',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProDocumentosRoute = ProDocumentosRouteImport.update({
+  id: '/documentos',
+  path: '/documentos',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProConfiguracoesRoute = ProConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProAgendaRoute = ProAgendaRouteImport.update({
+  id: '/agenda',
+  path: '/agenda',
+  getParentRoute: () => ProRoute,
 } as any)
 const AppTimelineRoute = AppTimelineRouteImport.update({
   id: '/timeline',
@@ -118,11 +205,27 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProSessoesNovaRoute = ProSessoesNovaRouteImport.update({
+  id: '/sessoes/nova',
+  path: '/sessoes/nova',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProSessoesIdRoute = ProSessoesIdRouteImport.update({
+  id: '/sessoes/$id',
+  path: '/sessoes/$id',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProPacientesChildIdRoute = ProPacientesChildIdRouteImport.update({
+  id: '/$childId',
+  path: '/$childId',
+  getParentRoute: () => ProPacientesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/pro': typeof ProRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
@@ -137,7 +240,23 @@ export interface FileRoutesByFullPath {
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/rotinas': typeof AppRotinasRoute
   '/app/timeline': typeof AppTimelineRoute
+  '/pro/agenda': typeof ProAgendaRoute
+  '/pro/configuracoes': typeof ProConfiguracoesRoute
+  '/pro/documentos': typeof ProDocumentosRoute
+  '/pro/escalas': typeof ProEscalasRoute
+  '/pro/escola': typeof ProEscolaRoute
+  '/pro/evolucao': typeof ProEvolucaoRoute
+  '/pro/ia': typeof ProIaRoute
+  '/pro/indicadores': typeof ProIndicadoresRoute
+  '/pro/mensagens': typeof ProMensagensRoute
+  '/pro/objetivos': typeof ProObjetivosRoute
+  '/pro/pacientes': typeof ProPacientesRouteWithChildren
+  '/pro/relatorios': typeof ProRelatoriosRoute
   '/app/': typeof AppIndexRoute
+  '/pro/': typeof ProIndexRoute
+  '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
+  '/pro/sessoes/$id': typeof ProSessoesIdRoute
+  '/pro/sessoes/nova': typeof ProSessoesNovaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -156,13 +275,30 @@ export interface FileRoutesByTo {
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/rotinas': typeof AppRotinasRoute
   '/app/timeline': typeof AppTimelineRoute
+  '/pro/agenda': typeof ProAgendaRoute
+  '/pro/configuracoes': typeof ProConfiguracoesRoute
+  '/pro/documentos': typeof ProDocumentosRoute
+  '/pro/escalas': typeof ProEscalasRoute
+  '/pro/escola': typeof ProEscolaRoute
+  '/pro/evolucao': typeof ProEvolucaoRoute
+  '/pro/ia': typeof ProIaRoute
+  '/pro/indicadores': typeof ProIndicadoresRoute
+  '/pro/mensagens': typeof ProMensagensRoute
+  '/pro/objetivos': typeof ProObjetivosRoute
+  '/pro/pacientes': typeof ProPacientesRouteWithChildren
+  '/pro/relatorios': typeof ProRelatoriosRoute
   '/app': typeof AppIndexRoute
+  '/pro': typeof ProIndexRoute
+  '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
+  '/pro/sessoes/$id': typeof ProSessoesIdRoute
+  '/pro/sessoes/nova': typeof ProSessoesNovaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/pro': typeof ProRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
@@ -177,7 +313,23 @@ export interface FileRoutesById {
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/rotinas': typeof AppRotinasRoute
   '/app/timeline': typeof AppTimelineRoute
+  '/pro/agenda': typeof ProAgendaRoute
+  '/pro/configuracoes': typeof ProConfiguracoesRoute
+  '/pro/documentos': typeof ProDocumentosRoute
+  '/pro/escalas': typeof ProEscalasRoute
+  '/pro/escola': typeof ProEscolaRoute
+  '/pro/evolucao': typeof ProEvolucaoRoute
+  '/pro/ia': typeof ProIaRoute
+  '/pro/indicadores': typeof ProIndicadoresRoute
+  '/pro/mensagens': typeof ProMensagensRoute
+  '/pro/objetivos': typeof ProObjetivosRoute
+  '/pro/pacientes': typeof ProPacientesRouteWithChildren
+  '/pro/relatorios': typeof ProRelatoriosRoute
   '/app/': typeof AppIndexRoute
+  '/pro/': typeof ProIndexRoute
+  '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
+  '/pro/sessoes/$id': typeof ProSessoesIdRoute
+  '/pro/sessoes/nova': typeof ProSessoesNovaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -185,6 +337,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/auth'
+    | '/pro'
     | '/api/chat'
     | '/app/calendario'
     | '/app/comportamento'
@@ -199,7 +352,23 @@ export interface FileRouteTypes {
     | '/app/relatorios'
     | '/app/rotinas'
     | '/app/timeline'
+    | '/pro/agenda'
+    | '/pro/configuracoes'
+    | '/pro/documentos'
+    | '/pro/escalas'
+    | '/pro/escola'
+    | '/pro/evolucao'
+    | '/pro/ia'
+    | '/pro/indicadores'
+    | '/pro/mensagens'
+    | '/pro/objetivos'
+    | '/pro/pacientes'
+    | '/pro/relatorios'
     | '/app/'
+    | '/pro/'
+    | '/pro/pacientes/$childId'
+    | '/pro/sessoes/$id'
+    | '/pro/sessoes/nova'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -218,12 +387,29 @@ export interface FileRouteTypes {
     | '/app/relatorios'
     | '/app/rotinas'
     | '/app/timeline'
+    | '/pro/agenda'
+    | '/pro/configuracoes'
+    | '/pro/documentos'
+    | '/pro/escalas'
+    | '/pro/escola'
+    | '/pro/evolucao'
+    | '/pro/ia'
+    | '/pro/indicadores'
+    | '/pro/mensagens'
+    | '/pro/objetivos'
+    | '/pro/pacientes'
+    | '/pro/relatorios'
     | '/app'
+    | '/pro'
+    | '/pro/pacientes/$childId'
+    | '/pro/sessoes/$id'
+    | '/pro/sessoes/nova'
   id:
     | '__root__'
     | '/'
     | '/app'
     | '/auth'
+    | '/pro'
     | '/api/chat'
     | '/app/calendario'
     | '/app/comportamento'
@@ -238,18 +424,42 @@ export interface FileRouteTypes {
     | '/app/relatorios'
     | '/app/rotinas'
     | '/app/timeline'
+    | '/pro/agenda'
+    | '/pro/configuracoes'
+    | '/pro/documentos'
+    | '/pro/escalas'
+    | '/pro/escola'
+    | '/pro/evolucao'
+    | '/pro/ia'
+    | '/pro/indicadores'
+    | '/pro/mensagens'
+    | '/pro/objetivos'
+    | '/pro/pacientes'
+    | '/pro/relatorios'
     | '/app/'
+    | '/pro/'
+    | '/pro/pacientes/$childId'
+    | '/pro/sessoes/$id'
+    | '/pro/sessoes/nova'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ProRoute: typeof ProRouteWithChildren
   ApiChatRoute: typeof ApiChatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/pro': {
+      id: '/pro'
+      path: '/pro'
+      fullPath: '/pro'
+      preLoaderRoute: typeof ProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -271,12 +481,103 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pro/': {
+      id: '/pro/'
+      path: '/'
+      fullPath: '/pro/'
+      preLoaderRoute: typeof ProIndexRouteImport
+      parentRoute: typeof ProRoute
+    }
     '/app/': {
       id: '/app/'
       path: '/'
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
+    }
+    '/pro/relatorios': {
+      id: '/pro/relatorios'
+      path: '/relatorios'
+      fullPath: '/pro/relatorios'
+      preLoaderRoute: typeof ProRelatoriosRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/pacientes': {
+      id: '/pro/pacientes'
+      path: '/pacientes'
+      fullPath: '/pro/pacientes'
+      preLoaderRoute: typeof ProPacientesRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/objetivos': {
+      id: '/pro/objetivos'
+      path: '/objetivos'
+      fullPath: '/pro/objetivos'
+      preLoaderRoute: typeof ProObjetivosRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/mensagens': {
+      id: '/pro/mensagens'
+      path: '/mensagens'
+      fullPath: '/pro/mensagens'
+      preLoaderRoute: typeof ProMensagensRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/indicadores': {
+      id: '/pro/indicadores'
+      path: '/indicadores'
+      fullPath: '/pro/indicadores'
+      preLoaderRoute: typeof ProIndicadoresRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/ia': {
+      id: '/pro/ia'
+      path: '/ia'
+      fullPath: '/pro/ia'
+      preLoaderRoute: typeof ProIaRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/evolucao': {
+      id: '/pro/evolucao'
+      path: '/evolucao'
+      fullPath: '/pro/evolucao'
+      preLoaderRoute: typeof ProEvolucaoRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/escola': {
+      id: '/pro/escola'
+      path: '/escola'
+      fullPath: '/pro/escola'
+      preLoaderRoute: typeof ProEscolaRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/escalas': {
+      id: '/pro/escalas'
+      path: '/escalas'
+      fullPath: '/pro/escalas'
+      preLoaderRoute: typeof ProEscalasRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/documentos': {
+      id: '/pro/documentos'
+      path: '/documentos'
+      fullPath: '/pro/documentos'
+      preLoaderRoute: typeof ProDocumentosRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/configuracoes': {
+      id: '/pro/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/pro/configuracoes'
+      preLoaderRoute: typeof ProConfiguracoesRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/agenda': {
+      id: '/pro/agenda'
+      path: '/agenda'
+      fullPath: '/pro/agenda'
+      preLoaderRoute: typeof ProAgendaRouteImport
+      parentRoute: typeof ProRoute
     }
     '/app/timeline': {
       id: '/app/timeline'
@@ -376,6 +677,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pro/sessoes/nova': {
+      id: '/pro/sessoes/nova'
+      path: '/sessoes/nova'
+      fullPath: '/pro/sessoes/nova'
+      preLoaderRoute: typeof ProSessoesNovaRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/sessoes/$id': {
+      id: '/pro/sessoes/$id'
+      path: '/sessoes/$id'
+      fullPath: '/pro/sessoes/$id'
+      preLoaderRoute: typeof ProSessoesIdRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/pacientes/$childId': {
+      id: '/pro/pacientes/$childId'
+      path: '/$childId'
+      fullPath: '/pro/pacientes/$childId'
+      preLoaderRoute: typeof ProPacientesChildIdRouteImport
+      parentRoute: typeof ProPacientesRoute
+    }
   }
 }
 
@@ -415,22 +737,63 @@ const AppRouteChildren: AppRouteChildren = {
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
+interface ProPacientesRouteChildren {
+  ProPacientesChildIdRoute: typeof ProPacientesChildIdRoute
+}
+
+const ProPacientesRouteChildren: ProPacientesRouteChildren = {
+  ProPacientesChildIdRoute: ProPacientesChildIdRoute,
+}
+
+const ProPacientesRouteWithChildren = ProPacientesRoute._addFileChildren(
+  ProPacientesRouteChildren,
+)
+
+interface ProRouteChildren {
+  ProAgendaRoute: typeof ProAgendaRoute
+  ProConfiguracoesRoute: typeof ProConfiguracoesRoute
+  ProDocumentosRoute: typeof ProDocumentosRoute
+  ProEscalasRoute: typeof ProEscalasRoute
+  ProEscolaRoute: typeof ProEscolaRoute
+  ProEvolucaoRoute: typeof ProEvolucaoRoute
+  ProIaRoute: typeof ProIaRoute
+  ProIndicadoresRoute: typeof ProIndicadoresRoute
+  ProMensagensRoute: typeof ProMensagensRoute
+  ProObjetivosRoute: typeof ProObjetivosRoute
+  ProPacientesRoute: typeof ProPacientesRouteWithChildren
+  ProRelatoriosRoute: typeof ProRelatoriosRoute
+  ProIndexRoute: typeof ProIndexRoute
+  ProSessoesIdRoute: typeof ProSessoesIdRoute
+  ProSessoesNovaRoute: typeof ProSessoesNovaRoute
+}
+
+const ProRouteChildren: ProRouteChildren = {
+  ProAgendaRoute: ProAgendaRoute,
+  ProConfiguracoesRoute: ProConfiguracoesRoute,
+  ProDocumentosRoute: ProDocumentosRoute,
+  ProEscalasRoute: ProEscalasRoute,
+  ProEscolaRoute: ProEscolaRoute,
+  ProEvolucaoRoute: ProEvolucaoRoute,
+  ProIaRoute: ProIaRoute,
+  ProIndicadoresRoute: ProIndicadoresRoute,
+  ProMensagensRoute: ProMensagensRoute,
+  ProObjetivosRoute: ProObjetivosRoute,
+  ProPacientesRoute: ProPacientesRouteWithChildren,
+  ProRelatoriosRoute: ProRelatoriosRoute,
+  ProIndexRoute: ProIndexRoute,
+  ProSessoesIdRoute: ProSessoesIdRoute,
+  ProSessoesNovaRoute: ProSessoesNovaRoute,
+}
+
+const ProRouteWithChildren = ProRoute._addFileChildren(ProRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRoute,
+  ProRoute: ProRouteWithChildren,
   ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

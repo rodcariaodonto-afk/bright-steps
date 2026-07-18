@@ -1,0 +1,236 @@
+{
+  "brand": {
+    "name": "ATLAS Clínico",
+    "tagline": "Espaço de trabalho para profissionais do desenvolvimento infantil"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "Trabalho",
+      "clinical": "Clínico",
+      "collaboration": "Colaboração",
+      "settings": "Ajustes"
+    },
+    "dashboard": "Painel",
+    "agenda": "Agenda",
+    "patients": "Pacientes",
+    "sessions": "Sessões",
+    "evolution": "Evolução",
+    "goals": "Objetivos",
+    "scales": "Escalas",
+    "reports": "Relatórios",
+    "documents": "Documentos",
+    "messages": "Mensagens",
+    "school": "Escola",
+    "indicators": "Indicadores",
+    "ai": "Atlas Clínico",
+    "settings": "Configurações",
+    "newSession": "Nova sessão"
+  },
+  "topbar": {
+    "search": "Buscar pacientes, sessões, relatórios…",
+    "shortcut": "⌘K",
+    "help": "Ajuda",
+    "profile": "Perfil"
+  },
+  "dashboard": {
+    "title": "Bom dia, {{name}}",
+    "subtitle": "Você tem {{count}} atendimentos hoje.",
+    "cards": {
+      "todayAgenda": "Agenda do dia",
+      "nextAppointments": "Próximos atendimentos",
+      "activePatients": "Pacientes ativos",
+      "pending": "Pendências",
+      "messages": "Mensagens",
+      "pendingReports": "Relatórios pendentes",
+      "newDocuments": "Novos documentos",
+      "sharedGoals": "Objetivos compartilhados",
+      "aiAlerts": "Alertas da IA",
+      "weekSummary": "Resumo semanal",
+      "monthSummary": "Resumo mensal"
+    },
+    "empty": "Sem dados neste espaço até o Cloud ser ativado.",
+    "quickActions": {
+      "newSession": "Registrar sessão",
+      "newReport": "Gerar relatório",
+      "newAppointment": "Agendar atendimento",
+      "askAI": "Perguntar ao Atlas Clínico"
+    }
+  },
+  "patients": {
+    "title": "Pacientes",
+    "subtitle": "Somente crianças cujos responsáveis autorizaram seu acesso.",
+    "columns": {
+      "name": "Nome",
+      "age": "Idade",
+      "diagnosis": "Diagnóstico",
+      "support": "Suporte",
+      "lastSession": "Última sessão",
+      "nextSession": "Próxima sessão",
+      "goalsProgress": "Objetivos"
+    },
+    "filters": {
+      "all": "Todos",
+      "active": "Ativos",
+      "inactive": "Inativos",
+      "byDiagnosis": "Por diagnóstico",
+      "bySpecialty": "Por especialidade"
+    },
+    "tabs": {
+      "overview": "Visão geral",
+      "sessions": "Sessões",
+      "evolution": "Evolução",
+      "goals": "Objetivos",
+      "scales": "Escalas",
+      "reports": "Relatórios",
+      "documents": "Documentos",
+      "school": "Escola",
+      "family": "Família"
+    }
+  },
+  "agenda": {
+    "title": "Agenda",
+    "views": { "day": "Dia", "week": "Semana", "month": "Mês", "list": "Lista" },
+    "empty": "Sem compromissos neste período.",
+    "new": "Novo atendimento"
+  },
+  "sessions": {
+    "titleNew": "Nova sessão",
+    "titleEdit": "Editar sessão",
+    "fields": {
+      "date": "Data",
+      "time": "Hora",
+      "duration": "Duração",
+      "child": "Criança",
+      "goals": "Objetivos trabalhados",
+      "activities": "Atividades realizadas",
+      "materials": "Materiais utilizados",
+      "response": "Resposta da criança",
+      "observations": "Observações",
+      "nextSteps": "Próximos passos",
+      "attachments": "Anexos (fotos, vídeos, áudios, arquivos)"
+    },
+    "reuse": "Objetivos ativos, últimas observações e escalas pendentes serão pré-preenchidos automaticamente."
+  },
+  "evolution": {
+    "title": "Evolução",
+    "subtitle": "Feed cronológico de progressos, escalas e anexos.",
+    "share": "Compartilhar com",
+    "shareWith": { "family": "Família", "professionals": "Outros profissionais", "school": "Escola" }
+  },
+  "goals": {
+    "title": "Objetivos terapêuticos",
+    "subtitle": "Metas compartilhadas com família e equipe.",
+    "fields": {
+      "description": "Descrição",
+      "category": "Categoria",
+      "start": "Início",
+      "deadline": "Prazo",
+      "owner": "Responsável",
+      "participants": "Participantes",
+      "indicators": "Indicadores",
+      "status": "Status",
+      "progress": "Progresso"
+    }
+  },
+  "scales": {
+    "title": "Escalas e instrumentos",
+    "subtitle": "Cadastre qualquer instrumento de avaliação — arquitetura aberta.",
+    "new": "Nova escala",
+    "applications": "Aplicações"
+  },
+  "reports": {
+    "title": "Relatórios",
+    "subtitle": "Geração assistida por IA e exportação segura.",
+    "types": {
+      "session": "Sessão",
+      "weekly": "Semanal",
+      "monthly": "Mensal",
+      "quarterly": "Trimestral",
+      "annual": "Anual",
+      "custom": "Personalizado"
+    },
+    "export": { "pdf": "Exportar PDF", "docx": "Exportar Word", "share": "Compartilhar" }
+  },
+  "documents": {
+    "title": "Documentos",
+    "subtitle": "Biblioteca compartilhada com controle de versões.",
+    "categories": {
+      "reports": "Relatórios",
+      "referrals": "Laudos",
+      "prescriptions": "Receitas",
+      "assessments": "Avaliações",
+      "exams": "Exames",
+      "photos": "Fotos",
+      "videos": "Vídeos",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "Mensagens",
+    "subtitle": "Comunicação segura organizada por criança.",
+    "audiences": {
+      "family": "Família",
+      "school": "Escola",
+      "professionals": "Outros profissionais"
+    }
+  },
+  "school": {
+    "title": "Escola",
+    "subtitle": "Troca de objetivos, orientações e observações com a equipe escolar.",
+    "consentRequired": "Requer consentimento explícito da família para cada compartilhamento."
+  },
+  "indicators": {
+    "title": "Indicadores",
+    "subtitle": "Gráficos automáticos de evolução, humor, comportamento, sono e mais.",
+    "series": {
+      "evolution": "Evolução",
+      "frequency": "Frequência",
+      "participation": "Participação",
+      "goals": "Objetivos",
+      "mood": "Humor",
+      "behavior": "Comportamento",
+      "sleep": "Sono",
+      "medication": "Medicação"
+    }
+  },
+  "ai": {
+    "title": "Atlas Clínico",
+    "subtitle": "Assistente para resumir evoluções, comparar períodos, sugerir atividades e rascunhar relatórios.",
+    "disclaimer": "A IA apoia o raciocínio clínico. Nunca diagnostica e nunca substitui a decisão do profissional.",
+    "suggestions": [
+      "Resumir a evolução dos últimos 30 dias",
+      "Comparar comportamento antes e depois da nova rotina",
+      "Sugerir atividades para trabalhar atenção compartilhada",
+      "Rascunhar relatório mensal a partir das sessões"
+    ]
+  },
+  "settings": {
+    "title": "Configurações",
+    "sections": {
+      "profile": "Perfil profissional",
+      "specialties": "Especialidades",
+      "availability": "Disponibilidade",
+      "integrations": "Integrações (Google/Apple/Outlook)",
+      "security": "Segurança e LGPD"
+    }
+  },
+  "specialties": {
+    "psychologist": "Psicólogo(a)",
+    "neuropsychologist": "Neuropsicólogo(a)",
+    "speech_therapist": "Fonoaudiólogo(a)",
+    "occupational_therapist": "Terapeuta Ocupacional",
+    "psychopedagogue": "Psicopedagogo(a)",
+    "physician": "Médico(a)",
+    "neurologist": "Neurologista",
+    "psychiatrist": "Psiquiatra",
+    "pediatrician": "Pediatra",
+    "nutritionist": "Nutricionista",
+    "physical_educator": "Educador(a) Físico(a)",
+    "teacher": "Professor(a)",
+    "school_coordinator": "Coordenador(a) Escolar",
+    "caregiver": "Cuidador(a)"
+  },
+  "banner": {
+    "previewMode": "Prévia — as tabelas do Módulo Profissionais entram assim que o Lovable Cloud for reativado. Nenhum dado é persistido."
+  }
+}

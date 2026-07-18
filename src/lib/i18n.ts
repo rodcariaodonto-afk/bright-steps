@@ -6,6 +6,8 @@ import ptBRCommon from "@/locales/pt-BR/common.json";
 import ptBRLanding from "@/locales/pt-BR/landing.json";
 import ptBRAuth from "@/locales/pt-BR/auth.json";
 import ptBRApp from "@/locales/pt-BR/app.json";
+import ptBRPro from "@/locales/pt-BR/pro.json";
+
 
 /**
  * i18n do ATLAS.
@@ -27,11 +29,13 @@ if (!i18n.isInitialized) {
           landing: ptBRLanding,
           auth: ptBRAuth,
           app: ptBRApp,
+          pro: ptBRPro,
         },
       },
       fallbackLng: "pt-BR",
       supportedLngs: SUPPORTED_LOCALES as unknown as string[],
-      ns: ["common", "landing", "auth", "app"],
+      ns: ["common", "landing", "auth", "app", "pro"],
+
       defaultNS: "common",
       interpolation: { escapeValue: false },
       react: { useSuspense: false },
