@@ -6,6 +6,8 @@ import ptBRCommon from "@/locales/pt-BR/common.json";
 import ptBRLanding from "@/locales/pt-BR/landing.json";
 import ptBRAuth from "@/locales/pt-BR/auth.json";
 import ptBRApp from "@/locales/pt-BR/app.json";
+import ptBRPro from "@/locales/pt-BR/pro.json";
+
 
 /**
  * i18n do ATLAS.
