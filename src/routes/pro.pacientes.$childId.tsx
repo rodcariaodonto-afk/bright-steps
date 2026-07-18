@@ -131,7 +131,7 @@ function PatientDetail() {
       {tab !== "overview" && (
         <ProCard
           title={t(`patients.tabs.${tab}`)}
-          description="Estrutura pronta — os dados entram na Onda 2 com o Cloud ativo."
+          description="Estrutura pronta. Os dados entram na Onda 2 com o Cloud ativo."
         >
           <div className="rounded-xl border border-dashed border-border p-6 text-center text-xs text-muted-foreground">
             Nenhum registro nesta aba.

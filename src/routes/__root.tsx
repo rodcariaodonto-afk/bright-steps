@@ -87,7 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         title:
-          "Meu Mundo Azul — Plataforma para desenvolvimento infantil e acompanhamento terapêutico",
+          "Meu Mundo Azul: plataforma para desenvolvimento infantil e acompanhamento terapêutico",
       },
       {
         name: "description",
@@ -98,7 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#7fb8a6" },
       {
         property: "og:title",
-        content: "Meu Mundo Azul — Ecossistema para o desenvolvimento infantil",
+        content: "Meu Mundo Azul: ecossistema para o desenvolvimento infantil",
       },
       {
         property: "og:description",

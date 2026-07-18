@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "Meu Mundo Azul — Plataforma para o desenvolvimento infantil e o neurodesenvolvimento",
+          "Meu Mundo Azul: plataforma para o desenvolvimento infantil e o neurodesenvolvimento",
       },
       {
         name: "description",
@@ -334,7 +334,7 @@ function HeroPreview() {
           />
           <PreviewRow
             time="16:00"
-            title="Fono — leitura"
+            title="Fono: leitura"
             subtitle="Consultório"
             tone="muted"
           />
