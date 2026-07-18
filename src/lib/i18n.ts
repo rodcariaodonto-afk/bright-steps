@@ -7,14 +7,9 @@ import ptBRLanding from "@/locales/pt-BR/landing.json";
 import ptBRAuth from "@/locales/pt-BR/auth.json";
 import ptBRApp from "@/locales/pt-BR/app.json";
 import ptBRPro from "@/locales/pt-BR/pro.json";
+import ptBRAdmin from "@/locales/pt-BR/admin.json";
+import ptBRAi from "@/locales/pt-BR/ai.json";
 
-
-/**
- * i18n do ATLAS.
- * Todo texto exibido ao usuário deve passar por t('namespace:chave').
- * Novos idiomas: adicionar arquivos em src/locales/<locale>/<namespace>.json
- * e registrar em `resources` abaixo.
- */
 export const SUPPORTED_LOCALES = ["pt-BR", "en", "es", "fr", "it", "de"] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
@@ -30,12 +25,13 @@ if (!i18n.isInitialized) {
           auth: ptBRAuth,
           app: ptBRApp,
           pro: ptBRPro,
+          admin: ptBRAdmin,
+          ai: ptBRAi,
         },
       },
       fallbackLng: "pt-BR",
       supportedLngs: SUPPORTED_LOCALES as unknown as string[],
-      ns: ["common", "landing", "auth", "app", "pro"],
-
+      ns: ["common", "landing", "auth", "app", "pro", "admin", "ai"],
       defaultNS: "common",
       interpolation: { escapeValue: false },
       react: { useSuspense: false },
@@ -43,3 +39,4 @@ if (!i18n.isInitialized) {
 }
 
 export default i18n;
+
