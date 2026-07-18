@@ -11,7 +11,7 @@
     "behavior": "Comportamento",
     "goals": "Objetivos",
     "reports": "Relatórios",
-    "ai": "Atlas IA",
+    "ai": "Azul IA",
     "notifications": "Notificações",
     "settings": "Configurações"
   },
@@ -32,12 +32,12 @@
     "empty": "Ative o Lovable Cloud para começar a registrar dados reais."
   },
   "ai": {
-    "title": "Atlas IA",
+    "title": "Azul IA",
     "subtitle": "Converse sobre a rotina, comportamento, terapias e evolução da sua criança.",
     "placeholder": "Ex.: como foi o humor esta semana?",
-    "disclaimer": "Atlas IA é apoio, não substitui profissionais de saúde.",
+    "disclaimer": "Azul IA é apoio, não substitui profissionais de saúde.",
     "newThread": "Nova conversa",
-    "welcome": "Olá! Sou o Atlas. Como posso ajudar a família hoje?",
+    "welcome": "Olá! Sou o Azul. Como posso ajudar a família hoje?",
     "suggestions": [
       "Sugira uma rotina de sono acolhedora",
       "Escreva uma história social sobre ir ao dentista",

@@ -2,14 +2,14 @@
   "hero": {
     "eyebrow": "Desenvolvimento infantil · Neurodivergência · IA",
     "title": "A plataforma que caminha ao lado da sua família — todos os dias.",
-    "subtitle": "ATLAS conecta pais, crianças, terapeutas e escolas em um único lugar. Rotinas, terapias, humor, medicações, relatórios e uma IA que aprende com o dia a dia da criança.",
+    "subtitle": "Meu Mundo Azul conecta pais, crianças, terapeutas e escolas em um único lugar. Rotinas, terapias, humor, medicações, relatórios e uma IA que aprende com o dia a dia da criança.",
     "primaryCta": "Começar gratuitamente",
     "secondaryCta": "Ver como funciona",
     "trust": "Feito com apoio de famílias e profissionais do neurodesenvolvimento"
   },
   "pillars": {
     "title": "Um ecossistema, muitas vidas.",
-    "subtitle": "ATLAS nasceu para o TEA, mas cresce com qualquer condição do neurodesenvolvimento: TDAH, dislexia, Down, TOD, altas habilidades e mais.",
+    "subtitle": "Meu Mundo Azul nasceu para o TEA, mas cresce com qualquer condição do neurodesenvolvimento: TDAH, dislexia, Down, TOD, altas habilidades e mais.",
     "items": [
       {
         "title": "Família organizada",
@@ -46,14 +46,14 @@
   "ai": {
     "eyebrow": "Inteligência Artificial",
     "title": "Uma IA que conhece a sua criança.",
-    "description": "ATLAS conversa em linguagem natural, cria histórias sociais personalizadas para preparar novos momentos e identifica padrões que passam despercebidos no dia a dia.",
+    "description": "Meu Mundo Azul conversa em linguagem natural, cria histórias sociais personalizadas para preparar novos momentos e identifica padrões que passam despercebidos no dia a dia.",
     "bullets": [
       "Chat contextual com o histórico completo",
       "Histórias sociais para preparar consultas, viagens e mudanças",
       "Resumos semanais e mensais automáticos",
       "Sugestões de rotina baseadas no que funciona"
     ],
-    "disclaimer": "A IA do ATLAS é ferramenta de apoio. Nunca substitui profissionais de saúde ou educação."
+    "disclaimer": "A IA do Meu Mundo Azul é ferramenta de apoio. Nunca substitui profissionais de saúde ou educação."
   },
   "security": {
     "title": "Feito com respeito absoluto pela LGPD.",
@@ -65,7 +65,7 @@
     ]
   },
   "cta": {
-    "title": "Comece hoje. Cresça com o ATLAS por muitos anos.",
+    "title": "Comece hoje. Cresça com o Meu Mundo Azul por muitos anos.",
     "subtitle": "A plataforma acompanha a criança em cada fase — da rotina de sono à autonomia, da comunicação às terapias.",
     "action": "Criar minha conta"
   }

@@ -55,7 +55,7 @@ const CATALOG: Record<InterestTheme, Recommendation[]> = {
     { id: "rec-art-1", kind: "activity", title: "Desenho do sentimento", reason: "identificar emoções" },
   ],
   neutral: [
-    { id: "rec-n-1", kind: "story", title: "Um dia com Atlas", reason: "acolhimento inicial" },
+    { id: "rec-n-1", kind: "story", title: "Um dia com Azul", reason: "acolhimento inicial" },
   ],
 };
 
