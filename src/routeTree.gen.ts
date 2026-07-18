@@ -9,38 +9,261 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppTimelineRouteImport } from './routes/app.timeline'
+import { Route as AppRotinasRouteImport } from './routes/app.rotinas'
+import { Route as AppRelatoriosRouteImport } from './routes/app.relatorios'
+import { Route as AppObjetivosRouteImport } from './routes/app.objetivos'
+import { Route as AppNotificacoesRouteImport } from './routes/app.notificacoes'
+import { Route as AppMedicacaoRouteImport } from './routes/app.medicacao'
+import { Route as AppIaRouteImport } from './routes/app.ia'
+import { Route as AppHumorRouteImport } from './routes/app.humor'
+import { Route as AppDocumentosRouteImport } from './routes/app.documentos'
+import { Route as AppCriancaRouteImport } from './routes/app.crianca'
+import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes'
+import { Route as AppComportamentoRouteImport } from './routes/app.comportamento'
+import { Route as AppCalendarioRouteImport } from './routes/app.calendario'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTimelineRoute = AppTimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRotinasRoute = AppRotinasRouteImport.update({
+  id: '/rotinas',
+  path: '/rotinas',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRelatoriosRoute = AppRelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppObjetivosRoute = AppObjetivosRouteImport.update({
+  id: '/objetivos',
+  path: '/objetivos',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppNotificacoesRoute = AppNotificacoesRouteImport.update({
+  id: '/notificacoes',
+  path: '/notificacoes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMedicacaoRoute = AppMedicacaoRouteImport.update({
+  id: '/medicacao',
+  path: '/medicacao',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppIaRoute = AppIaRouteImport.update({
+  id: '/ia',
+  path: '/ia',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHumorRoute = AppHumorRouteImport.update({
+  id: '/humor',
+  path: '/humor',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDocumentosRoute = AppDocumentosRouteImport.update({
+  id: '/documentos',
+  path: '/documentos',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCriancaRoute = AppCriancaRouteImport.update({
+  id: '/crianca',
+  path: '/crianca',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConfiguracoesRoute = AppConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppComportamentoRoute = AppComportamentoRouteImport.update({
+  id: '/comportamento',
+  path: '/comportamento',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCalendarioRoute = AppCalendarioRouteImport.update({
+  id: '/calendario',
+  path: '/calendario',
+  getParentRoute: () => AppRoute,
+} as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/api/chat': typeof ApiChatRoute
+  '/app/calendario': typeof AppCalendarioRoute
+  '/app/comportamento': typeof AppComportamentoRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
+  '/app/crianca': typeof AppCriancaRoute
+  '/app/documentos': typeof AppDocumentosRoute
+  '/app/humor': typeof AppHumorRoute
+  '/app/ia': typeof AppIaRoute
+  '/app/medicacao': typeof AppMedicacaoRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
+  '/app/objetivos': typeof AppObjetivosRoute
+  '/app/relatorios': typeof AppRelatoriosRoute
+  '/app/rotinas': typeof AppRotinasRoute
+  '/app/timeline': typeof AppTimelineRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/api/chat': typeof ApiChatRoute
+  '/app/calendario': typeof AppCalendarioRoute
+  '/app/comportamento': typeof AppComportamentoRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
+  '/app/crianca': typeof AppCriancaRoute
+  '/app/documentos': typeof AppDocumentosRoute
+  '/app/humor': typeof AppHumorRoute
+  '/app/ia': typeof AppIaRoute
+  '/app/medicacao': typeof AppMedicacaoRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
+  '/app/objetivos': typeof AppObjetivosRoute
+  '/app/relatorios': typeof AppRelatoriosRoute
+  '/app/rotinas': typeof AppRotinasRoute
+  '/app/timeline': typeof AppTimelineRoute
+  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/api/chat': typeof ApiChatRoute
+  '/app/calendario': typeof AppCalendarioRoute
+  '/app/comportamento': typeof AppComportamentoRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
+  '/app/crianca': typeof AppCriancaRoute
+  '/app/documentos': typeof AppDocumentosRoute
+  '/app/humor': typeof AppHumorRoute
+  '/app/ia': typeof AppIaRoute
+  '/app/medicacao': typeof AppMedicacaoRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
+  '/app/objetivos': typeof AppObjetivosRoute
+  '/app/relatorios': typeof AppRelatoriosRoute
+  '/app/rotinas': typeof AppRotinasRoute
+  '/app/timeline': typeof AppTimelineRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/auth'
+    | '/api/chat'
+    | '/app/calendario'
+    | '/app/comportamento'
+    | '/app/configuracoes'
+    | '/app/crianca'
+    | '/app/documentos'
+    | '/app/humor'
+    | '/app/ia'
+    | '/app/medicacao'
+    | '/app/notificacoes'
+    | '/app/objetivos'
+    | '/app/relatorios'
+    | '/app/rotinas'
+    | '/app/timeline'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/api/chat'
+    | '/app/calendario'
+    | '/app/comportamento'
+    | '/app/configuracoes'
+    | '/app/crianca'
+    | '/app/documentos'
+    | '/app/humor'
+    | '/app/ia'
+    | '/app/medicacao'
+    | '/app/notificacoes'
+    | '/app/objetivos'
+    | '/app/relatorios'
+    | '/app/rotinas'
+    | '/app/timeline'
+    | '/app'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/auth'
+    | '/api/chat'
+    | '/app/calendario'
+    | '/app/comportamento'
+    | '/app/configuracoes'
+    | '/app/crianca'
+    | '/app/documentos'
+    | '/app/humor'
+    | '/app/ia'
+    | '/app/medicacao'
+    | '/app/notificacoes'
+    | '/app/objetivos'
+    | '/app/relatorios'
+    | '/app/rotinas'
+    | '/app/timeline'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  ApiChatRoute: typeof ApiChatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +271,166 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/timeline': {
+      id: '/app/timeline'
+      path: '/timeline'
+      fullPath: '/app/timeline'
+      preLoaderRoute: typeof AppTimelineRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/rotinas': {
+      id: '/app/rotinas'
+      path: '/rotinas'
+      fullPath: '/app/rotinas'
+      preLoaderRoute: typeof AppRotinasRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/relatorios': {
+      id: '/app/relatorios'
+      path: '/relatorios'
+      fullPath: '/app/relatorios'
+      preLoaderRoute: typeof AppRelatoriosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/objetivos': {
+      id: '/app/objetivos'
+      path: '/objetivos'
+      fullPath: '/app/objetivos'
+      preLoaderRoute: typeof AppObjetivosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/notificacoes': {
+      id: '/app/notificacoes'
+      path: '/notificacoes'
+      fullPath: '/app/notificacoes'
+      preLoaderRoute: typeof AppNotificacoesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/medicacao': {
+      id: '/app/medicacao'
+      path: '/medicacao'
+      fullPath: '/app/medicacao'
+      preLoaderRoute: typeof AppMedicacaoRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/ia': {
+      id: '/app/ia'
+      path: '/ia'
+      fullPath: '/app/ia'
+      preLoaderRoute: typeof AppIaRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/humor': {
+      id: '/app/humor'
+      path: '/humor'
+      fullPath: '/app/humor'
+      preLoaderRoute: typeof AppHumorRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/documentos': {
+      id: '/app/documentos'
+      path: '/documentos'
+      fullPath: '/app/documentos'
+      preLoaderRoute: typeof AppDocumentosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/crianca': {
+      id: '/app/crianca'
+      path: '/crianca'
+      fullPath: '/app/crianca'
+      preLoaderRoute: typeof AppCriancaRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/configuracoes': {
+      id: '/app/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/app/configuracoes'
+      preLoaderRoute: typeof AppConfiguracoesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/comportamento': {
+      id: '/app/comportamento'
+      path: '/comportamento'
+      fullPath: '/app/comportamento'
+      preLoaderRoute: typeof AppComportamentoRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/calendario': {
+      id: '/app/calendario'
+      path: '/calendario'
+      fullPath: '/app/calendario'
+      preLoaderRoute: typeof AppCalendarioRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppCalendarioRoute: typeof AppCalendarioRoute
+  AppComportamentoRoute: typeof AppComportamentoRoute
+  AppConfiguracoesRoute: typeof AppConfiguracoesRoute
+  AppCriancaRoute: typeof AppCriancaRoute
+  AppDocumentosRoute: typeof AppDocumentosRoute
+  AppHumorRoute: typeof AppHumorRoute
+  AppIaRoute: typeof AppIaRoute
+  AppMedicacaoRoute: typeof AppMedicacaoRoute
+  AppNotificacoesRoute: typeof AppNotificacoesRoute
+  AppObjetivosRoute: typeof AppObjetivosRoute
+  AppRelatoriosRoute: typeof AppRelatoriosRoute
+  AppRotinasRoute: typeof AppRotinasRoute
+  AppTimelineRoute: typeof AppTimelineRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppCalendarioRoute: AppCalendarioRoute,
+  AppComportamentoRoute: AppComportamentoRoute,
+  AppConfiguracoesRoute: AppConfiguracoesRoute,
+  AppCriancaRoute: AppCriancaRoute,
+  AppDocumentosRoute: AppDocumentosRoute,
+  AppHumorRoute: AppHumorRoute,
+  AppIaRoute: AppIaRoute,
+  AppMedicacaoRoute: AppMedicacaoRoute,
+  AppNotificacoesRoute: AppNotificacoesRoute,
+  AppObjetivosRoute: AppObjetivosRoute,
+  AppRelatoriosRoute: AppRelatoriosRoute,
+  AppRotinasRoute: AppRotinasRoute,
+  AppTimelineRoute: AppTimelineRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
+  AuthRoute: AuthRoute,
+  ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

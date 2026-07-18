@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "eyebrow": "Desenvolvimento infantil · Neurodivergência · IA",
+    "title": "A plataforma que caminha ao lado da sua família — todos os dias.",
+    "subtitle": "ATLAS conecta pais, crianças, terapeutas e escolas em um único lugar. Rotinas, terapias, humor, medicações, relatórios e uma IA que aprende com o dia a dia da criança.",
+    "primaryCta": "Começar gratuitamente",
+    "secondaryCta": "Ver como funciona",
+    "trust": "Feito com apoio de famílias e profissionais do neurodesenvolvimento"
+  },
+  "pillars": {
+    "title": "Um ecossistema, muitas vidas.",
+    "subtitle": "ATLAS nasceu para o TEA, mas cresce com qualquer condição do neurodesenvolvimento: TDAH, dislexia, Down, TOD, altas habilidades e mais.",
+    "items": [
+      {
+        "title": "Família organizada",
+        "description": "Rotina, calendário, medicações, humor e comportamento em um painel único e acolhedor."
+      },
+      {
+        "title": "Criança encantada",
+        "description": "Uma experiência que parece brincadeira. Avatar, mundo, missões e IA que conversa como um amigo."
+      },
+      {
+        "title": "Profissionais integrados",
+        "description": "Terapeutas e escolas recebem contexto real, aplicam avaliações e devolvem relatórios em tempo real."
+      },
+      {
+        "title": "IA de verdade",
+        "description": "Não é um chatbot. É um assistente que lembra da história da criança e sugere caminhos com base em dados."
+      }
+    ]
+  },
+  "modules": {
+    "title": "Tudo conversa entre si.",
+    "subtitle": "Cada atividade alimenta a linha do tempo, gera relatórios, alimenta a IA e ajusta as recomendações.",
+    "items": [
+      "Perfil clínico completo da criança",
+      "Timeline unificada de tudo que acontece",
+      "Calendário com terapias, escola e rotinas",
+      "Medicações com lembretes e histórico",
+      "Registro de humor e comportamento",
+      "Objetivos e evolução com gráficos",
+      "Documentos, laudos e receitas organizados",
+      "Relatórios semanais gerados por IA"
+    ]
+  },
+  "ai": {
+    "eyebrow": "Inteligência Artificial",
+    "title": "Uma IA que conhece a sua criança.",
+    "description": "ATLAS conversa em linguagem natural, cria histórias sociais personalizadas para preparar novos momentos e identifica padrões que passam despercebidos no dia a dia.",
+    "bullets": [
+      "Chat contextual com o histórico completo",
+      "Histórias sociais para preparar consultas, viagens e mudanças",
+      "Resumos semanais e mensais automáticos",
+      "Sugestões de rotina baseadas no que funciona"
+    ],
+    "disclaimer": "A IA do ATLAS é ferramenta de apoio. Nunca substitui profissionais de saúde ou educação."
+  },
+  "security": {
+    "title": "Feito com respeito absoluto pela LGPD.",
+    "items": [
+      "Consentimento versionado e revogável a qualquer momento",
+      "Row Level Security e auditoria em cada acesso",
+      "Exportação e exclusão dos dados em um clique",
+      "Dados sensíveis de menores tratados com o cuidado que merecem"
+    ]
+  },
+  "cta": {
+    "title": "Comece hoje. Cresça com o ATLAS por muitos anos.",
+    "subtitle": "A plataforma acompanha a criança em cada fase — da rotina de sono à autonomia, da comunicação às terapias.",
+    "action": "Criar minha conta"
+  }
+}

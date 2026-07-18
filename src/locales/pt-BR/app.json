@@ -1,0 +1,53 @@
+{
+  "sidebar": {
+    "dashboard": "Painel",
+    "children": "Crianças",
+    "timeline": "Linha do tempo",
+    "calendar": "Calendário",
+    "routines": "Rotinas",
+    "medication": "Medicação",
+    "documents": "Documentos",
+    "mood": "Humor",
+    "behavior": "Comportamento",
+    "goals": "Objetivos",
+    "reports": "Relatórios",
+    "ai": "Atlas IA",
+    "notifications": "Notificações",
+    "settings": "Configurações"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Bom dia",
+      "afternoon": "Boa tarde",
+      "evening": "Boa noite"
+    },
+    "welcome": "Aqui está o resumo de hoje.",
+    "cards": {
+      "nextEvent": "Próximo compromisso",
+      "medications": "Medicações de hoje",
+      "mood": "Humor recente",
+      "aiSummary": "Resumo da IA",
+      "pending": "Pendências"
+    },
+    "empty": "Ative o Lovable Cloud para começar a registrar dados reais."
+  },
+  "ai": {
+    "title": "Atlas IA",
+    "subtitle": "Converse sobre a rotina, comportamento, terapias e evolução da sua criança.",
+    "placeholder": "Ex.: como foi o humor esta semana?",
+    "disclaimer": "Atlas IA é apoio, não substitui profissionais de saúde.",
+    "newThread": "Nova conversa",
+    "welcome": "Olá! Sou o Atlas. Como posso ajudar a família hoje?",
+    "suggestions": [
+      "Sugira uma rotina de sono acolhedora",
+      "Escreva uma história social sobre ir ao dentista",
+      "Explique como registrar comportamentos difíceis",
+      "Como preparar uma criança para o primeiro dia de aula?"
+    ]
+  },
+  "placeholder": {
+    "title": "Este módulo estará disponível em breve",
+    "message": "Assim que o Lovable Cloud for habilitado, esta área será ativada com dados reais, RLS e sincronização entre membros da família.",
+    "backToDashboard": "Voltar ao painel"
+  }
+}
