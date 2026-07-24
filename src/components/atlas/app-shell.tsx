@@ -17,6 +17,7 @@ import {
   Bell,
   School,
   Trophy,
+  Users,
   Settings,
   Menu,
 } from "lucide-react";
@@ -50,6 +51,7 @@ const NAV: NavItem[] = [
   { to: "/app/relatorios", labelKey: "sidebar.reports", icon: BarChart3 },
   { to: "/app/escola", labelKey: "sidebar.school", icon: School },
   { to: "/app/conquistas", labelKey: "sidebar.achievements", icon: Trophy },
+  { to: "/app/comunidade", labelKey: "sidebar.community", icon: Users },
   { to: "/app/ia", labelKey: "sidebar.ai", icon: Sparkles },
   { to: "/app/notificacoes", labelKey: "sidebar.notifications", icon: Bell },
   { to: "/app/configuracoes", labelKey: "sidebar.settings", icon: Settings },
