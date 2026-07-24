@@ -985,6 +985,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      add_professional_by_email: {
+        Args: { _child_id: string; _email: string; _permission?: string }
+        Returns: string
+      }
       can_access_child: {
         Args: { _child_id: string; _user_id: string }
         Returns: boolean
@@ -1003,6 +1007,18 @@ export type Database = {
       is_family_member: {
         Args: { _family_id: string; _user_id: string }
         Returns: boolean
+      }
+      list_my_patients: {
+        Args: never
+        Returns: {
+          birth_date: string
+          child_id: string
+          declared_conditions: string[]
+          dominant_interest: string
+          full_name: string
+          nickname: string
+          permission: string
+        }[]
       }
     }
     Enums: {
