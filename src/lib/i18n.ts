@@ -13,29 +13,33 @@ import ptBRAi from "@/locales/pt-BR/ai.json";
 export const SUPPORTED_LOCALES = ["pt-BR", "en", "es", "fr", "it", "de"] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
+const isBrowser = typeof window !== "undefined";
+
 if (!i18n.isInitialized) {
-  void i18n
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-      resources: {
-        "pt-BR": {
-          common: ptBRCommon,
-          landing: ptBRLanding,
-          auth: ptBRAuth,
-          app: ptBRApp,
-          pro: ptBRPro,
-          admin: ptBRAdmin,
-          ai: ptBRAi,
-        },
+  const chain = isBrowser
+    ? i18n.use(LanguageDetector).use(initReactI18next)
+    : i18n.use(initReactI18next);
+
+  void chain.init({
+    resources: {
+      "pt-BR": {
+        common: ptBRCommon,
+        landing: ptBRLanding,
+        auth: ptBRAuth,
+        app: ptBRApp,
+        pro: ptBRPro,
+        admin: ptBRAdmin,
+        ai: ptBRAi,
       },
-      fallbackLng: "pt-BR",
-      supportedLngs: SUPPORTED_LOCALES as unknown as string[],
-      ns: ["common", "landing", "auth", "app", "pro", "admin", "ai"],
-      defaultNS: "common",
-      interpolation: { escapeValue: false },
-      react: { useSuspense: false },
-    });
+    },
+    lng: isBrowser ? undefined : "pt-BR",
+    fallbackLng: "pt-BR",
+    supportedLngs: SUPPORTED_LOCALES as unknown as string[],
+    ns: ["common", "landing", "auth", "app", "pro", "admin", "ai"],
+    defaultNS: "common",
+    interpolation: { escapeValue: false },
+    react: { useSuspense: false },
+  });
 }
 
 export default i18n;
