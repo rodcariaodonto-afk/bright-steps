@@ -36,6 +36,9 @@ const dashboardQuery = {
 export const Route = createFileRoute("/pro/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(dashboardQuery),
   component: ProDashboard,
+  errorComponent: ({ error }) => (
+    <div className="p-8 text-sm text-destructive">Erro ao carregar painel: {error.message}</div>
+  ),
 });
 
 function greet(hour: number) {
