@@ -1102,39 +1102,107 @@ export type Database = {
         }
         Relationships: []
       }
+      professional_contact_requests: {
+        Row: {
+          child_id: string | null
+          created_at: string
+          id: string
+          message: string
+          professional_user_id: string
+          requester_user_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          child_id?: string | null
+          created_at?: string
+          id?: string
+          message: string
+          professional_user_id: string
+          requester_user_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          child_id?: string | null
+          created_at?: string
+          id?: string
+          message?: string
+          professional_user_id?: string
+          requester_user_id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "professional_contact_requests_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       professional_profiles: {
         Row: {
+          accepting_patients: boolean
           bio: string | null
+          city: string | null
+          contact_email: string | null
+          contact_phone: string | null
           council_id: string | null
           created_at: string
           full_name: string
           id: string
+          languages: string[]
+          modality: string | null
           photo_url: string | null
+          price_range: string | null
           specialties: string[]
+          state: string | null
           updated_at: string
           user_id: string
+          visible_in_marketplace: boolean
         }
         Insert: {
+          accepting_patients?: boolean
           bio?: string | null
+          city?: string | null
+          contact_email?: string | null
+          contact_phone?: string | null
           council_id?: string | null
           created_at?: string
           full_name: string
           id?: string
+          languages?: string[]
+          modality?: string | null
           photo_url?: string | null
+          price_range?: string | null
           specialties?: string[]
+          state?: string | null
           updated_at?: string
           user_id: string
+          visible_in_marketplace?: boolean
         }
         Update: {
+          accepting_patients?: boolean
           bio?: string | null
+          city?: string | null
+          contact_email?: string | null
+          contact_phone?: string | null
           council_id?: string | null
           created_at?: string
           full_name?: string
           id?: string
+          languages?: string[]
+          modality?: string | null
           photo_url?: string | null
+          price_range?: string | null
           specialties?: string[]
+          state?: string | null
           updated_at?: string
           user_id?: string
+          visible_in_marketplace?: boolean
         }
         Relationships: []
       }
