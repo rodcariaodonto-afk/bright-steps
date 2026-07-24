@@ -1114,6 +1114,119 @@ export type Database = {
           },
         ]
       }
+      school_notes: {
+        Row: {
+          author_id: string
+          author_role: string
+          category: string
+          child_id: string
+          content: string
+          created_at: string
+          id: string
+          mood: string | null
+          pinned: boolean
+          school_id: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_id: string
+          author_role: string
+          category: string
+          child_id: string
+          content: string
+          created_at?: string
+          id?: string
+          mood?: string | null
+          pinned?: boolean
+          school_id?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string
+          author_role?: string
+          category?: string
+          child_id?: string
+          content?: string
+          created_at?: string
+          id?: string
+          mood?: string | null
+          pinned?: boolean
+          school_id?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "school_notes_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "school_notes_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "school_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      school_profiles: {
+        Row: {
+          child_id: string
+          class_name: string | null
+          created_at: string
+          created_by: string | null
+          grade: string | null
+          id: string
+          name: string
+          notes: string | null
+          phone: string | null
+          teacher_email: string | null
+          teacher_name: string | null
+          updated_at: string
+        }
+        Insert: {
+          child_id: string
+          class_name?: string | null
+          created_at?: string
+          created_by?: string | null
+          grade?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          phone?: string | null
+          teacher_email?: string | null
+          teacher_name?: string | null
+          updated_at?: string
+        }
+        Update: {
+          child_id?: string
+          class_name?: string | null
+          created_at?: string
+          created_by?: string | null
+          grade?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          phone?: string | null
+          teacher_email?: string | null
+          teacher_name?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "school_profiles_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
