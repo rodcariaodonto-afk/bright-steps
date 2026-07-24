@@ -38,7 +38,7 @@ function KidMood() {
         note: null,
         logged_at: new Date().toISOString(),
       });
-      addStars(1);
+      addStars(1, "Registro de humor", "mood");
       setSaved(true);
       setTimeout(() => navigate({ to: "/kid" }), 1400);
     } finally {
