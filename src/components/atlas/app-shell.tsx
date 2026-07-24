@@ -22,6 +22,9 @@ import {
   MessageSquare,
   Settings,
   Menu,
+  BookOpen,
+  ClipboardCheck,
+  HeartHandshake,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
