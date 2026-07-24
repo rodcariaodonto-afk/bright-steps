@@ -10,11 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProRouteImport } from './routes/pro'
+import { Route as KidRouteImport } from './routes/kid'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProIndexRouteImport } from './routes/pro.index'
+import { Route as KidIndexRouteImport } from './routes/kid.index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as ProRelatoriosRouteImport } from './routes/pro.relatorios'
@@ -29,6 +31,10 @@ import { Route as ProEscalasRouteImport } from './routes/pro.escalas'
 import { Route as ProDocumentosRouteImport } from './routes/pro.documentos'
 import { Route as ProConfiguracoesRouteImport } from './routes/pro.configuracoes'
 import { Route as ProAgendaRouteImport } from './routes/pro.agenda'
+import { Route as KidRespirarRouteImport } from './routes/kid.respirar'
+import { Route as KidHumorRouteImport } from './routes/kid.humor'
+import { Route as KidHistoriasRouteImport } from './routes/kid.historias'
+import { Route as KidAzulRouteImport } from './routes/kid.azul'
 import { Route as AppTimelineRouteImport } from './routes/app.timeline'
 import { Route as AppRotinasRouteImport } from './routes/app.rotinas'
 import { Route as AppRelatoriosRouteImport } from './routes/app.relatorios'
@@ -77,6 +83,11 @@ const ProRoute = ProRouteImport.update({
   path: '/pro',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KidRoute = KidRouteImport.update({
+  id: '/kid',
+  path: '/kid',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -101,6 +112,11 @@ const ProIndexRoute = ProIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ProRoute,
+} as any)
+const KidIndexRoute = KidIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => KidRoute,
 } as any)
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
@@ -171,6 +187,26 @@ const ProAgendaRoute = ProAgendaRouteImport.update({
   id: '/agenda',
   path: '/agenda',
   getParentRoute: () => ProRoute,
+} as any)
+const KidRespirarRoute = KidRespirarRouteImport.update({
+  id: '/respirar',
+  path: '/respirar',
+  getParentRoute: () => KidRoute,
+} as any)
+const KidHumorRoute = KidHumorRouteImport.update({
+  id: '/humor',
+  path: '/humor',
+  getParentRoute: () => KidRoute,
+} as any)
+const KidHistoriasRoute = KidHistoriasRouteImport.update({
+  id: '/historias',
+  path: '/historias',
+  getParentRoute: () => KidRoute,
+} as any)
+const KidAzulRoute = KidAzulRouteImport.update({
+  id: '/azul',
+  path: '/azul',
+  getParentRoute: () => KidRoute,
 } as any)
 const AppTimelineRoute = AppTimelineRouteImport.update({
   id: '/timeline',
@@ -388,6 +424,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/kid': typeof KidRouteWithChildren
   '/pro': typeof ProRouteWithChildren
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/ai': typeof AdminAiRoute
@@ -427,6 +464,10 @@ export interface FileRoutesByFullPath {
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/rotinas': typeof AppRotinasRoute
   '/app/timeline': typeof AppTimelineRoute
+  '/kid/azul': typeof KidAzulRoute
+  '/kid/historias': typeof KidHistoriasRoute
+  '/kid/humor': typeof KidHumorRoute
+  '/kid/respirar': typeof KidRespirarRoute
   '/pro/agenda': typeof ProAgendaRoute
   '/pro/configuracoes': typeof ProConfiguracoesRoute
   '/pro/documentos': typeof ProDocumentosRoute
@@ -441,6 +482,7 @@ export interface FileRoutesByFullPath {
   '/pro/relatorios': typeof ProRelatoriosRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
+  '/kid/': typeof KidIndexRoute
   '/pro/': typeof ProIndexRoute
   '/api/reports/weekly': typeof ApiReportsWeeklyRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
@@ -488,6 +530,10 @@ export interface FileRoutesByTo {
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/rotinas': typeof AppRotinasRoute
   '/app/timeline': typeof AppTimelineRoute
+  '/kid/azul': typeof KidAzulRoute
+  '/kid/historias': typeof KidHistoriasRoute
+  '/kid/humor': typeof KidHumorRoute
+  '/kid/respirar': typeof KidRespirarRoute
   '/pro/agenda': typeof ProAgendaRoute
   '/pro/configuracoes': typeof ProConfiguracoesRoute
   '/pro/documentos': typeof ProDocumentosRoute
@@ -502,6 +548,7 @@ export interface FileRoutesByTo {
   '/pro/relatorios': typeof ProRelatoriosRoute
   '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
+  '/kid': typeof KidIndexRoute
   '/pro': typeof ProIndexRoute
   '/api/reports/weekly': typeof ApiReportsWeeklyRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
@@ -514,6 +561,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/kid': typeof KidRouteWithChildren
   '/pro': typeof ProRouteWithChildren
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/ai': typeof AdminAiRoute
@@ -553,6 +601,10 @@ export interface FileRoutesById {
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/rotinas': typeof AppRotinasRoute
   '/app/timeline': typeof AppTimelineRoute
+  '/kid/azul': typeof KidAzulRoute
+  '/kid/historias': typeof KidHistoriasRoute
+  '/kid/humor': typeof KidHumorRoute
+  '/kid/respirar': typeof KidRespirarRoute
   '/pro/agenda': typeof ProAgendaRoute
   '/pro/configuracoes': typeof ProConfiguracoesRoute
   '/pro/documentos': typeof ProDocumentosRoute
@@ -567,6 +619,7 @@ export interface FileRoutesById {
   '/pro/relatorios': typeof ProRelatoriosRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
+  '/kid/': typeof KidIndexRoute
   '/pro/': typeof ProIndexRoute
   '/api/reports/weekly': typeof ApiReportsWeeklyRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
@@ -580,6 +633,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/app'
     | '/auth'
+    | '/kid'
     | '/pro'
     | '/admin/achievements'
     | '/admin/ai'
@@ -619,6 +673,10 @@ export interface FileRouteTypes {
     | '/app/relatorios'
     | '/app/rotinas'
     | '/app/timeline'
+    | '/kid/azul'
+    | '/kid/historias'
+    | '/kid/humor'
+    | '/kid/respirar'
     | '/pro/agenda'
     | '/pro/configuracoes'
     | '/pro/documentos'
@@ -633,6 +691,7 @@ export interface FileRouteTypes {
     | '/pro/relatorios'
     | '/admin/'
     | '/app/'
+    | '/kid/'
     | '/pro/'
     | '/api/reports/weekly'
     | '/pro/pacientes/$childId'
@@ -680,6 +739,10 @@ export interface FileRouteTypes {
     | '/app/relatorios'
     | '/app/rotinas'
     | '/app/timeline'
+    | '/kid/azul'
+    | '/kid/historias'
+    | '/kid/humor'
+    | '/kid/respirar'
     | '/pro/agenda'
     | '/pro/configuracoes'
     | '/pro/documentos'
@@ -694,6 +757,7 @@ export interface FileRouteTypes {
     | '/pro/relatorios'
     | '/admin'
     | '/app'
+    | '/kid'
     | '/pro'
     | '/api/reports/weekly'
     | '/pro/pacientes/$childId'
@@ -705,6 +769,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/app'
     | '/auth'
+    | '/kid'
     | '/pro'
     | '/admin/achievements'
     | '/admin/ai'
@@ -744,6 +809,10 @@ export interface FileRouteTypes {
     | '/app/relatorios'
     | '/app/rotinas'
     | '/app/timeline'
+    | '/kid/azul'
+    | '/kid/historias'
+    | '/kid/humor'
+    | '/kid/respirar'
     | '/pro/agenda'
     | '/pro/configuracoes'
     | '/pro/documentos'
@@ -758,6 +827,7 @@ export interface FileRouteTypes {
     | '/pro/relatorios'
     | '/admin/'
     | '/app/'
+    | '/kid/'
     | '/pro/'
     | '/api/reports/weekly'
     | '/pro/pacientes/$childId'
@@ -770,6 +840,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRoute
+  KidRoute: typeof KidRouteWithChildren
   ProRoute: typeof ProRouteWithChildren
   ApiChatRoute: typeof ApiChatRoute
   ApiReportsWeeklyRoute: typeof ApiReportsWeeklyRoute
@@ -782,6 +853,13 @@ declare module '@tanstack/react-router' {
       path: '/pro'
       fullPath: '/pro'
       preLoaderRoute: typeof ProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kid': {
+      id: '/kid'
+      path: '/kid'
+      fullPath: '/kid'
+      preLoaderRoute: typeof KidRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -818,6 +896,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/pro/'
       preLoaderRoute: typeof ProIndexRouteImport
       parentRoute: typeof ProRoute
+    }
+    '/kid/': {
+      id: '/kid/'
+      path: '/'
+      fullPath: '/kid/'
+      preLoaderRoute: typeof KidIndexRouteImport
+      parentRoute: typeof KidRoute
     }
     '/app/': {
       id: '/app/'
@@ -916,6 +1001,34 @@ declare module '@tanstack/react-router' {
       fullPath: '/pro/agenda'
       preLoaderRoute: typeof ProAgendaRouteImport
       parentRoute: typeof ProRoute
+    }
+    '/kid/respirar': {
+      id: '/kid/respirar'
+      path: '/respirar'
+      fullPath: '/kid/respirar'
+      preLoaderRoute: typeof KidRespirarRouteImport
+      parentRoute: typeof KidRoute
+    }
+    '/kid/humor': {
+      id: '/kid/humor'
+      path: '/humor'
+      fullPath: '/kid/humor'
+      preLoaderRoute: typeof KidHumorRouteImport
+      parentRoute: typeof KidRoute
+    }
+    '/kid/historias': {
+      id: '/kid/historias'
+      path: '/historias'
+      fullPath: '/kid/historias'
+      preLoaderRoute: typeof KidHistoriasRouteImport
+      parentRoute: typeof KidRoute
+    }
+    '/kid/azul': {
+      id: '/kid/azul'
+      path: '/azul'
+      fullPath: '/kid/azul'
+      preLoaderRoute: typeof KidAzulRouteImport
+      parentRoute: typeof KidRoute
     }
     '/app/timeline': {
       id: '/app/timeline'
@@ -1308,6 +1421,24 @@ const AppRouteChildren: AppRouteChildren = {
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
+interface KidRouteChildren {
+  KidAzulRoute: typeof KidAzulRoute
+  KidHistoriasRoute: typeof KidHistoriasRoute
+  KidHumorRoute: typeof KidHumorRoute
+  KidRespirarRoute: typeof KidRespirarRoute
+  KidIndexRoute: typeof KidIndexRoute
+}
+
+const KidRouteChildren: KidRouteChildren = {
+  KidAzulRoute: KidAzulRoute,
+  KidHistoriasRoute: KidHistoriasRoute,
+  KidHumorRoute: KidHumorRoute,
+  KidRespirarRoute: KidRespirarRoute,
+  KidIndexRoute: KidIndexRoute,
+}
+
+const KidRouteWithChildren = KidRoute._addFileChildren(KidRouteChildren)
+
 interface ProPacientesRouteChildren {
   ProPacientesChildIdRoute: typeof ProPacientesChildIdRoute
 }
@@ -1363,6 +1494,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRouteWithChildren,
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRoute,
+  KidRoute: KidRouteWithChildren,
   ProRoute: ProRouteWithChildren,
   ApiChatRoute: ApiChatRoute,
   ApiReportsWeeklyRoute: ApiReportsWeeklyRoute,
