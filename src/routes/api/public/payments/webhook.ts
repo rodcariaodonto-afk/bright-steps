@@ -43,6 +43,10 @@ async function handleSubscriptionCreated(subscription: any, env: StripeEnv) {
   const item = subscription.items?.data?.[0];
   const priceId = resolvePriceId(item);
   const productId = resolveProductId(item);
+  if (!priceId || !productId) {
+    console.error("Webhook: sem price/product no item", subscription.id);
+    return;
+  }
   const periodStart = item?.current_period_start ?? subscription.current_period_start;
   const periodEnd = item?.current_period_end ?? subscription.current_period_end;
 
@@ -78,8 +82,8 @@ async function handleSubscriptionUpdated(subscription: any, env: StripeEnv) {
     .from("subscriptions")
     .update({
       status: subscription.status,
-      product_id: productId,
-      price_id: priceId,
+      ...(productId ? { product_id: productId } : {}),
+      ...(priceId ? { price_id: priceId } : {}),
       current_period_start: iso(periodStart),
       current_period_end: iso(periodEnd),
       cancel_at_period_end: subscription.cancel_at_period_end || false,
