@@ -18,6 +18,7 @@ import {
   School,
   Trophy,
   Users,
+  Store,
   Settings,
   Menu,
 } from "lucide-react";
@@ -52,6 +53,7 @@ const NAV: NavItem[] = [
   { to: "/app/escola", labelKey: "sidebar.school", icon: School },
   { to: "/app/conquistas", labelKey: "sidebar.achievements", icon: Trophy },
   { to: "/app/comunidade", labelKey: "sidebar.community", icon: Users },
+  { to: "/app/marketplace", labelKey: "sidebar.marketplace", icon: Store },
   { to: "/app/ia", labelKey: "sidebar.ai", icon: Sparkles },
   { to: "/app/notificacoes", labelKey: "sidebar.notifications", icon: Bell },
   { to: "/app/configuracoes", labelKey: "sidebar.settings", icon: Settings },
