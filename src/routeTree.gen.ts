@@ -41,6 +41,7 @@ import { Route as AppRotinasRouteImport } from './routes/app.rotinas'
 import { Route as AppRelatoriosRouteImport } from './routes/app.relatorios'
 import { Route as AppObjetivosRouteImport } from './routes/app.objetivos'
 import { Route as AppNotificacoesRouteImport } from './routes/app.notificacoes'
+import { Route as AppMensagensRouteImport } from './routes/app.mensagens'
 import { Route as AppMedicacaoRouteImport } from './routes/app.medicacao'
 import { Route as AppMarketplaceRouteImport } from './routes/app.marketplace'
 import { Route as AppIaRouteImport } from './routes/app.ia'
@@ -241,6 +242,11 @@ const AppObjetivosRoute = AppObjetivosRouteImport.update({
 const AppNotificacoesRoute = AppNotificacoesRouteImport.update({
   id: '/notificacoes',
   path: '/notificacoes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMensagensRoute = AppMensagensRouteImport.update({
+  id: '/mensagens',
+  path: '/mensagens',
   getParentRoute: () => AppRoute,
 } as any)
 const AppMedicacaoRoute = AppMedicacaoRouteImport.update({
@@ -493,6 +499,7 @@ export interface FileRoutesByFullPath {
   '/app/ia': typeof AppIaRoute
   '/app/marketplace': typeof AppMarketplaceRoute
   '/app/medicacao': typeof AppMedicacaoRoute
+  '/app/mensagens': typeof AppMensagensRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/objetivos': typeof AppObjetivosRoute
   '/app/relatorios': typeof AppRelatoriosRoute
@@ -564,6 +571,7 @@ export interface FileRoutesByTo {
   '/app/ia': typeof AppIaRoute
   '/app/marketplace': typeof AppMarketplaceRoute
   '/app/medicacao': typeof AppMedicacaoRoute
+  '/app/mensagens': typeof AppMensagensRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/objetivos': typeof AppObjetivosRoute
   '/app/relatorios': typeof AppRelatoriosRoute
@@ -640,6 +648,7 @@ export interface FileRoutesById {
   '/app/ia': typeof AppIaRoute
   '/app/marketplace': typeof AppMarketplaceRoute
   '/app/medicacao': typeof AppMedicacaoRoute
+  '/app/mensagens': typeof AppMensagensRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/objetivos': typeof AppObjetivosRoute
   '/app/relatorios': typeof AppRelatoriosRoute
@@ -717,6 +726,7 @@ export interface FileRouteTypes {
     | '/app/ia'
     | '/app/marketplace'
     | '/app/medicacao'
+    | '/app/mensagens'
     | '/app/notificacoes'
     | '/app/objetivos'
     | '/app/relatorios'
@@ -788,6 +798,7 @@ export interface FileRouteTypes {
     | '/app/ia'
     | '/app/marketplace'
     | '/app/medicacao'
+    | '/app/mensagens'
     | '/app/notificacoes'
     | '/app/objetivos'
     | '/app/relatorios'
@@ -863,6 +874,7 @@ export interface FileRouteTypes {
     | '/app/ia'
     | '/app/marketplace'
     | '/app/medicacao'
+    | '/app/mensagens'
     | '/app/notificacoes'
     | '/app/objetivos'
     | '/app/relatorios'
@@ -1130,6 +1142,13 @@ declare module '@tanstack/react-router' {
       path: '/notificacoes'
       fullPath: '/app/notificacoes'
       preLoaderRoute: typeof AppNotificacoesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/mensagens': {
+      id: '/app/mensagens'
+      path: '/mensagens'
+      fullPath: '/app/mensagens'
+      preLoaderRoute: typeof AppMensagensRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/medicacao': {
@@ -1493,6 +1512,7 @@ interface AppRouteChildren {
   AppIaRoute: typeof AppIaRoute
   AppMarketplaceRoute: typeof AppMarketplaceRoute
   AppMedicacaoRoute: typeof AppMedicacaoRoute
+  AppMensagensRoute: typeof AppMensagensRoute
   AppNotificacoesRoute: typeof AppNotificacoesRoute
   AppObjetivosRoute: typeof AppObjetivosRoute
   AppRelatoriosRoute: typeof AppRelatoriosRoute
@@ -1514,6 +1534,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppIaRoute: AppIaRoute,
   AppMarketplaceRoute: AppMarketplaceRoute,
   AppMedicacaoRoute: AppMedicacaoRoute,
+  AppMensagensRoute: AppMensagensRoute,
   AppNotificacoesRoute: AppNotificacoesRoute,
   AppObjetivosRoute: AppObjetivosRoute,
   AppRelatoriosRoute: AppRelatoriosRoute,
