@@ -23,7 +23,8 @@ import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { AtlasLogo } from "@/components/atlas/atlas-logo";
-import { CloudPendingBanner } from "@/components/atlas/cloud-pending-banner";
+import { UserMenu } from "@/components/atlas/user-menu";
+import { useSession } from "@/hooks/use-session";
 
 interface NavItem {
   to: string;
@@ -52,10 +53,10 @@ export function AppShell({ children }: { children: ReactNode }) {
   const { t } = useTranslation("app");
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { profile } = useSession();
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface-2">
-      <CloudPendingBanner />
       <div className="flex flex-1">
         {/* Sidebar desktop */}
         <aside className="hidden w-64 shrink-0 border-r border-border/60 bg-sidebar lg:flex lg:flex-col">
@@ -90,15 +91,13 @@ export function AppShell({ children }: { children: ReactNode }) {
           </nav>
           <div className="border-t border-border/60 p-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                A
-              </div>
+              <UserMenu />
               <div className="min-w-0">
                 <p className="truncate text-sm font-semibold text-foreground">
-                  Demo · Família
+                  {profile?.fullName ?? "Família"}
                 </p>
                 <p className="truncate text-xs text-muted-foreground">
-                  Modo prévia
+                  {profile?.email ?? ""}
                 </p>
               </div>
             </div>
@@ -108,17 +107,20 @@ export function AppShell({ children }: { children: ReactNode }) {
         {/* Mobile top bar */}
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex items-center justify-between border-b border-border/60 bg-background px-4 py-3 lg:hidden">
-            <Link to="/" aria-label="ATLAS">
+            <Link to="/" aria-label="Meu Mundo Azul">
               <AtlasLogo />
             </Link>
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label="Abrir menu"
-              onClick={() => setMobileOpen((v) => !v)}
-            >
-              <Menu className="h-5 w-5" aria-hidden="true" />
-            </Button>
+            <div className="flex items-center gap-2">
+              <UserMenu />
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Abrir menu"
+                onClick={() => setMobileOpen((v) => !v)}
+              >
+                <Menu className="h-5 w-5" aria-hidden="true" />
+              </Button>
+            </div>
           </div>
 
           {mobileOpen && (

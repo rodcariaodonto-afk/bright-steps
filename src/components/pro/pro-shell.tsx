@@ -23,7 +23,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ProLogo } from "@/components/pro/pro-logo";
-import { ProPreviewBanner } from "@/components/pro/pro-preview-banner";
+import { UserMenu } from "@/components/atlas/user-menu";
 
 interface NavItem {
   to: string;
@@ -96,7 +96,6 @@ export function ProShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface-2">
-      <ProPreviewBanner />
       <div className="flex flex-1">
         <aside className="hidden w-60 shrink-0 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground lg:flex">
           <div className="px-4 py-4">
@@ -167,9 +166,7 @@ export function ProShell({ children }: { children: ReactNode }) {
               <Button variant="ghost" size="sm" asChild>
                 <Link to="/app">Família</Link>
               </Button>
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
-                RC
-              </div>
+              <UserMenu />
             </div>
           </header>
 
