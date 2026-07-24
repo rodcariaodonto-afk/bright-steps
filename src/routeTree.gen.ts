@@ -90,6 +90,7 @@ import { Route as ProPacientesChildIdRouteImport } from './routes/pro.pacientes.
 import { Route as AppBibliotecaSlugRouteImport } from './routes/app.biblioteca.$slug'
 import { Route as AppAutoavaliacoesSlugRouteImport } from './routes/app.autoavaliacoes.$slug'
 import { Route as ApiReportsWeeklyRouteImport } from './routes/api/reports.weekly'
+import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
 
 const SejaProfissionalRoute = SejaProfissionalRouteImport.update({
   id: '/seja-profissional',
@@ -496,6 +497,12 @@ const ApiReportsWeeklyRoute = ApiReportsWeeklyRouteImport.update({
   path: '/api/reports/weekly',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicPaymentsWebhookRoute =
+  ApiPublicPaymentsWebhookRouteImport.update({
+    id: '/api/public/payments/webhook',
+    path: '/api/public/payments/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -579,6 +586,7 @@ export interface FileRoutesByFullPath {
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -658,6 +666,7 @@ export interface FileRoutesByTo {
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -742,6 +751,7 @@ export interface FileRoutesById {
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -827,6 +837,7 @@ export interface FileRouteTypes {
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
+    | '/api/public/payments/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -906,6 +917,7 @@ export interface FileRouteTypes {
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
+    | '/api/public/payments/webhook'
   id:
     | '__root__'
     | '/'
@@ -989,6 +1001,7 @@ export interface FileRouteTypes {
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
+    | '/api/public/payments/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1002,6 +1015,7 @@ export interface RootRouteChildren {
   ApiChatRoute: typeof ApiChatRoute
   ProfissionalSlugRoute: typeof ProfissionalSlugRoute
   ApiReportsWeeklyRoute: typeof ApiReportsWeeklyRoute
+  ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1573,6 +1587,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiReportsWeeklyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/payments/webhook': {
+      id: '/api/public/payments/webhook'
+      path: '/api/public/payments/webhook'
+      fullPath: '/api/public/payments/webhook'
+      preLoaderRoute: typeof ApiPublicPaymentsWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1790,6 +1811,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiChatRoute: ApiChatRoute,
   ProfissionalSlugRoute: ProfissionalSlugRoute,
   ApiReportsWeeklyRoute: ApiReportsWeeklyRoute,
+  ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
