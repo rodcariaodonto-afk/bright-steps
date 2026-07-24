@@ -9,7 +9,11 @@ import {
   UserCheck,
   Clock,
   Shield,
+  Stethoscope,
 } from "lucide-react";
+
+import { useChildren } from "@/hooks/use-family";
+import { proWrites } from "@/modules/professional/repositories/supabase";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
