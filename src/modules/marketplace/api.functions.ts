@@ -303,7 +303,7 @@ export const moderateProfessional = createServerFn({ method: "POST" })
     if (data.plan) patch.plan = data.plan;
     const { error } = await supabaseAdmin
       .from("professional_profiles")
-      .update(patch)
+      .update(patch as never)
       .eq("id", data.id);
     if (error) throw error;
     return { ok: true };
