@@ -20,6 +20,7 @@ import { Route as KidIndexRouteImport } from './routes/kid.index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as ProRelatoriosRouteImport } from './routes/pro.relatorios'
+import { Route as ProPerfilRouteImport } from './routes/pro.perfil'
 import { Route as ProPacientesRouteImport } from './routes/pro.pacientes'
 import { Route as ProObjetivosRouteImport } from './routes/pro.objetivos'
 import { Route as ProMensagensRouteImport } from './routes/pro.mensagens'
@@ -41,6 +42,7 @@ import { Route as AppRelatoriosRouteImport } from './routes/app.relatorios'
 import { Route as AppObjetivosRouteImport } from './routes/app.objetivos'
 import { Route as AppNotificacoesRouteImport } from './routes/app.notificacoes'
 import { Route as AppMedicacaoRouteImport } from './routes/app.medicacao'
+import { Route as AppMarketplaceRouteImport } from './routes/app.marketplace'
 import { Route as AppIaRouteImport } from './routes/app.ia'
 import { Route as AppHumorRouteImport } from './routes/app.humor'
 import { Route as AppEscolaRouteImport } from './routes/app.escola'
@@ -134,6 +136,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
 const ProRelatoriosRoute = ProRelatoriosRouteImport.update({
   id: '/relatorios',
   path: '/relatorios',
+  getParentRoute: () => ProRoute,
+} as any)
+const ProPerfilRoute = ProPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
   getParentRoute: () => ProRoute,
 } as any)
 const ProPacientesRoute = ProPacientesRouteImport.update({
@@ -239,6 +246,11 @@ const AppNotificacoesRoute = AppNotificacoesRouteImport.update({
 const AppMedicacaoRoute = AppMedicacaoRouteImport.update({
   id: '/medicacao',
   path: '/medicacao',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMarketplaceRoute = AppMarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
   getParentRoute: () => AppRoute,
 } as any)
 const AppIaRoute = AppIaRouteImport.update({
@@ -479,6 +491,7 @@ export interface FileRoutesByFullPath {
   '/app/escola': typeof AppEscolaRoute
   '/app/humor': typeof AppHumorRoute
   '/app/ia': typeof AppIaRoute
+  '/app/marketplace': typeof AppMarketplaceRoute
   '/app/medicacao': typeof AppMedicacaoRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/objetivos': typeof AppObjetivosRoute
@@ -500,6 +513,7 @@ export interface FileRoutesByFullPath {
   '/pro/mensagens': typeof ProMensagensRoute
   '/pro/objetivos': typeof ProObjetivosRoute
   '/pro/pacientes': typeof ProPacientesRouteWithChildren
+  '/pro/perfil': typeof ProPerfilRoute
   '/pro/relatorios': typeof ProRelatoriosRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
@@ -548,6 +562,7 @@ export interface FileRoutesByTo {
   '/app/escola': typeof AppEscolaRoute
   '/app/humor': typeof AppHumorRoute
   '/app/ia': typeof AppIaRoute
+  '/app/marketplace': typeof AppMarketplaceRoute
   '/app/medicacao': typeof AppMedicacaoRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/objetivos': typeof AppObjetivosRoute
@@ -569,6 +584,7 @@ export interface FileRoutesByTo {
   '/pro/mensagens': typeof ProMensagensRoute
   '/pro/objetivos': typeof ProObjetivosRoute
   '/pro/pacientes': typeof ProPacientesRouteWithChildren
+  '/pro/perfil': typeof ProPerfilRoute
   '/pro/relatorios': typeof ProRelatoriosRoute
   '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
@@ -622,6 +638,7 @@ export interface FileRoutesById {
   '/app/escola': typeof AppEscolaRoute
   '/app/humor': typeof AppHumorRoute
   '/app/ia': typeof AppIaRoute
+  '/app/marketplace': typeof AppMarketplaceRoute
   '/app/medicacao': typeof AppMedicacaoRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/objetivos': typeof AppObjetivosRoute
@@ -643,6 +660,7 @@ export interface FileRoutesById {
   '/pro/mensagens': typeof ProMensagensRoute
   '/pro/objetivos': typeof ProObjetivosRoute
   '/pro/pacientes': typeof ProPacientesRouteWithChildren
+  '/pro/perfil': typeof ProPerfilRoute
   '/pro/relatorios': typeof ProRelatoriosRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
@@ -697,6 +715,7 @@ export interface FileRouteTypes {
     | '/app/escola'
     | '/app/humor'
     | '/app/ia'
+    | '/app/marketplace'
     | '/app/medicacao'
     | '/app/notificacoes'
     | '/app/objetivos'
@@ -718,6 +737,7 @@ export interface FileRouteTypes {
     | '/pro/mensagens'
     | '/pro/objetivos'
     | '/pro/pacientes'
+    | '/pro/perfil'
     | '/pro/relatorios'
     | '/admin/'
     | '/app/'
@@ -766,6 +786,7 @@ export interface FileRouteTypes {
     | '/app/escola'
     | '/app/humor'
     | '/app/ia'
+    | '/app/marketplace'
     | '/app/medicacao'
     | '/app/notificacoes'
     | '/app/objetivos'
@@ -787,6 +808,7 @@ export interface FileRouteTypes {
     | '/pro/mensagens'
     | '/pro/objetivos'
     | '/pro/pacientes'
+    | '/pro/perfil'
     | '/pro/relatorios'
     | '/admin'
     | '/app'
@@ -839,6 +861,7 @@ export interface FileRouteTypes {
     | '/app/escola'
     | '/app/humor'
     | '/app/ia'
+    | '/app/marketplace'
     | '/app/medicacao'
     | '/app/notificacoes'
     | '/app/objetivos'
@@ -860,6 +883,7 @@ export interface FileRouteTypes {
     | '/pro/mensagens'
     | '/pro/objetivos'
     | '/pro/pacientes'
+    | '/pro/perfil'
     | '/pro/relatorios'
     | '/admin/'
     | '/app/'
@@ -959,6 +983,13 @@ declare module '@tanstack/react-router' {
       path: '/relatorios'
       fullPath: '/pro/relatorios'
       preLoaderRoute: typeof ProRelatoriosRouteImport
+      parentRoute: typeof ProRoute
+    }
+    '/pro/perfil': {
+      id: '/pro/perfil'
+      path: '/perfil'
+      fullPath: '/pro/perfil'
+      preLoaderRoute: typeof ProPerfilRouteImport
       parentRoute: typeof ProRoute
     }
     '/pro/pacientes': {
@@ -1106,6 +1137,13 @@ declare module '@tanstack/react-router' {
       path: '/medicacao'
       fullPath: '/app/medicacao'
       preLoaderRoute: typeof AppMedicacaoRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/marketplace': {
+      id: '/app/marketplace'
+      path: '/marketplace'
+      fullPath: '/app/marketplace'
+      preLoaderRoute: typeof AppMarketplaceRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/ia': {
@@ -1453,6 +1491,7 @@ interface AppRouteChildren {
   AppEscolaRoute: typeof AppEscolaRoute
   AppHumorRoute: typeof AppHumorRoute
   AppIaRoute: typeof AppIaRoute
+  AppMarketplaceRoute: typeof AppMarketplaceRoute
   AppMedicacaoRoute: typeof AppMedicacaoRoute
   AppNotificacoesRoute: typeof AppNotificacoesRoute
   AppObjetivosRoute: typeof AppObjetivosRoute
@@ -1473,6 +1512,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppEscolaRoute: AppEscolaRoute,
   AppHumorRoute: AppHumorRoute,
   AppIaRoute: AppIaRoute,
+  AppMarketplaceRoute: AppMarketplaceRoute,
   AppMedicacaoRoute: AppMedicacaoRoute,
   AppNotificacoesRoute: AppNotificacoesRoute,
   AppObjetivosRoute: AppObjetivosRoute,
@@ -1526,6 +1566,7 @@ interface ProRouteChildren {
   ProMensagensRoute: typeof ProMensagensRoute
   ProObjetivosRoute: typeof ProObjetivosRoute
   ProPacientesRoute: typeof ProPacientesRouteWithChildren
+  ProPerfilRoute: typeof ProPerfilRoute
   ProRelatoriosRoute: typeof ProRelatoriosRoute
   ProIndexRoute: typeof ProIndexRoute
   ProSessoesIdRoute: typeof ProSessoesIdRoute
@@ -1544,6 +1585,7 @@ const ProRouteChildren: ProRouteChildren = {
   ProMensagensRoute: ProMensagensRoute,
   ProObjetivosRoute: ProObjetivosRoute,
   ProPacientesRoute: ProPacientesRouteWithChildren,
+  ProPerfilRoute: ProPerfilRoute,
   ProRelatoriosRoute: ProRelatoriosRoute,
   ProIndexRoute: ProIndexRoute,
   ProSessoesIdRoute: ProSessoesIdRoute,
