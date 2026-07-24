@@ -29,9 +29,8 @@ export const getAdminMetrics = createServerFn({ method: "GET" })
           .select("id", { count: "exact", head: true })
           .is("deleted_at", null),
         supabaseAdmin
-          .from("user_roles")
-          .select("user_id", { count: "exact", head: true })
-          .eq("role", "professional"),
+          .from("professional_profiles")
+          .select("id", { count: "exact", head: true }),
         supabaseAdmin.from("clinical_sessions").select("id", { count: "exact", head: true }),
         supabaseAdmin.from("notifications").select("id", { count: "exact", head: true }),
         supabaseAdmin.from("kid_rewards").select("lifetime_stars"),
