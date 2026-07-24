@@ -1,4 +1,4 @@
-import { LogOut, Shield, User as UserIcon } from "lucide-react";
+import { LogOut, Shield, Stethoscope, User as UserIcon } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
