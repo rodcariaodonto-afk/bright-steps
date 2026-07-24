@@ -266,7 +266,39 @@ function Landing() {
           </div>
         </section>
 
-        {/* CTA final */}
+        {/* Conscientização */}
+        <section className="border-t border-border/60 bg-primary-soft/40 py-24">
+          <div className="container-atlas space-y-10">
+            <div className="max-w-2xl">
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                Conscientização
+              </span>
+              <h2 className="mt-4 text-4xl font-bold tracking-tight text-foreground">
+                O neurodesenvolvimento em números
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Dados oficiais que reforçam a urgência de acolher, informar e conectar famílias, profissionais e escolas.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-4">
+              {[
+                { n: "1 em 100", d: "crianças no mundo é diagnosticada com TEA (OMS, 2023)." },
+                { n: "2,4 mi", d: "de brasileiros vivem com autismo, segundo estimativa da Lei 13.977/2020." },
+                { n: "1 em 36", d: "crianças de 8 anos identificadas com TEA nos EUA (CDC, 2023)." },
+                { n: "5% a 8%", d: "das crianças em idade escolar apresentam TDAH (Ministério da Saúde)." },
+              ].map((s) => (
+                <div key={s.n} className="rounded-2xl border border-border/60 bg-card p-6">
+                  <p className="text-3xl font-bold text-primary">{s.n}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Fontes: Organização Mundial da Saúde, Centers for Disease Control and Prevention e Ministério da Saúde do Brasil.
+            </p>
+          </div>
+        </section>
+
         <section className="pb-24">
           <div className="container-atlas">
             <div className="rounded-3xl bg-foreground px-8 py-16 text-center text-background md:px-16">
