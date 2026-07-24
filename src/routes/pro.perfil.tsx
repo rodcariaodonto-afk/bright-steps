@@ -267,3 +267,42 @@ function Field({ label, children, full }: { label: string; children: React.React
     </div>
   );
 }
+
+function ModerationBanner({
+  status,
+  reason,
+  slug,
+}: {
+  status: string;
+  reason: string | null;
+  slug: string | null;
+}) {
+  if (status === "approved") {
+    return (
+      <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-3 text-sm text-emerald-800 dark:text-emerald-200">
+        Perfil <b>aprovado</b> pela moderação.
+        {slug && (
+          <>
+            {" "}Página pública:{" "}
+            <a href={`/profissional/${slug}`} target="_blank" rel="noreferrer" className="underline">
+              /profissional/{slug}
+            </a>
+          </>
+        )}
+      </div>
+    );
+  }
+  if (status === "rejected") {
+    return (
+      <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-sm">
+        <b>Perfil recusado.</b> {reason && <span>Motivo: {reason}</span>} Ajuste seus dados e salve novamente para reenviar à moderação.
+      </div>
+    );
+  }
+  return (
+    <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-900 dark:text-amber-200">
+      Perfil em <b>análise pela moderação</b>. Assim que aprovado ele aparecerá no Marketplace público.
+    </div>
+  );
+}
+}
