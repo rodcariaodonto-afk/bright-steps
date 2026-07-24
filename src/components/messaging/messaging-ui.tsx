@@ -19,7 +19,8 @@ import {
 type Conversation = Awaited<ReturnType<typeof listMyConversations>>[number];
 
 export function MessagingUI({ variant = "family" }: { variant?: "family" | "pro" }) {
-  const { user } = useSession();
+  const { session } = useSession();
+  const userId = session?.user?.id;
   const qc = useQueryClient();
   const listConvs = useServerFn(listMyConversations);
   const listMsgs = useServerFn(listMessages);
@@ -138,7 +139,7 @@ export function MessagingUI({ variant = "family" }: { variant?: "family" | "pro"
             </header>
             <div className="flex-1 space-y-2 overflow-y-auto p-4">
               {messages.map((m) => {
-                const mine = m.sender_id === user?.id;
+                const mine = m.sender_id === userId;
                 return (
                   <div key={m.id} className={cn("flex", mine ? "justify-end" : "justify-start")}>
                     <div
