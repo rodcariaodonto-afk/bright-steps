@@ -49,12 +49,15 @@ import { Route as AppIaRouteImport } from './routes/app.ia'
 import { Route as AppHumorRouteImport } from './routes/app.humor'
 import { Route as AppEscolaRouteImport } from './routes/app.escola'
 import { Route as AppDocumentosRouteImport } from './routes/app.documentos'
+import { Route as AppCuidadorRouteImport } from './routes/app.cuidador'
 import { Route as AppCriancaRouteImport } from './routes/app.crianca'
 import { Route as AppConquistasRouteImport } from './routes/app.conquistas'
 import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes'
 import { Route as AppComunidadeRouteImport } from './routes/app.comunidade'
 import { Route as AppComportamentoRouteImport } from './routes/app.comportamento'
 import { Route as AppCalendarioRouteImport } from './routes/app.calendario'
+import { Route as AppBibliotecaRouteImport } from './routes/app.biblioteca'
+import { Route as AppAutoavaliacoesRouteImport } from './routes/app.autoavaliacoes'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminSubscriptionsRouteImport } from './routes/admin.subscriptions'
@@ -83,6 +86,8 @@ import { Route as AdminAchievementsRouteImport } from './routes/admin.achievemen
 import { Route as ProSessoesNovaRouteImport } from './routes/pro.sessoes.nova'
 import { Route as ProSessoesIdRouteImport } from './routes/pro.sessoes.$id'
 import { Route as ProPacientesChildIdRouteImport } from './routes/pro.pacientes.$childId'
+import { Route as AppBibliotecaSlugRouteImport } from './routes/app.biblioteca.$slug'
+import { Route as AppAutoavaliacoesSlugRouteImport } from './routes/app.autoavaliacoes.$slug'
 import { Route as ApiReportsWeeklyRouteImport } from './routes/api/reports.weekly'
 
 const ProRoute = ProRouteImport.update({
@@ -285,6 +290,11 @@ const AppDocumentosRoute = AppDocumentosRouteImport.update({
   path: '/documentos',
   getParentRoute: () => AppRoute,
 } as any)
+const AppCuidadorRoute = AppCuidadorRouteImport.update({
+  id: '/cuidador',
+  path: '/cuidador',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppCriancaRoute = AppCriancaRouteImport.update({
   id: '/crianca',
   path: '/crianca',
@@ -313,6 +323,16 @@ const AppComportamentoRoute = AppComportamentoRouteImport.update({
 const AppCalendarioRoute = AppCalendarioRouteImport.update({
   id: '/calendario',
   path: '/calendario',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBibliotecaRoute = AppBibliotecaRouteImport.update({
+  id: '/biblioteca',
+  path: '/biblioteca',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAutoavaliacoesRoute = AppAutoavaliacoesRouteImport.update({
+  id: '/autoavaliacoes',
+  path: '/autoavaliacoes',
   getParentRoute: () => AppRoute,
 } as any)
 const ApiChatRoute = ApiChatRouteImport.update({
@@ -455,6 +475,16 @@ const ProPacientesChildIdRoute = ProPacientesChildIdRouteImport.update({
   path: '/$childId',
   getParentRoute: () => ProPacientesRoute,
 } as any)
+const AppBibliotecaSlugRoute = AppBibliotecaSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AppBibliotecaRoute,
+} as any)
+const AppAutoavaliacoesSlugRoute = AppAutoavaliacoesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AppAutoavaliacoesRoute,
+} as any)
 const ApiReportsWeeklyRoute = ApiReportsWeeklyRouteImport.update({
   id: '/api/reports/weekly',
   path: '/api/reports/weekly',
@@ -493,12 +523,15 @@ export interface FileRoutesByFullPath {
   '/admin/subscriptions': typeof AdminSubscriptionsRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/chat': typeof ApiChatRoute
+  '/app/autoavaliacoes': typeof AppAutoavaliacoesRouteWithChildren
+  '/app/biblioteca': typeof AppBibliotecaRouteWithChildren
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
   '/app/comunidade': typeof AppComunidadeRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/conquistas': typeof AppConquistasRoute
   '/app/crianca': typeof AppCriancaRoute
+  '/app/cuidador': typeof AppCuidadorRoute
   '/app/documentos': typeof AppDocumentosRoute
   '/app/escola': typeof AppEscolaRoute
   '/app/humor': typeof AppHumorRoute
@@ -534,6 +567,8 @@ export interface FileRoutesByFullPath {
   '/kid/': typeof KidIndexRoute
   '/pro/': typeof ProIndexRoute
   '/api/reports/weekly': typeof ApiReportsWeeklyRoute
+  '/app/autoavaliacoes/$slug': typeof AppAutoavaliacoesSlugRoute
+  '/app/biblioteca/$slug': typeof AppBibliotecaSlugRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
@@ -566,12 +601,15 @@ export interface FileRoutesByTo {
   '/admin/subscriptions': typeof AdminSubscriptionsRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/chat': typeof ApiChatRoute
+  '/app/autoavaliacoes': typeof AppAutoavaliacoesRouteWithChildren
+  '/app/biblioteca': typeof AppBibliotecaRouteWithChildren
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
   '/app/comunidade': typeof AppComunidadeRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/conquistas': typeof AppConquistasRoute
   '/app/crianca': typeof AppCriancaRoute
+  '/app/cuidador': typeof AppCuidadorRoute
   '/app/documentos': typeof AppDocumentosRoute
   '/app/escola': typeof AppEscolaRoute
   '/app/humor': typeof AppHumorRoute
@@ -607,6 +645,8 @@ export interface FileRoutesByTo {
   '/kid': typeof KidIndexRoute
   '/pro': typeof ProIndexRoute
   '/api/reports/weekly': typeof ApiReportsWeeklyRoute
+  '/app/autoavaliacoes/$slug': typeof AppAutoavaliacoesSlugRoute
+  '/app/biblioteca/$slug': typeof AppBibliotecaSlugRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
@@ -644,12 +684,15 @@ export interface FileRoutesById {
   '/admin/subscriptions': typeof AdminSubscriptionsRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/chat': typeof ApiChatRoute
+  '/app/autoavaliacoes': typeof AppAutoavaliacoesRouteWithChildren
+  '/app/biblioteca': typeof AppBibliotecaRouteWithChildren
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
   '/app/comunidade': typeof AppComunidadeRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/conquistas': typeof AppConquistasRoute
   '/app/crianca': typeof AppCriancaRoute
+  '/app/cuidador': typeof AppCuidadorRoute
   '/app/documentos': typeof AppDocumentosRoute
   '/app/escola': typeof AppEscolaRoute
   '/app/humor': typeof AppHumorRoute
@@ -685,6 +728,8 @@ export interface FileRoutesById {
   '/kid/': typeof KidIndexRoute
   '/pro/': typeof ProIndexRoute
   '/api/reports/weekly': typeof ApiReportsWeeklyRoute
+  '/app/autoavaliacoes/$slug': typeof AppAutoavaliacoesSlugRoute
+  '/app/biblioteca/$slug': typeof AppBibliotecaSlugRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
@@ -723,12 +768,15 @@ export interface FileRouteTypes {
     | '/admin/subscriptions'
     | '/admin/users'
     | '/api/chat'
+    | '/app/autoavaliacoes'
+    | '/app/biblioteca'
     | '/app/calendario'
     | '/app/comportamento'
     | '/app/comunidade'
     | '/app/configuracoes'
     | '/app/conquistas'
     | '/app/crianca'
+    | '/app/cuidador'
     | '/app/documentos'
     | '/app/escola'
     | '/app/humor'
@@ -764,6 +812,8 @@ export interface FileRouteTypes {
     | '/kid/'
     | '/pro/'
     | '/api/reports/weekly'
+    | '/app/autoavaliacoes/$slug'
+    | '/app/biblioteca/$slug'
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
@@ -796,12 +846,15 @@ export interface FileRouteTypes {
     | '/admin/subscriptions'
     | '/admin/users'
     | '/api/chat'
+    | '/app/autoavaliacoes'
+    | '/app/biblioteca'
     | '/app/calendario'
     | '/app/comportamento'
     | '/app/comunidade'
     | '/app/configuracoes'
     | '/app/conquistas'
     | '/app/crianca'
+    | '/app/cuidador'
     | '/app/documentos'
     | '/app/escola'
     | '/app/humor'
@@ -837,6 +890,8 @@ export interface FileRouteTypes {
     | '/kid'
     | '/pro'
     | '/api/reports/weekly'
+    | '/app/autoavaliacoes/$slug'
+    | '/app/biblioteca/$slug'
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
@@ -873,12 +928,15 @@ export interface FileRouteTypes {
     | '/admin/subscriptions'
     | '/admin/users'
     | '/api/chat'
+    | '/app/autoavaliacoes'
+    | '/app/biblioteca'
     | '/app/calendario'
     | '/app/comportamento'
     | '/app/comunidade'
     | '/app/configuracoes'
     | '/app/conquistas'
     | '/app/crianca'
+    | '/app/cuidador'
     | '/app/documentos'
     | '/app/escola'
     | '/app/humor'
@@ -914,6 +972,8 @@ export interface FileRouteTypes {
     | '/kid/'
     | '/pro/'
     | '/api/reports/weekly'
+    | '/app/autoavaliacoes/$slug'
+    | '/app/biblioteca/$slug'
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
@@ -1213,6 +1273,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDocumentosRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/cuidador': {
+      id: '/app/cuidador'
+      path: '/cuidador'
+      fullPath: '/app/cuidador'
+      preLoaderRoute: typeof AppCuidadorRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/crianca': {
       id: '/app/crianca'
       path: '/crianca'
@@ -1253,6 +1320,20 @@ declare module '@tanstack/react-router' {
       path: '/calendario'
       fullPath: '/app/calendario'
       preLoaderRoute: typeof AppCalendarioRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/biblioteca': {
+      id: '/app/biblioteca'
+      path: '/biblioteca'
+      fullPath: '/app/biblioteca'
+      preLoaderRoute: typeof AppBibliotecaRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/autoavaliacoes': {
+      id: '/app/autoavaliacoes'
+      path: '/autoavaliacoes'
+      fullPath: '/app/autoavaliacoes'
+      preLoaderRoute: typeof AppAutoavaliacoesRouteImport
       parentRoute: typeof AppRoute
     }
     '/api/chat': {
@@ -1451,6 +1532,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProPacientesChildIdRouteImport
       parentRoute: typeof ProPacientesRoute
     }
+    '/app/biblioteca/$slug': {
+      id: '/app/biblioteca/$slug'
+      path: '/$slug'
+      fullPath: '/app/biblioteca/$slug'
+      preLoaderRoute: typeof AppBibliotecaSlugRouteImport
+      parentRoute: typeof AppBibliotecaRoute
+    }
+    '/app/autoavaliacoes/$slug': {
+      id: '/app/autoavaliacoes/$slug'
+      path: '/$slug'
+      fullPath: '/app/autoavaliacoes/$slug'
+      preLoaderRoute: typeof AppAutoavaliacoesSlugRouteImport
+      parentRoute: typeof AppAutoavaliacoesRoute
+    }
     '/api/reports/weekly': {
       id: '/api/reports/weekly'
       path: '/api/reports/weekly'
@@ -1519,13 +1614,39 @@ const AdminRouteChildren: AdminRouteChildren = {
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
+interface AppAutoavaliacoesRouteChildren {
+  AppAutoavaliacoesSlugRoute: typeof AppAutoavaliacoesSlugRoute
+}
+
+const AppAutoavaliacoesRouteChildren: AppAutoavaliacoesRouteChildren = {
+  AppAutoavaliacoesSlugRoute: AppAutoavaliacoesSlugRoute,
+}
+
+const AppAutoavaliacoesRouteWithChildren =
+  AppAutoavaliacoesRoute._addFileChildren(AppAutoavaliacoesRouteChildren)
+
+interface AppBibliotecaRouteChildren {
+  AppBibliotecaSlugRoute: typeof AppBibliotecaSlugRoute
+}
+
+const AppBibliotecaRouteChildren: AppBibliotecaRouteChildren = {
+  AppBibliotecaSlugRoute: AppBibliotecaSlugRoute,
+}
+
+const AppBibliotecaRouteWithChildren = AppBibliotecaRoute._addFileChildren(
+  AppBibliotecaRouteChildren,
+)
+
 interface AppRouteChildren {
+  AppAutoavaliacoesRoute: typeof AppAutoavaliacoesRouteWithChildren
+  AppBibliotecaRoute: typeof AppBibliotecaRouteWithChildren
   AppCalendarioRoute: typeof AppCalendarioRoute
   AppComportamentoRoute: typeof AppComportamentoRoute
   AppComunidadeRoute: typeof AppComunidadeRoute
   AppConfiguracoesRoute: typeof AppConfiguracoesRoute
   AppConquistasRoute: typeof AppConquistasRoute
   AppCriancaRoute: typeof AppCriancaRoute
+  AppCuidadorRoute: typeof AppCuidadorRoute
   AppDocumentosRoute: typeof AppDocumentosRoute
   AppEscolaRoute: typeof AppEscolaRoute
   AppHumorRoute: typeof AppHumorRoute
@@ -1542,12 +1663,15 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAutoavaliacoesRoute: AppAutoavaliacoesRouteWithChildren,
+  AppBibliotecaRoute: AppBibliotecaRouteWithChildren,
   AppCalendarioRoute: AppCalendarioRoute,
   AppComportamentoRoute: AppComportamentoRoute,
   AppComunidadeRoute: AppComunidadeRoute,
   AppConfiguracoesRoute: AppConfiguracoesRoute,
   AppConquistasRoute: AppConquistasRoute,
   AppCriancaRoute: AppCriancaRoute,
+  AppCuidadorRoute: AppCuidadorRoute,
   AppDocumentosRoute: AppDocumentosRoute,
   AppEscolaRoute: AppEscolaRoute,
   AppHumorRoute: AppHumorRoute,

@@ -1,156 +1,79 @@
+## Análise do texto vs. o que já temos
 
-# O que falta para o Meu Mundo Azul estar pronto
+O texto descreve funções que **já existem** no Meu Mundo Azul:
+- Registro de rotinas → `/app/rotina`
+- Observação de padrões de comportamento → `/app/comportamento` (ABC)
+- Compartilhamento com equipe multidisciplinar → convite de profissionais + chat + documentos
+- Autonomia e organização para cuidadores → dashboard família + timeline + calendário
 
-## 📊 Estado atual (verificado)
+E aponta lacunas que **ainda não temos**:
 
-**✅ Pronto:**
-- Fundação técnica: TanStack Start, Tailwind, shadcn/ui, i18n (pt-BR), rotas modulares (`/`, `/auth`, `/app`, `/pro`, `/admin`).
-- Rebranding completo (Meu Mundo Azul + símbolo do infinito, IA "Azul").
-- Auth real: Lovable Cloud ativado, Google OAuth + e-mail/senha, gate em `/app`, `/pro`, `/admin`.
-- Papéis: enum `app_role`, tabela `user_roles`, função `has_role`, trigger que promove `rodcaria.odonto@gmail.com` a admin.
-- `profiles` com RLS por dono, `useSession` + `UserMenu` funcionais.
-- Núcleo de IA (`src/modules/ai/`): gateway, personas, memória em sessão, engines de personalização e dificuldade adaptativa, guardrails LGPD, telemetria local.
-- 3 chats de IA funcionais (Família, Clínico, Admin) via gateway central.
-- Landing page, dashboards Família/Pro/Admin com mocks visuais.
-- ~50 rotas criadas com shells corretos.
+| Tema do texto | Status hoje |
+|---|---|
+| Conteúdo educativo (alimentação, comunicação funcional, manejo de comportamentos) | Faltando (CMS admin existe, mas sem consumo na família) |
+| Ferramentas de autoavaliação para acompanhar progresso | Faltando (só escalas clínicas no `/pro`) |
+| Detecção automática de padrões de comportamento | Parcial (dados existem, sem insights) |
+| Suporte emocional ao cuidador | Faltando (comunidade existe, mas sem trilha específica) |
+| Dados de conscientização (1 em 100, 2M no Brasil) | Faltando (landing não cita) |
 
-**❌ Falta (o grosso do produto):**
-- **Persistência real**: nenhuma tabela de domínio existe (só `profiles` e `user_roles`). Tudo hoje é mock ou sessionStorage.
-- **~40 rotas são `PlaceholderPage`**: rotina, medicação, humor, comportamento, objetivos, timeline, calendário, documentos, relatórios, notificações, configurações — todas vazias.
-- **Módulo Criança inteiro**: avatar, mundo lúdico, IA-personagem, jogos, histórias interativas — não existe.
-- **Módulo Escola**: nem sequer scaffold.
-- **Tools de IA** (function calling): planejadas mas nunca criadas.
-- **Marketplace, Comunidade, Gamificação, Notificações, Billing**: só types/repositórios mockados, sem UI nem persistência.
-- **Storage**: nenhum bucket criado (avatares, documentos, mídia de sessão).
-- **CMS admin**: 24 rotas admin vazias.
-- **Integrações**: nenhuma (pagamento, calendário, e-mail transacional).
+## Onda P: Biblioteca + Autoavaliações + Bem estar do cuidador
 
----
+### P.1 Biblioteca de Conteúdo Educativo
+- Tabelas: `library_articles` (título, slug, categoria, corpo markdown, capa, tempo de leitura, autor, publicado_em, tags, público-alvo: família/profissional/ambos) e `library_categories`.
+- Categorias iniciais: Alimentação seletiva, Comunicação funcional (CAA/PECS), Manejo de comportamentos desafiadores, Sono, Autorregulação, Escola inclusiva, Direitos e LGPD.
+- `/app/biblioteca` (família): listagem por categoria, busca, marcadores de "salvo" e "lido".
+- `/pro/biblioteca` (profissional): mesmo acervo + filtro "material para entregar à família" com botão "compartilhar com paciente" (gera item na timeline da criança).
+- `/admin/cms`: CRUD de artigos e categorias (usar CMS existente como base).
+- IA (Azul): sugestão contextual de artigo com base no que a família registrou na semana (ex.: 3 registros de recusa alimentar → sugere trilha "Alimentação seletiva").
 
-## 🎯 Ondas propostas
+### P.2 Autoavaliações e Triagens
+- Tabela `assessments` (definições) + `assessment_responses` (respostas por criança).
+- Instrumentos iniciais (versões educativas, sem valor diagnóstico, com aviso claro):
+  - M-CHAT-R (triagem de sinais de TEA em 16 a 30 meses)
+  - Escala de qualidade do sono infantil
+  - Escala de sobrecarga do cuidador (Zarit reduzida)
+  - Autoavaliação de rotina (marcos mensais)
+- `/app/autoavaliacoes`: aplica questionário, salva resposta, mostra evolução em gráfico e libera artigo relacionado da biblioteca.
+- IA gera resumo em linguagem cuidadosa ("isto não é diagnóstico, procure profissional").
+- Resultado aparece no perfil da criança e nos relatórios semanais.
 
-Cada onda entrega valor de ponta a ponta. Ordem escolhida por dependência técnica e impacto para o usuário final.
+### P.3 Insights automáticos de padrões
+- Server function que roda sobre `behavior_events`, `mood_logs`, `medication_logs` dos últimos 30 dias e devolve padrões (ex.: "gatilho sensorial mais frequente: barulho, principalmente após 18h").
+- Novo card "Padrões detectados" no dashboard família e nas sessões do profissional.
+- Reaproveita motor de IA existente (`src/modules/ai`).
 
-### Onda A — Perfil da Família + Criança (dados reais)
-**Objetivo:** sair do mock. Sem isso, nada mais faz sentido persistir.
+### P.4 Trilha "Bem estar do cuidador"
+- Categoria dedicada na biblioteca (respiração, higiene do sono do cuidador, rede de apoio, quando pedir ajuda).
+- Widget de auto check-in de humor do cuidador no dashboard família (tabela nova `caregiver_mood_logs`, RLS por `auth.uid()`).
+- Integração com escala de sobrecarga (P.2): quando pontuação alta, IA sugere trilha e conteúdos.
 
-Novas tabelas (migration única, com RLS + GRANTs):
-- `families` (nome, timezone, dono)
-- `family_members` (papel: guardião, responsável, cuidador; vínculo com `auth.users`)
-- `children` (nome, data nasc., condições declaradas, avatar, tema de interesse)
-- `child_guardians` (quem pode ver/editar qual criança + permissões)
-- `consent_records` (versionado por campo/finalidade; pré-requisito LGPD)
+### P.5 Landing com dados de conscientização
+- Seção "Por que o Meu Mundo Azul existe" na `/`:
+  - "1 em 100 crianças no mundo" (OMS)
+  - "2 milhões de pessoas no Brasil convivem com o TEA"
+  - "Muitas famílias enfrentam barreiras para diagnóstico, tratamento e apoio"
+- Fontes citadas no rodapé.
+- Meta tags (og/twitter) atualizadas para refletir o novo posicionamento.
 
-Telas:
-- `/app/crianca`: CRUD de crianças (criar, editar, foto).
-- `/app/configuracoes`: perfil da família, membros, convites por e-mail.
-- Seletor de "criança ativa" no topo do AppShell (alimenta todo o contexto downstream).
+## Detalhes técnicos
 
-Buckets Storage: `avatars`, `children` (privados, URLs assinadas).
+- Todas as tabelas novas: RLS + GRANTs padrão + triggers de `updated_at`.
+- `library_articles` com política pública `TO anon SELECT WHERE published_at IS NOT NULL` para permitir SEO das páginas de artigo (`/biblioteca/$slug`) e compartilhamento externo.
+- Autoavaliações e humor do cuidador com RLS estrita por `auth.uid()`.
+- Server functions em `src/modules/library/` e `src/modules/assessments/`.
+- Reutilizar `AppShell` e `ProShell`; adicionar itens de menu e strings PT-BR.
+- Insights (P.3) via `google/gemini-3.5-flash` (rápido e barato), com cache de 24h por criança.
 
-### Onda B — Rotina de vida (medicação, humor, comportamento, timeline)
-**Objetivo:** o coração diário do app família.
+## Ordem de execução sugerida
+1. P.1 Biblioteca (base para P.4 e recomendação da IA)
+2. P.2 Autoavaliações
+3. P.3 Insights automáticos
+4. P.4 Bem estar do cuidador
+5. P.5 Landing com dados de conscientização
 
-Tabelas:
-- `medications` + `medication_doses` (agenda + registro de tomada)
-- `mood_entries` (humor da criança, 1x+ por dia)
-- `behavior_events` (crise, conquista, gatilho, contexto)
-- `routines` + `routine_items` (rotina visual da criança)
-- `timeline_events` (view materializada agregando tudo acima)
+## Fora do escopo desta onda
+- Meu Diário TEA como app mobile separado (o site já cumpre a função; PWA fica para depois).
+- Publicação nas lojas (App Store / Play).
+- Novos idiomas de conteúdo (biblioteca começa em PT-BR).
 
-Telas com CRUD real:
-- `/app/medicacao`, `/app/humor`, `/app/comportamento`, `/app/rotinas`, `/app/timeline`, `/app/calendario`.
-- Widgets do dashboard `/app` puxando dados reais.
-
-Tools de IA (`src/modules/ai/tools/family/`):
-- `get_child_summary`, `get_recent_mood`, `get_medication_status`, `suggest_routine_adjustment`.
-- Persona Família passa a responder com base nos dados reais.
-
-### Onda C — Objetivos, Documentos, Relatórios (Família ↔ Profissional)
-**Objetivo:** conectar as duas experiências que hoje vivem separadas.
-
-Tabelas:
-- `goals` + `goal_progress` (metas terapêuticas compartilhadas)
-- `documents` (laudos, receitas, relatórios; bucket `documents` privado)
-- `reports` (gerados por IA com aprovação humana)
-- `professionals` + `professional_child_links` (quem atende quem, com autorização da família)
-
-Telas família: `/app/objetivos`, `/app/documentos`, `/app/relatorios`, `/app/notificacoes`.
-Telas pro: `/pro/pacientes`, `/pro/pacientes/$childId`, `/pro/evolucao`, `/pro/objetivos`, `/pro/relatorios`, `/pro/documentos`.
-
-Cron via `pg_cron`: geração semanal de resumo por criança (`ai_summaries`).
-
-### Onda D — Sessões clínicas + Agenda + Escalas
-**Objetivo:** completar o módulo Profissionais.
-
-Tabelas:
-- `sessions` (áudio, vídeo, transcrição, notas SOAP)
-- `appointments` (agenda inteligente com conflitos)
-- `assessment_scales` + `scale_applications` (M-CHAT, ADOS parcial, etc.)
-- `professional_indicators` (ocupação, adesão, evolução — view)
-
-Storage: buckets `sessions`, `medical`.
-
-Telas pro: `/pro/agenda`, `/pro/sessoes/nova`, `/pro/sessoes/$id`, `/pro/escalas`, `/pro/indicadores`.
-
-Tools de IA clínicas: `draft_soap_note`, `compare_periods`, `suggest_intervention`.
-
-### Onda E — Módulo Criança (mundo lúdico + IA-personagem)
-**Objetivo:** o diferencial competitivo do produto.
-
-Novo subtree `/child/*` isolado (sem reuso de família/pro):
-- Login por PIN/foto (Cloud Auth com custom claim `is_child`).
-- Avatar customizável, mundo lúdico com temas por interesse dominante.
-- IA "Azul" como personagem (persona `child`, tom lúdico, sem jargão).
-- Jogos adaptativos (usa `difficulty-engine` já pronto).
-- Histórias interativas (usa `interest-engine` já pronto).
-- Moeda virtual + conquistas (tabelas `virtual_currency_wallets`, `currency_transactions`, `achievements`, `achievement_unlocks`).
-
-Tabelas de suporte: `child_interests`, `child_favorites`, `stories`, `story_scenes`, `games`, `game_sessions`, `missions`, `mission_progress`, `seasonal_events`.
-
-Bucket: `stories`.
-
-### Onda F — Painel Admin real + CMS + Analytics
-**Objetivo:** operar a plataforma.
-
-- Preencher as 24 rotas `/admin/*` hoje vazias com CRUDs e dashboards reais.
-- CMS interno para histórias, jogos, missões, eventos sazonais.
-- Analytics: `analytics_events` particionada + dashboards MAU/DAU/retenção/churn.
-- Feature flags, backups, logs, moderação de comunidade.
-- Persona Azul Admin com tools de análise financeira e detecção de erros.
-
-### Onda G (opcional) — Escola, Comunidade, Marketplace, Billing
-**Objetivo:** expandir ecossistema.
-
-- Módulo Escola: `/school/*` para professores acompanharem alunos autorizados.
-- Comunidade: grupos, publicações, moderação.
-- Marketplace: catálogo + pedidos (integração Stripe ou Mercado Pago — decisão do usuário).
-- Billing: planos (Grátis/Família/Profissional/Escola/Clínica), assinaturas, cupons.
-- E-mail transacional (via connector de e-mail).
-
----
-
-## ⚠️ Decisões que preciso do Rodrigo antes de começar
-
-1. **Escopo do MVP público:** só Ondas A–D (Família + Profissional funcionais) já é lançável. Ondas E–G podem virar release 2. Confirma essa priorização ou quer Criança (E) antes?
-2. **Pagamento:** quando chegar em Onda G, Stripe ou Mercado Pago?
-3. **E-mail transacional:** Resend (Lovable Cloud managed) ou outro?
-4. **Convites de família/profissional:** por link mágico ou por código de convite?
-
----
-
-## 🔧 Detalhes técnicos (para referência)
-
-- Toda tabela nova segue padrão: `id uuid`, `created_at/updated_at/deleted_at`, `created_by/updated_by`, RLS enable, GRANTs explícitos (`authenticated` + `service_role`), políticas via `has_role` ou vínculo direto.
-- Repositórios mockados de hoje (`src/modules/*/repositories`) trocam mock por chamadas Supabase — 1 linha por método, componentes não mudam.
-- Server functions em `src/lib/*.functions.ts` para leituras autenticadas; `pg_cron` + `/api/public/hooks/*` para jobs agendados.
-- Storage buckets criados por migration; todos privados com URLs assinadas curtas.
-- Cada onda termina com typecheck limpo + smoke test Playwright dos fluxos-chave.
-
----
-
-## 📅 Sugestão de próximo passo
-
-Começar pela **Onda A** (Perfil + Criança) — é pré-requisito de todas as outras e desbloqueia a experiência "família de verdade" já na próxima entrega. Se topar, respondo com a migration da Onda A + telas de CRUD de criança e configurações da família.
-
-**Confirma essa ordem (A → B → C → D → E → F → G) ou quer reordenar?**
+Posso executar tudo em sequência, ou você prefere só uma parte (ex.: começar por P.1 + P.5)?

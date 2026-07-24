@@ -64,6 +64,108 @@ export type Database = {
           },
         ]
       }
+      assessment_responses: {
+        Row: {
+          ai_summary: string | null
+          answers: Json
+          assessment_id: string
+          band: string | null
+          child_id: string | null
+          created_at: string
+          id: string
+          respondent_id: string
+          score: number | null
+          updated_at: string
+        }
+        Insert: {
+          ai_summary?: string | null
+          answers?: Json
+          assessment_id: string
+          band?: string | null
+          child_id?: string | null
+          created_at?: string
+          id?: string
+          respondent_id: string
+          score?: number | null
+          updated_at?: string
+        }
+        Update: {
+          ai_summary?: string | null
+          answers?: Json
+          assessment_id?: string
+          band?: string | null
+          child_id?: string | null
+          created_at?: string
+          id?: string
+          respondent_id?: string
+          score?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessment_responses_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "assessment_responses_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      assessments: {
+        Row: {
+          age_max_months: number | null
+          age_min_months: number | null
+          audience: string
+          created_at: string
+          description: string | null
+          disclaimer: string | null
+          id: string
+          name: string
+          published: boolean
+          questions: Json
+          scoring: Json
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          age_max_months?: number | null
+          age_min_months?: number | null
+          audience?: string
+          created_at?: string
+          description?: string | null
+          disclaimer?: string | null
+          id?: string
+          name: string
+          published?: boolean
+          questions?: Json
+          scoring?: Json
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          age_max_months?: number | null
+          age_min_months?: number | null
+          audience?: string
+          created_at?: string
+          description?: string | null
+          disclaimer?: string | null
+          id?: string
+          name?: string
+          published?: boolean
+          questions?: Json
+          scoring?: Json
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       behavior_events: {
         Row: {
           antecedent: string | null
@@ -191,6 +293,42 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      caregiver_mood_logs: {
+        Row: {
+          created_at: string
+          id: string
+          logged_at: string
+          mood: number
+          note: string | null
+          sleep_hours: number | null
+          stress: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          logged_at?: string
+          mood: number
+          note?: string | null
+          sleep_hours?: number | null
+          stress?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          logged_at?: string
+          mood?: number
+          note?: string | null
+          sleep_hours?: number | null
+          stress?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       child_documents: {
         Row: {
@@ -940,6 +1078,139 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      library_article_reads: {
+        Row: {
+          article_id: string
+          created_at: string
+          id: string
+          read_at: string | null
+          saved: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          article_id: string
+          created_at?: string
+          id?: string
+          read_at?: string | null
+          saved?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          article_id?: string
+          created_at?: string
+          id?: string
+          read_at?: string | null
+          saved?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "library_article_reads_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "library_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      library_articles: {
+        Row: {
+          audience: string
+          author_name: string | null
+          body: string
+          category_id: string | null
+          cover_url: string | null
+          created_at: string
+          created_by: string | null
+          id: string
+          published_at: string | null
+          reading_minutes: number
+          slug: string
+          summary: string | null
+          tags: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          audience?: string
+          author_name?: string | null
+          body?: string
+          category_id?: string | null
+          cover_url?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          published_at?: string | null
+          reading_minutes?: number
+          slug: string
+          summary?: string | null
+          tags?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          audience?: string
+          author_name?: string | null
+          body?: string
+          category_id?: string | null
+          cover_url?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          published_at?: string | null
+          reading_minutes?: number
+          slug?: string
+          summary?: string | null
+          tags?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "library_articles_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "library_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      library_categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          icon: string | null
+          id: string
+          name: string
+          slug: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          name: string
+          slug: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          name?: string
+          slug?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
       }
       medication_logs: {
         Row: {
