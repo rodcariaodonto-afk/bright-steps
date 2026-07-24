@@ -26,7 +26,9 @@ type FormState = {
   full_name: string;
   bio: string;
   photo_url: string;
-  council_id: string;
+  council_type: string;
+  council_number: string;
+  council_state: string;
   specialties: string;
   city: string;
   state: string;
@@ -43,7 +45,9 @@ const EMPTY: FormState = {
   full_name: "",
   bio: "",
   photo_url: "",
-  council_id: "",
+  council_type: "",
+  council_number: "",
+  council_state: "",
   specialties: "",
   city: "",
   state: "",
