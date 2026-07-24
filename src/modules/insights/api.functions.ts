@@ -63,7 +63,7 @@ async function aggregateChildData(
       .gte("occurred_at", rangeStart),
     supabase
       .from("mood_logs")
-      .select("logged_at, mood, note")
+      .select("logged_at, level, emoji, note")
       .eq("child_id", childId)
       .gte("logged_at", rangeStart),
     supabase
@@ -91,7 +91,8 @@ async function aggregateChildData(
 
   const moodCounts = new Map<string, number>();
   for (const m of moodRows) {
-    moodCounts.set(m.mood, (moodCounts.get(m.mood) ?? 0) + 1);
+    const key = m.emoji ?? `nível ${m.level}`;
+    moodCounts.set(key, (moodCounts.get(key) ?? 0) + 1);
   }
 
   const medStatusCounts = new Map<string, number>();
