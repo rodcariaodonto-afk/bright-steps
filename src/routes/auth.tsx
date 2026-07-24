@@ -1,13 +1,15 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { Sparkles, ArrowRight, Apple } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AtlasLogo } from "@/components/atlas/atlas-logo";
+import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -15,7 +17,8 @@ export const Route = createFileRoute("/auth")({
       { title: "Entrar · Meu Mundo Azul" },
       {
         name: "description",
-        content: "Acesse o Meu Mundo Azul para acompanhar a jornada da sua família.",
+        content:
+          "Acesse o Meu Mundo Azul para acompanhar a jornada da sua família.",
       },
     ],
   }),
@@ -25,18 +28,71 @@ export const Route = createFileRoute("/auth")({
 function AuthPage() {
   const { t } = useTranslation(["auth", "common"]);
   const [mode, setMode] = useState<"signIn" | "signUp">("signIn");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const notReady = () => {
-    toast.warning(t("auth:cloudPending.title"), {
-      description: t("auth:cloudPending.message"),
+  // Redireciona se já estiver logado
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session) navigate({ to: "/app" });
     });
-  };
+  }, [navigate]);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      if (mode === "signUp") {
+        const { error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/app`,
+            data: { full_name: name },
+          },
+        });
+        if (error) throw error;
+        toast.success("Conta criada! Verifique seu e-mail para confirmar.");
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+        if (error) throw error;
+        toast.success("Bem-vindo!");
+        navigate({ to: "/app" });
+      }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Erro na autenticação";
+      toast.error(message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleGoogle() {
+    setLoading(true);
+    try {
+      const result = await lovable.auth.signInWithOAuth("google", {
+        redirect_uri: window.location.origin,
+      });
+      if (result.error) throw result.error;
+      if (!result.redirected) {
+        navigate({ to: "/app" });
+      }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Erro no login Google";
+      toast.error(message);
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="min-h-dvh bg-background">
       <div className="grid min-h-dvh lg:grid-cols-2">
-        {/* Painel esquerdo */}
         <div className="relative hidden overflow-hidden bg-primary text-primary-foreground lg:flex lg:flex-col lg:justify-between lg:p-12">
           <div
             aria-hidden="true"
@@ -70,7 +126,6 @@ function AuthPage() {
           </div>
         </div>
 
-        {/* Formulário */}
         <div className="flex items-center justify-center px-6 py-10 sm:px-10">
           <div className="w-full max-w-sm">
             <div className="lg:hidden">
@@ -91,17 +146,17 @@ function AuthPage() {
               )}
             </p>
 
-            <form
-              className="mt-8 space-y-4"
-              onSubmit={(e) => {
-                e.preventDefault();
-                notReady();
-              }}
-            >
+            <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
               {mode === "signUp" && (
                 <div className="space-y-1.5">
                   <Label htmlFor="name">{t("auth:signUp.name")}</Label>
-                  <Input id="name" name="name" autoComplete="name" required />
+                  <Input
+                    id="name"
+                    autoComplete="name"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </div>
               )}
               <div className="space-y-1.5">
@@ -112,10 +167,11 @@ function AuthPage() {
                 </Label>
                 <Input
                   id="email"
-                  name="email"
                   type="email"
                   autoComplete="email"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="space-y-1.5">
@@ -128,16 +184,22 @@ function AuthPage() {
                 </Label>
                 <Input
                   id="password"
-                  name="password"
                   type="password"
                   autoComplete={
                     mode === "signIn" ? "current-password" : "new-password"
                   }
                   minLength={8}
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <Button type="submit" size="lg" className="w-full rounded-full">
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full rounded-full"
+                disabled={loading}
+              >
                 {t(
                   mode === "signIn"
                     ? "auth:signIn.submit"
@@ -158,19 +220,10 @@ function AuthPage() {
               variant="outline"
               size="lg"
               className="w-full rounded-full"
-              onClick={notReady}
+              onClick={handleGoogle}
+              disabled={loading}
             >
-              <Apple className="mr-2 h-4 w-4" aria-hidden="true" />
-              {t("auth:signIn.apple")}
-            </Button>
-
-            <Button
-              type="button"
-              variant="ghost"
-              className="mt-4 w-full text-xs"
-              onClick={() => navigate({ to: "/app" })}
-            >
-              {t("auth:cloudPending.explore")} →
+              Continuar com Google
             </Button>
 
             <p className="mt-8 text-center text-sm text-muted-foreground">
