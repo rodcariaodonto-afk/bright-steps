@@ -196,3 +196,18 @@ export function ProShell({ children }: { children: ReactNode }) {
     </div>
   );
 }
+
+function ProSubscriptionGate({ children }: { children: ReactNode }) {
+  const { session } = useSession();
+  const { loading, hasFeature } = useSubscription(session?.user?.id);
+  if (loading) return <>{children}</>;
+  if (hasFeature("clinical_module")) return <>{children}</>;
+  return (
+    <div className="p-6">
+      <UpgradeCard
+        feature="clinical_module"
+        reason="Para acessar o Painel Clínico você precisa do plano Profissional Clínica. 7 dias grátis, cancele quando quiser."
+      />
+    </div>
+  );
+}
