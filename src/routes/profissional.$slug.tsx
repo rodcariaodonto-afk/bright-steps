@@ -145,7 +145,7 @@ function ProfessionalPublicPage() {
               <p className="text-sm text-muted-foreground">{councilLabel}</p>
             )}
             <div className="flex flex-wrap gap-1 pt-1">
-              {(pro.specialties ?? []).map((s) => (
+              {(pro.specialties ?? []).map((s: string) => (
                 <Badge key={s} variant="secondary" className="text-xs">
                   {s}
                 </Badge>
@@ -284,7 +284,7 @@ function ProfessionalPublicPage() {
             {pro.reviews.length === 0 ? (
               <p className="text-sm text-muted-foreground">Ainda sem avaliações.</p>
             ) : (
-              pro.reviews.map((r) => (
+              pro.reviews.map((r: { id: string; rating: number; comment: string | null; created_at: string }) => (
                 <div key={r.id} className="rounded-2xl border p-3">
                   <div className="flex items-center gap-1">
                     {Array.from({ length: 5 }).map((_, i) => (
