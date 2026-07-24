@@ -62,7 +62,7 @@ function ProDocumentsPage() {
   return (
     <ProPage
       title="Documentos do paciente"
-      description="Consulte laudos e relatórios liberados pela família."
+      subtitle="Consulte laudos e relatórios liberados pela família."
     >
       {patients.length === 0 ? (
         <ProCard title="Sem pacientes">
