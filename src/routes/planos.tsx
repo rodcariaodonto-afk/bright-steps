@@ -43,7 +43,8 @@ function PlanosPage() {
   const handleChoose = (plan: PublicPlan) => {
     const priceId = period === "monthly" ? plan.price.monthly : plan.price.yearly;
     if (!session) {
-      navigate({ to: "/auth", search: { redirect: `/planos/checkout?priceId=${priceId}` } as never });
+      const redirectTo = `/planos/checkout?priceId=${encodeURIComponent(priceId)}`;
+      navigate({ to: "/auth", search: { redirect: redirectTo } as never });
       return;
     }
     navigate({

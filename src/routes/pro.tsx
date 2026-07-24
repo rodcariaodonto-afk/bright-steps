@@ -6,7 +6,10 @@ import { getMyClinicalAccess } from "@/modules/marketplace/api.functions";
 
 /**
  * Layout do Módulo Profissionais.
- * Requer sessão ativa + papel "professional" ou "admin".
+ * Requer: sessão ativa + papel "professional"/"admin" (getMyClinicalAccess)
+ * + assinatura ativa do plano "profissional_clinica" (verificada no client
+ * pelo ProShell através de useSubscription — mantemos aqui apenas o gate
+ * de papel para não travar admins que não têm plano).
  */
 export const Route = createFileRoute("/pro")({
   ssr: false,
@@ -19,7 +22,6 @@ export const Route = createFileRoute("/pro")({
         throw redirect({ to: "/seja-profissional" });
       }
     } catch (err) {
-      // Rethrow router redirects; qualquer outra falha → redireciona também.
       if (err && typeof err === "object" && "to" in (err as Record<string, unknown>)) throw err;
       throw redirect({ to: "/seja-profissional" });
     }

@@ -100,16 +100,22 @@ function Landing() {
             <a href="#ia" className="hover:text-foreground">
               Inteligência Artificial
             </a>
+            <Link to="/planos" className="hover:text-foreground">
+              Planos
+            </Link>
             <a href="#seguranca" className="hover:text-foreground">
               Segurança
             </a>
           </nav>
           <div className="flex items-center gap-2">
+            <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
+              <Link to="/planos">Planos</Link>
+            </Button>
             <Button asChild variant="ghost" size="sm">
               <Link to="/auth">Entrar</Link>
             </Button>
             <Button asChild size="sm" className="rounded-full">
-              <Link to="/auth">Começar agora</Link>
+              <Link to="/planos">Começar agora</Link>
             </Button>
           </div>
         </div>
