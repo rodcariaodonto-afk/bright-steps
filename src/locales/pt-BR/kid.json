@@ -1,0 +1,71 @@
+{
+  "shell": {
+    "title": "Mundo Azul",
+    "greeting": "Oi, {{name}}!",
+    "greetingFallback": "Oi, amiguinho!",
+    "stars": "estrelinhas",
+    "exit": "Sair do Mundo",
+    "nav": {
+      "home": "Início",
+      "azul": "Falar com Azul",
+      "mood": "Como me sinto",
+      "breathe": "Respirar",
+      "stories": "Histórias"
+    }
+  },
+  "home": {
+    "welcome": "Bem-vindo ao seu Mundo!",
+    "subtitle": "Escolha uma aventura de hoje.",
+    "cards": {
+      "azul": { "title": "Falar com Azul", "desc": "Seu amigo curioso está esperando." },
+      "mood": { "title": "Como me sinto", "desc": "Conte pro Azul como está seu coração." },
+      "breathe": { "title": "Respirar juntos", "desc": "Um exercício rápido pra ficar calminho." },
+      "stories": { "title": "Uma história", "desc": "Escolhe um tema e o Azul inventa pra você." }
+    }
+  },
+  "mood": {
+    "title": "Como você está agora?",
+    "subtitle": "Toque no rostinho que combina com você.",
+    "options": {
+      "1": "Triste",
+      "2": "Meio pra baixo",
+      "3": "Normal",
+      "4": "Feliz",
+      "5": "Radiante"
+    },
+    "saved": "Obrigado por compartilhar! Ganhou uma estrelinha.",
+    "signIn": "Peça pra um adulto entrar pra salvar."
+  },
+  "breathe": {
+    "title": "Vamos respirar",
+    "subtitle": "Siga a bolinha. Puxe o ar, segure, solte.",
+    "start": "Começar",
+    "stop": "Parar",
+    "inhale": "Puxa o ar...",
+    "hold": "Segura...",
+    "exhale": "Solta devagar...",
+    "done": "Boa! Você merece uma estrelinha."
+  },
+  "stories": {
+    "title": "Histórias do Azul",
+    "subtitle": "Escolha um tema e o Azul inventa pra você.",
+    "themes": {
+      "space": "Espaço",
+      "dinos": "Dinossauros",
+      "ocean": "Fundo do mar",
+      "forest": "Floresta mágica",
+      "cars": "Carrinhos",
+      "animals": "Bichinhos"
+    },
+    "generate": "Contar história",
+    "loading": "O Azul está pensando...",
+    "another": "Outra história",
+    "reward": "+1 estrelinha por ler até o fim!"
+  },
+  "azul": {
+    "title": "Azul, seu amigo",
+    "hint": "Digite ou peça pra um adulto ajudar.",
+    "placeholder": "Fala com o Azul...",
+    "send": "Enviar"
+  }
+}
