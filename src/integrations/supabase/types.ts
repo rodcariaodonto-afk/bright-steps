@@ -126,6 +126,59 @@ export type Database = {
           },
         ]
       }
+      child_documents: {
+        Row: {
+          category: string
+          child_id: string
+          created_at: string
+          id: string
+          issued_at: string | null
+          mime_type: string | null
+          notes: string | null
+          size_bytes: number | null
+          storage_path: string
+          title: string
+          updated_at: string
+          uploaded_by: string
+        }
+        Insert: {
+          category?: string
+          child_id: string
+          created_at?: string
+          id?: string
+          issued_at?: string | null
+          mime_type?: string | null
+          notes?: string | null
+          size_bytes?: number | null
+          storage_path: string
+          title: string
+          updated_at?: string
+          uploaded_by: string
+        }
+        Update: {
+          category?: string
+          child_id?: string
+          created_at?: string
+          id?: string
+          issued_at?: string | null
+          mime_type?: string | null
+          notes?: string | null
+          size_bytes?: number | null
+          storage_path?: string
+          title?: string
+          updated_at?: string
+          uploaded_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "child_documents_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       child_guardians: {
         Row: {
           child_id: string
