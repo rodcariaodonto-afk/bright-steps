@@ -19,7 +19,8 @@ interface UserMenuProps {
 }
 
 export function UserMenu({ variant = "light", showAdminLink }: UserMenuProps) {
-  const { session, profile, isAdmin, signOut } = useSession();
+  const { session, profile, roles, isAdmin, signOut } = useSession();
+  const isProfessional = roles.includes("professional");
   const navigate = useNavigate();
 
   if (!session) {
@@ -77,6 +78,17 @@ export function UserMenu({ variant = "light", showAdminLink }: UserMenuProps) {
           <UserIcon className="mr-2 h-4 w-4" aria-hidden="true" />
           Minha conta
         </DropdownMenuItem>
+        {isProfessional || isAdmin ? (
+          <DropdownMenuItem onSelect={() => navigate({ to: "/pro" })}>
+            <Stethoscope className="mr-2 h-4 w-4" aria-hidden="true" />
+            Área Clínica
+          </DropdownMenuItem>
+        ) : (
+          <DropdownMenuItem onSelect={() => navigate({ to: "/seja-profissional" })}>
+            <Stethoscope className="mr-2 h-4 w-4" aria-hidden="true" />
+            Sou profissional
+          </DropdownMenuItem>
+        )}
         {(showAdminLink ?? isAdmin) && isAdmin ? (
           <DropdownMenuItem onSelect={() => navigate({ to: "/admin" })}>
             <Shield className="mr-2 h-4 w-4" aria-hidden="true" />
