@@ -53,7 +53,7 @@ function AuthPage() {
     setLoading(true);
     try {
       if (mode === "signUp") {
-        const { error } = await supabase.auth.signUp({
+        const { data: signUpData, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -62,7 +62,19 @@ function AuthPage() {
           },
         });
         if (error) throw error;
-        toast.success("Conta criada! Verifique seu e-mail para confirmar.");
+        if (signUpData.session) {
+          toast.success("Conta criada!");
+          navigate({ to: redirectTo });
+        } else {
+          // Auto-confirm desativado: tenta login imediato
+          const { error: signInErr } = await supabase.auth.signInWithPassword({ email, password });
+          if (signInErr) {
+            toast.success("Conta criada! Verifique seu e-mail para confirmar.");
+          } else {
+            toast.success("Bem-vindo!");
+            navigate({ to: redirectTo });
+          }
+        }
       } else {
         const { error } = await supabase.auth.signInWithPassword({
           email,
