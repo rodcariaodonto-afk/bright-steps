@@ -80,8 +80,10 @@ export function useSubscription(userId: string | null | undefined): Subscription
 
   useEffect(() => {
     if (!userId) return;
-    const channel = supabase
-      .channel(`subscriptions:${userId}`)
+    const channel = supabase.channel(
+      `subscriptions:${userId}:${Math.random().toString(36).slice(2)}`,
+    );
+    channel
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "subscriptions", filter: `user_id=eq.${userId}` },
