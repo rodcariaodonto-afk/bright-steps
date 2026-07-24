@@ -48,6 +48,7 @@ import { Route as AppDocumentosRouteImport } from './routes/app.documentos'
 import { Route as AppCriancaRouteImport } from './routes/app.crianca'
 import { Route as AppConquistasRouteImport } from './routes/app.conquistas'
 import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes'
+import { Route as AppComunidadeRouteImport } from './routes/app.comunidade'
 import { Route as AppComportamentoRouteImport } from './routes/app.comportamento'
 import { Route as AppCalendarioRouteImport } from './routes/app.calendario'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -275,6 +276,11 @@ const AppConfiguracoesRoute = AppConfiguracoesRouteImport.update({
   path: '/configuracoes',
   getParentRoute: () => AppRoute,
 } as any)
+const AppComunidadeRoute = AppComunidadeRouteImport.update({
+  id: '/comunidade',
+  path: '/comunidade',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppComportamentoRoute = AppComportamentoRouteImport.update({
   id: '/comportamento',
   path: '/comportamento',
@@ -465,6 +471,7 @@ export interface FileRoutesByFullPath {
   '/api/chat': typeof ApiChatRoute
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
+  '/app/comunidade': typeof AppComunidadeRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/conquistas': typeof AppConquistasRoute
   '/app/crianca': typeof AppCriancaRoute
@@ -533,6 +540,7 @@ export interface FileRoutesByTo {
   '/api/chat': typeof ApiChatRoute
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
+  '/app/comunidade': typeof AppComunidadeRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/conquistas': typeof AppConquistasRoute
   '/app/crianca': typeof AppCriancaRoute
@@ -606,6 +614,7 @@ export interface FileRoutesById {
   '/api/chat': typeof ApiChatRoute
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
+  '/app/comunidade': typeof AppComunidadeRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/conquistas': typeof AppConquistasRoute
   '/app/crianca': typeof AppCriancaRoute
@@ -680,6 +689,7 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/app/calendario'
     | '/app/comportamento'
+    | '/app/comunidade'
     | '/app/configuracoes'
     | '/app/conquistas'
     | '/app/crianca'
@@ -748,6 +758,7 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/app/calendario'
     | '/app/comportamento'
+    | '/app/comunidade'
     | '/app/configuracoes'
     | '/app/conquistas'
     | '/app/crianca'
@@ -820,6 +831,7 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/app/calendario'
     | '/app/comportamento'
+    | '/app/comunidade'
     | '/app/configuracoes'
     | '/app/conquistas'
     | '/app/crianca'
@@ -1145,6 +1157,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppConfiguracoesRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/comunidade': {
+      id: '/app/comunidade'
+      path: '/comunidade'
+      fullPath: '/app/comunidade'
+      preLoaderRoute: typeof AppComunidadeRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/comportamento': {
       id: '/app/comportamento'
       path: '/comportamento'
@@ -1426,6 +1445,7 @@ const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 interface AppRouteChildren {
   AppCalendarioRoute: typeof AppCalendarioRoute
   AppComportamentoRoute: typeof AppComportamentoRoute
+  AppComunidadeRoute: typeof AppComunidadeRoute
   AppConfiguracoesRoute: typeof AppConfiguracoesRoute
   AppConquistasRoute: typeof AppConquistasRoute
   AppCriancaRoute: typeof AppCriancaRoute
@@ -1445,6 +1465,7 @@ interface AppRouteChildren {
 const AppRouteChildren: AppRouteChildren = {
   AppCalendarioRoute: AppCalendarioRoute,
   AppComportamentoRoute: AppComportamentoRoute,
+  AppComunidadeRoute: AppComunidadeRoute,
   AppConfiguracoesRoute: AppConfiguracoesRoute,
   AppConquistasRoute: AppConquistasRoute,
   AppCriancaRoute: AppCriancaRoute,
