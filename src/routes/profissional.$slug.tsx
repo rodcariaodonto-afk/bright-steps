@@ -32,7 +32,7 @@ export const Route = createFileRoute("/profissional/$slug")({
     const description =
       pro.bio?.slice(0, 155) ??
       `${pro.full_name} atende no ${[pro.city, pro.state].filter(Boolean).join(", ") || "Brasil"}. Perfil verificado no Meu Mundo Azul.`;
-    const meta: Array<{ name?: string; property?: string; content: string; title?: string }> = [
+    const meta: Array<Record<string, string>> = [
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
