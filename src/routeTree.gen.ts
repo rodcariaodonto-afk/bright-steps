@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SejaProfissionalRouteImport } from './routes/seja-profissional'
 import { Route as ProRouteImport } from './routes/pro'
+import { Route as PlanosRouteImport } from './routes/planos'
 import { Route as KidRouteImport } from './routes/kid'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppRouteImport } from './routes/app'
@@ -34,6 +35,8 @@ import { Route as ProEscalasRouteImport } from './routes/pro.escalas'
 import { Route as ProDocumentosRouteImport } from './routes/pro.documentos'
 import { Route as ProConfiguracoesRouteImport } from './routes/pro.configuracoes'
 import { Route as ProAgendaRouteImport } from './routes/pro.agenda'
+import { Route as PlanosObrigadoRouteImport } from './routes/planos.obrigado'
+import { Route as PlanosCheckoutRouteImport } from './routes/planos.checkout'
 import { Route as KidRespirarRouteImport } from './routes/kid.respirar'
 import { Route as KidHumorRouteImport } from './routes/kid.humor'
 import { Route as KidHistoriasRouteImport } from './routes/kid.historias'
@@ -59,6 +62,7 @@ import { Route as AppComportamentoRouteImport } from './routes/app.comportamento
 import { Route as AppCalendarioRouteImport } from './routes/app.calendario'
 import { Route as AppBibliotecaRouteImport } from './routes/app.biblioteca'
 import { Route as AppAutoavaliacoesRouteImport } from './routes/app.autoavaliacoes'
+import { Route as AppAssinaturaRouteImport } from './routes/app.assinatura'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminSubscriptionsRouteImport } from './routes/admin.subscriptions'
@@ -90,6 +94,7 @@ import { Route as ProPacientesChildIdRouteImport } from './routes/pro.pacientes.
 import { Route as AppBibliotecaSlugRouteImport } from './routes/app.biblioteca.$slug'
 import { Route as AppAutoavaliacoesSlugRouteImport } from './routes/app.autoavaliacoes.$slug'
 import { Route as ApiReportsWeeklyRouteImport } from './routes/api/reports.weekly'
+import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
 
 const SejaProfissionalRoute = SejaProfissionalRouteImport.update({
   id: '/seja-profissional',
@@ -99,6 +104,11 @@ const SejaProfissionalRoute = SejaProfissionalRouteImport.update({
 const ProRoute = ProRouteImport.update({
   id: '/pro',
   path: '/pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanosRoute = PlanosRouteImport.update({
+  id: '/planos',
+  path: '/planos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KidRoute = KidRouteImport.update({
@@ -215,6 +225,16 @@ const ProAgendaRoute = ProAgendaRouteImport.update({
   id: '/agenda',
   path: '/agenda',
   getParentRoute: () => ProRoute,
+} as any)
+const PlanosObrigadoRoute = PlanosObrigadoRouteImport.update({
+  id: '/obrigado',
+  path: '/obrigado',
+  getParentRoute: () => PlanosRoute,
+} as any)
+const PlanosCheckoutRoute = PlanosCheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => PlanosRoute,
 } as any)
 const KidRespirarRoute = KidRespirarRouteImport.update({
   id: '/respirar',
@@ -339,6 +359,11 @@ const AppBibliotecaRoute = AppBibliotecaRouteImport.update({
 const AppAutoavaliacoesRoute = AppAutoavaliacoesRouteImport.update({
   id: '/autoavaliacoes',
   path: '/autoavaliacoes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssinaturaRoute = AppAssinaturaRouteImport.update({
+  id: '/assinatura',
+  path: '/assinatura',
   getParentRoute: () => AppRoute,
 } as any)
 const ApiChatRoute = ApiChatRouteImport.update({
@@ -496,6 +521,12 @@ const ApiReportsWeeklyRoute = ApiReportsWeeklyRouteImport.update({
   path: '/api/reports/weekly',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicPaymentsWebhookRoute =
+  ApiPublicPaymentsWebhookRouteImport.update({
+    id: '/api/public/payments/webhook',
+    path: '/api/public/payments/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -503,6 +534,7 @@ export interface FileRoutesByFullPath {
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/kid': typeof KidRouteWithChildren
+  '/planos': typeof PlanosRouteWithChildren
   '/pro': typeof ProRouteWithChildren
   '/seja-profissional': typeof SejaProfissionalRoute
   '/admin/achievements': typeof AdminAchievementsRoute
@@ -530,6 +562,7 @@ export interface FileRoutesByFullPath {
   '/admin/subscriptions': typeof AdminSubscriptionsRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/chat': typeof ApiChatRoute
+  '/app/assinatura': typeof AppAssinaturaRoute
   '/app/autoavaliacoes': typeof AppAutoavaliacoesRouteWithChildren
   '/app/biblioteca': typeof AppBibliotecaRouteWithChildren
   '/app/calendario': typeof AppCalendarioRoute
@@ -555,6 +588,8 @@ export interface FileRoutesByFullPath {
   '/kid/historias': typeof KidHistoriasRoute
   '/kid/humor': typeof KidHumorRoute
   '/kid/respirar': typeof KidRespirarRoute
+  '/planos/checkout': typeof PlanosCheckoutRoute
+  '/planos/obrigado': typeof PlanosObrigadoRoute
   '/pro/agenda': typeof ProAgendaRoute
   '/pro/configuracoes': typeof ProConfiguracoesRoute
   '/pro/documentos': typeof ProDocumentosRoute
@@ -579,10 +614,12 @@ export interface FileRoutesByFullPath {
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/planos': typeof PlanosRouteWithChildren
   '/seja-profissional': typeof SejaProfissionalRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/ai': typeof AdminAiRoute
@@ -609,6 +646,7 @@ export interface FileRoutesByTo {
   '/admin/subscriptions': typeof AdminSubscriptionsRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/chat': typeof ApiChatRoute
+  '/app/assinatura': typeof AppAssinaturaRoute
   '/app/autoavaliacoes': typeof AppAutoavaliacoesRouteWithChildren
   '/app/biblioteca': typeof AppBibliotecaRouteWithChildren
   '/app/calendario': typeof AppCalendarioRoute
@@ -634,6 +672,8 @@ export interface FileRoutesByTo {
   '/kid/historias': typeof KidHistoriasRoute
   '/kid/humor': typeof KidHumorRoute
   '/kid/respirar': typeof KidRespirarRoute
+  '/planos/checkout': typeof PlanosCheckoutRoute
+  '/planos/obrigado': typeof PlanosObrigadoRoute
   '/pro/agenda': typeof ProAgendaRoute
   '/pro/configuracoes': typeof ProConfiguracoesRoute
   '/pro/documentos': typeof ProDocumentosRoute
@@ -658,6 +698,7 @@ export interface FileRoutesByTo {
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -666,6 +707,7 @@ export interface FileRoutesById {
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/kid': typeof KidRouteWithChildren
+  '/planos': typeof PlanosRouteWithChildren
   '/pro': typeof ProRouteWithChildren
   '/seja-profissional': typeof SejaProfissionalRoute
   '/admin/achievements': typeof AdminAchievementsRoute
@@ -693,6 +735,7 @@ export interface FileRoutesById {
   '/admin/subscriptions': typeof AdminSubscriptionsRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/chat': typeof ApiChatRoute
+  '/app/assinatura': typeof AppAssinaturaRoute
   '/app/autoavaliacoes': typeof AppAutoavaliacoesRouteWithChildren
   '/app/biblioteca': typeof AppBibliotecaRouteWithChildren
   '/app/calendario': typeof AppCalendarioRoute
@@ -718,6 +761,8 @@ export interface FileRoutesById {
   '/kid/historias': typeof KidHistoriasRoute
   '/kid/humor': typeof KidHumorRoute
   '/kid/respirar': typeof KidRespirarRoute
+  '/planos/checkout': typeof PlanosCheckoutRoute
+  '/planos/obrigado': typeof PlanosObrigadoRoute
   '/pro/agenda': typeof ProAgendaRoute
   '/pro/configuracoes': typeof ProConfiguracoesRoute
   '/pro/documentos': typeof ProDocumentosRoute
@@ -742,6 +787,7 @@ export interface FileRoutesById {
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -751,6 +797,7 @@ export interface FileRouteTypes {
     | '/app'
     | '/auth'
     | '/kid'
+    | '/planos'
     | '/pro'
     | '/seja-profissional'
     | '/admin/achievements'
@@ -778,6 +825,7 @@ export interface FileRouteTypes {
     | '/admin/subscriptions'
     | '/admin/users'
     | '/api/chat'
+    | '/app/assinatura'
     | '/app/autoavaliacoes'
     | '/app/biblioteca'
     | '/app/calendario'
@@ -803,6 +851,8 @@ export interface FileRouteTypes {
     | '/kid/historias'
     | '/kid/humor'
     | '/kid/respirar'
+    | '/planos/checkout'
+    | '/planos/obrigado'
     | '/pro/agenda'
     | '/pro/configuracoes'
     | '/pro/documentos'
@@ -827,10 +877,12 @@ export interface FileRouteTypes {
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
+    | '/api/public/payments/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
+    | '/planos'
     | '/seja-profissional'
     | '/admin/achievements'
     | '/admin/ai'
@@ -857,6 +909,7 @@ export interface FileRouteTypes {
     | '/admin/subscriptions'
     | '/admin/users'
     | '/api/chat'
+    | '/app/assinatura'
     | '/app/autoavaliacoes'
     | '/app/biblioteca'
     | '/app/calendario'
@@ -882,6 +935,8 @@ export interface FileRouteTypes {
     | '/kid/historias'
     | '/kid/humor'
     | '/kid/respirar'
+    | '/planos/checkout'
+    | '/planos/obrigado'
     | '/pro/agenda'
     | '/pro/configuracoes'
     | '/pro/documentos'
@@ -906,6 +961,7 @@ export interface FileRouteTypes {
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
+    | '/api/public/payments/webhook'
   id:
     | '__root__'
     | '/'
@@ -913,6 +969,7 @@ export interface FileRouteTypes {
     | '/app'
     | '/auth'
     | '/kid'
+    | '/planos'
     | '/pro'
     | '/seja-profissional'
     | '/admin/achievements'
@@ -940,6 +997,7 @@ export interface FileRouteTypes {
     | '/admin/subscriptions'
     | '/admin/users'
     | '/api/chat'
+    | '/app/assinatura'
     | '/app/autoavaliacoes'
     | '/app/biblioteca'
     | '/app/calendario'
@@ -965,6 +1023,8 @@ export interface FileRouteTypes {
     | '/kid/historias'
     | '/kid/humor'
     | '/kid/respirar'
+    | '/planos/checkout'
+    | '/planos/obrigado'
     | '/pro/agenda'
     | '/pro/configuracoes'
     | '/pro/documentos'
@@ -989,6 +1049,7 @@ export interface FileRouteTypes {
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
+    | '/api/public/payments/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -997,11 +1058,13 @@ export interface RootRouteChildren {
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRoute
   KidRoute: typeof KidRouteWithChildren
+  PlanosRoute: typeof PlanosRouteWithChildren
   ProRoute: typeof ProRouteWithChildren
   SejaProfissionalRoute: typeof SejaProfissionalRoute
   ApiChatRoute: typeof ApiChatRoute
   ProfissionalSlugRoute: typeof ProfissionalSlugRoute
   ApiReportsWeeklyRoute: typeof ApiReportsWeeklyRoute
+  ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1018,6 +1081,13 @@ declare module '@tanstack/react-router' {
       path: '/pro'
       fullPath: '/pro'
       preLoaderRoute: typeof ProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planos': {
+      id: '/planos'
+      path: '/planos'
+      fullPath: '/planos'
+      preLoaderRoute: typeof PlanosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kid': {
@@ -1180,6 +1250,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/pro/agenda'
       preLoaderRoute: typeof ProAgendaRouteImport
       parentRoute: typeof ProRoute
+    }
+    '/planos/obrigado': {
+      id: '/planos/obrigado'
+      path: '/obrigado'
+      fullPath: '/planos/obrigado'
+      preLoaderRoute: typeof PlanosObrigadoRouteImport
+      parentRoute: typeof PlanosRoute
+    }
+    '/planos/checkout': {
+      id: '/planos/checkout'
+      path: '/checkout'
+      fullPath: '/planos/checkout'
+      preLoaderRoute: typeof PlanosCheckoutRouteImport
+      parentRoute: typeof PlanosRoute
     }
     '/kid/respirar': {
       id: '/kid/respirar'
@@ -1354,6 +1438,13 @@ declare module '@tanstack/react-router' {
       path: '/autoavaliacoes'
       fullPath: '/app/autoavaliacoes'
       preLoaderRoute: typeof AppAutoavaliacoesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/assinatura': {
+      id: '/app/assinatura'
+      path: '/assinatura'
+      fullPath: '/app/assinatura'
+      preLoaderRoute: typeof AppAssinaturaRouteImport
       parentRoute: typeof AppRoute
     }
     '/api/chat': {
@@ -1573,6 +1664,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiReportsWeeklyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/payments/webhook': {
+      id: '/api/public/payments/webhook'
+      path: '/api/public/payments/webhook'
+      fullPath: '/api/public/payments/webhook'
+      preLoaderRoute: typeof ApiPublicPaymentsWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1658,6 +1756,7 @@ const AppBibliotecaRouteWithChildren = AppBibliotecaRoute._addFileChildren(
 )
 
 interface AppRouteChildren {
+  AppAssinaturaRoute: typeof AppAssinaturaRoute
   AppAutoavaliacoesRoute: typeof AppAutoavaliacoesRouteWithChildren
   AppBibliotecaRoute: typeof AppBibliotecaRouteWithChildren
   AppCalendarioRoute: typeof AppCalendarioRoute
@@ -1683,6 +1782,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAssinaturaRoute: AppAssinaturaRoute,
   AppAutoavaliacoesRoute: AppAutoavaliacoesRouteWithChildren,
   AppBibliotecaRoute: AppBibliotecaRouteWithChildren,
   AppCalendarioRoute: AppCalendarioRoute,
@@ -1726,6 +1826,19 @@ const KidRouteChildren: KidRouteChildren = {
 }
 
 const KidRouteWithChildren = KidRoute._addFileChildren(KidRouteChildren)
+
+interface PlanosRouteChildren {
+  PlanosCheckoutRoute: typeof PlanosCheckoutRoute
+  PlanosObrigadoRoute: typeof PlanosObrigadoRoute
+}
+
+const PlanosRouteChildren: PlanosRouteChildren = {
+  PlanosCheckoutRoute: PlanosCheckoutRoute,
+  PlanosObrigadoRoute: PlanosObrigadoRoute,
+}
+
+const PlanosRouteWithChildren =
+  PlanosRoute._addFileChildren(PlanosRouteChildren)
 
 interface ProPacientesRouteChildren {
   ProPacientesChildIdRoute: typeof ProPacientesChildIdRoute
@@ -1785,11 +1898,13 @@ const rootRouteChildren: RootRouteChildren = {
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRoute,
   KidRoute: KidRouteWithChildren,
+  PlanosRoute: PlanosRouteWithChildren,
   ProRoute: ProRouteWithChildren,
   SejaProfissionalRoute: SejaProfissionalRoute,
   ApiChatRoute: ApiChatRoute,
   ProfissionalSlugRoute: ProfissionalSlugRoute,
   ApiReportsWeeklyRoute: ApiReportsWeeklyRoute,
+  ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

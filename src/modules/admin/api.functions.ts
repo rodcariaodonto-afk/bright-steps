@@ -209,3 +209,39 @@ export const listAdminSchools = createServerFn({ method: "GET" })
       childName: childMap.get(s.child_id) ?? "—",
     }));
   });
+
+export const getSubscriptionMetrics = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await ensureAdmin(context.supabase, context.userId);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    const { data: rows } = await supabaseAdmin
+      .from("subscriptions")
+      .select("id, status, price_id, product_id, environment, current_period_end, cancel_at_period_end, created_at");
+
+    const list = rows ?? [];
+    const active = list.filter((r: any) =>
+      ["active", "trialing", "past_due"].includes(r.status),
+    );
+    const trialing = list.filter((r: any) => r.status === "trialing");
+    const canceled30d = list.filter(
+      (r: any) =>
+        r.status === "canceled" &&
+        r.current_period_end &&
+        new Date(r.current_period_end).getTime() > Date.now() - 30 * 86400000,
+    );
+
+    const byPrice: Record<string, number> = {};
+    for (const r of active) {
+      byPrice[r.price_id] = (byPrice[r.price_id] ?? 0) + 1;
+    }
+
+    return {
+      total: list.length,
+      active: active.length,
+      trialing: trialing.length,
+      canceled30d: canceled30d.length,
+      byPrice,
+    };
+  });
