@@ -327,3 +327,94 @@ function MembersCard({ familyId }: { familyId: string }) {
     </div>
   );
 }
+
+function ProfessionalsCard({ familyId }: { familyId: string }) {
+  const { data: children = [] } = useChildren(familyId);
+  const [childId, setChildId] = useState<string>("");
+  const [email, setEmail] = useState("");
+  const [permission, setPermission] = useState<"view" | "write" | "admin">("write");
+  const [busy, setBusy] = useState(false);
+
+  async function invite() {
+    if (!childId || !email.trim()) {
+      toast.error("Selecione a criança e informe o e-mail");
+      return;
+    }
+    setBusy(true);
+    try {
+      await proWrites.addProfessionalByEmail(childId, email.trim(), permission);
+      toast.success("Profissional vinculado");
+      setEmail("");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Falha ao vincular";
+      toast.error(msg.includes("not found") ? "Profissional ainda não tem conta na plataforma" : msg);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="rounded-3xl border border-border/60 bg-card p-6">
+      <div className="flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-accent-soft text-accent-foreground">
+          <Stethoscope className="h-5 w-5" aria-hidden="true" />
+        </div>
+        <div>
+          <h2 className="font-display text-lg font-bold text-foreground">
+            Profissionais vinculados
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Dê acesso a psicólogos, terapeutas ou médicos que acompanham a criança.
+          </p>
+        </div>
+      </div>
+
+      {children.length === 0 ? (
+        <p className="mt-4 text-sm text-muted-foreground">
+          Cadastre uma criança antes de convidar profissionais.
+        </p>
+      ) : (
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-1.5">
+            <Label>Criança</Label>
+            <Select value={childId} onValueChange={setChildId}>
+              <SelectTrigger><SelectValue placeholder="Selecionar" /></SelectTrigger>
+              <SelectContent>
+                {children.map((c) => (
+                  <SelectItem key={c.id} value={c.id}>{c.full_name}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-1.5 sm:col-span-2 lg:col-span-1">
+            <Label htmlFor="pro-email">E-mail do profissional</Label>
+            <Input
+              id="pro-email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="profissional@exemplo.com"
+            />
+          </div>
+          <div className="space-y-1.5">
+            <Label>Permissão</Label>
+            <Select value={permission} onValueChange={(v) => setPermission(v as typeof permission)}>
+              <SelectTrigger><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="view">Somente leitura</SelectItem>
+                <SelectItem value="write">Registrar sessões</SelectItem>
+                <SelectItem value="admin">Administrar</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex items-end">
+            <Button onClick={invite} disabled={busy} className="w-full">
+              {busy ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Mail className="mr-2 h-4 w-4" />}
+              Vincular
+            </Button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
