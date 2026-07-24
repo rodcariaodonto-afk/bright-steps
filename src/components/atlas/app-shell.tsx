@@ -26,6 +26,7 @@ import { AtlasLogo } from "@/components/atlas/atlas-logo";
 import { UserMenu } from "@/components/atlas/user-menu";
 import { ChildPicker } from "@/components/atlas/child-picker";
 import { useSession } from "@/hooks/use-session";
+import { useUnreadCount } from "@/hooks/use-notifications";
 
 interface NavItem {
   to: string;
@@ -55,6 +56,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const { profile } = useSession();
+  const { data: unreadCount = 0 } = useUnreadCount();
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface-2">
@@ -78,14 +80,21 @@ export function AppShell({ children }: { children: ReactNode }) {
                   key={item.to}
                   to={item.to}
                   className={cn(
-                    "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
+                    "flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
                     isActive
                       ? "bg-primary-soft text-primary"
                       : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                   )}
                 >
-                  <Icon className="h-4.5 w-4.5" aria-hidden="true" />
-                  {t(item.labelKey)}
+                  <span className="flex items-center gap-3">
+                    <Icon className="h-4.5 w-4.5" aria-hidden="true" />
+                    {t(item.labelKey)}
+                  </span>
+                  {item.to === "/app/notificacoes" && unreadCount > 0 && (
+                    <span className="inline-flex min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[10px] font-bold text-primary-foreground">
+                      {unreadCount > 99 ? "99+" : unreadCount}
+                    </span>
+                  )}
                 </Link>
               );
             })}
