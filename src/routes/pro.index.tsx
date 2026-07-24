@@ -116,41 +116,47 @@ function ProDashboard() {
       <div className="grid gap-4 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <ProCard title={t("dashboard.cards.todayAgenda")}>
-            <ul className="divide-y divide-border/60">
-              {data.snapshot.todayAppointments.map((apt) => {
-                const child = patientById.get(apt.childId);
-                return (
-                  <li
-                    key={apt.id}
-                    className="flex items-center justify-between gap-3 py-3"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary">
-                        <Clock className="h-4 w-4" aria-hidden="true" />
+            {data.snapshot.todayAppointments.length === 0 ? (
+              <p className="rounded-xl border border-dashed border-border p-6 text-center text-xs text-muted-foreground">
+                Nenhum atendimento agendado para hoje.
+              </p>
+            ) : (
+              <ul className="divide-y divide-border/60">
+                {data.snapshot.todayAppointments.map((apt) => {
+                  const child = patientById.get(apt.childId);
+                  return (
+                    <li
+                      key={apt.id}
+                      className="flex items-center justify-between gap-3 py-3"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary">
+                          <Clock className="h-4 w-4" aria-hidden="true" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-sm font-semibold text-foreground">
+                            {child?.fullName ?? "Paciente"}
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            {formatTime(apt.start)}–{formatTime(apt.end)} ·{" "}
+                            {child?.diagnosis ?? ""}
+                          </p>
+                        </div>
                       </div>
-                      <div className="min-w-0">
-                        <p className="text-sm font-semibold text-foreground">
-                          {child?.fullName ?? "—"}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          {formatTime(apt.start)}–{formatTime(apt.end)} ·{" "}
-                          {child?.diagnosis ?? "—"}
-                        </p>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        {apt.modality === "online" ? (
+                          <Video className="h-3.5 w-3.5" aria-hidden="true" />
+                        ) : (
+                          <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
+                        )}
+                        {apt.location ??
+                          (apt.modality === "online" ? "Online" : "Presencial")}
                       </div>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      {apt.modality === "online" ? (
-                        <Video className="h-3.5 w-3.5" aria-hidden="true" />
-                      ) : (
-                        <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-                      )}
-                      {apt.location ??
-                        (apt.modality === "online" ? "Online" : "Presencial")}
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </ProCard>
         </div>
 
