@@ -15,6 +15,7 @@ import {
   BarChart3,
   Sparkles,
   Bell,
+  School,
   Settings,
   Menu,
 } from "lucide-react";
@@ -46,6 +47,7 @@ const NAV: NavItem[] = [
   { to: "/app/comportamento", labelKey: "sidebar.behavior", icon: Activity },
   { to: "/app/objetivos", labelKey: "sidebar.goals", icon: Target },
   { to: "/app/relatorios", labelKey: "sidebar.reports", icon: BarChart3 },
+  { to: "/app/escola", labelKey: "sidebar.school", icon: School },
   { to: "/app/ia", labelKey: "sidebar.ai", icon: Sparkles },
   { to: "/app/notificacoes", labelKey: "sidebar.notifications", icon: Bell },
   { to: "/app/configuracoes", labelKey: "sidebar.settings", icon: Settings },
