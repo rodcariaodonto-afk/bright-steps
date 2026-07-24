@@ -26,6 +26,7 @@ import { AtlasLogo } from "@/components/atlas/atlas-logo";
 import { UserMenu } from "@/components/atlas/user-menu";
 import { ChildPicker } from "@/components/atlas/child-picker";
 import { useSession } from "@/hooks/use-session";
+import { useUnreadCount } from "@/hooks/use-notifications";
 
 interface NavItem {
   to: string;
