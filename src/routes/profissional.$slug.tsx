@@ -65,7 +65,7 @@ export const Route = createFileRoute("/profissional/$slug")({
 
 function ProfessionalPublicPage() {
   const { pro } = Route.useLoaderData();
-  const auth = useAuth();
+  const { session } = useSession(); const currentUserId = session?.user?.id ?? null;
   const qc = useQueryClient();
 
   const submitReview = useServerFn(submitProfessionalReview);
@@ -210,7 +210,7 @@ function ProfessionalPublicPage() {
             <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
               Solicitar contato
             </h2>
-            {auth.user ? (
+            {currentUserId ? (
               <div className="mt-3 space-y-2">
                 <Textarea
                   rows={4}
@@ -248,7 +248,7 @@ function ProfessionalPublicPage() {
             Avaliações ({pro.reviews_count})
           </h2>
 
-          {auth.user && auth.user.id !== pro.user_id && (
+          {currentUserId && currentUserId !== pro.user_id && (
             <div className="mt-4 space-y-2 rounded-2xl border border-dashed p-4">
               <div className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((n) => (
