@@ -228,12 +228,11 @@ const inMemoryRepositories: ProfessionalRepositories = {
   },
 };
 
-let current: ProfessionalRepositories = inMemoryRepositories;
+import { supabaseRepositories } from "./supabase";
 
-/**
- * Ponto único de acesso. Quando o Cloud for ativado, este arquivo
- * exportará uma implementação Supabase e substituirá `current`.
- */
+let current: ProfessionalRepositories = supabaseRepositories;
+
+/** Ponto único de acesso aos repositórios do módulo Profissional. */
 export function getProfessionalRepositories(): ProfessionalRepositories {
   return current;
 }
@@ -241,3 +240,6 @@ export function getProfessionalRepositories(): ProfessionalRepositories {
 export function setProfessionalRepositories(next: ProfessionalRepositories) {
   current = next;
 }
+
+/** Mantido para testes/storybook. */
+export const __mockProfessionalRepositories = inMemoryRepositories;
