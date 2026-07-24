@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { ProPage, ProCard } from "@/components/pro/pro-page";
 import { getProfessionalRepositories } from "@/modules/professional/repositories";
+import { PatternsCard } from "@/components/insights/patterns-card";
 import { cn } from "@/lib/utils";
 
 function childQuery(childId: string) {
@@ -104,6 +105,10 @@ function PatientDetail() {
           <ProCard title="Evolução" description={`${data.evolution.length} registros`}>
             <p className="text-2xl font-bold">{data.evolution.length}</p>
           </ProCard>
+          </ProCard>
+          <div className="md:col-span-3">
+            <PatternsCard childId={childId} variant="pro" />
+          </div>
         </div>
       )}
 
