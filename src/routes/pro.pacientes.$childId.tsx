@@ -12,12 +12,14 @@ function childQuery(childId: string) {
     queryKey: ["pro", "patient", childId],
     queryFn: async () => {
       const repos = getProfessionalRepositories();
-      const [patient, goals] = await Promise.all([
+      const [patient, goals, sessions, evolution] = await Promise.all([
         repos.patients.get(childId),
         repos.goals.listByChild(childId),
+        repos.sessions.listByChild(childId),
+        repos.evolution.listByChild(childId),
       ]);
       if (!patient) throw notFound();
-      return { patient, goals };
+      return { patient, goals, sessions, evolution };
     },
   };
 }
@@ -29,25 +31,32 @@ export const Route = createFileRoute("/pro/pacientes/$childId")({
   notFoundComponent: () => (
     <div className="p-8 text-sm text-muted-foreground">Paciente não encontrado.</div>
   ),
+  errorComponent: ({ error }) => (
+    <div className="p-8 text-sm text-destructive">Erro: {error.message}</div>
+  ),
 });
 
-const TAB_KEYS = [
-  "overview",
-  "sessions",
-  "evolution",
-  "goals",
-  "scales",
-  "reports",
-  "documents",
-  "school",
-  "family",
-] as const;
+const TABS = ["overview", "sessions", "evolution", "goals"] as const;
+type TabKey = (typeof TABS)[number];
+const TAB_LABEL: Record<TabKey, string> = {
+  overview: "Visão geral",
+  sessions: "Sessões",
+  evolution: "Evolução",
+  goals: "Objetivos",
+};
 
-type TabKey = (typeof TAB_KEYS)[number];
+function ageFrom(iso: string) {
+  const b = new Date(iso);
+  const now = new Date();
+  let a = now.getFullYear() - b.getFullYear();
+  const m = now.getMonth() - b.getMonth();
+  if (m < 0 || (m === 0 && now.getDate() < b.getDate())) a--;
+  return a;
+}
 
 function PatientDetail() {
   const { childId } = Route.useParams();
-  const { t } = useTranslation("pro");
+  useTranslation("pro");
   const { data } = useSuspenseQuery(childQuery(childId));
   const [tab, setTab] = useState<TabKey>("overview");
 
@@ -56,105 +65,125 @@ function PatientDetail() {
   return (
     <ProPage
       title={p.fullName}
-      subtitle={`${p.diagnosis ?? ""} · CID ${p.cid ?? "—"} · Suporte nível ${p.supportLevel ?? "—"}`}
+      subtitle={`${ageFrom(p.birthDate)} anos${p.diagnosis ? ` · ${p.diagnosis}` : ""}${p.interests?.[0] ? ` · interesse: ${p.interests[0]}` : ""}`}
       actions={
-        <Link
-          to="/pro/pacientes"
-          className="text-xs text-muted-foreground hover:text-foreground"
-        >
+        <Link to="/pro/pacientes" className="text-xs text-muted-foreground hover:text-foreground">
           ← voltar
         </Link>
       }
     >
       <nav className="flex gap-1 overflow-x-auto rounded-lg border border-border/60 bg-card p-1">
-        {TAB_KEYS.map((k) => (
+        {TABS.map((k) => (
           <button
             key={k}
             type="button"
             onClick={() => setTab(k)}
             className={cn(
               "whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-medium transition-colors",
-              tab === k
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:bg-muted",
+              tab === k ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-muted",
             )}
           >
-            {t(`patients.tabs.${k}`)}
+            {TAB_LABEL[k]}
           </button>
         ))}
       </nav>
 
       {tab === "overview" && (
-        <div className="grid gap-4 lg:grid-cols-3">
-          <ProCard title="Dados básicos" className="lg:col-span-2">
-            <dl className="grid grid-cols-2 gap-3 text-sm">
-              <Field label="Nascimento">
-                {new Date(p.birthDate).toLocaleDateString("pt-BR")}
-              </Field>
-              <Field label="Diagnóstico">{p.diagnosis ?? "—"}</Field>
-              <Field label="CID">{p.cid ?? "—"}</Field>
-              <Field label="Nível de suporte">{p.supportLevel ?? "—"}</Field>
-              <Field label="Interesses">
-                {p.interests?.join(", ") ?? "—"}
-              </Field>
-              <Field label="Permissões">{p.scopes.join(", ")}</Field>
+        <div className="grid gap-4 md:grid-cols-3">
+          <ProCard title="Resumo">
+            <dl className="space-y-2 text-sm">
+              <Row label="Idade">{ageFrom(p.birthDate)} anos</Row>
+              <Row label="Diagnóstico">{p.diagnosis ?? "—"}</Row>
+              <Row label="Interesses">{p.interests?.join(", ") || "—"}</Row>
+              <Row label="Acesso">{p.scopes.includes("session_write") ? "Escrita" : "Leitura"}</Row>
             </dl>
           </ProCard>
-          <ProCard title="Objetivos ativos">
-            {data.goals.length === 0 && (
-              <p className="text-xs text-muted-foreground">
-                Nenhum objetivo compartilhado ainda.
-              </p>
-            )}
-            <ul className="space-y-3">
-              {data.goals.map((g) => (
-                <li key={g.id}>
-                  <p className="text-xs font-medium text-foreground">
-                    {g.description}
-                  </p>
-                  <p className="text-[11px] text-muted-foreground">
-                    {g.category}
-                  </p>
-                  <div className="mt-1 h-1.5 w-full rounded-full bg-muted">
-                    <div
-                      className="h-1.5 rounded-full bg-primary"
-                      style={{ width: `${g.progressPercent}%` }}
-                    />
-                  </div>
-                </li>
-              ))}
-            </ul>
+          <ProCard title="Sessões" description={`${data.sessions.length} registradas`}>
+            <p className="text-2xl font-bold">{data.sessions.length}</p>
+          </ProCard>
+          <ProCard title="Evolução" description={`${data.evolution.length} registros`}>
+            <p className="text-2xl font-bold">{data.evolution.length}</p>
           </ProCard>
         </div>
       )}
 
-      {tab !== "overview" && (
-        <ProCard
-          title={t(`patients.tabs.${tab}`)}
-          description="Estrutura pronta. Os dados entram na Onda 2 com o Cloud ativo."
-        >
-          <div className="rounded-xl border border-dashed border-border p-6 text-center text-xs text-muted-foreground">
-            Nenhum registro nesta aba.
-          </div>
+      {tab === "sessions" && (
+        <ProCard title="Sessões clínicas">
+          {data.sessions.length === 0 ? (
+            <p className="rounded-xl border border-dashed border-border p-6 text-center text-xs text-muted-foreground">
+              Nenhuma sessão registrada.{" "}
+              <Link to="/pro/sessoes/nova" className="text-primary hover:underline">Registrar agora</Link>
+            </p>
+          ) : (
+            <ul className="divide-y divide-border/60">
+              {data.sessions.map((s) => (
+                <li key={s.id} className="py-3">
+                  <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <span>{new Date(s.date).toLocaleString("pt-BR")}</span>
+                    <span>{s.durationMinutes} min</span>
+                  </div>
+                  <p className="mt-1 text-sm text-foreground">{s.activities}</p>
+                  {s.observations && (
+                    <p className="mt-1 text-xs text-muted-foreground">Obs.: {s.observations}</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </ProCard>
+      )}
+
+      {tab === "evolution" && (
+        <ProCard title="Evolução">
+          {data.evolution.length === 0 ? (
+            <p className="rounded-xl border border-dashed border-border p-6 text-center text-xs text-muted-foreground">
+              Nenhum registro de evolução.
+            </p>
+          ) : (
+            <ol className="relative space-y-5 border-l border-border pl-6">
+              {data.evolution.map((e) => (
+                <li key={e.id} className="relative">
+                  <span className="absolute -left-[27px] top-1 h-3 w-3 rounded-full bg-primary" />
+                  <p className="text-xs text-muted-foreground">
+                    {new Date(e.createdAt).toLocaleString("pt-BR")}
+                  </p>
+                  <p className="mt-1 whitespace-pre-wrap text-sm text-foreground">{e.text}</p>
+                </li>
+              ))}
+            </ol>
+          )}
+        </ProCard>
+      )}
+
+      {tab === "goals" && (
+        <ProCard title="Objetivos terapêuticos">
+          {data.goals.length === 0 ? (
+            <p className="rounded-xl border border-dashed border-border p-6 text-center text-xs text-muted-foreground">
+              Nenhum objetivo definido.
+            </p>
+          ) : (
+            <ul className="space-y-2">
+              {data.goals.map((g) => (
+                <li key={g.id} className="rounded-lg border border-border/60 p-3">
+                  <p className="text-sm font-medium text-foreground">{g.description}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {g.category} · {g.status}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
         </ProCard>
       )}
     </ProPage>
   );
 }
 
-function Field({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
+function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div>
-      <dt className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-        {label}
-      </dt>
-      <dd className="mt-0.5 text-foreground">{children}</dd>
+    <div className="flex justify-between gap-3">
+      <dt className="text-xs text-muted-foreground">{label}</dt>
+      <dd className="text-right text-foreground">{children}</dd>
     </div>
   );
 }
