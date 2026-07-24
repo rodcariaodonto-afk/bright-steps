@@ -965,6 +965,53 @@ export type Database = {
           },
         ]
       }
+      insights_cache: {
+        Row: {
+          child_id: string
+          created_at: string
+          expires_at: string
+          generated_by: string | null
+          id: string
+          insights: Json
+          model: string
+          range_end: string
+          range_start: string
+          updated_at: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          expires_at: string
+          generated_by?: string | null
+          id?: string
+          insights?: Json
+          model: string
+          range_end: string
+          range_start: string
+          updated_at?: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          expires_at?: string
+          generated_by?: string | null
+          id?: string
+          insights?: Json
+          model?: string
+          range_end?: string
+          range_start?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "insights_cache_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       kid_achievements: {
         Row: {
           category: string | null

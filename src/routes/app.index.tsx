@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/hooks/use-session";
 import { useActiveChild } from "@/hooks/use-active-child";
+import { PatternsCard } from "@/components/insights/patterns-card";
 
 export const Route = createFileRoute("/app/")({
   head: () => ({
@@ -134,6 +135,12 @@ function Dashboard() {
               </Link>
             </Button>
           </div>
+
+          {activeChild && (
+            <div className="md:col-span-2 xl:col-span-3">
+              <PatternsCard childId={activeChild.id} />
+            </div>
+          )}
         </div>
       )}
     </div>
