@@ -154,7 +154,7 @@ export const listAdminProfessionals = createServerFn({ method: "GET" })
 
     const { data, error } = await supabaseAdmin
       .from("professional_profiles")
-      .select("id, user_id, full_name, council_id, specialties, created_at")
+      .select("id, user_id, full_name, council_type, council_number, council_state, specialties, moderation_status, rejection_reason, visible_in_marketplace, created_at")
       .order("created_at", { ascending: false })
       .limit(200);
     if (error) throw error;

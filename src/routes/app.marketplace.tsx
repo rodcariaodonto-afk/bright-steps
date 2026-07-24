@@ -1,25 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { MapPin, Mail, Phone, Star, Sparkles } from "lucide-react";
-import { toast } from "sonner";
+import { MapPin, Star, Sparkles, ShieldCheck, ArrowRight } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogFooter,
-} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import {
   listMarketplaceProfessionals,
-  requestProfessionalContact,
   listMyContactRequests,
 } from "@/modules/marketplace/api.functions";
 
@@ -35,7 +24,7 @@ export const Route = createFileRoute("/app/marketplace")({
       { property: "og:title", content: "Marketplace · Meu Mundo Azul" },
       {
         property: "og:description",
-        content: "Encontre profissionais verificados para apoiar sua família.",
+        content: "Profissionais verificados para apoiar sua família.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -45,10 +34,8 @@ export const Route = createFileRoute("/app/marketplace")({
 });
 
 function MarketplacePage() {
-  const qc = useQueryClient();
   const list = useServerFn(listMarketplaceProfessionals);
   const mine = useServerFn(listMyContactRequests);
-  const contact = useServerFn(requestProfessionalContact);
 
   const { data: pros = [], isLoading } = useQuery({
     queryKey: ["marketplace", "pros"],
@@ -77,16 +64,6 @@ function MarketplacePage() {
     return matchQ && matchS;
   });
 
-  const contactMut = useMutation({
-    mutationFn: (v: { professional_user_id: string; message: string }) =>
-      contact({ data: v }),
-    onSuccess: () => {
-      toast.success("Solicitação enviada");
-      qc.invalidateQueries({ queryKey: ["marketplace", "my-requests"] });
-    },
-    onError: (e: Error) => toast.error(e.message),
-  });
-
   return (
     <div className="mx-auto max-w-6xl space-y-6 p-4 lg:p-8">
       <header className="space-y-1">
@@ -94,7 +71,7 @@ function MarketplacePage() {
           Marketplace de Profissionais
         </h1>
         <p className="text-sm text-muted-foreground">
-          Terapeutas e especialistas verificados, prontos para apoiar sua família.
+          Todos os perfis passam por verificação de conselho antes de aparecerem aqui.
         </p>
       </header>
 
@@ -123,12 +100,12 @@ function MarketplacePage() {
         <p className="text-sm text-muted-foreground">Carregando profissionais...</p>
       ) : filtered.length === 0 ? (
         <div className="rounded-2xl border border-dashed p-10 text-center text-sm text-muted-foreground">
-          Nenhum profissional encontrado. Novos profissionais são adicionados semanalmente.
+          Nenhum profissional encontrado. Novos perfis passam por moderação antes de aparecerem.
         </div>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p) => (
-            <ProCard key={p.id} pro={p} onContact={contactMut.mutate} />
+            <ProCard key={p.id} pro={p} />
           ))}
         </div>
       )}
@@ -157,38 +134,50 @@ function MarketplacePage() {
 
 type Pro = Awaited<ReturnType<typeof listMarketplaceProfessionals>>[number];
 
-function ProCard({
-  pro,
-  onContact,
-}: {
-  pro: Pro;
-  onContact: (v: { professional_user_id: string; message: string }) => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const [message, setMessage] = useState("");
+function ProCard({ pro }: { pro: Pro }) {
+  const councilLabel =
+    [pro.council_type, pro.council_number, pro.council_state].filter(Boolean).join(" ") || null;
 
   return (
     <div className="flex flex-col gap-3 rounded-2xl border bg-card p-4 shadow-sm">
       <div className="flex items-start gap-3">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
           {pro.photo_url ? (
-            <img src={pro.photo_url} alt={pro.full_name} className="h-12 w-12 rounded-full object-cover" />
+            <img
+              src={pro.photo_url}
+              alt={pro.full_name}
+              className="h-12 w-12 rounded-full object-cover"
+            />
           ) : (
             <Sparkles className="h-5 w-5" />
           )}
         </div>
         <div className="flex-1">
-          <h3 className="font-semibold leading-tight">{pro.full_name}</h3>
-          {pro.council_id && (
-            <p className="text-xs text-muted-foreground">{pro.council_id}</p>
+          <div className="flex items-center gap-2">
+            <h3 className="font-semibold leading-tight">{pro.full_name}</h3>
+            {pro.plan !== "free" && (
+              <Badge variant="default" className="gap-1">
+                <ShieldCheck className="h-3 w-3" /> Destaque
+              </Badge>
+            )}
+          </div>
+          {councilLabel && (
+            <p className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">
+              <ShieldCheck className="h-3 w-3" /> {councilLabel}
+            </p>
           )}
         </div>
-        {pro.accepting_patients && (
-          <Badge className="gap-1" variant="default">
-            <Star className="h-3 w-3" /> Aceitando
-          </Badge>
-        )}
       </div>
+
+      {pro.reviews_count > 0 && (
+        <div className="flex items-center gap-1 text-sm">
+          <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+          <span className="font-medium">{Number(pro.average_rating).toFixed(1)}</span>
+          <span className="text-xs text-muted-foreground">
+            ({pro.reviews_count} avaliaç{pro.reviews_count === 1 ? "ão" : "ões"})
+          </span>
+        </div>
+      )}
 
       {pro.bio && <p className="line-clamp-3 text-sm text-muted-foreground">{pro.bio}</p>}
 
@@ -209,57 +198,18 @@ function ProCard({
           </div>
         )}
         {pro.price_range && <div>Faixa: {pro.price_range}</div>}
+        {pro.accepting_patients && (
+          <div className="text-emerald-600">Aceitando novos pacientes</div>
+        )}
       </div>
 
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button size="sm" className="mt-auto">
-            Entrar em contato
-          </Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Contatar {pro.full_name}</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-3">
-            <Textarea
-              placeholder="Conte brevemente sobre sua família e o que procura"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              rows={5}
-            />
-            {(pro.contact_email || pro.contact_phone) && (
-              <div className="space-y-1 rounded-lg bg-muted p-3 text-xs">
-                {pro.contact_email && (
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-3 w-3" /> {pro.contact_email}
-                  </div>
-                )}
-                {pro.contact_phone && (
-                  <div className="flex items-center gap-2">
-                    <Phone className="h-3 w-3" /> {pro.contact_phone}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-          <DialogFooter>
-            <Button
-              onClick={() => {
-                if (message.trim().length < 5) {
-                  toast.error("Escreva uma mensagem");
-                  return;
-                }
-                onContact({ professional_user_id: pro.user_id, message });
-                setOpen(false);
-                setMessage("");
-              }}
-            >
-              Enviar solicitação
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      {pro.slug && (
+        <Button asChild size="sm" className="mt-auto">
+          <Link to="/profissional/$slug" params={{ slug: pro.slug }}>
+            Ver perfil e avaliações <ArrowRight className="ml-1 h-3 w-3" />
+          </Link>
+        </Button>
+      )}
     </div>
   );
 }

@@ -26,7 +26,9 @@ type FormState = {
   full_name: string;
   bio: string;
   photo_url: string;
-  council_id: string;
+  council_type: string;
+  council_number: string;
+  council_state: string;
   specialties: string;
   city: string;
   state: string;
@@ -43,7 +45,9 @@ const EMPTY: FormState = {
   full_name: "",
   bio: "",
   photo_url: "",
-  council_id: "",
+  council_type: "",
+  council_number: "",
+  council_state: "",
   specialties: "",
   city: "",
   state: "",
@@ -80,7 +84,9 @@ function ProProfilePage() {
         full_name: profile.full_name ?? "",
         bio: profile.bio ?? "",
         photo_url: profile.photo_url ?? "",
-        council_id: profile.council_id ?? "",
+        council_type: profile.council_type ?? "",
+        council_number: profile.council_number ?? "",
+        council_state: profile.council_state ?? "",
         specialties: (profile.specialties ?? []).join(", "),
         city: profile.city ?? "",
         state: profile.state ?? "",
@@ -102,7 +108,9 @@ function ProProfilePage() {
           full_name: form.full_name,
           bio: form.bio || null,
           photo_url: form.photo_url || null,
-          council_id: form.council_id || null,
+          council_type: form.council_type || null,
+          council_number: form.council_number || null,
+          council_state: form.council_state || null,
           specialties: form.specialties.split(",").map((s) => s.trim()).filter(Boolean),
           city: form.city || null,
           state: form.state || null,
@@ -131,21 +139,30 @@ function ProProfilePage() {
     <ProPage title="Meu perfil público">
       <div className="grid gap-4 lg:grid-cols-3">
         <ProCard title="Publicação no Marketplace" className="lg:col-span-3">
-          <div className="flex flex-wrap items-center gap-6">
-            <label className="flex items-center gap-2 text-sm">
-              <Switch
-                checked={form.visible_in_marketplace}
-                onCheckedChange={(v) => setForm({ ...form, visible_in_marketplace: v })}
+          <div className="space-y-3">
+            {profile && (
+              <ModerationBanner
+                status={(profile as { moderation_status?: string }).moderation_status ?? "pending"}
+                reason={(profile as { rejection_reason?: string | null }).rejection_reason ?? null}
+                slug={(profile as { slug?: string | null }).slug ?? null}
               />
-              Visível no Marketplace
-            </label>
-            <label className="flex items-center gap-2 text-sm">
-              <Switch
-                checked={form.accepting_patients}
-                onCheckedChange={(v) => setForm({ ...form, accepting_patients: v })}
-              />
-              Aceitando novos pacientes
-            </label>
+            )}
+            <div className="flex flex-wrap items-center gap-6">
+              <label className="flex items-center gap-2 text-sm">
+                <Switch
+                  checked={form.visible_in_marketplace}
+                  onCheckedChange={(v) => setForm({ ...form, visible_in_marketplace: v })}
+                />
+                Visível no Marketplace
+              </label>
+              <label className="flex items-center gap-2 text-sm">
+                <Switch
+                  checked={form.accepting_patients}
+                  onCheckedChange={(v) => setForm({ ...form, accepting_patients: v })}
+                />
+                Aceitando novos pacientes
+              </label>
+            </div>
           </div>
         </ProCard>
 
@@ -154,8 +171,14 @@ function ProProfilePage() {
             <Field label="Nome completo">
               <Input value={form.full_name} onChange={(e) => setForm({ ...form, full_name: e.target.value })} />
             </Field>
-            <Field label="Registro / Conselho">
-              <Input value={form.council_id} onChange={(e) => setForm({ ...form, council_id: e.target.value })} placeholder="CRP 00/000000" />
+            <Field label="Tipo de conselho">
+              <Input value={form.council_type} onChange={(e) => setForm({ ...form, council_type: e.target.value })} placeholder="CRP, CRM, CREFITO..." />
+            </Field>
+            <Field label="Número do conselho">
+              <Input value={form.council_number} onChange={(e) => setForm({ ...form, council_number: e.target.value })} placeholder="00/000000" />
+            </Field>
+            <Field label="UF do conselho">
+              <Input value={form.council_state} onChange={(e) => setForm({ ...form, council_state: e.target.value })} placeholder="SP" maxLength={2} />
             </Field>
             <Field label="Especialidades (vírgula)" full>
               <Input value={form.specialties} onChange={(e) => setForm({ ...form, specialties: e.target.value })} placeholder="TEA, TDAH, ABA" />
@@ -241,6 +264,44 @@ function Field({ label, children, full }: { label: string; children: React.React
     <div className={full ? "md:col-span-2 space-y-1.5" : "space-y-1.5"}>
       <Label className="text-xs">{label}</Label>
       {children}
+    </div>
+  );
+}
+
+function ModerationBanner({
+  status,
+  reason,
+  slug,
+}: {
+  status: string;
+  reason: string | null;
+  slug: string | null;
+}) {
+  if (status === "approved") {
+    return (
+      <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-3 text-sm text-emerald-800 dark:text-emerald-200">
+        Perfil <b>aprovado</b> pela moderação.
+        {slug && (
+          <>
+            {" "}Página pública:{" "}
+            <a href={`/profissional/${slug}`} target="_blank" rel="noreferrer" className="underline">
+              /profissional/{slug}
+            </a>
+          </>
+        )}
+      </div>
+    );
+  }
+  if (status === "rejected") {
+    return (
+      <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-sm">
+        <b>Perfil recusado.</b> {reason && <span>Motivo: {reason}</span>} Ajuste seus dados e salve novamente para reenviar à moderação.
+      </div>
+    );
+  }
+  return (
+    <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-900 dark:text-amber-200">
+      Perfil em <b>análise pela moderação</b>. Assim que aprovado ele aparecerá no Marketplace público.
     </div>
   );
 }
