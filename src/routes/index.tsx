@@ -36,15 +36,17 @@ const pillarIcons = [HeartHandshake, Sparkles, MessagesSquare, LineChart];
 
 function Landing() {
   const { t } = useTranslation(["landing", "common"]);
-  const pillars = t("landing:pillars.items", { returnObjects: true }) as Array<{
+  const pillarsRaw = t("landing:pillars.items", { returnObjects: true, defaultValue: [] });
+  const pillars = (Array.isArray(pillarsRaw) ? pillarsRaw : []) as Array<{
     title: string;
     description: string;
   }>;
-  const modules = t("landing:modules.items", { returnObjects: true }) as string[];
-  const aiBullets = t("landing:ai.bullets", { returnObjects: true }) as string[];
-  const securityItems = t("landing:security.items", {
-    returnObjects: true,
-  }) as string[];
+  const modulesRaw = t("landing:modules.items", { returnObjects: true, defaultValue: [] });
+  const modules = (Array.isArray(modulesRaw) ? modulesRaw : []) as string[];
+  const aiBulletsRaw = t("landing:ai.bullets", { returnObjects: true, defaultValue: [] });
+  const aiBullets = (Array.isArray(aiBulletsRaw) ? aiBulletsRaw : []) as string[];
+  const securityRaw = t("landing:security.items", { returnObjects: true, defaultValue: [] });
+  const securityItems = (Array.isArray(securityRaw) ? securityRaw : []) as string[];
 
   return (
     <div className="min-h-dvh bg-background">
