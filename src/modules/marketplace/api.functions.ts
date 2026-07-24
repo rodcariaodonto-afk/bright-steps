@@ -54,9 +54,7 @@ export const getProfessionalBySlug = createServerFn({ method: "GET" })
     const supabase = publicClient();
     const { data: pro, error } = await supabase
       .from("professional_profiles")
-      .select(
-        "id, user_id, slug, full_name, bio, photo_url, specialties, council_type, council_number, council_state, accepting_patients, city, state, modality, price_range, languages, average_rating, reviews_count, plan, contact_email, contact_phone",
-      )
+      .select(MARKETPLACE_COLUMNS)
       .eq("slug", data.slug)
       .eq("visible_in_marketplace", true)
       .eq("moderation_status", "approved")
