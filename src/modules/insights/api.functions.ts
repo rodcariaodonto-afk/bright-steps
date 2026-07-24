@@ -1,10 +1,14 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { generateText, Output, NoObjectGeneratedError } from "ai";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { createLovableAiGatewayProvider } from "@/lib/ai-gateway.server";
 import { ATLAS_GUARDRAILS } from "@/modules/ai/prompts/guardrails";
+import type { Database } from "@/integrations/supabase/types";
+
+type DB = SupabaseClient<Database>;
 
 const MODEL = "google/gemini-2.5-flash";
 const CACHE_TTL_HOURS = 24;
