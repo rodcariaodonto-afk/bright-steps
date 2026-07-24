@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useTranslation } from "react-i18next";
 import {
   Sparkles,
   Pill,
@@ -31,9 +30,9 @@ export const Route = createFileRoute("/app/")({
 
 function getGreetingKey() {
   const h = new Date().getHours();
-  if (h < 12) return "morning" as const;
-  if (h < 18) return "afternoon" as const;
-  return "evening" as const;
+  if (h < 12) return "Bom dia";
+  if (h < 18) return "Boa tarde";
+  return "Boa noite";
 }
 
 function firstName(name: string | null | undefined, fallback: string): string {
@@ -42,10 +41,9 @@ function firstName(name: string | null | undefined, fallback: string): string {
 }
 
 function Dashboard() {
-  const { t } = useTranslation("app");
   const { profile } = useSession();
   const { activeChild, children } = useActiveChild();
-  const greetingKey = getGreetingKey();
+  const greeting = getGreetingKey();
 
   const displayName = firstName(profile?.fullName, "olá");
   const childName = activeChild
@@ -59,12 +57,12 @@ function Dashboard() {
           Meu Mundo Azul
         </p>
         <h1 className="mt-2 font-display text-3xl font-extrabold text-foreground md:text-4xl">
-          {t(`dashboard.greeting.${greetingKey}`)}, {displayName}.
+          {greeting}, {displayName}.
         </h1>
         <p className="mt-1 text-muted-foreground">
           {childName
             ? `Acompanhamento de ${childName} hoje.`
-            : t("dashboard.welcome")}
+            : "Aqui está o resumo de hoje."}
         </p>
       </header>
 
@@ -77,21 +75,21 @@ function Dashboard() {
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             <Card
               icon={<CalendarDays className="h-5 w-5" />}
-              title={t("dashboard.cards.nextEvent")}
+              title="Próximo compromisso"
               value="Sem agendamentos"
               hint="Cadastre a agenda em Calendário"
               tone="primary"
             />
             <Card
               icon={<Pill className="h-5 w-5" />}
-              title={t("dashboard.cards.medications")}
+              title="Medicações de hoje"
               value="Sem medicações"
               hint="Cadastre em Medicação"
               tone="accent"
             />
             <Card
               icon={<SmilePlus className="h-5 w-5" />}
-              title={t("dashboard.cards.mood")}
+              title="Humor recente"
               value="Sem registros"
               hint="Faça o primeiro em Humor"
             />

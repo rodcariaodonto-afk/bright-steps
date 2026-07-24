@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { useTranslation } from "react-i18next";
 import {
   Sparkles,
   HeartHandshake,
@@ -34,20 +33,55 @@ export const Route = createFileRoute("/")({
 
 const pillarIcons = [HeartHandshake, Sparkles, MessagesSquare, LineChart];
 
-function Landing() {
-  const { t } = useTranslation(["landing", "common"]);
-  const pillarsRaw = t("landing:pillars.items", { returnObjects: true, defaultValue: [] });
-  const pillars = (Array.isArray(pillarsRaw) ? pillarsRaw : []) as Array<{
-    title: string;
-    description: string;
-  }>;
-  const modulesRaw = t("landing:modules.items", { returnObjects: true, defaultValue: [] });
-  const modules = (Array.isArray(modulesRaw) ? modulesRaw : []) as string[];
-  const aiBulletsRaw = t("landing:ai.bullets", { returnObjects: true, defaultValue: [] });
-  const aiBullets = (Array.isArray(aiBulletsRaw) ? aiBulletsRaw : []) as string[];
-  const securityRaw = t("landing:security.items", { returnObjects: true, defaultValue: [] });
-  const securityItems = (Array.isArray(securityRaw) ? securityRaw : []) as string[];
+const pillars = [
+  {
+    title: "Família organizada",
+    description:
+      "Rotina, calendário, medicações, humor e comportamento em um painel único e acolhedor.",
+  },
+  {
+    title: "Criança encantada",
+    description:
+      "Uma experiência que parece brincadeira. Avatar, mundo, missões e IA que conversa como um amigo.",
+  },
+  {
+    title: "Profissionais integrados",
+    description:
+      "Terapeutas e escolas recebem contexto real, aplicam avaliações e devolvem relatórios em tempo real.",
+  },
+  {
+    title: "IA de verdade",
+    description:
+      "Não é um chatbot. É um assistente que lembra da história da criança e sugere caminhos com base em dados.",
+  },
+];
 
+const modules = [
+  "Perfil clínico completo da criança",
+  "Timeline unificada de tudo que acontece",
+  "Calendário com terapias, escola e rotinas",
+  "Medicações com lembretes e histórico",
+  "Registro de humor e comportamento",
+  "Objetivos e evolução com gráficos",
+  "Documentos, laudos e receitas organizados",
+  "Relatórios semanais gerados por IA",
+];
+
+const aiBullets = [
+  "Chat contextual com o histórico completo",
+  "Histórias sociais para preparar consultas, viagens e mudanças",
+  "Resumos semanais e mensais automáticos",
+  "Sugestões de rotina baseadas no que funciona",
+];
+
+const securityItems = [
+  "Consentimento versionado e revogável a qualquer momento",
+  "Row Level Security e auditoria em cada acesso",
+  "Exportação e exclusão dos dados em um clique",
+  "Dados sensíveis de menores tratados com o cuidado que merecem",
+];
+
+function Landing() {
   return (
     <div className="min-h-dvh bg-background">
       {/* Nav */}
@@ -58,24 +92,24 @@ function Landing() {
           </Link>
           <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
             <a href="#pilares" className="hover:text-foreground">
-              {t("common:nav.product")}
+              Produto
             </a>
             <a href="#modulos" className="hover:text-foreground">
-              {t("common:nav.family")}
+              Família
             </a>
             <a href="#ia" className="hover:text-foreground">
-              {t("common:nav.ai")}
+              Inteligência Artificial
             </a>
             <a href="#seguranca" className="hover:text-foreground">
-              {t("common:nav.security")}
+              Segurança
             </a>
           </nav>
           <div className="flex items-center gap-2">
             <Button asChild variant="ghost" size="sm">
-              <Link to="/auth">{t("common:actions.signIn")}</Link>
+              <Link to="/auth">Entrar</Link>
             </Button>
             <Button asChild size="sm" className="rounded-full">
-              <Link to="/auth">{t("common:actions.getStarted")}</Link>
+              <Link to="/auth">Começar agora</Link>
             </Button>
           </div>
         </div>
@@ -100,18 +134,18 @@ function Landing() {
             >
               <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-soft px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
                 <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                {t("landing:hero.eyebrow")}
+                Desenvolvimento infantil · Neurodivergência · IA
               </p>
               <h1 className="mt-6 text-balance text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground md:text-6xl">
-                {t("landing:hero.title")}
+                A plataforma que caminha ao lado da sua família, todos os dias.
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                {t("landing:hero.subtitle")}
+                Meu Mundo Azul conecta pais, crianças, terapeutas e escolas em um único lugar. Rotinas, terapias, humor, medicações, relatórios e uma IA que aprende com o dia a dia da criança.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg" className="rounded-full">
                   <Link to="/auth">
-                    {t("landing:hero.primaryCta")}
+                    Começar gratuitamente
                     <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
@@ -121,11 +155,11 @@ function Landing() {
                   variant="outline"
                   className="rounded-full"
                 >
-                  <a href="#modulos">{t("landing:hero.secondaryCta")}</a>
+                  <a href="#modulos">Ver como funciona</a>
                 </Button>
               </div>
               <p className="mt-6 text-sm text-muted-foreground">
-                {t("landing:hero.trust")}
+                Feito com apoio de famílias e profissionais do neurodesenvolvimento
               </p>
             </motion.div>
 
@@ -145,10 +179,10 @@ function Landing() {
           <div className="container-atlas">
             <div className="max-w-2xl">
               <h2 className="text-4xl font-bold tracking-tight text-foreground">
-                {t("landing:pillars.title")}
+                Um ecossistema, muitas vidas.
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                {t("landing:pillars.subtitle")}
+                Meu Mundo Azul nasceu para o TEA, mas cresce com qualquer condição do neurodesenvolvimento: TDAH, dislexia, Down, TOD, altas habilidades e mais.
               </p>
             </div>
             <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -184,13 +218,13 @@ function Landing() {
           <div className="container-atlas grid gap-12 lg:grid-cols-[1fr_1.1fr]">
             <div>
               <h2 className="text-4xl font-bold tracking-tight text-foreground">
-                {t("landing:modules.title")}
+                Tudo conversa entre si.
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                {t("landing:modules.subtitle")}
+                Cada atividade alimenta a linha do tempo, gera relatórios, alimenta a IA e ajusta as recomendações.
               </p>
               <Button asChild size="lg" className="mt-8 rounded-full">
-                <Link to="/auth">{t("common:actions.getStarted")}</Link>
+                <Link to="/auth">Começar agora</Link>
               </Button>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2">
@@ -218,13 +252,13 @@ function Landing() {
             <div>
               <p className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary-foreground">
                 <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                {t("landing:ai.eyebrow")}
+                Inteligência Artificial
               </p>
               <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground">
-                {t("landing:ai.title")}
+                Uma IA que conhece a sua criança.
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                {t("landing:ai.description")}
+                Meu Mundo Azul conversa em linguagem natural, cria histórias sociais personalizadas para preparar novos momentos e identifica padrões que passam despercebidos no dia a dia.
               </p>
               <ul className="mt-8 space-y-3">
                 {aiBullets.map((bullet) => (
@@ -235,7 +269,7 @@ function Landing() {
                 ))}
               </ul>
               <p className="mt-6 rounded-2xl border border-border/60 bg-background/70 p-4 text-xs text-muted-foreground">
-                {t("landing:ai.disclaimer")}
+                A IA do Meu Mundo Azul é ferramenta de apoio. Nunca substitui profissionais de saúde ou educação.
               </p>
             </div>
             <AIChatPreview />
@@ -250,7 +284,7 @@ function Landing() {
                 <Shield className="h-6 w-6" aria-hidden="true" />
               </div>
               <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground">
-                {t("landing:security.title")}
+                Feito com respeito absoluto pela LGPD.
               </h2>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2">
@@ -303,17 +337,17 @@ function Landing() {
           <div className="container-atlas">
             <div className="rounded-3xl bg-foreground px-8 py-16 text-center text-background md:px-16">
               <h2 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">
-                {t("landing:cta.title")}
+                Comece hoje. Cresça com o Meu Mundo Azul por muitos anos.
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg opacity-80">
-                {t("landing:cta.subtitle")}
+                A plataforma acompanha a criança em cada fase, da rotina de sono à autonomia, da comunicação às terapias.
               </p>
               <Button
                 asChild
                 size="lg"
                 className="mt-8 rounded-full bg-accent text-accent-foreground hover:bg-accent/90"
               >
-                <Link to="/auth">{t("landing:cta.action")}</Link>
+                <Link to="/auth">Criar minha conta</Link>
               </Button>
             </div>
           </div>
@@ -323,11 +357,11 @@ function Landing() {
       <footer className="border-t border-border/60 py-10">
         <div className="container-atlas flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
           <AtlasLogo />
-          <p>© {new Date().getFullYear()} Meu Mundo Azul · {t("common:footer.rights")}</p>
+          <p>© {new Date().getFullYear()} Meu Mundo Azul · Todos os direitos reservados.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground">{t("common:footer.lgpd")}</a>
-            <a href="#" className="hover:text-foreground">{t("common:footer.privacy")}</a>
-            <a href="#" className="hover:text-foreground">{t("common:footer.terms")}</a>
+            <a href="#" className="hover:text-foreground">LGPD</a>
+            <a href="#" className="hover:text-foreground">Privacidade</a>
+            <a href="#" className="hover:text-foreground">Termos</a>
           </div>
         </div>
       </footer>

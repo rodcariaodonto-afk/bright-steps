@@ -36,6 +36,8 @@ if (!i18n.isInitialized) {
     react: { useSuspense: false },
     initAsync: false,
     load: "currentOnly",
+    saveMissing: false,
+    parseMissingKeyHandler: () => "Texto indisponível",
   });
 }
 
