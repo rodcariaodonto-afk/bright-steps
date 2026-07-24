@@ -24,6 +24,7 @@ import {
   BookOpen,
   ClipboardCheck,
   HeartHandshake,
+  CreditCard,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
@@ -63,6 +64,7 @@ const NAV: NavItem[] = [
   { to: "/app/mensagens", label: "Mensagens", icon: MessageSquare },
   { to: "/app/ia", label: "Azul IA", icon: Sparkles },
   { to: "/app/notificacoes", label: "Notificações", icon: Bell },
+  { to: "/app/assinatura", label: "Assinatura", icon: CreditCard },
   { to: "/app/configuracoes", label: "Configurações", icon: Settings },
 ];
 
