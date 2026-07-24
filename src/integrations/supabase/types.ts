@@ -14,6 +14,68 @@ export type Database = {
   }
   public: {
     Tables: {
+      behavior_events: {
+        Row: {
+          antecedent: string | null
+          behavior: string | null
+          category: string
+          child_id: string
+          consequence: string | null
+          created_at: string
+          duration_minutes: number | null
+          id: string
+          intensity: number | null
+          location: string | null
+          logged_by: string | null
+          note: string | null
+          occurred_at: string
+          strategies_used: string[]
+          triggers: string[]
+        }
+        Insert: {
+          antecedent?: string | null
+          behavior?: string | null
+          category?: string
+          child_id: string
+          consequence?: string | null
+          created_at?: string
+          duration_minutes?: number | null
+          id?: string
+          intensity?: number | null
+          location?: string | null
+          logged_by?: string | null
+          note?: string | null
+          occurred_at?: string
+          strategies_used?: string[]
+          triggers?: string[]
+        }
+        Update: {
+          antecedent?: string | null
+          behavior?: string | null
+          category?: string
+          child_id?: string
+          consequence?: string | null
+          created_at?: string
+          duration_minutes?: number | null
+          id?: string
+          intensity?: number | null
+          location?: string | null
+          logged_by?: string | null
+          note?: string | null
+          occurred_at?: string
+          strategies_used?: string[]
+          triggers?: string[]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "behavior_events_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       child_guardians: {
         Row: {
           child_id: string
@@ -241,6 +303,166 @@ export type Database = {
           },
         ]
       }
+      medication_logs: {
+        Row: {
+          child_id: string
+          created_at: string
+          dose_taken: string | null
+          id: string
+          logged_by: string | null
+          medication_id: string
+          note: string | null
+          side_effects: string | null
+          status: string
+          taken_at: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          dose_taken?: string | null
+          id?: string
+          logged_by?: string | null
+          medication_id: string
+          note?: string | null
+          side_effects?: string | null
+          status?: string
+          taken_at?: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          dose_taken?: string | null
+          id?: string
+          logged_by?: string | null
+          medication_id?: string
+          note?: string | null
+          side_effects?: string | null
+          status?: string
+          taken_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "medication_logs_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "medication_logs_medication_id_fkey"
+            columns: ["medication_id"]
+            isOneToOne: false
+            referencedRelation: "medications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      medications: {
+        Row: {
+          child_id: string
+          created_at: string
+          created_by: string | null
+          dose: string | null
+          end_date: string | null
+          frequency: string | null
+          id: string
+          is_active: boolean
+          name: string
+          notes: string | null
+          prescriber: string | null
+          route: string | null
+          schedule_times: string[]
+          start_date: string | null
+          updated_at: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          created_by?: string | null
+          dose?: string | null
+          end_date?: string | null
+          frequency?: string | null
+          id?: string
+          is_active?: boolean
+          name: string
+          notes?: string | null
+          prescriber?: string | null
+          route?: string | null
+          schedule_times?: string[]
+          start_date?: string | null
+          updated_at?: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          created_by?: string | null
+          dose?: string | null
+          end_date?: string | null
+          frequency?: string | null
+          id?: string
+          is_active?: boolean
+          name?: string
+          notes?: string | null
+          prescriber?: string | null
+          route?: string | null
+          schedule_times?: string[]
+          start_date?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "medications_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mood_logs: {
+        Row: {
+          child_id: string
+          created_at: string
+          emoji: string | null
+          id: string
+          level: number
+          logged_at: string
+          logged_by: string | null
+          note: string | null
+          triggers: string[]
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          emoji?: string | null
+          id?: string
+          level: number
+          logged_at?: string
+          logged_by?: string | null
+          note?: string | null
+          triggers?: string[]
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          emoji?: string | null
+          id?: string
+          level?: number
+          logged_at?: string
+          logged_by?: string | null
+          note?: string | null
+          triggers?: string[]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mood_logs_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -267,6 +489,110 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      routine_completions: {
+        Row: {
+          child_id: string
+          completed_on: string
+          created_at: string
+          id: string
+          logged_by: string | null
+          note: string | null
+          routine_id: string
+          status: string
+        }
+        Insert: {
+          child_id: string
+          completed_on: string
+          created_at?: string
+          id?: string
+          logged_by?: string | null
+          note?: string | null
+          routine_id: string
+          status?: string
+        }
+        Update: {
+          child_id?: string
+          completed_on?: string
+          created_at?: string
+          id?: string
+          logged_by?: string | null
+          note?: string | null
+          routine_id?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "routine_completions_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "routine_completions_routine_id_fkey"
+            columns: ["routine_id"]
+            isOneToOne: false
+            referencedRelation: "routines"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      routines: {
+        Row: {
+          category: string
+          child_id: string
+          color: string | null
+          created_at: string
+          created_by: string | null
+          days_of_week: number[]
+          icon: string | null
+          id: string
+          is_active: boolean
+          notes: string | null
+          time_of_day: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          child_id: string
+          color?: string | null
+          created_at?: string
+          created_by?: string | null
+          days_of_week?: number[]
+          icon?: string | null
+          id?: string
+          is_active?: boolean
+          notes?: string | null
+          time_of_day?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          child_id?: string
+          color?: string | null
+          created_at?: string
+          created_by?: string | null
+          days_of_week?: number[]
+          icon?: string | null
+          id?: string
+          is_active?: boolean
+          notes?: string | null
+          time_of_day?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "routines_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
