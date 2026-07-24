@@ -93,6 +93,7 @@ function SettingsPage() {
         <section className="lg:col-span-2 space-y-6">
           <FamilyBasicsCard familyId={family.id} initialName={family.name} initialTz={family.timezone} />
           <MembersCard familyId={family.id} />
+          <ProfessionalsCard familyId={family.id} />
         </section>
         <aside className="space-y-6">
           <div className="rounded-3xl border border-border/60 bg-card p-6">
