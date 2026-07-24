@@ -133,6 +133,87 @@ export const upsertMyProfessionalProfile = createServerFn({ method: "POST" })
     return { ok: true };
   });
 
+// ------------- Professional application (public opt-in) -------------
+
+const applicationSchema = z.object({
+  full_name: z.string().trim().min(2).max(120),
+  bio: z.string().trim().max(2000).optional().nullable(),
+  photo_url: z.string().trim().max(500).optional().nullable(),
+  council_type: z.string().trim().min(2).max(20),
+  council_number: z.string().trim().min(2).max(30),
+  council_state: z.string().trim().min(2).max(4),
+  specialties: z.array(z.string().trim().min(1).max(80)).min(1).max(12),
+  city: z.string().trim().max(80).optional().nullable(),
+  state: z.string().trim().max(4).optional().nullable(),
+  modality: z.enum(["presencial", "online", "hibrido"]).default("online"),
+  price_range: z.string().trim().max(60).optional().nullable(),
+  contact_email: z.string().trim().email().max(120),
+  contact_phone: z.string().trim().max(30).optional().nullable(),
+  languages: z.array(z.string().trim().min(2).max(10)).default(["pt-BR"]),
+  terms_accepted: z.literal(true),
+});
+
+export const submitProfessionalApplication = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((v: unknown) => applicationSchema.parse(v))
+  .handler(async ({ context, data }) => {
+    const { supabase, userId } = context;
+    const { terms_accepted: _t, ...profile } = data;
+
+    const { data: existing } = await supabase
+      .from("professional_profiles")
+      .select("id")
+      .eq("user_id", userId)
+      .maybeSingle();
+
+    const patch = {
+      ...profile,
+      moderation_status: "pending" as const,
+      visible_in_marketplace: false,
+      accepting_patients: false,
+    };
+
+    if (existing) {
+      const { error } = await supabase
+        .from("professional_profiles")
+        .update(patch)
+        .eq("user_id", userId);
+      if (error) throw error;
+    } else {
+      const { error } = await supabase
+        .from("professional_profiles")
+        .insert({ ...patch, user_id: userId });
+      if (error) throw error;
+    }
+    return { ok: true };
+  });
+
+export const getMyProfessionalApplicationStatus = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { supabase, userId } = context;
+    const { data, error } = await supabase
+      .from("professional_profiles")
+      .select(
+        "id, full_name, moderation_status, rejection_reason, moderated_at, visible_in_marketplace, council_type, council_number, council_state, specialties",
+      )
+      .eq("user_id", userId)
+      .maybeSingle();
+    if (error) throw error;
+    return data;
+  });
+
+export const getMyClinicalAccess = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { supabase, userId } = context;
+    const [{ data: isPro }, { data: isAdmin }] = await Promise.all([
+      supabase.rpc("has_role", { _user_id: userId, _role: "professional" }),
+      supabase.rpc("has_role", { _user_id: userId, _role: "admin" }),
+    ]);
+    return { hasAccess: Boolean(isPro) || Boolean(isAdmin), isAdmin: Boolean(isAdmin) };
+  });
+
 // ------------- Contact requests -------------
 
 const contactSchema = z.object({

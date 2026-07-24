@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SejaProfissionalRouteImport } from './routes/seja-profissional'
 import { Route as ProRouteImport } from './routes/pro'
 import { Route as KidRouteImport } from './routes/kid'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -90,6 +91,11 @@ import { Route as AppBibliotecaSlugRouteImport } from './routes/app.biblioteca.$
 import { Route as AppAutoavaliacoesSlugRouteImport } from './routes/app.autoavaliacoes.$slug'
 import { Route as ApiReportsWeeklyRouteImport } from './routes/api/reports.weekly'
 
+const SejaProfissionalRoute = SejaProfissionalRouteImport.update({
+  id: '/seja-profissional',
+  path: '/seja-profissional',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProRoute = ProRouteImport.update({
   id: '/pro',
   path: '/pro',
@@ -498,6 +504,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/kid': typeof KidRouteWithChildren
   '/pro': typeof ProRouteWithChildren
+  '/seja-profissional': typeof SejaProfissionalRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/ai': typeof AdminAiRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -576,6 +583,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/seja-profissional': typeof SejaProfissionalRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/ai': typeof AdminAiRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -659,6 +667,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/kid': typeof KidRouteWithChildren
   '/pro': typeof ProRouteWithChildren
+  '/seja-profissional': typeof SejaProfissionalRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/ai': typeof AdminAiRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -743,6 +752,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/kid'
     | '/pro'
+    | '/seja-profissional'
     | '/admin/achievements'
     | '/admin/ai'
     | '/admin/analytics'
@@ -821,6 +831,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/seja-profissional'
     | '/admin/achievements'
     | '/admin/ai'
     | '/admin/analytics'
@@ -903,6 +914,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/kid'
     | '/pro'
+    | '/seja-profissional'
     | '/admin/achievements'
     | '/admin/ai'
     | '/admin/analytics'
@@ -986,6 +998,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   KidRoute: typeof KidRouteWithChildren
   ProRoute: typeof ProRouteWithChildren
+  SejaProfissionalRoute: typeof SejaProfissionalRoute
   ApiChatRoute: typeof ApiChatRoute
   ProfissionalSlugRoute: typeof ProfissionalSlugRoute
   ApiReportsWeeklyRoute: typeof ApiReportsWeeklyRoute
@@ -993,6 +1006,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/seja-profissional': {
+      id: '/seja-profissional'
+      path: '/seja-profissional'
+      fullPath: '/seja-profissional'
+      preLoaderRoute: typeof SejaProfissionalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pro': {
       id: '/pro'
       path: '/pro'
@@ -1766,6 +1786,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   KidRoute: KidRouteWithChildren,
   ProRoute: ProRouteWithChildren,
+  SejaProfissionalRoute: SejaProfissionalRoute,
   ApiChatRoute: ApiChatRoute,
   ProfissionalSlugRoute: ProfissionalSlugRoute,
   ApiReportsWeeklyRoute: ApiReportsWeeklyRoute,

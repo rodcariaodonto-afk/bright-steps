@@ -2037,7 +2037,7 @@ export type Database = {
       unaccent: { Args: { "": string }; Returns: string }
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      app_role: "admin" | "moderator" | "user" | "professional"
       child_pronouns: "ele" | "ela" | "elu" | "outro"
       consent_scope:
         | "ai_context"
@@ -2178,7 +2178,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "moderator", "user"],
+      app_role: ["admin", "moderator", "user", "professional"],
       child_pronouns: ["ele", "ela", "elu", "outro"],
       consent_scope: [
         "ai_context",
