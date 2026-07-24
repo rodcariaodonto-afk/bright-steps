@@ -56,6 +56,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const { profile } = useSession();
+  const { data: unreadCount = 0 } = useUnreadCount();
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface-2">
