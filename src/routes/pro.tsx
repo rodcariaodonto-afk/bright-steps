@@ -1,14 +1,17 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 import { ProShell } from "@/components/pro/pro-shell";
+import { supabase } from "@/integrations/supabase/client";
 
 /**
- * Layout do Módulo Profissionais.
- * Isolado de `/app` (família) — nada é reutilizado.
- * Quando o Cloud voltar, migramos o subtree para `_authenticated/pro/*`
- * e adicionamos gate por `has_role('professional')`.
+ * Layout do Módulo Profissionais. Requer sessão ativa.
  */
 export const Route = createFileRoute("/pro")({
+  ssr: false,
+  beforeLoad: async () => {
+    const { data } = await supabase.auth.getSession();
+    if (!data.session) throw redirect({ to: "/auth" });
+  },
   component: ProLayout,
 });
 

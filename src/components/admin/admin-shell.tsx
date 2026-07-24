@@ -32,7 +32,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { AdminLogo } from "@/components/admin/admin-logo";
-import { AdminBanner } from "@/components/admin/admin-banner";
+import { UserMenu } from "@/components/atlas/user-menu";
 
 interface NavItem {
   to: string;
@@ -109,7 +109,6 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="flex min-h-dvh flex-col bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-      <AdminBanner />
       <div className="flex flex-1">
         <aside className="hidden w-60 shrink-0 flex-col border-r border-border/60 bg-background lg:flex">
           <div className="px-4 py-4">
@@ -162,9 +161,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
               <Button variant="ghost" size="sm" asChild>
                 <Link to="/pro">{t("topbar.backToPro")}</Link>
               </Button>
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-xs font-semibold text-background">
-                RC
-              </div>
+              <UserMenu variant="dark" />
             </div>
           </header>
           <main className="flex-1">{children}</main>

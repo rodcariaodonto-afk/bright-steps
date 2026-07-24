@@ -1,14 +1,17 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 import { AppShell } from "@/components/atlas/app-shell";
+import { supabase } from "@/integrations/supabase/client";
 
 /**
- * Layout do módulo Família.
- * Quando o Cloud for ativado, criaremos `src/routes/_authenticated/route.tsx`
- * (gerido pela integração Supabase) e moveremos as sub-rotas para lá.
- * Por enquanto o subtree `/app/*` é aberto e mostra placeholders.
+ * Layout do módulo Família. Requer sessão ativa.
  */
 export const Route = createFileRoute("/app")({
+  ssr: false,
+  beforeLoad: async () => {
+    const { data } = await supabase.auth.getSession();
+    if (!data.session) throw redirect({ to: "/auth" });
+  },
   component: AppLayout,
 });
 
