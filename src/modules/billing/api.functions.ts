@@ -165,3 +165,61 @@ export const getMySubscription = createServerFn({ method: "POST" })
         : null,
     };
   });
+
+export const cancelSubscription = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data: { environment: StripeEnv; immediately?: boolean }) => data)
+  .handler(async ({ data, context }): Promise<CancelResult> => {
+    const { supabase, userId } = context;
+    const { data: sub, error } = await supabase
+      .from("subscriptions")
+      .select("stripe_subscription_id, status")
+      .eq("user_id", userId)
+      .eq("environment", data.environment)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (error || !sub?.stripe_subscription_id) {
+      return { error: "Nenhuma assinatura ativa encontrada." };
+    }
+    try {
+      const stripe = createStripeClient(data.environment);
+      if (data.immediately) {
+        await stripe.subscriptions.cancel(sub.stripe_subscription_id as string);
+        return { ok: true, cancel_at_period_end: false };
+      }
+      const updated = await stripe.subscriptions.update(
+        sub.stripe_subscription_id as string,
+        { cancel_at_period_end: true },
+      );
+      return { ok: true, cancel_at_period_end: !!updated.cancel_at_period_end };
+    } catch (err) {
+      return { error: getStripeErrorMessage(err) };
+    }
+  });
+
+export const reactivateSubscription = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data: { environment: StripeEnv }) => data)
+  .handler(async ({ data, context }): Promise<CancelResult> => {
+    const { supabase, userId } = context;
+    const { data: sub } = await supabase
+      .from("subscriptions")
+      .select("stripe_subscription_id")
+      .eq("user_id", userId)
+      .eq("environment", data.environment)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (!sub?.stripe_subscription_id) return { error: "Nenhuma assinatura encontrada." };
+    try {
+      const stripe = createStripeClient(data.environment);
+      const updated = await stripe.subscriptions.update(
+        sub.stripe_subscription_id as string,
+        { cancel_at_period_end: false },
+      );
+      return { ok: true, cancel_at_period_end: !!updated.cancel_at_period_end };
+    } catch (err) {
+      return { error: getStripeErrorMessage(err) };
+    }
+  });
