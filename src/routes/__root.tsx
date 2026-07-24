@@ -8,10 +8,11 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { I18nextProvider } from "react-i18next";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import "../lib/i18n";
+import i18n from "../lib/i18n";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/atlas/theme-provider";
 
@@ -169,10 +170,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <Outlet />
-        <Toaster position="top-right" richColors />
-      </ThemeProvider>
+      <I18nextProvider i18n={i18n}>
+        <ThemeProvider>
+          <Outlet />
+          <Toaster position="top-right" richColors />
+        </ThemeProvider>
+      </I18nextProvider>
     </QueryClientProvider>
   );
 }
