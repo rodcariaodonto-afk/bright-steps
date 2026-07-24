@@ -35,6 +35,10 @@ import { UserMenu } from "@/components/atlas/user-menu";
 import { ChildPicker } from "@/components/atlas/child-picker";
 import { useSession } from "@/hooks/use-session";
 import { useUnreadCount } from "@/hooks/use-notifications";
+import { useSubscription } from "@/hooks/use-subscription";
+import { SubscriptionBanner } from "@/components/billing/subscription-banner";
+import { UpgradeCard } from "@/components/billing/upgrade-card";
+import { ROUTE_FEATURE } from "@/modules/billing/entitlements";
 
 interface NavItem {
   to: string;
@@ -71,8 +75,18 @@ const NAV: NavItem[] = [
 export function AppShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const { profile } = useSession();
+  const { profile, session } = useSession();
   const { data: unreadCount = 0 } = useUnreadCount();
+  const { hasFeature, loading: subLoading } = useSubscription(session?.user?.id);
+
+  // Gate por rota: se a rota atual exige uma feature que o plano não libera,
+  // trocamos o conteúdo por um UpgradeCard sem sair do shell.
+  const requiredFeature = Object.entries(ROUTE_FEATURE).find(([path]) =>
+    location.pathname === path || location.pathname.startsWith(`${path}/`),
+  )?.[1];
+  const isLocked =
+    !!requiredFeature && !subLoading && !hasFeature(requiredFeature);
+
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface-2">
@@ -188,7 +202,16 @@ export function AppShell({ children }: { children: ReactNode }) {
             </nav>
           )}
 
-          <main className="flex-1">{children}</main>
+          <SubscriptionBanner />
+          <main className="flex-1">
+            {isLocked && requiredFeature ? (
+              <div className="p-6">
+                <UpgradeCard feature={requiredFeature} />
+              </div>
+            ) : (
+              children
+            )}
+          </main>
         </div>
       </div>
     </div>

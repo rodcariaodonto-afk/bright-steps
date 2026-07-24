@@ -1,8 +1,13 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { getStripeEnvironment, isPaymentsConfigured } from "@/lib/stripe";
-import { findPlanByCode, type PlanCode } from "@/modules/billing/plans";
+import { findPlanByPriceId, type PlanCode } from "@/modules/billing/plans";
+import {
+  hasFeature as hasFeatureImpl,
+  type EntitledPlan,
+  type Feature,
+} from "@/modules/billing/entitlements";
 
 export interface SubscriptionRow {
   id: string;
@@ -19,8 +24,12 @@ export interface SubscriptionState {
   loading: boolean;
   subscription: SubscriptionRow | null;
   planCode: PlanCode | null;
+  /** Plano efetivo para gating; "free" quando não há assinatura ativa. */
+  entitledPlan: EntitledPlan;
   isActive: boolean;
   isTrial: boolean;
+  isPastDue: boolean;
+  hasFeature: (feature: Feature) => boolean;
   refresh: () => Promise<void>;
 }
 
@@ -86,16 +95,31 @@ export function useSubscription(userId: string | null | undefined): Subscription
     };
   }, [userId, load]);
 
-  const planCode = subscription && findPlanByCode(subscription.product_id)?.code
-    ? (subscription.product_id as PlanCode)
-    : null;
+  const isActive = isRowActive(subscription);
+
+  // planCode: sempre derivado do price_id (lookup_key), que é estável entre
+  // sandbox/live. Nunca do product_id (que guarda o `prod_xxx` interno).
+  const planCode: PlanCode | null = useMemo(() => {
+    if (!subscription) return null;
+    return findPlanByPriceId(subscription.price_id)?.code ?? null;
+  }, [subscription]);
+
+  const entitledPlan: EntitledPlan = isActive && planCode ? planCode : "free";
+
+  const hasFeature = useCallback(
+    (feature: Feature) => hasFeatureImpl(entitledPlan, feature),
+    [entitledPlan],
+  );
 
   return {
     loading,
     subscription,
     planCode,
-    isActive: isRowActive(subscription),
+    entitledPlan,
+    isActive,
     isTrial: subscription?.status === "trialing",
+    isPastDue: subscription?.status === "past_due",
+    hasFeature,
     refresh: load,
   };
 }

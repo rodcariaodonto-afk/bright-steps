@@ -34,12 +34,19 @@ function AuthPage() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Suporte a ?redirect=/rota após login (usado pelo /planos, por ex.)
+  const search = Route.useSearch() as { redirect?: string };
+  const redirectTo =
+    typeof search?.redirect === "string" && search.redirect.startsWith("/")
+      ? search.redirect
+      : "/app";
+
   // Redireciona se já estiver logado
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate({ to: "/app" });
+      if (data.session) navigate({ to: redirectTo });
     });
-  }, [navigate]);
+  }, [navigate, redirectTo]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -50,7 +57,7 @@ function AuthPage() {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/app`,
+            emailRedirectTo: `${window.location.origin}${redirectTo}`,
             data: { full_name: name },
           },
         });
@@ -63,7 +70,7 @@ function AuthPage() {
         });
         if (error) throw error;
         toast.success("Bem-vindo!");
-        navigate({ to: "/app" });
+        navigate({ to: redirectTo });
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : "Erro na autenticação";

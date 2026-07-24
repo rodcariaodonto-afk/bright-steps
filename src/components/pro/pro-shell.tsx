@@ -25,6 +25,9 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ProLogo } from "@/components/pro/pro-logo";
 import { UserMenu } from "@/components/atlas/user-menu";
+import { useSession } from "@/hooks/use-session";
+import { useSubscription } from "@/hooks/use-subscription";
+import { UpgradeCard } from "@/components/billing/upgrade-card";
 
 interface NavItem {
   to: string;
@@ -172,7 +175,9 @@ export function ProShell({ children }: { children: ReactNode }) {
             </div>
           </header>
 
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <ProSubscriptionGate>{children}</ProSubscriptionGate>
+          </main>
         </div>
       </div>
 
@@ -188,6 +193,21 @@ export function ProShell({ children }: { children: ReactNode }) {
           </div>
         </button>
       )}
+    </div>
+  );
+}
+
+function ProSubscriptionGate({ children }: { children: ReactNode }) {
+  const { session } = useSession();
+  const { loading, hasFeature } = useSubscription(session?.user?.id);
+  if (loading) return <>{children}</>;
+  if (hasFeature("clinical_module")) return <>{children}</>;
+  return (
+    <div className="p-6">
+      <UpgradeCard
+        feature="clinical_module"
+        reason="Para acessar o Painel Clínico você precisa do plano Profissional Clínica. 7 dias grátis, cancele quando quiser."
+      />
     </div>
   );
 }

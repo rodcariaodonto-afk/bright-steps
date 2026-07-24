@@ -34,7 +34,7 @@ function resolveProductId(item: any): string | null {
   return typeof raw === "string" ? raw : (raw.id ?? null);
 }
 
-async function handleSubscriptionCreated(subscription: any, env: StripeEnv) {
+async function upsertFromSubscription(subscription: any, env: StripeEnv) {
   const userId = subscription.metadata?.userId;
   if (!userId) {
     console.error("Webhook: subscription sem userId em metadata", subscription.id);
@@ -71,29 +71,6 @@ async function handleSubscriptionCreated(subscription: any, env: StripeEnv) {
     );
 }
 
-async function handleSubscriptionUpdated(subscription: any, env: StripeEnv) {
-  const item = subscription.items?.data?.[0];
-  const priceId = resolvePriceId(item);
-  const productId = resolveProductId(item);
-  const periodStart = item?.current_period_start ?? subscription.current_period_start;
-  const periodEnd = item?.current_period_end ?? subscription.current_period_end;
-
-  await getSupabase()
-    .from("subscriptions")
-    .update({
-      status: subscription.status,
-      ...(productId ? { product_id: productId } : {}),
-      ...(priceId ? { price_id: priceId } : {}),
-      current_period_start: iso(periodStart),
-      current_period_end: iso(periodEnd),
-      cancel_at_period_end: subscription.cancel_at_period_end || false,
-      trial_end: iso(subscription.trial_end),
-      updated_at: new Date().toISOString(),
-    })
-    .eq("stripe_subscription_id", subscription.id)
-    .eq("environment", env);
-}
-
 async function handleSubscriptionDeleted(subscription: any, env: StripeEnv) {
   await getSupabase()
     .from("subscriptions")
@@ -106,17 +83,63 @@ async function handleSubscriptionDeleted(subscription: any, env: StripeEnv) {
     .eq("environment", env);
 }
 
+async function handleInvoicePaymentFailed(invoice: any, env: StripeEnv) {
+  const subscriptionId = invoice.subscription || invoice.parent?.subscription_details?.subscription;
+  if (!subscriptionId) return;
+  await getSupabase()
+    .from("subscriptions")
+    .update({ status: "past_due", updated_at: new Date().toISOString() })
+    .eq("stripe_subscription_id", subscriptionId)
+    .eq("environment", env);
+}
+
+async function handleInvoicePaid(invoice: any, env: StripeEnv) {
+  const subscriptionId = invoice.subscription || invoice.parent?.subscription_details?.subscription;
+  if (!subscriptionId) return;
+  const periodEndSec = invoice.lines?.data?.[0]?.period?.end;
+  await getSupabase()
+    .from("subscriptions")
+    .update({
+      status: "active",
+      ...(periodEndSec ? { current_period_end: iso(periodEndSec) } : {}),
+      updated_at: new Date().toISOString(),
+    })
+    .eq("stripe_subscription_id", subscriptionId)
+    .eq("environment", env);
+}
+
+async function handleCheckoutSessionCompleted(session: any, env: StripeEnv) {
+  // Fallback quando o subscription.created chega atrasado: só logamos.
+  // A persistência real acontece nos handlers de subscription.*.
+  console.log(
+    "Webhook: checkout.session.completed",
+    session.id,
+    "mode=",
+    session.mode,
+    "env=",
+    env,
+  );
+}
+
 async function handleWebhook(req: Request, env: StripeEnv) {
   const event = await verifyWebhook(req, env);
   switch (event.type) {
     case "customer.subscription.created":
-      await handleSubscriptionCreated(event.data.object, env);
-      break;
     case "customer.subscription.updated":
-      await handleSubscriptionUpdated(event.data.object, env);
+      await upsertFromSubscription(event.data.object, env);
       break;
     case "customer.subscription.deleted":
       await handleSubscriptionDeleted(event.data.object, env);
+      break;
+    case "invoice.payment_failed":
+      await handleInvoicePaymentFailed(event.data.object, env);
+      break;
+    case "invoice.paid":
+    case "invoice.payment_succeeded":
+      await handleInvoicePaid(event.data.object, env);
+      break;
+    case "checkout.session.completed":
+      await handleCheckoutSessionCompleted(event.data.object, env);
       break;
     default:
       console.log("Webhook: evento não tratado", event.type);
@@ -130,7 +153,7 @@ export const Route = createFileRoute("/api/public/payments/webhook")({
         const rawEnv = new URL(request.url).searchParams.get("env");
         if (rawEnv !== "sandbox" && rawEnv !== "live") {
           console.error("Webhook: env inválido", rawEnv);
-          return Response.json({ received: true, ignored: "invalid env" });
+          return new Response("Missing env", { status: 400 });
         }
         const env: StripeEnv = rawEnv;
         try {
