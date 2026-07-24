@@ -3,7 +3,7 @@ import { CheckCircle2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/planos/obrigado")({
+export const Route = createFileRoute("/planos_/obrigado")({
   validateSearch: (s: Record<string, unknown>) => ({
     session_id: typeof s.session_id === "string" ? s.session_id : undefined,
   }),

@@ -5,7 +5,7 @@ import { PaymentTestModeBanner } from "@/components/billing/payment-test-mode-ba
 import { supabase } from "@/integrations/supabase/client";
 import { findPlanByPriceId } from "@/modules/billing/plans";
 
-export const Route = createFileRoute("/planos/checkout")({
+export const Route = createFileRoute("/planos_/checkout")({
   ssr: false,
   validateSearch: (s: Record<string, unknown>) => ({
     priceId: typeof s.priceId === "string" ? s.priceId : "",

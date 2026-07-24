@@ -35,8 +35,8 @@ import { Route as ProEscalasRouteImport } from './routes/pro.escalas'
 import { Route as ProDocumentosRouteImport } from './routes/pro.documentos'
 import { Route as ProConfiguracoesRouteImport } from './routes/pro.configuracoes'
 import { Route as ProAgendaRouteImport } from './routes/pro.agenda'
-import { Route as PlanosObrigadoRouteImport } from './routes/planos.obrigado'
-import { Route as PlanosCheckoutRouteImport } from './routes/planos.checkout'
+import { Route as PlanosObrigadoRouteImport } from './routes/planos_.obrigado'
+import { Route as PlanosCheckoutRouteImport } from './routes/planos_.checkout'
 import { Route as KidRespirarRouteImport } from './routes/kid.respirar'
 import { Route as KidHumorRouteImport } from './routes/kid.humor'
 import { Route as KidHistoriasRouteImport } from './routes/kid.historias'
@@ -227,14 +227,14 @@ const ProAgendaRoute = ProAgendaRouteImport.update({
   getParentRoute: () => ProRoute,
 } as any)
 const PlanosObrigadoRoute = PlanosObrigadoRouteImport.update({
-  id: '/obrigado',
-  path: '/obrigado',
-  getParentRoute: () => PlanosRoute,
+  id: '/planos_/obrigado',
+  path: '/planos/obrigado',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const PlanosCheckoutRoute = PlanosCheckoutRouteImport.update({
-  id: '/checkout',
-  path: '/checkout',
-  getParentRoute: () => PlanosRoute,
+  id: '/planos_/checkout',
+  path: '/planos/checkout',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const KidRespirarRoute = KidRespirarRouteImport.update({
   id: '/respirar',
@@ -534,7 +534,7 @@ export interface FileRoutesByFullPath {
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/kid': typeof KidRouteWithChildren
-  '/planos': typeof PlanosRouteWithChildren
+  '/planos': typeof PlanosRoute
   '/pro': typeof ProRouteWithChildren
   '/seja-profissional': typeof SejaProfissionalRoute
   '/admin/achievements': typeof AdminAchievementsRoute
@@ -619,7 +619,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
-  '/planos': typeof PlanosRouteWithChildren
+  '/planos': typeof PlanosRoute
   '/seja-profissional': typeof SejaProfissionalRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/ai': typeof AdminAiRoute
@@ -707,7 +707,7 @@ export interface FileRoutesById {
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
   '/kid': typeof KidRouteWithChildren
-  '/planos': typeof PlanosRouteWithChildren
+  '/planos': typeof PlanosRoute
   '/pro': typeof ProRouteWithChildren
   '/seja-profissional': typeof SejaProfissionalRoute
   '/admin/achievements': typeof AdminAchievementsRoute
@@ -761,8 +761,8 @@ export interface FileRoutesById {
   '/kid/historias': typeof KidHistoriasRoute
   '/kid/humor': typeof KidHumorRoute
   '/kid/respirar': typeof KidRespirarRoute
-  '/planos/checkout': typeof PlanosCheckoutRoute
-  '/planos/obrigado': typeof PlanosObrigadoRoute
+  '/planos_/checkout': typeof PlanosCheckoutRoute
+  '/planos_/obrigado': typeof PlanosObrigadoRoute
   '/pro/agenda': typeof ProAgendaRoute
   '/pro/configuracoes': typeof ProConfiguracoesRoute
   '/pro/documentos': typeof ProDocumentosRoute
@@ -1023,8 +1023,8 @@ export interface FileRouteTypes {
     | '/kid/historias'
     | '/kid/humor'
     | '/kid/respirar'
-    | '/planos/checkout'
-    | '/planos/obrigado'
+    | '/planos_/checkout'
+    | '/planos_/obrigado'
     | '/pro/agenda'
     | '/pro/configuracoes'
     | '/pro/documentos'
@@ -1058,10 +1058,12 @@ export interface RootRouteChildren {
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRoute
   KidRoute: typeof KidRouteWithChildren
-  PlanosRoute: typeof PlanosRouteWithChildren
+  PlanosRoute: typeof PlanosRoute
   ProRoute: typeof ProRouteWithChildren
   SejaProfissionalRoute: typeof SejaProfissionalRoute
   ApiChatRoute: typeof ApiChatRoute
+  PlanosCheckoutRoute: typeof PlanosCheckoutRoute
+  PlanosObrigadoRoute: typeof PlanosObrigadoRoute
   ProfissionalSlugRoute: typeof ProfissionalSlugRoute
   ApiReportsWeeklyRoute: typeof ApiReportsWeeklyRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
@@ -1251,19 +1253,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProAgendaRouteImport
       parentRoute: typeof ProRoute
     }
-    '/planos/obrigado': {
-      id: '/planos/obrigado'
-      path: '/obrigado'
+    '/planos_/obrigado': {
+      id: '/planos_/obrigado'
+      path: '/planos/obrigado'
       fullPath: '/planos/obrigado'
       preLoaderRoute: typeof PlanosObrigadoRouteImport
-      parentRoute: typeof PlanosRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/planos/checkout': {
-      id: '/planos/checkout'
-      path: '/checkout'
+    '/planos_/checkout': {
+      id: '/planos_/checkout'
+      path: '/planos/checkout'
       fullPath: '/planos/checkout'
       preLoaderRoute: typeof PlanosCheckoutRouteImport
-      parentRoute: typeof PlanosRoute
+      parentRoute: typeof rootRouteImport
     }
     '/kid/respirar': {
       id: '/kid/respirar'
@@ -1827,19 +1829,6 @@ const KidRouteChildren: KidRouteChildren = {
 
 const KidRouteWithChildren = KidRoute._addFileChildren(KidRouteChildren)
 
-interface PlanosRouteChildren {
-  PlanosCheckoutRoute: typeof PlanosCheckoutRoute
-  PlanosObrigadoRoute: typeof PlanosObrigadoRoute
-}
-
-const PlanosRouteChildren: PlanosRouteChildren = {
-  PlanosCheckoutRoute: PlanosCheckoutRoute,
-  PlanosObrigadoRoute: PlanosObrigadoRoute,
-}
-
-const PlanosRouteWithChildren =
-  PlanosRoute._addFileChildren(PlanosRouteChildren)
-
 interface ProPacientesRouteChildren {
   ProPacientesChildIdRoute: typeof ProPacientesChildIdRoute
 }
@@ -1898,10 +1887,12 @@ const rootRouteChildren: RootRouteChildren = {
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRoute,
   KidRoute: KidRouteWithChildren,
-  PlanosRoute: PlanosRouteWithChildren,
+  PlanosRoute: PlanosRoute,
   ProRoute: ProRouteWithChildren,
   SejaProfissionalRoute: SejaProfissionalRoute,
   ApiChatRoute: ApiChatRoute,
+  PlanosCheckoutRoute: PlanosCheckoutRoute,
+  PlanosObrigadoRoute: PlanosObrigadoRoute,
   ProfissionalSlugRoute: ProfissionalSlugRoute,
   ApiReportsWeeklyRoute: ApiReportsWeeklyRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
