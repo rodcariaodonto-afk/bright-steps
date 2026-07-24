@@ -70,6 +70,7 @@ import { Route as AdminAchievementsRouteImport } from './routes/admin.achievemen
 import { Route as ProSessoesNovaRouteImport } from './routes/pro.sessoes.nova'
 import { Route as ProSessoesIdRouteImport } from './routes/pro.sessoes.$id'
 import { Route as ProPacientesChildIdRouteImport } from './routes/pro.pacientes.$childId'
+import { Route as ApiReportsWeeklyRouteImport } from './routes/api/reports.weekly'
 
 const ProRoute = ProRouteImport.update({
   id: '/pro',
@@ -376,6 +377,11 @@ const ProPacientesChildIdRoute = ProPacientesChildIdRouteImport.update({
   path: '/$childId',
   getParentRoute: () => ProPacientesRoute,
 } as any)
+const ApiReportsWeeklyRoute = ApiReportsWeeklyRouteImport.update({
+  id: '/api/reports/weekly',
+  path: '/api/reports/weekly',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -436,6 +442,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
   '/pro/': typeof ProIndexRoute
+  '/api/reports/weekly': typeof ApiReportsWeeklyRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
@@ -496,6 +503,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
   '/pro': typeof ProIndexRoute
+  '/api/reports/weekly': typeof ApiReportsWeeklyRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
@@ -560,6 +568,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
   '/pro/': typeof ProIndexRoute
+  '/api/reports/weekly': typeof ApiReportsWeeklyRoute
   '/pro/pacientes/$childId': typeof ProPacientesChildIdRoute
   '/pro/sessoes/$id': typeof ProSessoesIdRoute
   '/pro/sessoes/nova': typeof ProSessoesNovaRoute
@@ -625,6 +634,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/app/'
     | '/pro/'
+    | '/api/reports/weekly'
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
@@ -685,6 +695,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/app'
     | '/pro'
+    | '/api/reports/weekly'
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
@@ -748,6 +759,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/app/'
     | '/pro/'
+    | '/api/reports/weekly'
     | '/pro/pacientes/$childId'
     | '/pro/sessoes/$id'
     | '/pro/sessoes/nova'
@@ -760,6 +772,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ProRoute: typeof ProRouteWithChildren
   ApiChatRoute: typeof ApiChatRoute
+  ApiReportsWeeklyRoute: typeof ApiReportsWeeklyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1191,6 +1204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProPacientesChildIdRouteImport
       parentRoute: typeof ProPacientesRoute
     }
+    '/api/reports/weekly': {
+      id: '/api/reports/weekly'
+      path: '/api/reports/weekly'
+      fullPath: '/api/reports/weekly'
+      preLoaderRoute: typeof ApiReportsWeeklyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1345,6 +1365,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ProRoute: ProRouteWithChildren,
   ApiChatRoute: ApiChatRoute,
+  ApiReportsWeeklyRoute: ApiReportsWeeklyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

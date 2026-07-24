@@ -303,6 +303,107 @@ export type Database = {
           },
         ]
       }
+      goal_progress: {
+        Row: {
+          child_id: string
+          created_at: string
+          goal_id: string
+          id: string
+          logged_at: string
+          logged_by: string
+          note: string | null
+          value: number | null
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          goal_id: string
+          id?: string
+          logged_at?: string
+          logged_by: string
+          note?: string | null
+          value?: number | null
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          goal_id?: string
+          id?: string
+          logged_at?: string
+          logged_by?: string
+          note?: string | null
+          value?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "goal_progress_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "goal_progress_goal_id_fkey"
+            columns: ["goal_id"]
+            isOneToOne: false
+            referencedRelation: "goals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      goals: {
+        Row: {
+          category: string
+          child_id: string
+          created_at: string
+          created_by: string
+          description: string | null
+          due_date: string | null
+          id: string
+          status: string
+          target_value: number | null
+          title: string
+          unit: string | null
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          child_id: string
+          created_at?: string
+          created_by: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          status?: string
+          target_value?: number | null
+          title: string
+          unit?: string | null
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          child_id?: string
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          status?: string
+          target_value?: number | null
+          title?: string
+          unit?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "goals_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       medication_logs: {
         Row: {
           child_id: string
@@ -489,6 +590,62 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      reports: {
+        Row: {
+          ai_generated: boolean
+          child_id: string
+          created_at: string
+          created_by: string
+          data: Json
+          highlights: Json
+          id: string
+          kind: string
+          period_end: string
+          period_start: string
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          ai_generated?: boolean
+          child_id: string
+          created_at?: string
+          created_by: string
+          data?: Json
+          highlights?: Json
+          id?: string
+          kind?: string
+          period_end: string
+          period_start: string
+          summary: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          ai_generated?: boolean
+          child_id?: string
+          created_at?: string
+          created_by?: string
+          data?: Json
+          highlights?: Json
+          id?: string
+          kind?: string
+          period_end?: string
+          period_start?: string
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reports_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       routine_completions: {
         Row: {
