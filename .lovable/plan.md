@@ -1,85 +1,63 @@
 ## Objetivo
-Implementar monetização via **Paddle (Seamless Payments)** no Meu Mundo Azul com 3 planos, trial de 7 dias, controle de acesso por assinatura e portal do usuário para gerenciar cobrança.
+Monetizar o Meu Mundo Azul com **Stripe (Seamless Payments)** integrado ao Lovable, usando 3 planos com trial de 7 dias e a conta rodcaria.odonto@gmail.com como titular.
 
-## Planos definidos
+## Sobre a conta Stripe existente
+A integração seamless do Lovable **cria uma nova conexão Stripe gerenciada** vinculada ao email que você informar no formulário — ela não "importa" a conta antiga automaticamente. Duas opções:
 
-| Plano | Preço mensal | Preço anual (20% off) | Trial | Público |
-|---|---|---|---|---|
-| Família Essencial | R$ 19/mês | R$ 182/ano | 7 dias | 1 criança, funcionalidades básicas |
-| Família Plus | R$ 49/mês | R$ 470/ano | 7 dias | até 3 crianças, IA Azul completa, relatórios, biblioteca, comunidade |
-| Profissional Clínica | R$ 129/mês | R$ 1.238/ano | 7 dias | profissional individual, pacientes ilimitados, agenda, SOAP |
-| Free (mantido) | R$ 0 | , | , | acesso limitado atual |
+1. **Usar o mesmo email (rodcaria.odonto@gmail.com)** no formulário do Lovable → a Stripe reconhece o email e no passo de verificação você faz o *claim* da conta, unificando com a conta que já existe (dados bancários, verificação e histórico ficam disponíveis).
+2. Usar outro email e manter as duas contas separadas.
 
-Empresa vinculada: **RCgrowthLAB** (verificação só na hora de ativar modo live).
+Recomendo a opção 1. É o caminho mais limpo.
 
-## Etapas de implementação
+## Planos
+| Plano | Mensal | Anual (20% off) | Trial |
+|---|---|---|---|
+| Família Essencial | R$ 19 | R$ 182 | 7 dias |
+| Família Plus | R$ 49 | R$ 470 | 7 dias |
+| Profissional Clínica | R$ 129 | R$ 1.238 | 7 dias |
 
-### 1. Habilitar Paddle (sandbox)
-- Rodar `recommend_payment_provider` para validar elegibilidade do produto.
-- Rodar `enable_paddle_payments` , você preenche o formulário (email, nome, RCgrowthLAB).
-- Sandbox liberado na hora, dá pra testar checkout com cartões de teste.
+Free continua ativo (acesso limitado atual).
 
-### 2. Cadastrar produtos e preços no Paddle
-- Criar os 3 produtos (Essencial, Plus, Profissional) via `batch_create_product`.
-- Cada produto com 2 preços: mensal e anual.
-- Configurar trial de 7 dias em todos.
+## Etapas
 
-### 3. Modelagem no banco (Supabase)
-Nova tabela `subscriptions` para espelhar o estado da assinatura do Paddle:
-- `user_id`, `plan_code` (essencial/plus/profissional), `status` (trialing/active/past_due/canceled), `paddle_subscription_id`, `paddle_customer_id`, `current_period_end`, `trial_end`, `cancel_at`, timestamps.
-- RLS: usuário lê só a própria; service_role escreve (via webhook).
-- Tabela `subscription_events` para auditoria de eventos do Paddle.
+### 1. Habilitar Stripe Seamless
+Rodo `enable_stripe_payments`. Você preenche o formulário com **rodcaria.odonto@gmail.com** e dados da RCgrowthLAB. Sandbox liberado na hora para testes com cartão `4242 4242 4242 4242`.
+
+### 2. Tax handling
+Como o produto é digital/SaaS e o titular é BR (país não elegível para *full compliance* da Stripe), configuro **tax calculation and collection only** (+0.5%): a Stripe calcula e cobra o imposto certo no checkout, e a RCgrowthLAB cuida de registro/emissão/recolhimento no Brasil.
+
+### 3. Cadastrar produtos
+Crio os 3 produtos com preços mensal + anual e trial de 7 dias, cada um com o *tax code* correto (SaaS/serviços digitais).
+
+### 4. Banco de dados
+- `subscriptions`: `user_id`, `plan_code`, `status` (trialing/active/past_due/canceled), `stripe_subscription_id`, `stripe_customer_id`, `current_period_end`, `trial_end`, `cancel_at`. RLS: usuário lê a própria; service_role escreve.
+- `subscription_events`: auditoria dos webhooks.
 - Função `has_active_plan(user_id, plan_code)` para checagem rápida.
 
-### 4. Checkout no app
-- Nova rota `/app/assinatura` (Minha Assinatura): mostra plano atual, próxima cobrança, botões upgrade/downgrade/cancelar.
-- Nova rota `/planos` (pública): tabela comparativa dos 3 planos + toggle mensal/anual + CTA "Começar teste grátis".
-- Checkout via **Paddle.js overlay** (script embedado, não redireciona), passando `customer.email` do usuário logado.
-- Após sucesso, mostra tela de confirmação e redireciona pro `/app`.
+### 5. Checkout
+- Rota pública `/planos`: comparativo dos 3 planos + toggle mensal/anual + CTA "Começar teste grátis".
+- Rota `/app/assinatura`: plano atual, próxima cobrança, botões upgrade/downgrade/cancelar (via Stripe Customer Portal).
+- Checkout via Stripe Checkout hospedado (link seguro, redireciona e volta).
 
-### 5. Webhook do Paddle
-- Nova rota pública `src/routes/api/public/paddle-webhook.ts`.
-- Verifica assinatura HMAC do Paddle antes de processar (secret armazenado via `add_secret`).
-- Processa eventos: `subscription.created`, `subscription.updated`, `subscription.canceled`, `subscription.past_due`, `transaction.completed`.
-- Atualiza `subscriptions` via `supabaseAdmin` e cria notificação in-app pro usuário.
+### 6. Webhook
+- `src/routes/api/public/stripe-webhook.ts` com verificação de assinatura HMAC.
+- Processa: `customer.subscription.created/updated/deleted`, `invoice.payment_failed`, `checkout.session.completed`.
+- Atualiza `subscriptions` via `supabaseAdmin` e cria notificação in-app.
 
-### 6. Gate de acesso por plano
-Middleware simples no frontend + validação no backend:
-- **Família Essencial:** timeline, humor, medicação, calendário, 1 criança.
-- **Família Plus:** tudo do Essencial + IA Azul, relatórios semanais, biblioteca, autoavaliações, comunidade, marketplace, até 3 crianças.
-- **Profissional Clínica:** área `/pro` completa (hoje aberta a qualquer profissional aprovado, passa a exigir assinatura ativa).
-- **Free:** apenas dashboard e cadastro de 1 criança, sem IA nem timeline avançada.
+### 7. Gate de acesso por plano
+- **Free**: dashboard + 1 criança, sem IA nem timeline avançada.
+- **Família Essencial**: timeline, humor, medicação, calendário, 1 criança.
+- **Família Plus**: tudo do Essencial + IA Azul, relatórios semanais, biblioteca, autoavaliações, comunidade, marketplace, até 3 crianças.
+- **Profissional Clínica**: área `/pro` completa (hoje aberta a qualquer profissional aprovado, passa a exigir assinatura ativa).
 - Bloqueios mostram modal "Faça upgrade" com link pra `/planos`.
 
-### 7. Admin , gestão de assinaturas
-- Refatorar `/admin/subscriptions` (hoje só catálogo estático) pra:
-  - Listar todas as assinaturas ativas/trial/canceladas.
-  - Métricas: MRR estimado, churn mensal, trials ativos, conversão trial → pago.
-  - Ação manual "conceder acesso" (grant admin, útil pra parceiros).
+### 8. Admin de assinaturas
+Refatoro `/admin/subscriptions` para listar assinaturas reais, MRR estimado, trials ativos, churn e ação manual "conceder acesso" (útil pra parceiros).
 
-### 8. Emails transacionais (opcional nesta onda)
-Paddle já envia recibo automático. Podemos adicionar depois:
-- Email de "trial acabando em 2 dias".
-- Email de "pagamento falhou, atualize o cartão".
-Fica sinalizado como próxima onda pra não travar essa entrega.
-
-## Detalhes técnicos
-
-- **Provider:** Paddle Billing (não Paddle Classic).
-- **Frontend:** Paddle.js v2 carregado via `<script>` no `__root.tsx`, envolvido em `ClientOnly` (é browser-only).
-- **Server functions:** `src/modules/billing/api.functions.ts` , `getMySubscription`, `startCheckout`, `getPortalUrl`, `cancelSubscription`.
-- **Webhook:** validação com `crypto.timingSafeEqual`, secret via `PADDLE_WEBHOOK_SECRET` (Você vai precisar cadastrar no painel do Paddle e colar aqui).
-- **Currency:** BRL cobrado no cliente, repasse USD/EUR conforme banco configurado no Paddle.
-
-## O que você (Rodrigo) vai precisar fazer
-
-1. Preencher o formulário do Paddle quando eu chamar o enable (email + dados da RCgrowthLAB).
-2. Depois, colar o **Webhook Secret** que o Paddle gera (te passo o passo a passo na hora).
-3. Testar o checkout com cartão sandbox (Paddle fornece números tipo `4242 4242 4242 4242`).
-4. Quando quiser ir pra live, subir os documentos da RCgrowthLAB no painel do Paddle.
+## O que você faz
+1. Preencher o formulário do Stripe com **rodcaria.odonto@gmail.com** e dados da RCgrowthLAB.
+2. Fazer o *claim* da conta no painel do Stripe quando quiser ativar cobrança real (usa a conta que você já tem).
+3. Testar checkout com cartão sandbox.
 
 ## Fora do escopo desta onda
-- Cupons de desconto e afiliados.
-- Emails transacionais customizados (Paddle já envia recibo).
-- Faturamento anual com boleto (Paddle não suporta boleto nativo).
-- App mobile (in-app purchase Apple/Google) , exige adaptações específicas depois.
+- Cupons, afiliados, boleto/Pix (Stripe BR ainda tem Pix limitado a certos MCCs), emails transacionais customizados (Stripe já envia recibo), in-app purchase mobile.
