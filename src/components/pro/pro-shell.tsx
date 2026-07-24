@@ -15,6 +15,7 @@ import {
   Sparkles,
   Settings,
   Search,
+  UserCircle,
   Plus,
   type LucideIcon,
 } from "lucide-react";
@@ -67,6 +68,7 @@ const NAV: NavSection[] = [
   {
     labelKey: "sidebar.sections.settings",
     items: [
+      { to: "/pro/perfil", labelKey: "sidebar.profile", icon: UserCircle },
       { to: "/pro/configuracoes", labelKey: "sidebar.settings", icon: Settings },
     ],
   },
