@@ -1,61 +1,45 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useTranslation } from "react-i18next";
-import { CreditCard, Sparkles, Users, TrendingUp } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { CreditCard, Sparkles, Users, TrendingDown } from "lucide-react";
 
 import { AdminPage } from "@/components/admin/admin-page";
+import { getSubscriptionMetrics } from "@/modules/admin/api.functions";
+import { PUBLIC_PLANS, formatBRL } from "@/modules/billing/plans";
 
 export const Route = createFileRoute("/admin/subscriptions")({
   component: AdminSubscriptions,
 });
 
-const PLANS = [
-  {
-    name: "Família Essencial",
-    price: "R$ 39,90/mês",
-    features: [
-      "1 criança + até 3 responsáveis",
-      "Rotina, humor, medicação e timeline",
-      "IA Azul (limite mensal)",
-    ],
-    color: "from-sky-500/10 to-cyan-500/10",
-  },
-  {
-    name: "Família Plus",
-    price: "R$ 79,90/mês",
-    features: [
-      "Até 3 crianças + responsáveis ilimitados",
-      "Relatórios com IA e biblioteca de histórias",
-      "Compartilhamento com escola e profissionais",
-    ],
-    color: "from-emerald-500/10 to-teal-500/10",
-    highlight: true,
-  },
-  {
-    name: "Profissional Clínica",
-    price: "R$ 149,90/mês",
-    features: [
-      "Painel clínico completo",
-      "Prontuário SOAP + evolução",
-      "Escalas e relatórios em minutos",
-    ],
-    color: "from-indigo-500/10 to-violet-500/10",
-  },
-];
-
 function AdminSubscriptions() {
-  const { t } = useTranslation("admin");
+  const { data, isLoading } = useQuery({
+    queryKey: ["admin", "subscription-metrics"],
+    queryFn: () => getSubscriptionMetrics(),
+  });
+
+  const activeCount = data?.active ?? 0;
+  const trialing = data?.trialing ?? 0;
+  const canceled30d = data?.canceled30d ?? 0;
+
+  const mrr = PUBLIC_PLANS.reduce((sum, p) => {
+    const m = data?.byPrice?.[p.price.monthly] ?? 0;
+    const y = data?.byPrice?.[p.price.yearly] ?? 0;
+    return sum + m * p.price.monthlyAmountBRL + y * Math.round(p.price.yearlyAmountBRL / 12);
+  }, 0);
+
+  const cards = [
+    { label: "Assinaturas ativas", value: isLoading ? "…" : String(activeCount), icon: Users },
+    { label: "MRR estimado", value: isLoading ? "…" : formatBRL(mrr), icon: CreditCard },
+    { label: "Em trial", value: isLoading ? "…" : String(trialing), icon: Sparkles },
+    { label: "Canceladas 30d", value: isLoading ? "…" : String(canceled30d), icon: TrendingDown },
+  ];
+
   return (
     <AdminPage
-      title={t("sidebar.subscriptions")}
-      description="Catálogo de planos e visão geral de faturamento."
+      title="Assinaturas"
+      description="Catálogo de planos, MRR estimado e distribuição real de assinantes."
     >
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          { label: "Assinaturas ativas", value: "—", icon: Users },
-          { label: "MRR", value: "R$ —", icon: CreditCard },
-          { label: "Churn 30d", value: "—%", icon: TrendingUp },
-          { label: "Custo IA / usuário", value: "R$ —", icon: Sparkles },
-        ].map((c) => {
+        {cards.map((c) => {
           const Icon = c.icon;
           return (
             <div key={c.label} className="rounded-xl border border-border/60 bg-background p-4">
@@ -72,32 +56,46 @@ function AdminSubscriptions() {
       </div>
 
       <div className="mt-8 grid gap-4 lg:grid-cols-3">
-        {PLANS.map((p) => (
-          <div
-            key={p.name}
-            className={`relative rounded-2xl border border-border/60 bg-gradient-to-br ${p.color} p-5`}
-          >
-            {p.highlight && (
-              <span className="absolute right-4 top-4 rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-primary-foreground">
-                Mais escolhido
-              </span>
-            )}
-            <h3 className="text-lg font-bold text-foreground">{p.name}</h3>
-            <p className="mt-1 text-2xl font-black text-foreground">{p.price}</p>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              {p.features.map((f) => (
-                <li key={f} className="flex gap-2">
-                  <span className="text-primary">✓</span> {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {PUBLIC_PLANS.map((p) => {
+          const m = data?.byPrice?.[p.price.monthly] ?? 0;
+          const y = data?.byPrice?.[p.price.yearly] ?? 0;
+          return (
+            <div
+              key={p.code}
+              className={`relative rounded-2xl border bg-background p-5 ${
+                p.highlight ? "border-primary/60 ring-2 ring-primary/20" : "border-border/60"
+              }`}
+            >
+              {p.highlight && (
+                <span className="absolute right-4 top-4 rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-primary-foreground">
+                  Mais escolhido
+                </span>
+              )}
+              <h3 className="text-lg font-bold text-foreground">{p.displayName}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
+              <div className="mt-3 grid grid-cols-2 gap-2 text-center text-sm">
+                <div className="rounded-lg border border-border/60 bg-surface-2 p-2">
+                  <p className="text-[10px] uppercase text-muted-foreground">Mensal</p>
+                  <p className="text-base font-bold text-foreground">{m}</p>
+                  <p className="text-[11px] text-muted-foreground">{formatBRL(p.price.monthlyAmountBRL)}</p>
+                </div>
+                <div className="rounded-lg border border-border/60 bg-surface-2 p-2">
+                  <p className="text-[10px] uppercase text-muted-foreground">Anual</p>
+                  <p className="text-base font-bold text-foreground">{y}</p>
+                  <p className="text-[11px] text-muted-foreground">{formatBRL(p.price.yearlyAmountBRL)}</p>
+                </div>
+              </div>
+              <ul className="mt-4 space-y-1.5 text-xs text-muted-foreground">
+                {p.features.slice(0, 4).map((f) => (
+                  <li key={f} className="flex gap-2">
+                    <span className="text-primary">✓</span> {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </div>
-
-      <p className="mt-6 rounded-xl border border-dashed border-border/60 bg-background p-4 text-sm text-muted-foreground">
-        Integração de pagamento (Stripe) e ciclo de cobrança serão ativados na próxima onda.
-      </p>
     </AdminPage>
   );
 }
