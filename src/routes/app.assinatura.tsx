@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CreditCard, ExternalLink, Sparkles } from "lucide-react";
+import { CreditCard, ExternalLink, Sparkles, XCircle, RotateCcw } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -7,8 +7,12 @@ import { Button } from "@/components/ui/button";
 import { useSession } from "@/hooks/use-session";
 import { useSubscription } from "@/hooks/use-subscription";
 import { getStripeEnvironment, isPaymentsConfigured } from "@/lib/stripe";
-import { createPortalSession } from "@/modules/billing/api.functions";
-import { findPlanByCode, findPlanByPriceId, formatBRL } from "@/modules/billing/plans";
+import {
+  cancelSubscription,
+  createPortalSession,
+  reactivateSubscription,
+} from "@/modules/billing/api.functions";
+import { findPlanByPriceId, formatBRL } from "@/modules/billing/plans";
 
 export const Route = createFileRoute("/app/assinatura")({
   head: () => ({
@@ -56,34 +60,55 @@ function statusColor(status: string): string {
 function AssinaturaPage() {
   const { session } = useSession();
   const { loading, subscription, refresh } = useSubscription(session?.user?.id);
-  const [openingPortal, setOpeningPortal] = useState(false);
+  const [busy, setBusy] = useState<"portal" | "cancel" | "reactivate" | null>(null);
 
   const openPortal = async () => {
     if (!isPaymentsConfigured()) {
       toast.error("Pagamentos ainda não configurados em produção.");
       return;
     }
-    setOpeningPortal(true);
+    setBusy("portal");
     try {
       const res = await createPortalSession({
-        data: {
-          returnUrl: window.location.href,
-          environment: getStripeEnvironment(),
-        },
+        data: { returnUrl: window.location.href, environment: getStripeEnvironment() },
       });
-      if ("error" in res) {
-        toast.error(res.error);
-        return;
-      }
+      if ("error" in res) return toast.error(res.error);
       window.open(res.url, "_blank");
     } finally {
-      setOpeningPortal(false);
+      setBusy(null);
     }
   };
 
-  const plan = subscription
-    ? findPlanByCode(subscription.product_id) ?? findPlanByPriceId(subscription.price_id)
-    : null;
+  const handleCancel = async () => {
+    if (!confirm("Cancelar assinatura ao fim do período atual?")) return;
+    setBusy("cancel");
+    try {
+      const res = await cancelSubscription({
+        data: { environment: getStripeEnvironment() },
+      });
+      if ("error" in res) return toast.error(res.error);
+      toast.success("Assinatura cancelada, ativa até o fim do período.");
+      await refresh();
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const handleReactivate = async () => {
+    setBusy("reactivate");
+    try {
+      const res = await reactivateSubscription({
+        data: { environment: getStripeEnvironment() },
+      });
+      if ("error" in res) return toast.error(res.error);
+      toast.success("Renovação automática reativada.");
+      await refresh();
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const plan = subscription ? findPlanByPriceId(subscription.price_id) : null;
 
   return (
     <div className="mx-auto max-w-3xl space-y-6 p-6">
@@ -131,7 +156,7 @@ function AssinaturaPage() {
               <p className="mt-1 text-sm font-medium text-foreground">
                 {subscription.current_period_end
                   ? new Date(subscription.current_period_end).toLocaleDateString("pt-BR")
-                  : ","}
+                  : "—"}
               </p>
             </div>
           </div>
@@ -143,13 +168,35 @@ function AssinaturaPage() {
           )}
 
           <div className="mt-6 flex flex-wrap gap-2">
-            <Button onClick={openPortal} disabled={openingPortal}>
-              {openingPortal ? "Abrindo…" : "Gerenciar cobrança"}
+            <Button onClick={openPortal} disabled={busy !== null}>
+              {busy === "portal" ? "Abrindo…" : "Gerenciar cobrança"}
               <ExternalLink className="ml-1 h-4 w-4" />
             </Button>
-            <Button asChild variant="outline" onClick={() => refresh()}>
+            <Button asChild variant="outline">
               <Link to="/planos">Trocar de plano</Link>
             </Button>
+            {subscription.cancel_at_period_end ? (
+              <Button
+                variant="outline"
+                onClick={handleReactivate}
+                disabled={busy !== null}
+              >
+                <RotateCcw className="mr-1 h-4 w-4" />
+                {busy === "reactivate" ? "Reativando…" : "Reativar renovação"}
+              </Button>
+            ) : (
+              subscription.status !== "canceled" && (
+                <Button
+                  variant="ghost"
+                  className="text-rose-700 hover:bg-rose-50 hover:text-rose-800"
+                  onClick={handleCancel}
+                  disabled={busy !== null}
+                >
+                  <XCircle className="mr-1 h-4 w-4" />
+                  {busy === "cancel" ? "Cancelando…" : "Cancelar assinatura"}
+                </Button>
+              )
+            )}
           </div>
         </div>
       ) : (
