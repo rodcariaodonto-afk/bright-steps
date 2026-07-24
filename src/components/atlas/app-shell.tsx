@@ -19,6 +19,7 @@ import {
   Trophy,
   Users,
   Store,
+  MessageSquare,
   Settings,
   Menu,
 } from "lucide-react";
@@ -54,6 +55,7 @@ const NAV: NavItem[] = [
   { to: "/app/conquistas", labelKey: "sidebar.achievements", icon: Trophy },
   { to: "/app/comunidade", labelKey: "sidebar.community", icon: Users },
   { to: "/app/marketplace", labelKey: "sidebar.marketplace", icon: Store },
+  { to: "/app/mensagens", labelKey: "sidebar.messages", icon: MessageSquare },
   { to: "/app/ia", labelKey: "sidebar.ai", icon: Sparkles },
   { to: "/app/notificacoes", labelKey: "sidebar.notifications", icon: Bell },
   { to: "/app/configuracoes", labelKey: "sidebar.settings", icon: Settings },
