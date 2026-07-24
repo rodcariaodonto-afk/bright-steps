@@ -51,9 +51,7 @@ function hourBucket(iso: string) {
 }
 
 async function aggregateChildData(
-  supabase: NonNullable<Parameters<typeof requireSupabaseAuth.server>[0]> extends never
-    ? never
-    : Awaited<ReturnType<typeof requireSupabaseAuth.server>>["context"]["supabase"],
+  supabase: DB,
   childId: string,
   rangeStart: string,
 ) {
@@ -121,15 +119,14 @@ async function aggregateChildData(
   };
 }
 
-async function fetchArticleSlugs(
-  supabase: Awaited<ReturnType<typeof requireSupabaseAuth.server>>["context"]["supabase"],
-) {
+async function fetchArticleSlugs(supabase: DB) {
   const { data } = await supabase
     .from("library_articles")
     .select("slug, title, library_categories(slug, name)")
     .not("published_at", "is", null)
     .limit(50);
-  return (data ?? []).map((a) => ({
+  type Row = { slug: string; title: string; library_categories: { name: string } | null };
+  return ((data ?? []) as unknown as Row[]).map((a) => ({
     slug: a.slug,
     title: a.title,
     category: a.library_categories?.name ?? "",
@@ -162,7 +159,7 @@ REGRAS:
 }
 
 async function generateInsights(
-  supabase: Awaited<ReturnType<typeof requireSupabaseAuth.server>>["context"]["supabase"],
+  supabase: DB,
   childId: string,
 ): Promise<ChildInsightsResult> {
   const rangeStart = isoDaysAgo(RANGE_DAYS);
