@@ -24,7 +24,9 @@ export const Route = createFileRoute("/profissional/$slug")({
   head: ({ loaderData }) => {
     const pro = loaderData?.pro;
     if (!pro) {
-      return { meta: [{ title: "Profissional · Meu Mundo Azul" }] };
+      return {
+        meta: [{ title: "Profissional · Meu Mundo Azul", content: "" } as never],
+      };
     }
     const title = `${pro.full_name} · Meu Mundo Azul`;
     const description =
