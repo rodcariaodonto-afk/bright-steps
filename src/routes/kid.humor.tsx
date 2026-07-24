@@ -22,7 +22,7 @@ function KidMood() {
   const { t } = useTranslation("kid");
   const { activeChild } = useActiveChild();
   const { addStars } = useKidRewards(activeChild?.id);
-  const createMood = useCreateMood();
+  const createMood = useCreateMood(activeChild?.id);
   const navigate = useNavigate();
   const [saving, setSaving] = useState<number | null>(null);
   const [saved, setSaved] = useState(false);
@@ -33,9 +33,9 @@ function KidMood() {
     try {
       await createMood.mutateAsync({
         child_id: activeChild.id,
-        score,
+        level: score,
+        emoji: OPTIONS.find((o) => o.score === score)?.emoji ?? null,
         note: null,
-        context: "kid-app",
         logged_at: new Date().toISOString(),
       });
       addStars(1);
