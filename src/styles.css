@@ -259,3 +259,15 @@
   --accent-soft: oklch(0.3 0.05 195);
 }
 
+/*
+ * Variante Criança (Mundo Azul).
+ * Aplicada envolvendo o subtree /kid/* com a classe `.kid-scope`.
+ * Estética lúdica, alto contraste, tipografia arredondada.
+ */
+.kid-scope {
+  --font-display: "Nunito", "Baloo 2", ui-rounded, system-ui, sans-serif;
+  --radius: 1.25rem;
+}
+.kid-scope button { font-family: var(--font-display); }
+
+

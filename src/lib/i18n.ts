@@ -9,6 +9,7 @@ import ptBRApp from "@/locales/pt-BR/app.json";
 import ptBRPro from "@/locales/pt-BR/pro.json";
 import ptBRAdmin from "@/locales/pt-BR/admin.json";
 import ptBRAi from "@/locales/pt-BR/ai.json";
+import ptBRKid from "@/locales/pt-BR/kid.json";
 
 export const SUPPORTED_LOCALES = ["pt-BR", "en", "es", "fr", "it", "de"] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
@@ -30,12 +31,13 @@ if (!i18n.isInitialized) {
         pro: ptBRPro,
         admin: ptBRAdmin,
         ai: ptBRAi,
+        kid: ptBRKid,
       },
     },
     lng: isBrowser ? undefined : "pt-BR",
     fallbackLng: "pt-BR",
     supportedLngs: SUPPORTED_LOCALES as unknown as string[],
-    ns: ["common", "landing", "auth", "app", "pro", "admin", "ai"],
+    ns: ["common", "landing", "auth", "app", "pro", "admin", "ai", "kid"],
     defaultNS: "common",
     interpolation: { escapeValue: false },
     react: { useSuspense: false },
