@@ -200,7 +200,7 @@ function SchoolPage() {
         <div>
           <h1 className="text-2xl font-semibold text-foreground">Escola</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Ponte entre {activeChild.fullName}, a escola e os profissionais.
+            Ponte entre {activeChild.full_name}, a escola e os profissionais.
           </p>
         </div>
         <div className="flex gap-2">
@@ -214,7 +214,7 @@ function SchoolPage() {
               <DialogHeader>
                 <DialogTitle>Cadastrar escola</DialogTitle>
                 <DialogDescription>
-                  Vincule uma escola a {activeChild.fullName}.
+                  Vincule uma escola a {activeChild.full_name}.
                 </DialogDescription>
               </DialogHeader>
               <div className="grid gap-3">

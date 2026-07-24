@@ -43,6 +43,7 @@ import { Route as AppNotificacoesRouteImport } from './routes/app.notificacoes'
 import { Route as AppMedicacaoRouteImport } from './routes/app.medicacao'
 import { Route as AppIaRouteImport } from './routes/app.ia'
 import { Route as AppHumorRouteImport } from './routes/app.humor'
+import { Route as AppEscolaRouteImport } from './routes/app.escola'
 import { Route as AppDocumentosRouteImport } from './routes/app.documentos'
 import { Route as AppCriancaRouteImport } from './routes/app.crianca'
 import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes'
@@ -246,6 +247,11 @@ const AppIaRoute = AppIaRouteImport.update({
 const AppHumorRoute = AppHumorRouteImport.update({
   id: '/humor',
   path: '/humor',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEscolaRoute = AppEscolaRouteImport.update({
+  id: '/escola',
+  path: '/escola',
   getParentRoute: () => AppRoute,
 } as any)
 const AppDocumentosRoute = AppDocumentosRouteImport.update({
@@ -456,6 +462,7 @@ export interface FileRoutesByFullPath {
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/crianca': typeof AppCriancaRoute
   '/app/documentos': typeof AppDocumentosRoute
+  '/app/escola': typeof AppEscolaRoute
   '/app/humor': typeof AppHumorRoute
   '/app/ia': typeof AppIaRoute
   '/app/medicacao': typeof AppMedicacaoRoute
@@ -522,6 +529,7 @@ export interface FileRoutesByTo {
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/crianca': typeof AppCriancaRoute
   '/app/documentos': typeof AppDocumentosRoute
+  '/app/escola': typeof AppEscolaRoute
   '/app/humor': typeof AppHumorRoute
   '/app/ia': typeof AppIaRoute
   '/app/medicacao': typeof AppMedicacaoRoute
@@ -593,6 +601,7 @@ export interface FileRoutesById {
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/crianca': typeof AppCriancaRoute
   '/app/documentos': typeof AppDocumentosRoute
+  '/app/escola': typeof AppEscolaRoute
   '/app/humor': typeof AppHumorRoute
   '/app/ia': typeof AppIaRoute
   '/app/medicacao': typeof AppMedicacaoRoute
@@ -665,6 +674,7 @@ export interface FileRouteTypes {
     | '/app/configuracoes'
     | '/app/crianca'
     | '/app/documentos'
+    | '/app/escola'
     | '/app/humor'
     | '/app/ia'
     | '/app/medicacao'
@@ -731,6 +741,7 @@ export interface FileRouteTypes {
     | '/app/configuracoes'
     | '/app/crianca'
     | '/app/documentos'
+    | '/app/escola'
     | '/app/humor'
     | '/app/ia'
     | '/app/medicacao'
@@ -801,6 +812,7 @@ export interface FileRouteTypes {
     | '/app/configuracoes'
     | '/app/crianca'
     | '/app/documentos'
+    | '/app/escola'
     | '/app/humor'
     | '/app/ia'
     | '/app/medicacao'
@@ -1084,6 +1096,13 @@ declare module '@tanstack/react-router' {
       path: '/humor'
       fullPath: '/app/humor'
       preLoaderRoute: typeof AppHumorRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/escola': {
+      id: '/app/escola'
+      path: '/escola'
+      fullPath: '/app/escola'
+      preLoaderRoute: typeof AppEscolaRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/documentos': {
@@ -1391,6 +1410,7 @@ interface AppRouteChildren {
   AppConfiguracoesRoute: typeof AppConfiguracoesRoute
   AppCriancaRoute: typeof AppCriancaRoute
   AppDocumentosRoute: typeof AppDocumentosRoute
+  AppEscolaRoute: typeof AppEscolaRoute
   AppHumorRoute: typeof AppHumorRoute
   AppIaRoute: typeof AppIaRoute
   AppMedicacaoRoute: typeof AppMedicacaoRoute
@@ -1408,6 +1428,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppConfiguracoesRoute: AppConfiguracoesRoute,
   AppCriancaRoute: AppCriancaRoute,
   AppDocumentosRoute: AppDocumentosRoute,
+  AppEscolaRoute: AppEscolaRoute,
   AppHumorRoute: AppHumorRoute,
   AppIaRoute: AppIaRoute,
   AppMedicacaoRoute: AppMedicacaoRoute,
