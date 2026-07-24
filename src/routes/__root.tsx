@@ -87,26 +87,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         title:
-          "Meu Mundo Azul: plataforma para desenvolvimento infantil e acompanhamento terapêutico",
+          "Meu Mundo Azul: plataforma para o desenvolvimento infantil e o neurodesenvolvimento",
       },
       {
         name: "description",
         content:
-          "Meu Mundo Azul conecta famílias, crianças, profissionais e escolas com IA, rotinas, terapias e relatórios em um único ecossistema. Feito para o neurodesenvolvimento.",
+          "Organize rotina, terapias, humor e medicações. Uma IA acolhedora acompanha a jornada da sua criança do TEA ao TDAH, dislexia e além.",
       },
       { name: "author", content: "Meu Mundo Azul" },
       { name: "theme-color", content: "#7fb8a6" },
       {
         property: "og:title",
-        content: "Meu Mundo Azul: ecossistema para o desenvolvimento infantil",
+        content: "Meu Mundo Azul: plataforma para o desenvolvimento infantil e o neurodesenvolvimento",
       },
       {
         property: "og:description",
         content:
-          "Organize a rotina, acompanhe terapias, gere relatórios e conte com IA para apoiar o desenvolvimento da criança.",
+          "Organize rotina, terapias, humor e medicações. Uma IA acolhedora acompanha a jornada da sua criança do TEA ao TDAH, dislexia e além.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Meu Mundo Azul: plataforma para o desenvolvimento infantil e o neurodesenvolvimento" },
+      { name: "twitter:description", content: "Organize rotina, terapias, humor e medicações. Uma IA acolhedora acompanha a jornada da sua criança do TEA ao TDAH, dislexia e além." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ad79c343-5c44-40fa-8ec1-7a3ead503917/id-preview-2c1e861f--afa0e2ca-4a79-493f-a72d-abf236d68206.lovable.app-1784853571401.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ad79c343-5c44-40fa-8ec1-7a3ead503917/id-preview-2c1e861f--afa0e2ca-4a79-493f-a72d-abf236d68206.lovable.app-1784853571401.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
