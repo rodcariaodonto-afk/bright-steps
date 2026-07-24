@@ -24,6 +24,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { AtlasLogo } from "@/components/atlas/atlas-logo";
 import { UserMenu } from "@/components/atlas/user-menu";
+import { ChildPicker } from "@/components/atlas/child-picker";
 import { useSession } from "@/hooks/use-session";
 
 interface NavItem {
@@ -106,17 +107,27 @@ export function AppShell({ children }: { children: ReactNode }) {
 
         {/* Mobile top bar */}
         <div className="flex min-w-0 flex-1 flex-col">
-          <div className="flex items-center justify-between border-b border-border/60 bg-background px-4 py-3 lg:hidden">
-            <Link to="/" aria-label="Meu Mundo Azul">
-              <AtlasLogo />
-            </Link>
+          {/* Top bar — desktop mostra o seletor de criança, mobile mostra logo + menu */}
+          <div className="flex items-center justify-between border-b border-border/60 bg-background px-4 py-2.5">
             <div className="flex items-center gap-2">
+              <Link to="/" aria-label="Meu Mundo Azul" className="lg:hidden">
+                <AtlasLogo />
+              </Link>
+              <div className="hidden lg:block">
+                <ChildPicker />
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="lg:hidden">
+                <ChildPicker />
+              </div>
               <UserMenu />
               <Button
                 variant="ghost"
                 size="icon"
                 aria-label="Abrir menu"
                 onClick={() => setMobileOpen((v) => !v)}
+                className="lg:hidden"
               >
                 <Menu className="h-5 w-5" aria-hidden="true" />
               </Button>
