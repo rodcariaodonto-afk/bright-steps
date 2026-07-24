@@ -13,7 +13,7 @@ import {
   submitProfessionalReview,
   requestProfessionalContact,
 } from "@/modules/marketplace/api.functions";
-import { useAuth } from "@/hooks/use-auth";
+import { useSession } from "@/hooks/use-session";
 
 export const Route = createFileRoute("/profissional/$slug")({
   loader: async ({ params }) => {
