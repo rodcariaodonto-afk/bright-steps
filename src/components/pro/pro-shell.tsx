@@ -25,6 +25,9 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ProLogo } from "@/components/pro/pro-logo";
 import { UserMenu } from "@/components/atlas/user-menu";
+import { useSession } from "@/hooks/use-session";
+import { useSubscription } from "@/hooks/use-subscription";
+import { UpgradeCard } from "@/components/billing/upgrade-card";
 
 interface NavItem {
   to: string;
@@ -172,7 +175,9 @@ export function ProShell({ children }: { children: ReactNode }) {
             </div>
           </header>
 
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <ProSubscriptionGate>{children}</ProSubscriptionGate>
+          </main>
         </div>
       </div>
 
