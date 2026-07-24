@@ -1216,18 +1216,30 @@ export type Database = {
       professional_profiles: {
         Row: {
           accepting_patients: boolean
+          average_rating: number
           bio: string | null
           city: string | null
           contact_email: string | null
           contact_phone: string | null
           council_id: string | null
+          council_number: string | null
+          council_state: string | null
+          council_type: string | null
           created_at: string
           full_name: string
           id: string
           languages: string[]
           modality: string | null
+          moderated_at: string | null
+          moderated_by: string | null
+          moderation_status: string
           photo_url: string | null
+          plan: string
+          plan_expires_at: string | null
           price_range: string | null
+          rejection_reason: string | null
+          reviews_count: number
+          slug: string | null
           specialties: string[]
           state: string | null
           updated_at: string
@@ -1236,18 +1248,30 @@ export type Database = {
         }
         Insert: {
           accepting_patients?: boolean
+          average_rating?: number
           bio?: string | null
           city?: string | null
           contact_email?: string | null
           contact_phone?: string | null
           council_id?: string | null
+          council_number?: string | null
+          council_state?: string | null
+          council_type?: string | null
           created_at?: string
           full_name: string
           id?: string
           languages?: string[]
           modality?: string | null
+          moderated_at?: string | null
+          moderated_by?: string | null
+          moderation_status?: string
           photo_url?: string | null
+          plan?: string
+          plan_expires_at?: string | null
           price_range?: string | null
+          rejection_reason?: string | null
+          reviews_count?: number
+          slug?: string | null
           specialties?: string[]
           state?: string | null
           updated_at?: string
@@ -1256,23 +1280,68 @@ export type Database = {
         }
         Update: {
           accepting_patients?: boolean
+          average_rating?: number
           bio?: string | null
           city?: string | null
           contact_email?: string | null
           contact_phone?: string | null
           council_id?: string | null
+          council_number?: string | null
+          council_state?: string | null
+          council_type?: string | null
           created_at?: string
           full_name?: string
           id?: string
           languages?: string[]
           modality?: string | null
+          moderated_at?: string | null
+          moderated_by?: string | null
+          moderation_status?: string
           photo_url?: string | null
+          plan?: string
+          plan_expires_at?: string | null
           price_range?: string | null
+          rejection_reason?: string | null
+          reviews_count?: number
+          slug?: string | null
           specialties?: string[]
           state?: string | null
           updated_at?: string
           user_id?: string
           visible_in_marketplace?: boolean
+        }
+        Relationships: []
+      }
+      professional_reviews: {
+        Row: {
+          author_user_id: string
+          comment: string | null
+          created_at: string
+          id: string
+          professional_user_id: string
+          rating: number
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          author_user_id: string
+          comment?: string | null
+          created_at?: string
+          id?: string
+          professional_user_id: string
+          rating: number
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          author_user_id?: string
+          comment?: string | null
+          created_at?: string
+          id?: string
+          professional_user_id?: string
+          rating?: number
+          status?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -1646,6 +1715,8 @@ export type Database = {
           permission: string
         }[]
       }
+      slugify_text: { Args: { input: string }; Returns: string }
+      unaccent: { Args: { "": string }; Returns: string }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
