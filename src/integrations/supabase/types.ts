@@ -14,6 +14,56 @@ export type Database = {
   }
   public: {
     Tables: {
+      appointments: {
+        Row: {
+          child_id: string
+          created_at: string
+          ends_at: string
+          id: string
+          location: string | null
+          modality: string
+          notes: string | null
+          professional_id: string
+          starts_at: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          ends_at: string
+          id?: string
+          location?: string | null
+          modality?: string
+          notes?: string | null
+          professional_id: string
+          starts_at: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          ends_at?: string
+          id?: string
+          location?: string | null
+          modality?: string
+          notes?: string | null
+          professional_id?: string
+          starts_at?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "appointments_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       behavior_events: {
         Row: {
           antecedent: string | null
@@ -173,6 +223,81 @@ export type Database = {
           },
         ]
       }
+      clinical_sessions: {
+        Row: {
+          activities: string | null
+          appointment_id: string | null
+          attachments: Json
+          child_id: string
+          child_response: string | null
+          created_at: string
+          duration_minutes: number
+          goals_worked: string[]
+          id: string
+          materials: string | null
+          next_steps: string | null
+          observations: string | null
+          professional_id: string
+          session_date: string
+          shared_with_family: boolean
+          shared_with_school: boolean
+          updated_at: string
+        }
+        Insert: {
+          activities?: string | null
+          appointment_id?: string | null
+          attachments?: Json
+          child_id: string
+          child_response?: string | null
+          created_at?: string
+          duration_minutes?: number
+          goals_worked?: string[]
+          id?: string
+          materials?: string | null
+          next_steps?: string | null
+          observations?: string | null
+          professional_id: string
+          session_date?: string
+          shared_with_family?: boolean
+          shared_with_school?: boolean
+          updated_at?: string
+        }
+        Update: {
+          activities?: string | null
+          appointment_id?: string | null
+          attachments?: Json
+          child_id?: string
+          child_response?: string | null
+          created_at?: string
+          duration_minutes?: number
+          goals_worked?: string[]
+          id?: string
+          materials?: string | null
+          next_steps?: string | null
+          observations?: string | null
+          professional_id?: string
+          session_date?: string
+          shared_with_family?: boolean
+          shared_with_school?: boolean
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clinical_sessions_appointment_id_fkey"
+            columns: ["appointment_id"]
+            isOneToOne: false
+            referencedRelation: "appointments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "clinical_sessions_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       consent_records: {
         Row: {
           evidence: Json | null
@@ -217,6 +342,53 @@ export type Database = {
           {
             foreignKeyName: "consent_records_subject_child_id_fkey"
             columns: ["subject_child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      evolution_entries: {
+        Row: {
+          attachments: Json
+          category: string | null
+          child_id: string
+          content: string
+          created_at: string
+          id: string
+          professional_id: string
+          shared_with_family: boolean
+          shared_with_school: boolean
+          updated_at: string
+        }
+        Insert: {
+          attachments?: Json
+          category?: string | null
+          child_id: string
+          content: string
+          created_at?: string
+          id?: string
+          professional_id: string
+          shared_with_family?: boolean
+          shared_with_school?: boolean
+          updated_at?: string
+        }
+        Update: {
+          attachments?: Json
+          category?: string | null
+          child_id?: string
+          content?: string
+          created_at?: string
+          id?: string
+          professional_id?: string
+          shared_with_family?: boolean
+          shared_with_school?: boolean
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "evolution_entries_child_id_fkey"
+            columns: ["child_id"]
             isOneToOne: false
             referencedRelation: "children"
             referencedColumns: ["id"]
@@ -563,6 +735,42 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      professional_profiles: {
+        Row: {
+          bio: string | null
+          council_id: string | null
+          created_at: string
+          full_name: string
+          id: string
+          photo_url: string | null
+          specialties: string[]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          bio?: string | null
+          council_id?: string | null
+          created_at?: string
+          full_name: string
+          id?: string
+          photo_url?: string | null
+          specialties?: string[]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          bio?: string | null
+          council_id?: string | null
+          created_at?: string
+          full_name?: string
+          id?: string
+          photo_url?: string | null
+          specialties?: string[]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
