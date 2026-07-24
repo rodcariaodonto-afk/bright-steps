@@ -139,21 +139,30 @@ function ProProfilePage() {
     <ProPage title="Meu perfil público">
       <div className="grid gap-4 lg:grid-cols-3">
         <ProCard title="Publicação no Marketplace" className="lg:col-span-3">
-          <div className="flex flex-wrap items-center gap-6">
-            <label className="flex items-center gap-2 text-sm">
-              <Switch
-                checked={form.visible_in_marketplace}
-                onCheckedChange={(v) => setForm({ ...form, visible_in_marketplace: v })}
+          <div className="space-y-3">
+            {profile && (
+              <ModerationBanner
+                status={(profile as { moderation_status?: string }).moderation_status ?? "pending"}
+                reason={(profile as { rejection_reason?: string | null }).rejection_reason ?? null}
+                slug={(profile as { slug?: string | null }).slug ?? null}
               />
-              Visível no Marketplace
-            </label>
-            <label className="flex items-center gap-2 text-sm">
-              <Switch
-                checked={form.accepting_patients}
-                onCheckedChange={(v) => setForm({ ...form, accepting_patients: v })}
-              />
-              Aceitando novos pacientes
-            </label>
+            )}
+            <div className="flex flex-wrap items-center gap-6">
+              <label className="flex items-center gap-2 text-sm">
+                <Switch
+                  checked={form.visible_in_marketplace}
+                  onCheckedChange={(v) => setForm({ ...form, visible_in_marketplace: v })}
+                />
+                Visível no Marketplace
+              </label>
+              <label className="flex items-center gap-2 text-sm">
+                <Switch
+                  checked={form.accepting_patients}
+                  onCheckedChange={(v) => setForm({ ...form, accepting_patients: v })}
+                />
+                Aceitando novos pacientes
+              </label>
+            </div>
           </div>
         </ProCard>
 
