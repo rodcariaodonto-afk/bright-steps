@@ -10,6 +10,7 @@ import { TRIAL_DAYS } from "./plans";
 
 type CheckoutResult = { clientSecret: string } | { error: string };
 type PortalResult = { url: string } | { error: string };
+type CancelResult = { ok: true; cancel_at_period_end: boolean } | { error: string };
 type SubscriptionResult =
   | {
       subscription: {
