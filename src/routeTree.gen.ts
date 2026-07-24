@@ -46,6 +46,7 @@ import { Route as AppHumorRouteImport } from './routes/app.humor'
 import { Route as AppEscolaRouteImport } from './routes/app.escola'
 import { Route as AppDocumentosRouteImport } from './routes/app.documentos'
 import { Route as AppCriancaRouteImport } from './routes/app.crianca'
+import { Route as AppConquistasRouteImport } from './routes/app.conquistas'
 import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes'
 import { Route as AppComportamentoRouteImport } from './routes/app.comportamento'
 import { Route as AppCalendarioRouteImport } from './routes/app.calendario'
@@ -264,6 +265,11 @@ const AppCriancaRoute = AppCriancaRouteImport.update({
   path: '/crianca',
   getParentRoute: () => AppRoute,
 } as any)
+const AppConquistasRoute = AppConquistasRouteImport.update({
+  id: '/conquistas',
+  path: '/conquistas',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppConfiguracoesRoute = AppConfiguracoesRouteImport.update({
   id: '/configuracoes',
   path: '/configuracoes',
@@ -460,6 +466,7 @@ export interface FileRoutesByFullPath {
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
+  '/app/conquistas': typeof AppConquistasRoute
   '/app/crianca': typeof AppCriancaRoute
   '/app/documentos': typeof AppDocumentosRoute
   '/app/escola': typeof AppEscolaRoute
@@ -527,6 +534,7 @@ export interface FileRoutesByTo {
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
+  '/app/conquistas': typeof AppConquistasRoute
   '/app/crianca': typeof AppCriancaRoute
   '/app/documentos': typeof AppDocumentosRoute
   '/app/escola': typeof AppEscolaRoute
@@ -599,6 +607,7 @@ export interface FileRoutesById {
   '/app/calendario': typeof AppCalendarioRoute
   '/app/comportamento': typeof AppComportamentoRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
+  '/app/conquistas': typeof AppConquistasRoute
   '/app/crianca': typeof AppCriancaRoute
   '/app/documentos': typeof AppDocumentosRoute
   '/app/escola': typeof AppEscolaRoute
@@ -672,6 +681,7 @@ export interface FileRouteTypes {
     | '/app/calendario'
     | '/app/comportamento'
     | '/app/configuracoes'
+    | '/app/conquistas'
     | '/app/crianca'
     | '/app/documentos'
     | '/app/escola'
@@ -739,6 +749,7 @@ export interface FileRouteTypes {
     | '/app/calendario'
     | '/app/comportamento'
     | '/app/configuracoes'
+    | '/app/conquistas'
     | '/app/crianca'
     | '/app/documentos'
     | '/app/escola'
@@ -810,6 +821,7 @@ export interface FileRouteTypes {
     | '/app/calendario'
     | '/app/comportamento'
     | '/app/configuracoes'
+    | '/app/conquistas'
     | '/app/crianca'
     | '/app/documentos'
     | '/app/escola'
@@ -1119,6 +1131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCriancaRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/conquistas': {
+      id: '/app/conquistas'
+      path: '/conquistas'
+      fullPath: '/app/conquistas'
+      preLoaderRoute: typeof AppConquistasRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/configuracoes': {
       id: '/app/configuracoes'
       path: '/configuracoes'
@@ -1408,6 +1427,7 @@ interface AppRouteChildren {
   AppCalendarioRoute: typeof AppCalendarioRoute
   AppComportamentoRoute: typeof AppComportamentoRoute
   AppConfiguracoesRoute: typeof AppConfiguracoesRoute
+  AppConquistasRoute: typeof AppConquistasRoute
   AppCriancaRoute: typeof AppCriancaRoute
   AppDocumentosRoute: typeof AppDocumentosRoute
   AppEscolaRoute: typeof AppEscolaRoute
@@ -1426,6 +1446,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppCalendarioRoute: AppCalendarioRoute,
   AppComportamentoRoute: AppComportamentoRoute,
   AppConfiguracoesRoute: AppConfiguracoesRoute,
+  AppConquistasRoute: AppConquistasRoute,
   AppCriancaRoute: AppCriancaRoute,
   AppDocumentosRoute: AppDocumentosRoute,
   AppEscolaRoute: AppEscolaRoute,

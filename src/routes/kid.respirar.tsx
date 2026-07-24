@@ -50,7 +50,7 @@ function KidBreathe() {
       window.setTimeout(() => {
         setPhase("done");
         setRunning(false);
-        addStars(1);
+        addStars(1, "Exercicio de respiracao", "breathing");
       }, elapsed),
     );
   }

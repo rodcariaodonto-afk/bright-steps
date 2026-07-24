@@ -1,55 +1,68 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
+import {
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 
-const KEY = "mma:kid-rewards";
+import * as api from "@/modules/gamification/api";
 
-type Rewards = { stars: number; updatedAt: string };
-
-function read(childId: string | null | undefined): Rewards {
-  if (typeof window === "undefined" || !childId) {
-    return { stars: 0, updatedAt: new Date().toISOString() };
-  }
-  try {
-    const raw = window.localStorage.getItem(`${KEY}:${childId}`);
-    if (!raw) return { stars: 0, updatedAt: new Date().toISOString() };
-    return JSON.parse(raw) as Rewards;
-  } catch {
-    return { stars: 0, updatedAt: new Date().toISOString() };
-  }
-}
-
-function write(childId: string, value: Rewards) {
-  if (typeof window === "undefined") return;
-  window.localStorage.setItem(`${KEY}:${childId}`, JSON.stringify(value));
-  window.dispatchEvent(new CustomEvent("mma:kid-rewards-updated"));
-}
-
-/**
- * Estrelinhas (moeda virtual da criança). Client-side, por criança ativa.
- * Simples por ora; migrável para tabela `kid_rewards` no backend.
- */
 export function useKidRewards(childId: string | null | undefined) {
-  const [rewards, setRewards] = useState<Rewards>(() => read(childId));
+  const qc = useQueryClient();
+  const query = useQuery({
+    queryKey: ["kid", "rewards", childId],
+    queryFn: () => api.getRewards(childId!),
+    enabled: !!childId,
+  });
 
-  useEffect(() => {
-    setRewards(read(childId));
-    const onUpd = () => setRewards(read(childId));
-    window.addEventListener("mma:kid-rewards-updated", onUpd);
-    return () => window.removeEventListener("mma:kid-rewards-updated", onUpd);
-  }, [childId]);
+  const mutation = useMutation({
+    mutationFn: (v: { delta: number; reason: string; source: string }) =>
+      api.addStars(childId!, v.delta, v.reason, v.source),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["kid", "rewards", childId] });
+      qc.invalidateQueries({ queryKey: ["kid", "log", childId] });
+    },
+  });
 
   const addStars = useCallback(
-    (n: number) => {
+    (delta: number, reason = "Recompensa", source = "manual") => {
       if (!childId) return;
-      const current = read(childId);
-      const next: Rewards = {
-        stars: Math.max(0, current.stars + n),
-        updatedAt: new Date().toISOString(),
-      };
-      write(childId, next);
-      setRewards(next);
+      mutation.mutate({ delta, reason, source });
     },
-    [childId],
+    [childId, mutation],
   );
 
-  return { stars: rewards.stars, addStars };
+  return {
+    stars: query.data?.stars ?? 0,
+    lifetime: query.data?.lifetime_stars ?? 0,
+    loading: query.isLoading,
+    addStars,
+  };
+}
+
+export function useKidAchievements(childId: string | null | undefined) {
+  return useQuery({
+    queryKey: ["kid", "achievements", childId],
+    queryFn: () => api.listAchievements(childId!),
+    enabled: !!childId,
+  });
+}
+
+export function useUnlockAchievement(childId: string | null | undefined) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: api.unlockAchievement,
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["kid", "achievements", childId] });
+      qc.invalidateQueries({ queryKey: ["kid", "rewards", childId] });
+    },
+  });
+}
+
+export function useKidRewardLog(childId: string | null | undefined) {
+  return useQuery({
+    queryKey: ["kid", "log", childId],
+    queryFn: () => api.listRewardLog(childId!),
+    enabled: !!childId,
+  });
 }

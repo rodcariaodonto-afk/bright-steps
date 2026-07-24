@@ -50,7 +50,7 @@ function KidStories() {
 
   function finish() {
     if (rewarded) return;
-    addStars(1);
+    addStars(1, "Historia criada", "story");
     setRewarded(true);
   }
 

@@ -695,6 +695,120 @@ export type Database = {
           },
         ]
       }
+      kid_achievements: {
+        Row: {
+          category: string | null
+          child_id: string
+          code: string
+          description: string | null
+          icon: string | null
+          id: string
+          stars_earned: number
+          title: string
+          unlocked_at: string
+        }
+        Insert: {
+          category?: string | null
+          child_id: string
+          code: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          stars_earned?: number
+          title: string
+          unlocked_at?: string
+        }
+        Update: {
+          category?: string | null
+          child_id?: string
+          code?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          stars_earned?: number
+          title?: string
+          unlocked_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kid_achievements_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kid_reward_log: {
+        Row: {
+          child_id: string
+          created_at: string
+          delta: number
+          id: string
+          reason: string
+          source: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          delta: number
+          id?: string
+          reason: string
+          source: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          delta?: number
+          id?: string
+          reason?: string
+          source?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kid_reward_log_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kid_rewards: {
+        Row: {
+          child_id: string
+          created_at: string
+          id: string
+          lifetime_stars: number
+          stars: number
+          updated_at: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          id?: string
+          lifetime_stars?: number
+          stars?: number
+          updated_at?: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          id?: string
+          lifetime_stars?: number
+          stars?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kid_rewards_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: true
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       medication_logs: {
         Row: {
           child_id: string
@@ -1253,6 +1367,15 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      add_kid_stars: {
+        Args: {
+          _child_id: string
+          _delta: number
+          _reason: string
+          _source: string
+        }
+        Returns: number
+      }
       add_professional_by_email: {
         Args: { _child_id: string; _email: string; _permission?: string }
         Returns: string
