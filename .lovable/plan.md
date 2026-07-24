@@ -1,41 +1,38 @@
-## Onda P.3 — Insights automáticos de padrões
+## Problema
 
-Único item pendente da Onda P. Fecha o ciclo de conteúdo/autoavaliação/bem‑estar iniciando o motor que lê os dados já registrados e devolve padrões acionáveis para família e profissional.
+O `PatternsCard` (Onda P.3) já está no dashboard `/app` e a IA responde corretamente, mas:
 
-### Objetivo
-Analisar os últimos 30 dias de `behavior_events`, `mood_logs` e `medication_logs` de uma criança e produzir 3 a 6 "padrões detectados" em linguagem cuidadosa (ex.: "gatilho sensorial mais frequente: barulho, principalmente após 18h"), com sugestão de artigo da biblioteca quando fizer sentido.
+- Fica escondido no final do grid, abaixo dos cards mock ("Sem agendamentos", "A Azul IA está pronta").
+- Usa o mesmo ícone `Sparkles` e a mesma paleta primária do bloco "A Azul IA está pronta" → o usuário confunde os dois.
+- Como Enzo ainda não tem 5 registros somados de humor + comportamento + medicação, o corpo mostra só uma frase discreta e parece "nada aconteceu".
 
-### Entregáveis
+## Objetivo
 
-1. **Migration** `insights_cache`
-   - Colunas de domínio: `child_id`, `generated_by`, `insights` (jsonb — lista de `{title, description, evidence, suggested_article_slug?}`), `range_start`, `range_end`, `model`, `expires_at`.
-   - RLS: leitura/escrita apenas por quem passa em `can_access_child(child_id, auth.uid())`.
-   - GRANTs padrão + trigger `updated_at`.
-   - Índice `(child_id, generated_at desc)` para pegar o mais recente rápido.
+Deixar claro no dashboard família o que é o card de padrões, onde ele está, e o que fazer quando ainda não há dados.
 
-2. **Server functions** em `src/modules/insights/api.functions.ts`
-   - `getChildInsights({ childId })`: retorna cache válido (≤ 24h) ou dispara geração.
-   - `generateChildInsights({ childId, force? })`: agrega os últimos 30 dias via `context.supabase` (RLS como usuário), monta prompt determinístico, chama Lovable AI Gateway com `google/gemini-2.5-flash` via `runAtlasStream`/helper equivalente em modo não‑stream, valida JSON, grava em `insights_cache`.
-   - Todas com `.middleware([requireSupabaseAuth])`.
-   - Prompt reforça guardrails: sem diagnóstico, tom acolhedor PT‑BR, cita evidência (contagens/horários), sugere artigo da biblioteca só se houver categoria compatível.
+## Mudanças (somente UI, sem tocar em API/DB)
 
-3. **UI**
-   - Novo componente `PatternsCard` (`src/components/insights/patterns-card.tsx`) com estados vazio/carregando/erro, botão "Atualizar padrões", chips por padrão e link para artigo sugerido (`/app/biblioteca/$slug`).
-   - Encaixar no dashboard família (`src/routes/app.index.tsx`) e no perfil do paciente do profissional (`src/routes/pro.pacientes.$childId.tsx`), ambos usando `useActiveChild` / `childId` da rota.
+### 1. `src/routes/app.index.tsx`
+- Mover o `PatternsCard` para o **topo** do grid, logo abaixo do header e antes dos 3 cards de resumo, ocupando largura total (`md:col-span-2 xl:col-span-3`).
+- Remover o bloco duplicado "A Azul IA está pronta" (fica redundante agora que o PatternsCard é o card principal de IA); manter apenas o CTA "Conversar com a Azul IA" como botão dentro do próprio `PatternsCard` ou como card menor separado.
 
-4. **Locales** `src/locales/pt-BR/app.json`
-   - Bloco `insights.*` com títulos, estados vazios e aviso "isto não é diagnóstico".
+### 2. `src/components/insights/patterns-card.tsx`
+- Trocar o ícone `Sparkles` por `Brain` (Lucide) só na variante `family` para diferenciar visualmente do bloco de chat IA que usa `Sparkles`.
+- Ajustar o rótulo do header: manter "Padrões detectados pela Azul" mas adicionar um subtítulo curto explicando "Análise automática dos últimos 30 dias de humor, comportamento e medicação".
+- Melhorar o estado `empty`:
+  - Ícone maior + mensagem clara "Registre pelo menos 5 eventos de humor, comportamento ou medicação nos próximos dias para a Azul detectar padrões".
+  - Botões atalho: "Registrar humor" → `/app/humor`, "Registrar comportamento" → `/app/comportamento`, "Registrar medicação" → `/app/medicacao`.
+- Deixar o botão "Atualizar" mais visível (usar `variant="outline"` em vez de `ghost`).
 
-### Detalhes técnicos
-- Módulo `src/modules/insights/` novo; nada em `src/server/`. Handlers leem `process.env.LOVABLE_API_KEY` dentro do `.handler`.
-- Cache: `expires_at = now() + interval '24 hours'`; `force=true` ignora cache.
-- Agregações feitas em SQL (contagens por gatilho, hora do dia, humor médio, adesão à medicação) para manter o prompt curto e barato.
-- Se não houver dados suficientes (< 5 registros somados), retornar lista vazia com mensagem "Ainda não há dados suficientes" — sem chamar IA.
-- Sem novas dependências.
+### 3. Locales `src/locales/pt-BR/app.json`
+- Adicionar bloco `insights.emptyCta.*` com os textos dos atalhos e do subtítulo.
 
-### Fora do escopo
-- Job agendado (pg_cron) — geração continua on‑demand com cache de 24h.
-- Insights cross‑criança / populacionais.
-- Notificações push quando um novo padrão surge.
+## Fora do escopo
 
-Depois desta onda, todos os itens do plano `.lovable/plan.md` (P.1–P.5) estarão entregues.
+- Não mexer em `src/modules/insights/api.functions.ts` nem na tabela `insights_cache`.
+- Não alterar o card na variante `pro` (perfil clínico já está adequado).
+- Não gerar dados de exemplo automaticamente.
+
+## Verificação
+
+Após o build, abrir `/app` logado como Rodrigo → confirmar que o PatternsCard aparece no topo com o estado "empty" enriquecido e os 3 botões de atalho para registrar dados.
