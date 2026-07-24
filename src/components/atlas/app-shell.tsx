@@ -1,5 +1,4 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { useTranslation } from "react-i18next";
 import type { LucideIcon } from "lucide-react";
 import {
   LayoutDashboard,
@@ -38,37 +37,36 @@ import { useUnreadCount } from "@/hooks/use-notifications";
 
 interface NavItem {
   to: string;
-  labelKey: string;
+  label: string;
   icon: LucideIcon;
 }
 
 const NAV: NavItem[] = [
-  { to: "/app", labelKey: "sidebar.dashboard", icon: LayoutDashboard },
-  { to: "/app/crianca", labelKey: "sidebar.children", icon: Baby },
-  { to: "/app/timeline", labelKey: "sidebar.timeline", icon: ListChecks },
-  { to: "/app/calendario", labelKey: "sidebar.calendar", icon: CalendarDays },
-  { to: "/app/rotinas", labelKey: "sidebar.routines", icon: Repeat },
-  { to: "/app/medicacao", labelKey: "sidebar.medication", icon: Pill },
-  { to: "/app/documentos", labelKey: "sidebar.documents", icon: FileText },
-  { to: "/app/humor", labelKey: "sidebar.mood", icon: SmilePlus },
-  { to: "/app/comportamento", labelKey: "sidebar.behavior", icon: Activity },
-  { to: "/app/objetivos", labelKey: "sidebar.goals", icon: Target },
-  { to: "/app/relatorios", labelKey: "sidebar.reports", icon: BarChart3 },
-  { to: "/app/escola", labelKey: "sidebar.school", icon: School },
-  { to: "/app/conquistas", labelKey: "sidebar.achievements", icon: Trophy },
-  { to: "/app/biblioteca", labelKey: "sidebar.library", icon: BookOpen },
-  { to: "/app/autoavaliacoes", labelKey: "sidebar.assessments", icon: ClipboardCheck },
-  { to: "/app/cuidador", labelKey: "sidebar.caregiver", icon: HeartHandshake },
-  { to: "/app/comunidade", labelKey: "sidebar.community", icon: Users },
-  { to: "/app/marketplace", labelKey: "sidebar.marketplace", icon: Store },
-  { to: "/app/mensagens", labelKey: "sidebar.messages", icon: MessageSquare },
-  { to: "/app/ia", labelKey: "sidebar.ai", icon: Sparkles },
-  { to: "/app/notificacoes", labelKey: "sidebar.notifications", icon: Bell },
-  { to: "/app/configuracoes", labelKey: "sidebar.settings", icon: Settings },
+  { to: "/app", label: "Painel", icon: LayoutDashboard },
+  { to: "/app/crianca", label: "Crianças", icon: Baby },
+  { to: "/app/timeline", label: "Linha do tempo", icon: ListChecks },
+  { to: "/app/calendario", label: "Calendário", icon: CalendarDays },
+  { to: "/app/rotinas", label: "Rotinas", icon: Repeat },
+  { to: "/app/medicacao", label: "Medicação", icon: Pill },
+  { to: "/app/documentos", label: "Documentos", icon: FileText },
+  { to: "/app/humor", label: "Humor", icon: SmilePlus },
+  { to: "/app/comportamento", label: "Comportamento", icon: Activity },
+  { to: "/app/objetivos", label: "Objetivos", icon: Target },
+  { to: "/app/relatorios", label: "Relatórios", icon: BarChart3 },
+  { to: "/app/escola", label: "Escola", icon: School },
+  { to: "/app/conquistas", label: "Conquistas", icon: Trophy },
+  { to: "/app/biblioteca", label: "Biblioteca", icon: BookOpen },
+  { to: "/app/autoavaliacoes", label: "Autoavaliações", icon: ClipboardCheck },
+  { to: "/app/cuidador", label: "Bem estar", icon: HeartHandshake },
+  { to: "/app/comunidade", label: "Comunidade", icon: Users },
+  { to: "/app/marketplace", label: "Marketplace", icon: Store },
+  { to: "/app/mensagens", label: "Mensagens", icon: MessageSquare },
+  { to: "/app/ia", label: "Azul IA", icon: Sparkles },
+  { to: "/app/notificacoes", label: "Notificações", icon: Bell },
+  { to: "/app/configuracoes", label: "Configurações", icon: Settings },
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const { t } = useTranslation("app");
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const { profile } = useSession();
@@ -104,7 +102,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 >
                   <span className="flex items-center gap-3">
                     <Icon className="h-4.5 w-4.5" aria-hidden="true" />
-                    {t(item.labelKey)}
+                    {item.label}
                   </span>
                   {item.to === "/app/notificacoes" && unreadCount > 0 && (
                     <span className="inline-flex min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[10px] font-bold text-primary-foreground">
@@ -180,7 +178,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                       className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-muted"
                     >
                       <Icon className="h-4 w-4" aria-hidden="true" />
-                      {t(item.labelKey)}
+                      {item.label}
                     </Link>
                   );
                 })}
