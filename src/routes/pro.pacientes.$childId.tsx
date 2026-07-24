@@ -105,7 +105,6 @@ function PatientDetail() {
           <ProCard title="Evolução" description={`${data.evolution.length} registros`}>
             <p className="text-2xl font-bold">{data.evolution.length}</p>
           </ProCard>
-          </ProCard>
           <div className="md:col-span-3">
             <PatternsCard childId={childId} variant="pro" />
           </div>
