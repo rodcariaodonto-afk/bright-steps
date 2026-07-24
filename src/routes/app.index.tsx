@@ -71,76 +71,67 @@ function Dashboard() {
       {children.length === 0 ? (
         <EmptyState />
       ) : (
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          <Card
-            icon={<CalendarDays className="h-5 w-5" />}
-            title={t("dashboard.cards.nextEvent")}
-            value="Sem agendamentos"
-            hint="Cadastre a agenda em Calendário"
-            tone="primary"
-          />
-          <Card
-            icon={<Pill className="h-5 w-5" />}
-            title={t("dashboard.cards.medications")}
-            value="Sem medicações"
-            hint="Cadastre em Medicação"
-            tone="accent"
-          />
-          <Card
-            icon={<SmilePlus className="h-5 w-5" />}
-            title={t("dashboard.cards.mood")}
-            value="Sem registros"
-            hint="Faça o primeiro em Humor"
-          />
+        <div className="space-y-5">
+          {activeChild && <PatternsCard childId={activeChild.id} />}
 
-          <div className="rounded-3xl border border-primary/20 bg-primary-soft/70 p-6 md:col-span-2">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
-                <Sparkles className="h-5 w-5" aria-hidden="true" />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-                  {t("dashboard.cards.aiSummary")}
-                </p>
-                <p className="font-display text-lg font-bold text-foreground">
-                  {childName
-                    ? `Ainda estamos aprendendo sobre ${childName}`
-                    : "A Azul IA está pronta"}
-                </p>
-              </div>
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <Card
+              icon={<CalendarDays className="h-5 w-5" />}
+              title={t("dashboard.cards.nextEvent")}
+              value="Sem agendamentos"
+              hint="Cadastre a agenda em Calendário"
+              tone="primary"
+            />
+            <Card
+              icon={<Pill className="h-5 w-5" />}
+              title={t("dashboard.cards.medications")}
+              value="Sem medicações"
+              hint="Cadastre em Medicação"
+              tone="accent"
+            />
+            <Card
+              icon={<SmilePlus className="h-5 w-5" />}
+              title={t("dashboard.cards.mood")}
+              value="Sem registros"
+              hint="Faça o primeiro em Humor"
+            />
+
+            <div className="rounded-3xl border border-dashed border-border p-6 md:col-span-2 xl:col-span-2">
+              <p className="text-sm font-semibold text-muted-foreground">
+                Próximo passo
+              </p>
+              <p className="mt-2 text-sm text-foreground">
+                Registre a rotina de {childName ?? "hoje"} para começar o
+                histórico.
+              </p>
+              <Button asChild variant="outline" className="mt-4 rounded-full">
+                <Link to="/app/rotinas">
+                  Ir para Rotinas
+                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/90">
-              Comece registrando a rotina, humor e medicações dos próximos dias.
-              A Azul IA passa a apoiar as decisões conforme os dados chegam.
-            </p>
-            <Button asChild variant="secondary" className="mt-4 rounded-full">
-              <Link to="/app/ia">
-                Conversar com a Azul IA
-                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-              </Link>
-            </Button>
-          </div>
 
-          <div className="rounded-3xl border border-dashed border-border p-6">
-            <p className="text-sm font-semibold text-muted-foreground">
-              Próximo passo
-            </p>
-            <p className="mt-2 text-sm text-foreground">
-              Registre a rotina de {childName ?? "hoje"} para começar o histórico.
-            </p>
-            <Button asChild variant="outline" className="mt-4 rounded-full">
-              <Link to="/app/rotinas">
-                Ir para Rotinas
-                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-              </Link>
-            </Button>
-          </div>
-
-          {activeChild && (
-            <div className="md:col-span-2 xl:col-span-3">
-              <PatternsCard childId={activeChild.id} />
+            <div className="rounded-3xl border border-primary/20 bg-primary-soft/60 p-6">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+                  <Sparkles className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <p className="font-display text-base font-bold text-foreground">
+                  Converse com a Azul IA
+                </p>
+              </div>
+              <p className="mt-3 text-sm text-foreground/90">
+                Tire dúvidas sobre rotina, comportamento e terapias.
+              </p>
+              <Button asChild variant="secondary" className="mt-4 rounded-full">
+                <Link to="/app/ia">
+                  Abrir chat
+                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
             </div>
-          )}
+          </div>
         </div>
       )}
     </div>
