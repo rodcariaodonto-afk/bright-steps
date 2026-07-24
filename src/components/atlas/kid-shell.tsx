@@ -7,13 +7,20 @@ import { useActiveChild } from "@/hooks/use-active-child";
 import { useKidRewards } from "@/hooks/use-kid-rewards";
 import { cn } from "@/lib/utils";
 
-const NAV = [
-  { to: "/kid", key: "home", icon: Home, exact: true },
+type NavItem = {
+  to: "/kid" | "/kid/azul" | "/kid/humor" | "/kid/respirar" | "/kid/historias";
+  key: string;
+  icon: typeof Home;
+  exact?: boolean;
+};
+
+const NAV: NavItem[] = [
+  { to: "/kid", key: "home", exact: true, icon: Home },
   { to: "/kid/azul", key: "azul", icon: MessageCircleHeart },
   { to: "/kid/humor", key: "mood", icon: Smile },
   { to: "/kid/respirar", key: "breathe", icon: Wind },
   { to: "/kid/historias", key: "stories", icon: BookOpen },
-] as const;
+];
 
 export function KidShell({ children }: { children: ReactNode }) {
   const { t } = useTranslation("kid");
