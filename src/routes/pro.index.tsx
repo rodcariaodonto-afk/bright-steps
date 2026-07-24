@@ -165,30 +165,36 @@ function ProDashboard() {
           description={t("dashboard.cards.weekSummary")}
         >
           <ul className="space-y-3">
-            {data.goals.map((g) => {
-              const child = patientById.get(g.childId);
-              return (
-                <li key={g.id}>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="truncate font-medium text-foreground">
-                      {child?.fullName}
-                    </span>
-                    <span className="text-muted-foreground">
-                      {g.progressPercent}%
-                    </span>
-                  </div>
-                  <p className="mt-0.5 truncate text-xs text-muted-foreground">
-                    {g.description}
-                  </p>
-                  <div className="mt-1.5 h-1.5 w-full rounded-full bg-muted">
-                    <div
-                      className="h-1.5 rounded-full bg-primary"
-                      style={{ width: `${g.progressPercent}%` }}
-                    />
-                  </div>
-                </li>
-              );
-            })}
+            {data.goals.length === 0 ? (
+              <li className="rounded-lg border border-dashed border-border p-4 text-center text-xs text-muted-foreground">
+                Nenhum objetivo compartilhado ainda.
+              </li>
+            ) : (
+              data.goals.map((g) => {
+                const child = patientById.get(g.childId);
+                return (
+                  <li key={g.id}>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="truncate font-medium text-foreground">
+                        {child?.fullName ?? "Paciente"}
+                      </span>
+                      <span className="text-muted-foreground">
+                        {g.progressPercent}%
+                      </span>
+                    </div>
+                    <p className="mt-0.5 truncate text-xs text-muted-foreground">
+                      {g.description}
+                    </p>
+                    <div className="mt-1.5 h-1.5 w-full rounded-full bg-muted">
+                      <div
+                        className="h-1.5 rounded-full bg-primary"
+                        style={{ width: `${g.progressPercent}%` }}
+                      />
+                    </div>
+                  </li>
+                );
+              })
+            )}
           </ul>
         </ProCard>
       </div>
