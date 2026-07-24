@@ -162,8 +162,14 @@ function ProProfilePage() {
             <Field label="Nome completo">
               <Input value={form.full_name} onChange={(e) => setForm({ ...form, full_name: e.target.value })} />
             </Field>
-            <Field label="Registro / Conselho">
-              <Input value={form.council_id} onChange={(e) => setForm({ ...form, council_id: e.target.value })} placeholder="CRP 00/000000" />
+            <Field label="Tipo de conselho">
+              <Input value={form.council_type} onChange={(e) => setForm({ ...form, council_type: e.target.value })} placeholder="CRP, CRM, CREFITO..." />
+            </Field>
+            <Field label="Número do conselho">
+              <Input value={form.council_number} onChange={(e) => setForm({ ...form, council_number: e.target.value })} placeholder="00/000000" />
+            </Field>
+            <Field label="UF do conselho">
+              <Input value={form.council_state} onChange={(e) => setForm({ ...form, council_state: e.target.value })} placeholder="SP" maxLength={2} />
             </Field>
             <Field label="Especialidades (vírgula)" full>
               <Input value={form.specialties} onChange={(e) => setForm({ ...form, specialties: e.target.value })} placeholder="TEA, TDAH, ABA" />
