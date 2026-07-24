@@ -121,6 +121,14 @@ export function AppShell({ children }: { children: ReactNode }) {
               <div className="lg:hidden">
                 <ChildPicker />
               </div>
+              <Link
+                to="/kid"
+                className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-sky-400 to-blue-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm hover:brightness-110"
+                title="Abrir Mundo Azul (modo criança)"
+              >
+                <span aria-hidden>💙</span>
+                <span className="hidden sm:inline">Mundo Azul</span>
+              </Link>
               <UserMenu />
               <Button
                 variant="ghost"
