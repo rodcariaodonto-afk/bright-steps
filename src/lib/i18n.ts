@@ -42,7 +42,7 @@ if (!i18n.isInitialized) {
     interpolation: { escapeValue: false },
     react: { useSuspense: false },
     initImmediate: false,
-  });
+  } as Parameters<typeof chain.init>[0]);
 }
 
 export default i18n;
