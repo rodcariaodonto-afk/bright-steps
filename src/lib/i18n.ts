@@ -34,7 +34,7 @@ if (!i18n.isInitialized) {
     defaultNS: "common",
     interpolation: { escapeValue: false },
     react: { useSuspense: false },
-    initImmediate: false,
+    initAsync: false,
     load: "currentOnly",
   });
 }
