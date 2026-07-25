@@ -78,10 +78,48 @@ function KidGamesPage() {
 
   return (
     <div className="space-y-4">
-      <div>
-        <h1 className="text-2xl font-black text-[#0b2740]">Jogos</h1>
-        <p className="text-sm text-[#0b2740]/70">Escolha um jogo para começar.</p>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-black text-[#0b2740]">Jogos</h1>
+          <p className="text-sm text-[#0b2740]/70">Escolha um jogo para começar.</p>
+        </div>
+        <Button asChild variant="outline" size="sm" className="rounded-full">
+          <Link to="/kid/ranking"><Trophy className="mr-1 h-4 w-4" />Ranking</Link>
+        </Button>
       </div>
+
+      {/* Sugestões da Azul */}
+      {(recLoading || recs.length > 0) && (
+        <Card className="border-yellow-200 bg-gradient-to-r from-yellow-50 to-white p-4">
+          <div className="mb-3 flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-yellow-600" />
+            <h2 className="font-bold text-[#0b2740]">Azul recomenda para você</h2>
+          </div>
+          {recLoading ? (
+            <div className="flex items-center gap-2 text-sm text-[#0b2740]/60">
+              <Loader2 className="h-4 w-4 animate-spin" /> Pensando...
+            </div>
+          ) : (
+            <div className="grid gap-2 sm:grid-cols-3">
+              {recs.map((r) => {
+                const g = games.find((gg) => gg.id === r.id);
+                if (!g) return null;
+                return (
+                  <button
+                    key={r.id}
+                    onClick={() => setPlaying(g)}
+                    className="rounded-xl border border-yellow-200 bg-white p-3 text-left shadow-sm transition hover:shadow-md"
+                  >
+                    <p className="text-sm font-bold text-[#0b2740]">{g.title}</p>
+                    <p className="mt-1 text-xs text-[#0b2740]/70">{r.reason}</p>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </Card>
+      )}
+
 
       {loading ? (
         <div className="flex justify-center py-16"><Loader2 className="h-6 w-6 animate-spin text-[#0b2740]/60" /></div>
