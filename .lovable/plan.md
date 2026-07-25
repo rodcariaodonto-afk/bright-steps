@@ -1,86 +1,100 @@
-## Diagnóstico
 
-A seção **Comércio** do Painel Admin tem 5 abas. Apenas **Assinaturas** está funcional. As outras 4 são placeholders (`<AdminPage title=... />` sem conteúdo):
+# Auditoria UX/UI — Meu Mundo Azul
 
-- `/admin/marketplace` — placeholder
-- `/admin/community` — placeholder
-- `/admin/finance` — placeholder
-- `/admin/coupons` — placeholder
-- `/admin/subscriptions` — ✅ já funcional
+Rodrigo, mapeei a plataforma inteira (Família, Pro, Admin, Kid, Landing) e organizei os problemas em 4 ondas, da mais urgente para a mais polida. Cada onda é entregável de forma independente, então dá pra pausar entre uma e outra pra você validar.
 
-## Objetivo
+## Problemas que encontrei
 
-Implementar as 4 abas restantes com CRUD/analytics reais conectados ao Supabase, mantendo o padrão do Super Admin (server functions + auditoria + RLS admin-only).
+**Navegação (Família /app)**
+- Sidebar com 24 itens numa lista plana, sem agrupamento, sem hierarquia. Difícil escanear.
+- Botão "Mundo Azul" espremido na topbar entre ChildPicker e avatar — o próprio ponto que você levantou. Não comunica que é uma mudança de contexto (adulto → criança).
+- Menu mobile é um `grid-cols-2` cru com 24 itens, também sem agrupamento.
+- ChildPicker aparece duas vezes no DOM (desktop e mobile) e não tem destaque — a criança ativa é o contexto mais importante de tudo e some visualmente.
+- Não existe breadcrumb nem título de página consistente. O usuário perde referência dentro dos módulos.
 
-## Escopo por aba
+**Dashboard (/app)**
+- Cards de resumo genéricos, sem CTA claro pro próximo passo.
+- Não existe entrada visual pro Mundo Azul (modo criança), que é um dos diferenciais do produto.
+- Falta o "próximo momento importante" em destaque (próxima medicação, próxima sessão, próximo evento).
 
-### 1. Marketplace (`/admin/marketplace`)
-Gestão dos profissionais listados publicamente em `professional_profiles`.
-- Tabela: nome, conselho, especialidade, status de moderação (`pending/approved/rejected`), rating médio, nº reviews.
-- Ações: aprovar, rejeitar, suspender, editar destaque (`featured`), remover.
-- Filtros: status, especialidade, busca por nome.
-- Métricas topo: total aprovados, pendentes, taxa média de aprovação.
+**Módulo Pro**
+- Segue o mesmo padrão de sidebar plana, mesmos problemas de agrupamento.
+- Falta indicador de paciente ativo (equivalente ao ChildPicker).
 
-### 2. Community (`/admin/community`)
-Moderação de `community_posts` e `community_comments`.
-- Feed de posts recentes com autor, likes, comentários, data.
-- Ações: ocultar/remover post, remover comentário, banir autor (via `admin_audit_log`).
-- Filtros: reportados, mais curtidos, recentes.
-- Métricas: posts hoje/semana, comentários hoje, top autores.
+**Módulo Admin**
+- Sidebar com ~25 itens plana. Agrupamento por seção (Pessoas, Conteúdo, Comércio, Sistema) resolveria imediatamente.
 
-### 3. Finance (`/admin/finance`)
-Visão financeira consolidada (leitura de `subscriptions` + cortesias).
-- KPIs: MRR, ARR, receita últimos 30/90 dias, ticket médio, churn %.
-- Gráfico (Recharts): receita mensal últimos 12 meses.
-- Tabela: últimas 50 transações (usuário, plano, valor, status, data).
-- Export CSV de transações do período.
+**Módulo Kid**
+- Navegação inferior boa, mas o botão "Sair do Mundo" pouco visível.
+- Falta feedback de recompensas (estrelinhas) mais celebrativo.
 
-### 4. Coupons (`/admin/coupons`)
-Sistema de cupons de desconto integrado ao checkout Stripe.
-- Nova tabela `public.coupons`: `code`, `discount_type` (percent/fixed), `discount_value`, `max_redemptions`, `redemptions_count`, `valid_until`, `applies_to_plan`, `active`, `created_by`, timestamps.
-- Migration com RLS: apenas admin gerencia; leitura pública restrita durante validação no checkout.
-- CRUD completo (criar, editar, desativar, deletar).
-- Tabela com cupons ativos, expirados, esgotados.
-- Botão "Copiar código" e status visual.
+**Transversais**
+- Sem estados de loading padronizados (uns usam skeleton, outros spinner, outros nada).
+- Toasts de sucesso/erro inconsistentes entre módulos.
+- Foco de teclado e acessibilidade não auditados.
 
-## Backend
+---
 
-Novo módulo: `src/modules/admin/commerce.functions.ts` com server functions autenticadas via `requireSupabaseAuth` + verificação `has_role(admin)`:
-- `listMarketplaceProfessionals`, `moderateProfessional`, `toggleFeatured`
-- `listCommunityPosts`, `moderatePost`, `deleteComment`
-- `getFinanceMetrics`, `listRecentTransactions`, `exportTransactionsCsv`
-- `listCoupons`, `createCoupon`, `updateCoupon`, `deleteCoupon`
+## Onda 1 — Shell da Família (crítico, resolve o que você viu)
 
-Cada mutação registra em `admin_audit_log`.
+Foca no que você levantou: o Mundo Azul escondido + sidebar difícil de navegar.
 
-## Migration
+1. **Sidebar agrupada e colapsável** usando shadcn `Sidebar` + `SidebarGroup`:
+   - **Rotina & dia a dia**: Painel, Linha do tempo, Calendário, Rotinas
+   - **Saúde**: Medicação, Humor, Comportamento, Documentos
+   - **Desenvolvimento**: Objetivos, Relatórios, Autoavaliações, Conquistas, Biblioteca
+   - **Rede de apoio**: Escola, Cuidador, Comunidade, Marketplace, Mensagens
+   - **Azul IA**: item destacado no topo (não dentro de grupo)
+   - **Conta**: Notificações, Assinatura, Configurações
+   - Grupo do item ativo abre por padrão. Estado persiste em `localStorage`.
 
-```sql
-CREATE TABLE public.coupons (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  code text UNIQUE NOT NULL,
-  discount_type text NOT NULL CHECK (discount_type IN ('percent','fixed')),
-  discount_value numeric NOT NULL,
-  max_redemptions integer,
-  redemptions_count integer NOT NULL DEFAULT 0,
-  valid_until timestamptz,
-  applies_to_plan text,
-  active boolean NOT NULL DEFAULT true,
-  created_by uuid REFERENCES auth.users(id),
-  created_at timestamptz NOT NULL DEFAULT now(),
-  updated_at timestamptz NOT NULL DEFAULT now()
-);
-GRANT SELECT, INSERT, UPDATE, DELETE ON public.coupons TO authenticated;
-GRANT ALL ON public.coupons TO service_role;
-ALTER TABLE public.coupons ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "admins manage coupons" ON public.coupons FOR ALL TO authenticated
-  USING (public.has_role(auth.uid(),'admin')) WITH CHECK (public.has_role(auth.uid(),'admin'));
-```
+2. **Remover botão "Mundo Azul" da topbar**. Ele passa a ser um card destaque no Dashboard (Onda 2).
 
-## Design
+3. **ChildPicker promovido**: vira o elemento mais proeminente da topbar, com avatar da criança, nome grande, idade. Deixa claro que tudo abaixo é sobre essa criança.
 
-Mantém identidade do Admin (neutros, cards com borda sutil, `AdminPage` wrapper). Tabelas com paginação simples, badges de status coloridos (verde/âmbar/vermelho), gráficos Recharts consistentes com `/admin/analytics`.
+4. **Título da página + breadcrumb** no topo de cada rota `/app/*`, extraído do NAV.
 
-## Entrega
+5. **Mobile**: menu vira drawer (`Sheet`) com os mesmos grupos colapsáveis, em vez do grid de 24 itens.
 
-Uma resposta implementa as 4 rotas + módulo backend + migration. Valida tipos com `tsgo` ao final.
+## Onda 2 — Dashboard da Família
+
+1. **Hero card "Mundo Azul"** grande, colorido (gradiente sky/blue), com ilustração e CTA "Abrir modo criança". Explica em uma linha o que é ("Espaço lúdico e seguro para {nome} explorar sozinho").
+2. **Card "Agora / A seguir"** com o próximo item importante (medicação nas próximas 2h, próxima sessão, próximo evento) em destaque no topo.
+3. **Reorganização dos cards existentes** em grid bento (grande + médio + pequenos) em vez de grid uniforme.
+4. **Empty states** com CTAs concretos ("Adicionar primeira medicação", "Registrar primeiro humor") em vez de texto genérico.
+
+## Onda 3 — Padronização Pro + Admin
+
+1. Aplicar o mesmo padrão de sidebar agrupada nos `ProShell` e `AdminShell`:
+   - **Pro**: Clínico / Agenda / Documentação / IA / Conta
+   - **Admin**: Pessoas / Conteúdo / Comércio / Sistema / IA
+2. Adicionar seletor de paciente ativo no ProShell (equivalente ao ChildPicker).
+3. Título de página + breadcrumb consistentes.
+
+## Onda 4 — Polimento transversal
+
+1. Padronizar loading states (skeleton em listas, spinner em ações, `Shimmer` em IA).
+2. Padronizar toasts (sonner) e mensagens de erro.
+3. Melhorar celebração de recompensas no módulo Kid (animação da estrelinha ao ganhar).
+4. Passe de acessibilidade: foco visível, aria-labels, contraste dos gradientes.
+
+---
+
+## Detalhes técnicos
+
+- **Componentes shadcn**: usar o `Sidebar` já disponível em `src/components/ui/sidebar.tsx` (troca o `<aside>` manual do `AppShell`). Grupos com `SidebarGroup` + `SidebarGroupLabel` + estado controlado por `defaultOpen` baseado na rota ativa.
+- **Persistência**: estado de grupos abertos/fechados em `localStorage` (`mma:sidebar:groups`).
+- **Novos arquivos**: `src/components/atlas/dashboard-mundo-azul-card.tsx`, `src/components/atlas/next-up-card.tsx`, `src/components/atlas/page-header.tsx` (título+breadcrumb reusável).
+- **Sem mudanças de rota nem de backend**. Só shell e presentation. Nenhuma migration.
+- **i18n**: adicionar chaves de grupos em `src/locales/pt-BR/app.json` (`sidebar.groups.*`).
+- **Isolamento**: nada muda em `/kid` (só ondas 4), `/auth`, landing.
+
+## O que fica de fora desta rodada
+
+- Redesign visual completo (cores, tipografia). O design system atual fica.
+- Novas features. É só reorganização e clareza.
+- Onboarding / tour guiado (candidato pra rodada futura).
+
+## Como sugiro executar
+
+Começar pela **Onda 1** e te mostrar antes de seguir. Onda 1 sozinha já resolve o problema do Mundo Azul escondido (porque removemos ele daí e a Onda 2 o traz de volta com destaque no Dashboard imediatamente depois). Se aprovar o plano, faço Onda 1 + 2 na sequência (é o pacote que resolve o que você levantou) e paro pra você validar antes de Pro/Admin.
