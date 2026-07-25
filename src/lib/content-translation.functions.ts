@@ -144,12 +144,12 @@ export const getTranslatedContent = createServerFn({ method: "POST" })
       .maybeSingle();
 
     if (cached && cached.source_hash === sourceHash) {
-      return { payload: cached.payload as TranslatedPayload, status: cached.status, cached: true };
+      return { payload: cached.payload as unknown as TranslatedPayload, status: cached.status, cached: true };
     }
 
     // Cache miss ou stale (mas preserva override manual mesmo se stale).
     if (cached && cached.status === "manual") {
-      return { payload: cached.payload as TranslatedPayload, status: "manual", cached: true };
+      return { payload: cached.payload as unknown as TranslatedPayload, status: "manual", cached: true };
     }
 
     try {
