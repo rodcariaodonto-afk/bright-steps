@@ -50,12 +50,11 @@ export function getI18n(): I18nInstance {
 }
 
 export async function ensureI18n(initialLocale?: LocaleCode): Promise<I18nInstance> {
+  // Só usa `initialLocale` no primeiro bootstrap. Chamadas subsequentes
+  // (loader do root a cada navegação) NÃO devem forçar reset — isso
+  // sobrescrevia a escolha do usuário/perfil/detector a cada page change.
   if (!bootstrapPromise) bootstrapPromise = bootstrap(initialLocale);
   await bootstrapPromise;
-  if (initialLocale && i18next.language !== initialLocale) {
-    await i18next.changeLanguage(initialLocale);
-    applyDocumentDirection(initialLocale);
-  }
   return i18next;
 }
 
