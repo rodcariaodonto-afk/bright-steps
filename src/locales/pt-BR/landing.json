@@ -1,4 +1,13 @@
 {
+  "nav": {
+    "product": "Produto",
+    "family": "Família",
+    "ai": "Inteligência Artificial",
+    "pricing": "Planos",
+    "security": "Segurança",
+    "signIn": "Entrar",
+    "start": "Começar agora"
+  },
   "hero": {
     "eyebrow": "Desenvolvimento infantil · Neurodivergência · IA",
     "title": "A plataforma que caminha ao lado da sua família, todos os dias.",
@@ -7,31 +16,32 @@
     "secondaryCta": "Ver como funciona",
     "trust": "Feito com apoio de famílias e profissionais do neurodesenvolvimento"
   },
+  "heroPreview": {
+    "greeting": "Bom dia, Ana",
+    "childDay": "O dia do Bento",
+    "row1Title": "Terapia ocupacional",
+    "row1Subtitle": "Dra. Marina · online",
+    "row2Title": "Metilfenidato · 10mg",
+    "row2Subtitle": "Confirmar administração",
+    "row3Title": "Fono: leitura",
+    "row3Subtitle": "Consultório",
+    "aiLabel": "Azul IA",
+    "aiMessage": "O sono do Bento melhorou 22% esta semana. Continuemos com a rotina das 20h30, funcionou nos últimos 5 dias."
+  },
   "pillars": {
     "title": "Um ecossistema, muitas vidas.",
     "subtitle": "Meu Mundo Azul nasceu para o TEA, mas cresce com qualquer condição do neurodesenvolvimento: TDAH, dislexia, Down, TOD, altas habilidades e mais.",
     "items": [
-      {
-        "title": "Família organizada",
-        "description": "Rotina, calendário, medicações, humor e comportamento em um painel único e acolhedor."
-      },
-      {
-        "title": "Criança encantada",
-        "description": "Uma experiência que parece brincadeira. Avatar, mundo, missões e IA que conversa como um amigo."
-      },
-      {
-        "title": "Profissionais integrados",
-        "description": "Terapeutas e escolas recebem contexto real, aplicam avaliações e devolvem relatórios em tempo real."
-      },
-      {
-        "title": "IA de verdade",
-        "description": "Não é um chatbot. É um assistente que lembra da história da criança e sugere caminhos com base em dados."
-      }
+      { "title": "Família organizada", "description": "Rotina, calendário, medicações, humor e comportamento em um painel único e acolhedor." },
+      { "title": "Criança encantada", "description": "Uma experiência que parece brincadeira. Avatar, mundo, missões e IA que conversa como um amigo." },
+      { "title": "Profissionais integrados", "description": "Terapeutas e escolas recebem contexto real, aplicam avaliações e devolvem relatórios em tempo real." },
+      { "title": "IA de verdade", "description": "Não é um chatbot. É um assistente que lembra da história da criança e sugere caminhos com base em dados." }
     ]
   },
   "modules": {
     "title": "Tudo conversa entre si.",
     "subtitle": "Cada atividade alimenta a linha do tempo, gera relatórios, alimenta a IA e ajusta as recomendações.",
+    "cta": "Começar agora",
     "items": [
       "Perfil clínico completo da criança",
       "Timeline unificada de tudo que acontece",
@@ -55,6 +65,12 @@
     ],
     "disclaimer": "A IA do Meu Mundo Azul é ferramenta de apoio. Nunca substitui profissionais de saúde ou educação."
   },
+  "aiPreview": {
+    "name": "Azul IA",
+    "context": "Contexto ativo · Bento, 6 anos",
+    "userMessage": "Crie uma história pro Bento sobre ir ao dentista pela primeira vez.",
+    "aiMessage": "Claro! \"Hoje o Bento vai conhecer o dentista. Ele vai sentar numa cadeira grande que sobe e desce. A dentista vai contar até 3 antes de cada passo...\" Quer que eu continue e adicione desenhos?"
+  },
   "security": {
     "title": "Feito com respeito absoluto pela LGPD.",
     "items": [
@@ -64,9 +80,27 @@
       "Dados sensíveis de menores tratados com o cuidado que merecem"
     ]
   },
+  "awareness": {
+    "eyebrow": "Conscientização",
+    "title": "O neurodesenvolvimento em números",
+    "subtitle": "Dados oficiais que reforçam a urgência de acolher, informar e conectar famílias, profissionais e escolas.",
+    "stats": [
+      { "n": "1 em 100", "d": "crianças no mundo é diagnosticada com TEA (OMS, 2023)." },
+      { "n": "2,4 mi", "d": "de brasileiros vivem com autismo, segundo estimativa da Lei 13.977/2020." },
+      { "n": "1 em 36", "d": "crianças de 8 anos identificadas com TEA nos EUA (CDC, 2023)." },
+      { "n": "5% a 8%", "d": "das crianças em idade escolar apresentam TDAH (Ministério da Saúde)." }
+    ],
+    "sources": "Fontes: Organização Mundial da Saúde, Centers for Disease Control and Prevention e Ministério da Saúde do Brasil."
+  },
   "cta": {
     "title": "Comece hoje. Cresça com o Meu Mundo Azul por muitos anos.",
     "subtitle": "A plataforma acompanha a criança em cada fase, da rotina de sono à autonomia, da comunicação às terapias.",
     "action": "Criar minha conta"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados.",
+    "lgpd": "LGPD",
+    "privacy": "Privacidade",
+    "terms": "Termos"
   }
 }
