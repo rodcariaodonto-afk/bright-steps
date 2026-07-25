@@ -44,8 +44,10 @@ export interface PublicPlan {
   audience: "family" | "professional";
 }
 
+type PlanSeed = Omit<PublicPlan, "price">;
 
-export const PUBLIC_PLANS: PublicPlan[] = [
+const PLAN_SEEDS: PlanSeed[] = [
+
   {
     code: "familia_essencial",
     displayName: "Família Essencial",
@@ -132,6 +134,21 @@ export const PUBLIC_PLANS: PublicPlan[] = [
     ],
   },
 ];
+
+export const PUBLIC_PLANS: PublicPlan[] = PLAN_SEEDS.map((p) => ({
+  ...p,
+  price: {
+    monthly: p.pricing.BRL.monthly.priceId,
+    yearly: p.pricing.BRL.yearly.priceId,
+    monthlyAmountBRL: p.pricing.BRL.monthly.amount,
+    yearlyAmountBRL: p.pricing.BRL.yearly.amount,
+  },
+}));
+
+export function findPlanByCode(code: string): PublicPlan | undefined {
+  return PUBLIC_PLANS.find((p) => p.code === code);
+}
+
 
 export const TRIAL_DAYS = 7;
 
