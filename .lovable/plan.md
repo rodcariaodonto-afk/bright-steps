@@ -1,59 +1,96 @@
-## Painel Admin — Super Admin funcional (Sistema completo)
+## Sprint 1 — Infraestrutura da Plataforma de Jogos (integrada ao Meu Mundo Azul)
 
-Vou transformar as 4 páginas placeholder da seção **Sistema** em painéis reais, adicionar gestão completa de usuários (criar, convidar, suspender, deletar) e permitir conceder assinaturas de cortesia. Tudo protegido por `has_role(auth.uid(), 'admin')` no servidor.
+Objetivo: entregar toda a fundação para que Sprints 2/3/4 apenas adicionem motores e conteúdo, sem refatoração. Nenhum jogo jogável ainda — apenas o "chassi".
 
-### 1. Banco de dados (migration única)
+Ponto de integração: dentro do Módulo Criança (`/kid`) e do Painel Admin (`/admin/games`). Reaproveita auth, RBAC, Supabase, shadcn, gamificação (kid_rewards) e sessões já existentes.
 
-- **`feature_flags`**: `key`, `enabled`, `description`, `updated_at`, `updated_by`. RLS: leitura autenticada, escrita só admin. Seed com flags iniciais (`ai_family`, `ai_pro`, `ai_child`, `marketplace`, `community`, `messaging`, `library`, `assessments`, `signups_open`).
-- **`app_settings`**: chave/valor JSON (`support_email`, `app_name`, `terms_url`, `privacy_url`, `default_trial_days`, `max_children_per_family`). RLS admin-only para escrita, leitura autenticada.
-- **`admin_audit_log`**: `actor_id`, `action`, `target_type`, `target_id`, `metadata`, `created_at`. RLS admin-only.
-- **`complimentary_subscriptions`**: marca assinatura de cortesia (`user_id`, `plan`, `granted_by`, `expires_at NULL = vitalícia`, `revoked_at`).
-- Atualizar `has_active_subscription` e `get_active_plan` para considerar cortesia ativa.
-- Trigger de bootstrap: promover automaticamente `caria@axhub.com.br` a **admin** quando o email for confirmado (mesmo padrão do `grant_admin_for_founder`).
+---
 
-### 2. Server functions (`src/modules/admin/*.functions.ts`)
+### 1. Banco de dados (uma migration)
 
-Todas com `requireSupabaseAuth` + checagem `has_role admin` + log em `admin_audit_log`:
+Novas tabelas em `public`, com GRANTs + RLS:
 
-- `createUser({ email, password, fullName, roles[] })` → usa `supabaseAdmin.auth.admin.createUser` (`email_confirm: true`).
-- `inviteUserByEmail({ email, roles[] })` → `supabaseAdmin.auth.admin.inviteUserByEmail`.
-- `updateUserRoles({ userId, roles[] })` → substitui roles do usuário.
-- `suspendUser({ userId, banDurationHours })` → `updateUserById({ ban_duration })`.
-- `deleteUser({ userId })` → `deleteUser` (cascade LGPD).
-- `grantComplimentary({ userId, plan, expiresAt })` / `revokeComplimentary({ userId })`.
-- `listFeatureFlags` / `setFeatureFlag({ key, enabled })`.
-- `listAppSettings` / `updateAppSetting({ key, value })`.
-- `listAuditLog({ limit, cursor })`.
-- `exportTableCsv({ table })` → whitelist de tabelas, streaming server-side (via server route `/api/admin/export/:table` protegida).
+- **`game_engines`** — catálogo dos motores disponíveis. Colunas: `code` (unique, ex: `quiz`, `memory`, `drag_drop`), `name`, `description`, `config_schema` (jsonb com JSON Schema do payload), `default_reward`, `active`, `version`, `icon`. Leitura: authenticated. Escrita: admin.
+- **Estender `content_games`** (já existe): adicionar `engine_code` (fk lógica para `game_engines.code`), `config` (jsonb — o "corpo" do jogo interpretado pelo motor), `age_min`, `age_max`, `tags text[]`, `estimated_minutes`, `accessibility` (jsonb: `hasAudio`, `hasCaptions`, `highContrast`, `reducedMotion`).
+- **`game_sessions`** — cada partida iniciada por uma criança. Colunas: `child_id`, `game_id`, `engine_code`, `started_at`, `ended_at`, `duration_ms`, `status` (`in_progress`/`completed`/`abandoned`), `score`, `max_score`, `stars_awarded`, `difficulty`, `metadata jsonb`. RLS: leitura pelos guardiões da criança (`can_access_child`) + admin; escrita pela sessão do próprio guardião via `can_write_child`.
+- **`game_events`** — eventos granulares dentro de uma partida (para a IA da Sprint 4 já ter matéria-prima). Colunas: `session_id`, `event_type` (`answer`, `hint`, `retry`, `pause`, `resume`, `complete`), `payload jsonb`, `elapsed_ms`, `created_at`. Mesma política das sessões.
+- **RPC `start_game_session` / `complete_game_session`** — SECURITY DEFINER; a segunda credita estrelas via `add_kid_stars` para não duplicar lógica de recompensa.
+- **Seed** dos três motores previstos (`quiz`, `memory`, `drag_drop`) com `active = false` (Sprint 2 ativa quando o código do motor existir).
 
-### 3. UI — páginas admin reais
+### 2. Arquitetura de código (client-safe, JSON-first)
 
-- **`/admin/permissions`**: tabela de usuários com busca, chips de roles, ações (promover admin/moderator/professional, conceder cortesia via modal, suspender, deletar). Botão **"Criar usuário"** e **"Convidar por email"** no topo.
-- **`/admin/flags`**: lista de feature flags com toggle inline + descrição + timestamp do último update.
-- **`/admin/settings`**: formulário por seção (geral, limites, links legais, suporte) editando `app_settings`.
-- **`/admin/backups`**: lista de tabelas com botão "Exportar CSV" e aviso de que restore é feito via Cloud → Advanced settings. Mostra últimas exportações do audit log.
-- **`/admin/users`** (já existe): adicionar botões inline (promover, cortesia, suspender) reaproveitando as mesmas server functions.
+Estrutura nova em `src/modules/games/`:
 
-### 4. Hook e componentes
+```text
+src/modules/games/
+  registry/
+    engine-registry.ts    ← Map<engineCode, EngineDefinition>
+    game-registry.ts      ← carrega content_games ativos + valida config vs schema
+  engines/
+    types.ts              ← EngineProps, EngineResult, EngineDefinition
+    (motores entram aqui na Sprint 2)
+  runtime/
+    game-player.tsx       ← componente universal: recebe gameId, resolve engine, monta sessão, coleta eventos, credita estrelas
+    session-recorder.ts   ← buffer de events + flush
+  accessibility/
+    a11y-context.tsx      ← preferências (áudio on/off, contraste, motion) persistidas por criança
+  audio/
+    audio-manager.ts      ← Web Audio API wrapper, pré-carga, mute global
+  hooks/
+    use-game.ts, use-game-session.ts, use-child-a11y.ts
+  api.functions.ts        ← createServerFn: listGames, getGame, startSession, recordEvent, completeSession, adminUpsertGame
+```
 
-- `useFeatureFlag(key)` client-side lendo `feature_flags` com Realtime, usado para gatear módulos globalmente no `AppShell`/`ProShell`.
-- Modal reutilizável `CreateUserDialog` e `GrantComplimentaryDialog` em `src/components/admin/`.
+Regras:
+- Cada motor implementa a mesma interface `EngineDefinition` (`code`, `configSchema` Zod, `Component: React.FC<EngineProps>`, `computeResult(events) => EngineResult`).
+- `game-player.tsx` é o único ponto que sabe falar com o Supabase — motores são puros: recebem `config`, emitem `events`, retornam `result`.
+- Nenhum motor importa outro. Adicionar motor = criar pasta + registrar no `engine-registry`.
 
-### 5. Cortesia — comportamento
+### 3. Painel Admin — evoluir `/admin/games`
 
-Admin escolhe caso a caso no modal: campo "Expira em" (data opcional). Quando expira, `has_active_subscription` para de retornar true e o usuário volta ao Free automaticamente. Admin pode revogar antes.
+Trocar o `ContentCrud` genérico atual por um editor específico:
 
-### Ordem de execução
+- Seletor de **motor** (dropdown vindo de `game_engines`).
+- Campos comuns: título, slug, capa, idade min/max, tags, estrelas, publicado, acessibilidade.
+- Campo **config (JSON)** renderizado com editor JSON + validação em tempo real contra o `config_schema` do motor escolhido.
+- Botões: **Duplicar**, **Importar JSON**, **Exportar JSON**, **Ativar/Desativar**.
+- Enquanto Sprint 2 não entrega motores, o admin ainda pode cadastrar jogos (ficam ocultos no `/kid` porque o motor está inativo).
 
-1. Migration (tabelas + trigger + seed + update das funções de subscription).
-2. Server functions admin.
-3. UI das 4 páginas Sistema + reforço na `/admin/users`.
-4. Hook `useFeatureFlag` + integração no gating.
-5. Verificação: login como caria@axhub.com.br, criar usuário teste, conceder cortesia, alternar flag, exportar CSV.
+### 4. Módulo Criança — estante de jogos
 
-### Detalhes técnicos
+Nova rota `/kid/jogos` (e `/kid/jogos/$slug`):
+- Estante visual filtrando `content_games` por faixa etária da criança ativa e motores ativos.
+- Clicar num jogo abre o `GamePlayer` em tela cheia, com barra de progresso, botão pausar, botão sair (marca `abandoned`).
+- Ao concluir: tela de recompensa + estrelas creditadas via RPC.
+- Respeita preferências de acessibilidade (áudio, contraste, motion reduzido).
 
-- `supabaseAdmin` sempre carregado dentro do handler (`await import`).
-- Todas as ações destrutivas passam por audit log.
-- Exportação CSV via server route em `src/routes/api/admin.export.$table.ts` com `requireSupabaseAuth` inline (verifica bearer + role) e streaming de `COPY (...) TO STDOUT` transformado em Response.
-- Nenhuma chave de serviço exposta ao cliente; nenhuma alteração no client.ts autogen.
+### 5. Documentação da arquitetura
+
+`src/modules/games/README.md` com: filosofia JSON-first, contrato `EngineDefinition`, ciclo de vida de uma sessão, como adicionar um motor novo (checklist de 6 passos), formato do config, política de recompensas.
+
+---
+
+### O que NÃO entra nesta Sprint
+
+- Nenhum motor implementado (`quiz`, `memory`, `drag_drop` ficam `active = false`).
+- Nenhum conteúdo real de jogo populado.
+- Sem IA adaptativa, sem dashboards de evolução, sem PDF.
+- Sem PWA/mobile packaging.
+
+### Critério de conclusão
+
+- Migration aplicada, RLS validada.
+- Admin consegue cadastrar um "jogo fantasma" escolhendo um motor, salvando config JSON válido.
+- `/kid/jogos` renderiza a estante (vazia enquanto motores estão inativos, com estado empty claro).
+- `GamePlayer` monta um motor stub de teste (`echo`, interno, não listado), grava sessão, credita 1 estrela — provando que o pipeline funciona ponta a ponta.
+- README publicado.
+
+Depois da sua validação desta Sprint 1, sigo para **Sprint 2 — Motores Quiz + Memória + Arrastar-e-Soltar**.
+
+### Detalhes técnicos (para referência)
+
+- Tabelas seguem o padrão do projeto: `GRANT` explícito, RLS, `updated_at` via `set_updated_at`.
+- Server functions em `src/modules/games/api.functions.ts` usam `requireSupabaseAuth`; admin ops checam `has_role(uid,'admin')`.
+- `config_schema` é JSON Schema serializado; validação client-side com Ajv (leve) ou Zod-from-JSON-Schema. Escolho na implementação pelo bundle size.
+- `game_events` sem RLS pesada em INSERT (usa RPC SECURITY DEFINER que valida `can_write_child` uma vez por sessão) para não estrangular telemetria.
+- Zero mudança em Stripe/entitlements — jogos ficam liberados no plano free por padrão; gating por plano fica para depois se você pedir.

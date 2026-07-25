@@ -833,48 +833,74 @@ export type Database = {
       }
       content_games: {
         Row: {
+          accessibility: Json
+          age_max: number | null
+          age_min: number | null
           category: string | null
           config: Json | null
           cover_url: string | null
           created_at: string | null
           description: string | null
           difficulty: string | null
+          engine_code: string | null
+          estimated_minutes: number | null
           id: string
           published: boolean | null
           slug: string
           stars_reward: number | null
+          tags: string[]
           title: string
           updated_at: string | null
         }
         Insert: {
+          accessibility?: Json
+          age_max?: number | null
+          age_min?: number | null
           category?: string | null
           config?: Json | null
           cover_url?: string | null
           created_at?: string | null
           description?: string | null
           difficulty?: string | null
+          engine_code?: string | null
+          estimated_minutes?: number | null
           id?: string
           published?: boolean | null
           slug: string
           stars_reward?: number | null
+          tags?: string[]
           title: string
           updated_at?: string | null
         }
         Update: {
+          accessibility?: Json
+          age_max?: number | null
+          age_min?: number | null
           category?: string | null
           config?: Json | null
           cover_url?: string | null
           created_at?: string | null
           description?: string | null
           difficulty?: string | null
+          engine_code?: string | null
+          estimated_minutes?: number | null
           id?: string
           published?: boolean | null
           slug?: string
           stars_reward?: number | null
+          tags?: string[]
           title?: string
           updated_at?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "content_games_engine_code_fkey"
+            columns: ["engine_code"]
+            isOneToOne: false
+            referencedRelation: "game_engines"
+            referencedColumns: ["code"]
+          },
+        ]
       }
       content_missions: {
         Row: {
@@ -1148,6 +1174,159 @@ export type Database = {
           updated_by?: string | null
         }
         Relationships: []
+      }
+      game_engines: {
+        Row: {
+          active: boolean
+          code: string
+          config_schema: Json
+          created_at: string
+          default_reward: number
+          description: string | null
+          icon: string | null
+          name: string
+          updated_at: string
+          version: number
+        }
+        Insert: {
+          active?: boolean
+          code: string
+          config_schema?: Json
+          created_at?: string
+          default_reward?: number
+          description?: string | null
+          icon?: string | null
+          name: string
+          updated_at?: string
+          version?: number
+        }
+        Update: {
+          active?: boolean
+          code?: string
+          config_schema?: Json
+          created_at?: string
+          default_reward?: number
+          description?: string | null
+          icon?: string | null
+          name?: string
+          updated_at?: string
+          version?: number
+        }
+        Relationships: []
+      }
+      game_events: {
+        Row: {
+          created_at: string
+          elapsed_ms: number | null
+          event_type: string
+          id: string
+          payload: Json
+          session_id: string
+        }
+        Insert: {
+          created_at?: string
+          elapsed_ms?: number | null
+          event_type: string
+          id?: string
+          payload?: Json
+          session_id: string
+        }
+        Update: {
+          created_at?: string
+          elapsed_ms?: number | null
+          event_type?: string
+          id?: string
+          payload?: Json
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "game_events_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "game_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      game_sessions: {
+        Row: {
+          child_id: string
+          created_at: string
+          created_by: string | null
+          difficulty: string | null
+          duration_ms: number | null
+          ended_at: string | null
+          engine_code: string
+          game_id: string
+          id: string
+          max_score: number | null
+          metadata: Json
+          score: number | null
+          stars_awarded: number
+          started_at: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          created_by?: string | null
+          difficulty?: string | null
+          duration_ms?: number | null
+          ended_at?: string | null
+          engine_code: string
+          game_id: string
+          id?: string
+          max_score?: number | null
+          metadata?: Json
+          score?: number | null
+          stars_awarded?: number
+          started_at?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          created_by?: string | null
+          difficulty?: string | null
+          duration_ms?: number | null
+          ended_at?: string | null
+          engine_code?: string
+          game_id?: string
+          id?: string
+          max_score?: number | null
+          metadata?: Json
+          score?: number | null
+          stars_awarded?: number
+          started_at?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "game_sessions_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "game_sessions_engine_code_fkey"
+            columns: ["engine_code"]
+            isOneToOne: false
+            referencedRelation: "game_engines"
+            referencedColumns: ["code"]
+          },
+          {
+            foreignKeyName: "game_sessions_game_id_fkey"
+            columns: ["game_id"]
+            isOneToOne: false
+            referencedRelation: "content_games"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       goal_progress: {
         Row: {
@@ -2346,6 +2525,16 @@ export type Database = {
         Args: { _child_id: string; _user_id: string }
         Returns: boolean
       }
+      complete_game_session: {
+        Args: {
+          _max_score: number
+          _metadata?: Json
+          _score: number
+          _session_id: string
+          _status?: string
+        }
+        Returns: number
+      }
       get_active_plan: {
         Args: { check_env?: string; user_uuid: string }
         Returns: string
@@ -2378,6 +2567,10 @@ export type Database = {
         }[]
       }
       slugify_text: { Args: { input: string }; Returns: string }
+      start_game_session: {
+        Args: { _child_id: string; _difficulty?: string; _game_id: string }
+        Returns: string
+      }
       unaccent: { Args: { "": string }; Returns: string }
     }
     Enums: {
