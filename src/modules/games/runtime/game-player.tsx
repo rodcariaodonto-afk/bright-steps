@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { getEngine } from "../registry/engine-registry";
 import { startGameSession, recordGameEvent, completeGameSession } from "../api.functions";
 import type { EngineResult, GameEventInput } from "../engines/types";
+import { useTranslatedContent } from "@/hooks/use-translated-content";
 
 interface Props {
   childId: string;
