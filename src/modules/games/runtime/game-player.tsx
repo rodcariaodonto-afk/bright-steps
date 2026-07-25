@@ -35,6 +35,10 @@ export function GamePlayer({ childId, game, onExit }: Props) {
   const completeFn = useServerFn(completeGameSession);
 
   const engine = game.engine_code ? getEngine(game.engine_code) : undefined;
+  const { data: t, loading: tLoading } = useTranslatedContent("game", game.id, {
+    title: game.title,
+    config: game.config as never,
+  });
 
   useEffect(() => {
     let cancelled = false;
