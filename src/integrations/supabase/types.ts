@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_audit_log: {
+        Row: {
+          action: string
+          actor_id: string
+          created_at: string
+          id: string
+          metadata: Json | null
+          target_id: string | null
+          target_type: string | null
+        }
+        Insert: {
+          action: string
+          actor_id: string
+          created_at?: string
+          id?: string
+          metadata?: Json | null
+          target_id?: string | null
+          target_type?: string | null
+        }
+        Update: {
+          action?: string
+          actor_id?: string
+          created_at?: string
+          id?: string
+          metadata?: Json | null
+          target_id?: string | null
+          target_type?: string | null
+        }
+        Relationships: []
+      }
+      app_settings: {
+        Row: {
+          description: string | null
+          key: string
+          updated_at: string
+          updated_by: string | null
+          value: Json
+        }
+        Insert: {
+          description?: string | null
+          key: string
+          updated_at?: string
+          updated_by?: string | null
+          value: Json
+        }
+        Update: {
+          description?: string | null
+          key?: string
+          updated_at?: string
+          updated_by?: string | null
+          value?: Json
+        }
+        Relationships: []
+      }
       appointments: {
         Row: {
           child_id: string
@@ -652,6 +706,42 @@ export type Database = {
         }
         Relationships: []
       }
+      complimentary_subscriptions: {
+        Row: {
+          created_at: string
+          expires_at: string | null
+          granted_by: string
+          id: string
+          plan: string
+          reason: string | null
+          revoked_at: string | null
+          revoked_by: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          expires_at?: string | null
+          granted_by: string
+          id?: string
+          plan: string
+          reason?: string | null
+          revoked_at?: string | null
+          revoked_by?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string | null
+          granted_by?: string
+          id?: string
+          plan?: string
+          reason?: string | null
+          revoked_at?: string | null
+          revoked_by?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       consent_records: {
         Row: {
           evidence: Json | null
@@ -863,6 +953,30 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      feature_flags: {
+        Row: {
+          description: string | null
+          enabled: boolean
+          key: string
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          description?: string | null
+          enabled?: boolean
+          key: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          description?: string | null
+          enabled?: boolean
+          key?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
       }
       goal_progress: {
         Row: {
