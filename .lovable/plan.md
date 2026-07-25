@@ -1,77 +1,49 @@
-## Sprint 2 — Três motores de jogo JSON-driven
+## Objetivo
+Deixar o Painel Admin 100% funcional como Super Admin, cobrindo as abas ainda em placeholder (Notificações, Analytics, Relatórios) e adicionando ações de criação em Pessoas (Usuários, Profissionais, Escolas, Famílias, Crianças).
 
-Implementar os três primeiros motores reais em cima da infra da Sprint 1. Cada motor recebe `config` (JSON), reporta eventos via `onEvent` e chama `onComplete({ score, maxScore, status, metadata })`. Todos ganham estrelinhas via o pipeline já existente (`complete_game_session` → `add_kid_stars`).
+## Escopo
 
-### 1. Motor Quiz (`src/modules/games/engines/quiz.tsx`)
+### 1. Aba Notificações (`/admin/notifications`)
+- Server functions: `listAllNotifications` (últimas 200, com filtro por tipo e status lido/não), `broadcastNotification` (envia para todos os usuários OU segmento: `admin | professional | family`), `deleteNotificationAdmin`.
+- UI: tabela de notificações recentes + botão "Nova notificação" abre dialog com formulário (título, corpo, prioridade, tipo, público‑alvo, link opcional). Toast + refresh após envio.
 
-Schema:
-```json
-{
-  "questions": [
-    { "prompt": "Qual é uma emoção?", "options": ["Alegria","Mesa","Azul"], "correctIndex": 0, "explanation": "..." }
-  ],
-  "shuffleOptions": true,
-  "showExplanation": true
-}
-```
-- Uma pergunta por vez, feedback imediato (verde/vermelho), botão "Próxima".
-- Eventos: `question_shown`, `answer_selected` (com correto/incorreto), `question_completed`.
-- Score = acertos; maxScore = total de perguntas.
+### 2. Aba Analytics (`/admin/analytics`)
+- Server function `getAnalyticsOverview` agregando dados reais do banco:
+  - Séries diárias 30d de novos usuários, novas famílias, novas crianças, sessões clínicas concluídas, jogos concluídos.
+  - Top 5 jogos por sessões, top 5 histórias por leituras, distribuição de humor 30d, MRR ativo por plano.
+- UI com KPIs + gráficos (Recharts já instalado): line, bar, pie.
 
-### 2. Motor Memória (`src/modules/games/engines/memory.tsx`)
+### 3. Aba Relatórios (`/admin/reports`)
+- Server functions:
+  - `listAdminReports` (lê `public.reports`).
+  - `exportPlatformReport({ range, type })` gera CSV consolidado (usuários, famílias, receita, sessões) — retorna string CSV.
+- UI: seletor de período (7/30/90 dias) + tipo de relatório + botão "Gerar CSV" (download client‑side) + lista dos relatórios já gerados em `reports`.
 
-Schema:
-```json
-{
-  "pairs": [ { "id":"cat", "label":"Gato", "emoji":"🐱" } ],
-  "gridSize": "4x4",
-  "timeLimitSec": 120
-}
-```
-- Grid de cartas viradas; clicar vira; 2 cartas por vez; par correto fica revelado.
-- Eventos: `card_flipped`, `pair_matched`, `pair_missed`.
-- Score = pares encontrados; bônus de tempo no metadata.
+### 4. Ações de criação em Pessoas
+Adicionar botão "Adicionar" + dialog em cada tela; usar `supabaseAdmin` no server, sempre após `ensureAdmin`, e registrar em `admin_audit_log`.
 
-### 3. Motor Arrastar-e-Soltar (`src/modules/games/engines/drag_drop.tsx`)
+- **Usuários** (`/admin/users`): "Novo usuário" via `supabaseAdmin.auth.admin.createUser` (email, senha temp, full_name, roles múltiplas: admin/professional). Trigger existente cria profile. Também botão inline "Editar papéis" por linha (adicionar/remover role em `user_roles`).
+- **Profissionais** (`/admin/professionals`): "Cadastrar profissional" — cria auto usuário (se e‑mail não existir) + `professional_profiles` (nome, conselho, número, estado, especialidades, bio) já com `moderation_status='approved'` e role `professional`.
+- **Escolas** (`/admin/schools`): "Vincular escola" — selecionar criança existente + preencher escola/série/turma/professor e inserir em `school_profiles`.
+- **Famílias** (`/admin/families`): "Nova família" — selecionar owner existente por e‑mail + nome.
+- **Crianças** (`/admin/children`): "Nova criança" — selecionar família + nome, apelido, data de nascimento, condições declaradas.
 
-Schema:
-```json
-{
-  "prompt": "Classifique os animais",
-  "buckets": [ { "id":"aquatic", "label":"Aquáticos" }, { "id":"terrestrial", "label":"Terrestres" } ],
-  "items": [ { "id":"fish", "label":"Peixe", "emoji":"🐟", "correctBucket":"aquatic" } ]
-}
-```
-- HTML5 drag-and-drop com fallback tap-to-select (acessibilidade + mobile).
-- Eventos: `item_dropped` (bucket correto/incorreto), `round_completed`.
-- Score = itens no bucket correto; maxScore = total de itens.
+### 5. Ajustes menores
+- Corrigir string "E,mail" na tabela de usuários.
+- Adicionar chaves i18n necessárias em `pt-BR/admin.json` (títulos, botões, colunas).
 
-### 4. Registro e ativação
+## Detalhes técnicos
+- Novos arquivos:
+  - `src/modules/admin/notifications.functions.ts`
+  - `src/modules/admin/analytics.functions.ts`
+  - `src/modules/admin/reports.functions.ts`
+  - `src/modules/admin/people.functions.ts` (create user/professional/school/family/child + set roles)
+- Reescrita das rotas: `admin.notifications.tsx`, `admin.analytics.tsx`, `admin.reports.tsx`, e atualização com dialogs de criação nas 5 rotas de Pessoas.
+- Todas as server fns: `.middleware([requireSupabaseAuth])` + `ensureAdmin` + `supabaseAdmin` carregado dentro do handler; logs em `admin_audit_log`.
+- Gráficos usando Recharts (já no projeto).
+- Sem alteração de schema — as tabelas necessárias já existem (`notifications`, `reports`, `user_roles`, `professional_profiles`, `school_profiles`, `families`, `children`, `admin_audit_log`).
 
-- Registrar os três motores no `engine-registry` com `schema` exposto (para o editor JSON do admin já mostrar o formato esperado).
-- Migration curta: `UPDATE game_engines SET active = true WHERE code IN ('quiz','memory','drag_drop')` e atualizar `schema` de cada linha para refletir o JSON acima.
-
-### 5. Seeds de conteúdo (opcional, no mesmo migration)
-
-Três jogos publicados de exemplo para o `/kid/jogos` já ter conteúdo real:
-- Quiz de emoções (5 perguntas)
-- Memória de animais (8 pares)
-- Classificar objetos por cor (drag-and-drop)
-
-### 6. Acessibilidade e UX
-
-- Todos os motores: navegação por teclado, `aria-label` em cartas/itens, foco visível, tamanhos ≥ 44px, feedback sonoro opcional desligado por padrão.
-- Respeitar `prefers-reduced-motion` (sem animações de flip agressivas).
-
-### Fora do escopo desta sprint
-
-- Motores adicionais (sequência, categorização avançada, história ramificada) ficam para Sprint 3.
-- Editor visual (drag-and-drop de perguntas no admin) — segue por enquanto via JSON no editor atual.
-- Analytics agregado por motor no painel admin — Sprint 4.
-
-### Verificação final
-
-1. Admin cria um Quiz com 3 perguntas → publica.
-2. Criança abre `/kid/jogos`, joga, recebe pontuação e estrelinhas.
-3. Repetir para Memória e Drag-and-Drop.
-4. Conferir eventos em `game_events` e sessão em `game_sessions`.
+## Fora de escopo
+- Segmentação avançada de notificações (por família específica) — apenas broadcast por role nesta iteração.
+- Editor visual de relatórios agendados / cron.
+- Edição inline completa de todos os campos das entidades (apenas criação + campos essenciais).
