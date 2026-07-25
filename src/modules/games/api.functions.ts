@@ -15,7 +15,7 @@ export const startGameSession = createServerFn({ method: "POST" })
     const { data: sessionId, error } = await context.supabase.rpc("start_game_session", {
       _child_id: data.childId,
       _game_id: data.gameId,
-      _difficulty: data.difficulty ?? null,
+      _difficulty: data.difficulty ?? undefined,
     });
     if (error) throw new Error(error.message);
     return { sessionId: sessionId as string };
@@ -35,7 +35,7 @@ export const recordGameEvent = createServerFn({ method: "POST" })
     const { error } = await context.supabase.from("game_events").insert({
       session_id: data.sessionId,
       event_type: data.eventType,
-      payload: data.payload ?? {},
+      payload: (data.payload ?? {}) as never,
       elapsed_ms: data.elapsedMs ?? null,
     });
     if (error) throw new Error(error.message);
@@ -59,7 +59,7 @@ export const completeGameSession = createServerFn({ method: "POST" })
       _score: data.score,
       _max_score: data.maxScore,
       _status: data.status,
-      _metadata: data.metadata ?? {},
+      _metadata: (data.metadata ?? {}) as never,
     });
     if (error) throw new Error(error.message);
     return { starsAwarded: (stars as number) ?? 0 };

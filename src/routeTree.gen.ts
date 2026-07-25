@@ -38,6 +38,7 @@ import { Route as ProAgendaRouteImport } from './routes/pro.agenda'
 import { Route as PlanosObrigadoRouteImport } from './routes/planos_.obrigado'
 import { Route as PlanosCheckoutRouteImport } from './routes/planos_.checkout'
 import { Route as KidRespirarRouteImport } from './routes/kid.respirar'
+import { Route as KidJogosRouteImport } from './routes/kid.jogos'
 import { Route as KidHumorRouteImport } from './routes/kid.humor'
 import { Route as KidHistoriasRouteImport } from './routes/kid.historias'
 import { Route as KidAzulRouteImport } from './routes/kid.azul'
@@ -239,6 +240,11 @@ const PlanosCheckoutRoute = PlanosCheckoutRouteImport.update({
 const KidRespirarRoute = KidRespirarRouteImport.update({
   id: '/respirar',
   path: '/respirar',
+  getParentRoute: () => KidRoute,
+} as any)
+const KidJogosRoute = KidJogosRouteImport.update({
+  id: '/jogos',
+  path: '/jogos',
   getParentRoute: () => KidRoute,
 } as any)
 const KidHumorRoute = KidHumorRouteImport.update({
@@ -587,6 +593,7 @@ export interface FileRoutesByFullPath {
   '/kid/azul': typeof KidAzulRoute
   '/kid/historias': typeof KidHistoriasRoute
   '/kid/humor': typeof KidHumorRoute
+  '/kid/jogos': typeof KidJogosRoute
   '/kid/respirar': typeof KidRespirarRoute
   '/planos/checkout': typeof PlanosCheckoutRoute
   '/planos/obrigado': typeof PlanosObrigadoRoute
@@ -671,6 +678,7 @@ export interface FileRoutesByTo {
   '/kid/azul': typeof KidAzulRoute
   '/kid/historias': typeof KidHistoriasRoute
   '/kid/humor': typeof KidHumorRoute
+  '/kid/jogos': typeof KidJogosRoute
   '/kid/respirar': typeof KidRespirarRoute
   '/planos/checkout': typeof PlanosCheckoutRoute
   '/planos/obrigado': typeof PlanosObrigadoRoute
@@ -760,6 +768,7 @@ export interface FileRoutesById {
   '/kid/azul': typeof KidAzulRoute
   '/kid/historias': typeof KidHistoriasRoute
   '/kid/humor': typeof KidHumorRoute
+  '/kid/jogos': typeof KidJogosRoute
   '/kid/respirar': typeof KidRespirarRoute
   '/planos_/checkout': typeof PlanosCheckoutRoute
   '/planos_/obrigado': typeof PlanosObrigadoRoute
@@ -850,6 +859,7 @@ export interface FileRouteTypes {
     | '/kid/azul'
     | '/kid/historias'
     | '/kid/humor'
+    | '/kid/jogos'
     | '/kid/respirar'
     | '/planos/checkout'
     | '/planos/obrigado'
@@ -934,6 +944,7 @@ export interface FileRouteTypes {
     | '/kid/azul'
     | '/kid/historias'
     | '/kid/humor'
+    | '/kid/jogos'
     | '/kid/respirar'
     | '/planos/checkout'
     | '/planos/obrigado'
@@ -1022,6 +1033,7 @@ export interface FileRouteTypes {
     | '/kid/azul'
     | '/kid/historias'
     | '/kid/humor'
+    | '/kid/jogos'
     | '/kid/respirar'
     | '/planos_/checkout'
     | '/planos_/obrigado'
@@ -1272,6 +1284,13 @@ declare module '@tanstack/react-router' {
       path: '/respirar'
       fullPath: '/kid/respirar'
       preLoaderRoute: typeof KidRespirarRouteImport
+      parentRoute: typeof KidRoute
+    }
+    '/kid/jogos': {
+      id: '/kid/jogos'
+      path: '/jogos'
+      fullPath: '/kid/jogos'
+      preLoaderRoute: typeof KidJogosRouteImport
       parentRoute: typeof KidRoute
     }
     '/kid/humor': {
@@ -1815,6 +1834,7 @@ interface KidRouteChildren {
   KidAzulRoute: typeof KidAzulRoute
   KidHistoriasRoute: typeof KidHistoriasRoute
   KidHumorRoute: typeof KidHumorRoute
+  KidJogosRoute: typeof KidJogosRoute
   KidRespirarRoute: typeof KidRespirarRoute
   KidIndexRoute: typeof KidIndexRoute
 }
@@ -1823,6 +1843,7 @@ const KidRouteChildren: KidRouteChildren = {
   KidAzulRoute: KidAzulRoute,
   KidHistoriasRoute: KidHistoriasRoute,
   KidHumorRoute: KidHumorRoute,
+  KidJogosRoute: KidJogosRoute,
   KidRespirarRoute: KidRespirarRoute,
   KidIndexRoute: KidIndexRoute,
 }

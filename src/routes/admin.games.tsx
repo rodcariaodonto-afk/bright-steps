@@ -102,7 +102,7 @@ function AdminGamesPage() {
   const duplicate = async (row: GameRow) => {
     const { id, ...rest } = row;
     const copy = { ...rest, slug: `${row.slug}-copia`, title: `${row.title} (cópia)`, published: false };
-    const { error } = await supabase.from("content_games").insert(copy);
+    const { error } = await supabase.from("content_games").insert(copy as any);
     if (error) return toast.error(error.message);
     toast.success("Duplicado");
     load();
@@ -151,7 +151,7 @@ function AdminGamesPage() {
     }
     setConfigError(null);
     setSaving(true);
-    const payload = { ...form, config: cfg };
+    const payload = { ...form, config: cfg } as any;
     const q = editing
       ? supabase.from("content_games").update(payload).eq("id", editing.id)
       : supabase.from("content_games").insert(payload);
