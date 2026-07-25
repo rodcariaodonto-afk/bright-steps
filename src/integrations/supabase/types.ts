@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      achievement_definitions: {
+        Row: {
+          active: boolean | null
+          category: string | null
+          code: string
+          created_at: string | null
+          description: string | null
+          icon: string | null
+          id: string
+          stars_reward: number | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          category?: string | null
+          code: string
+          created_at?: string | null
+          description?: string | null
+          icon?: string | null
+          id?: string
+          stars_reward?: number | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          category?: string | null
+          code?: string
+          created_at?: string | null
+          description?: string | null
+          icon?: string | null
+          id?: string
+          stars_reward?: number | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       admin_audit_log: {
         Row: {
           action: string
@@ -791,6 +830,138 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      content_games: {
+        Row: {
+          category: string | null
+          config: Json | null
+          cover_url: string | null
+          created_at: string | null
+          description: string | null
+          difficulty: string | null
+          id: string
+          published: boolean | null
+          slug: string
+          stars_reward: number | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          config?: Json | null
+          cover_url?: string | null
+          created_at?: string | null
+          description?: string | null
+          difficulty?: string | null
+          id?: string
+          published?: boolean | null
+          slug: string
+          stars_reward?: number | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          config?: Json | null
+          cover_url?: string | null
+          created_at?: string | null
+          description?: string | null
+          difficulty?: string | null
+          id?: string
+          published?: boolean | null
+          slug?: string
+          stars_reward?: number | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      content_missions: {
+        Row: {
+          active: boolean | null
+          audience: string | null
+          created_at: string | null
+          description: string | null
+          goal_type: string | null
+          id: string
+          slug: string
+          stars_reward: number | null
+          target_value: number | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          audience?: string | null
+          created_at?: string | null
+          description?: string | null
+          goal_type?: string | null
+          id?: string
+          slug: string
+          stars_reward?: number | null
+          target_value?: number | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          audience?: string | null
+          created_at?: string | null
+          description?: string | null
+          goal_type?: string | null
+          id?: string
+          slug?: string
+          stars_reward?: number | null
+          target_value?: number | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      content_stories: {
+        Row: {
+          age_max: number | null
+          age_min: number | null
+          body: string | null
+          cover_url: string | null
+          created_at: string | null
+          id: string
+          published: boolean | null
+          slug: string
+          summary: string | null
+          tags: string[] | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          age_max?: number | null
+          age_min?: number | null
+          body?: string | null
+          cover_url?: string | null
+          created_at?: string | null
+          id?: string
+          published?: boolean | null
+          slug: string
+          summary?: string | null
+          tags?: string[] | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          age_max?: number | null
+          age_min?: number | null
+          body?: string | null
+          cover_url?: string | null
+          created_at?: string | null
+          id?: string
+          published?: boolean | null
+          slug?: string
+          summary?: string | null
+          tags?: string[] | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
       }
       conversations: {
         Row: {
