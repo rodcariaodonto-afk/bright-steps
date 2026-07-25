@@ -64,7 +64,8 @@ export const getAnalyticsOverview = createServerFn({ method: "GET" })
 
     const moodDist = new Map<string, number>();
     for (const m of moods.data ?? []) {
-      moodDist.set(m.mood, (moodDist.get(m.mood) ?? 0) + 1);
+      const key = String(m.level);
+      moodDist.set(key, (moodDist.get(key) ?? 0) + 1);
     }
 
     const activeSubs = (subs.data ?? []).filter((s: any) =>
