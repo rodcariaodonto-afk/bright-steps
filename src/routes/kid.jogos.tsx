@@ -105,16 +105,7 @@ function KidGamesPage() {
               {recs.map((r) => {
                 const g = games.find((gg) => gg.id === r.id);
                 if (!g) return null;
-                return (
-                  <button
-                    key={r.id}
-                    onClick={() => setPlaying(g)}
-                    className="rounded-xl border border-yellow-200 bg-white p-3 text-left shadow-sm transition hover:shadow-md"
-                  >
-                    <p className="text-sm font-bold text-[#0b2740]">{g.title}</p>
-                    <p className="mt-1 text-xs text-[#0b2740]/70">{r.reason}</p>
-                  </button>
-                );
+                return <RecCard key={r.id} game={g} reason={r.reason} onOpen={() => setPlaying(g)} />;
               })}
             </div>
           )}
