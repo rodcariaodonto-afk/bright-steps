@@ -127,7 +127,7 @@ export function GamePlayer({ childId, game, onExit }: Props) {
       <header className="flex items-center justify-between border-b px-4 py-3">
         <div>
           <p className="text-xs uppercase tracking-wide text-muted-foreground">Jogando</p>
-          <h2 className="font-semibold">{game.title}</h2>
+          <h2 className="font-semibold">{t.title}</h2>
         </div>
         <Button variant="ghost" size="sm" onClick={handleExit}>
           <X className="mr-1 h-4 w-4" /> Sair
