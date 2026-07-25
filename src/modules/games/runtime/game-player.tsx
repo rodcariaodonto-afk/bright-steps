@@ -151,12 +151,12 @@ export function GamePlayer({ childId, game, onExit }: Props) {
               Voltar
             </Button>
           </div>
-        ) : !sessionId ? (
+        ) : !sessionId || tLoading ? (
           <div className="flex h-full items-center justify-center">
             <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
           </div>
         ) : (
-          <engine.Component config={game.config as never} emit={emit} onFinish={finish} a11y={a11y} />
+          <engine.Component config={t.config as never} emit={emit} onFinish={finish} a11y={a11y} />
         )}
       </main>
     </div>
