@@ -1,63 +1,59 @@
-## Objetivo
-Monetizar o Meu Mundo Azul com **Stripe (Seamless Payments)** integrado ao Lovable, usando 3 planos com trial de 7 dias e a conta rodcaria.odonto@gmail.com como titular.
+## Painel Admin — Super Admin funcional (Sistema completo)
 
-## Sobre a conta Stripe existente
-A integração seamless do Lovable **cria uma nova conexão Stripe gerenciada** vinculada ao email que você informar no formulário — ela não "importa" a conta antiga automaticamente. Duas opções:
+Vou transformar as 4 páginas placeholder da seção **Sistema** em painéis reais, adicionar gestão completa de usuários (criar, convidar, suspender, deletar) e permitir conceder assinaturas de cortesia. Tudo protegido por `has_role(auth.uid(), 'admin')` no servidor.
 
-1. **Usar o mesmo email (rodcaria.odonto@gmail.com)** no formulário do Lovable → a Stripe reconhece o email e no passo de verificação você faz o *claim* da conta, unificando com a conta que já existe (dados bancários, verificação e histórico ficam disponíveis).
-2. Usar outro email e manter as duas contas separadas.
+### 1. Banco de dados (migration única)
 
-Recomendo a opção 1. É o caminho mais limpo.
+- **`feature_flags`**: `key`, `enabled`, `description`, `updated_at`, `updated_by`. RLS: leitura autenticada, escrita só admin. Seed com flags iniciais (`ai_family`, `ai_pro`, `ai_child`, `marketplace`, `community`, `messaging`, `library`, `assessments`, `signups_open`).
+- **`app_settings`**: chave/valor JSON (`support_email`, `app_name`, `terms_url`, `privacy_url`, `default_trial_days`, `max_children_per_family`). RLS admin-only para escrita, leitura autenticada.
+- **`admin_audit_log`**: `actor_id`, `action`, `target_type`, `target_id`, `metadata`, `created_at`. RLS admin-only.
+- **`complimentary_subscriptions`**: marca assinatura de cortesia (`user_id`, `plan`, `granted_by`, `expires_at NULL = vitalícia`, `revoked_at`).
+- Atualizar `has_active_subscription` e `get_active_plan` para considerar cortesia ativa.
+- Trigger de bootstrap: promover automaticamente `caria@axhub.com.br` a **admin** quando o email for confirmado (mesmo padrão do `grant_admin_for_founder`).
 
-## Planos
-| Plano | Mensal | Anual (20% off) | Trial |
-|---|---|---|---|
-| Família Essencial | R$ 19 | R$ 182 | 7 dias |
-| Família Plus | R$ 49 | R$ 470 | 7 dias |
-| Profissional Clínica | R$ 129 | R$ 1.238 | 7 dias |
+### 2. Server functions (`src/modules/admin/*.functions.ts`)
 
-Free continua ativo (acesso limitado atual).
+Todas com `requireSupabaseAuth` + checagem `has_role admin` + log em `admin_audit_log`:
 
-## Etapas
+- `createUser({ email, password, fullName, roles[] })` → usa `supabaseAdmin.auth.admin.createUser` (`email_confirm: true`).
+- `inviteUserByEmail({ email, roles[] })` → `supabaseAdmin.auth.admin.inviteUserByEmail`.
+- `updateUserRoles({ userId, roles[] })` → substitui roles do usuário.
+- `suspendUser({ userId, banDurationHours })` → `updateUserById({ ban_duration })`.
+- `deleteUser({ userId })` → `deleteUser` (cascade LGPD).
+- `grantComplimentary({ userId, plan, expiresAt })` / `revokeComplimentary({ userId })`.
+- `listFeatureFlags` / `setFeatureFlag({ key, enabled })`.
+- `listAppSettings` / `updateAppSetting({ key, value })`.
+- `listAuditLog({ limit, cursor })`.
+- `exportTableCsv({ table })` → whitelist de tabelas, streaming server-side (via server route `/api/admin/export/:table` protegida).
 
-### 1. Habilitar Stripe Seamless
-Rodo `enable_stripe_payments`. Você preenche o formulário com **rodcaria.odonto@gmail.com** e dados da RCgrowthLAB. Sandbox liberado na hora para testes com cartão `4242 4242 4242 4242`.
+### 3. UI — páginas admin reais
 
-### 2. Tax handling
-Como o produto é digital/SaaS e o titular é BR (país não elegível para *full compliance* da Stripe), configuro **tax calculation and collection only** (+0.5%): a Stripe calcula e cobra o imposto certo no checkout, e a RCgrowthLAB cuida de registro/emissão/recolhimento no Brasil.
+- **`/admin/permissions`**: tabela de usuários com busca, chips de roles, ações (promover admin/moderator/professional, conceder cortesia via modal, suspender, deletar). Botão **"Criar usuário"** e **"Convidar por email"** no topo.
+- **`/admin/flags`**: lista de feature flags com toggle inline + descrição + timestamp do último update.
+- **`/admin/settings`**: formulário por seção (geral, limites, links legais, suporte) editando `app_settings`.
+- **`/admin/backups`**: lista de tabelas com botão "Exportar CSV" e aviso de que restore é feito via Cloud → Advanced settings. Mostra últimas exportações do audit log.
+- **`/admin/users`** (já existe): adicionar botões inline (promover, cortesia, suspender) reaproveitando as mesmas server functions.
 
-### 3. Cadastrar produtos
-Crio os 3 produtos com preços mensal + anual e trial de 7 dias, cada um com o *tax code* correto (SaaS/serviços digitais).
+### 4. Hook e componentes
 
-### 4. Banco de dados
-- `subscriptions`: `user_id`, `plan_code`, `status` (trialing/active/past_due/canceled), `stripe_subscription_id`, `stripe_customer_id`, `current_period_end`, `trial_end`, `cancel_at`. RLS: usuário lê a própria; service_role escreve.
-- `subscription_events`: auditoria dos webhooks.
-- Função `has_active_plan(user_id, plan_code)` para checagem rápida.
+- `useFeatureFlag(key)` client-side lendo `feature_flags` com Realtime, usado para gatear módulos globalmente no `AppShell`/`ProShell`.
+- Modal reutilizável `CreateUserDialog` e `GrantComplimentaryDialog` em `src/components/admin/`.
 
-### 5. Checkout
-- Rota pública `/planos`: comparativo dos 3 planos + toggle mensal/anual + CTA "Começar teste grátis".
-- Rota `/app/assinatura`: plano atual, próxima cobrança, botões upgrade/downgrade/cancelar (via Stripe Customer Portal).
-- Checkout via Stripe Checkout hospedado (link seguro, redireciona e volta).
+### 5. Cortesia — comportamento
 
-### 6. Webhook
-- `src/routes/api/public/stripe-webhook.ts` com verificação de assinatura HMAC.
-- Processa: `customer.subscription.created/updated/deleted`, `invoice.payment_failed`, `checkout.session.completed`.
-- Atualiza `subscriptions` via `supabaseAdmin` e cria notificação in-app.
+Admin escolhe caso a caso no modal: campo "Expira em" (data opcional). Quando expira, `has_active_subscription` para de retornar true e o usuário volta ao Free automaticamente. Admin pode revogar antes.
 
-### 7. Gate de acesso por plano
-- **Free**: dashboard + 1 criança, sem IA nem timeline avançada.
-- **Família Essencial**: timeline, humor, medicação, calendário, 1 criança.
-- **Família Plus**: tudo do Essencial + IA Azul, relatórios semanais, biblioteca, autoavaliações, comunidade, marketplace, até 3 crianças.
-- **Profissional Clínica**: área `/pro` completa (hoje aberta a qualquer profissional aprovado, passa a exigir assinatura ativa).
-- Bloqueios mostram modal "Faça upgrade" com link pra `/planos`.
+### Ordem de execução
 
-### 8. Admin de assinaturas
-Refatoro `/admin/subscriptions` para listar assinaturas reais, MRR estimado, trials ativos, churn e ação manual "conceder acesso" (útil pra parceiros).
+1. Migration (tabelas + trigger + seed + update das funções de subscription).
+2. Server functions admin.
+3. UI das 4 páginas Sistema + reforço na `/admin/users`.
+4. Hook `useFeatureFlag` + integração no gating.
+5. Verificação: login como caria@axhub.com.br, criar usuário teste, conceder cortesia, alternar flag, exportar CSV.
 
-## O que você faz
-1. Preencher o formulário do Stripe com **rodcaria.odonto@gmail.com** e dados da RCgrowthLAB.
-2. Fazer o *claim* da conta no painel do Stripe quando quiser ativar cobrança real (usa a conta que você já tem).
-3. Testar checkout com cartão sandbox.
+### Detalhes técnicos
 
-## Fora do escopo desta onda
-- Cupons, afiliados, boleto/Pix (Stripe BR ainda tem Pix limitado a certos MCCs), emails transacionais customizados (Stripe já envia recibo), in-app purchase mobile.
+- `supabaseAdmin` sempre carregado dentro do handler (`await import`).
+- Todas as ações destrutivas passam por audit log.
+- Exportação CSV via server route em `src/routes/api/admin.export.$table.ts` com `requireSupabaseAuth` inline (verifica bearer + role) e streaming de `COPY (...) TO STDOUT` transformado em Response.
+- Nenhuma chave de serviço exposta ao cliente; nenhuma alteração no client.ts autogen.
