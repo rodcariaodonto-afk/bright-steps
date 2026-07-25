@@ -23,7 +23,9 @@ interface TranslatedPayload {
   title: string;
   summary?: string | null;
   description?: string | null;
-  config?: Record<string, unknown> | null;
+  // `any` para não bater no validador de serialização do TanStack; JSON puro.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  config?: any;
 }
 
 function hashOf(obj: unknown): string {
