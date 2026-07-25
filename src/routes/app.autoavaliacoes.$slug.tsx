@@ -4,7 +4,6 @@ import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
-import { AppShell } from "@/components/atlas/app-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getAssessment, submitAssessment } from "@/modules/assessments/api.functions";
@@ -15,8 +14,8 @@ export const Route = createFileRoute("/app/autoavaliacoes/$slug")({
   head: ({ params }) => ({
     meta: [{ title: `${params.slug} | Autoavaliação Meu Mundo Azul` }],
   }),
-  errorComponent: ({ error }) => <AppShell><p className="text-destructive">{error.message}</p></AppShell>,
-  notFoundComponent: () => <AppShell><p>Não encontrada.</p></AppShell>,
+  errorComponent: ({ error }) => <><p className="text-destructive">{error.message}</p></>,
+  notFoundComponent: () => <><p>Não encontrada.</p></>,
   component: AssessmentRunner,
 });
 
@@ -42,12 +41,12 @@ function AssessmentRunner() {
     onError: (e: any) => toast.error(e.message ?? "Erro"),
   });
 
-  if (isLoading || !assessment) return <AppShell><p>Carregando...</p></AppShell>;
+  if (isLoading || !assessment) return <><p>Carregando...</p></>;
   const questions = (assessment.questions as unknown as Question[]) ?? [];
   const allAnswered = questions.every((q) => answers[q.id]);
 
   return (
-    <AppShell>
+    <>
       <div className="max-w-2xl mx-auto space-y-6">
         <Link to="/app/autoavaliacoes" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
           <ArrowLeft className="h-4 w-4" /> Voltar
@@ -110,6 +109,6 @@ function AssessmentRunner() {
           </>
         )}
       </div>
-    </AppShell>
+    </>
   );
 }

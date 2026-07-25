@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { ClipboardCheck, History } from "lucide-react";
-import { AppShell } from "@/components/atlas/app-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { listAssessments, listMyResponses } from "@/modules/assessments/api.functions";
@@ -24,7 +23,7 @@ function SelfAssessmentsPage() {
   const { data: history = [] } = useQuery({ queryKey: ["assessments-history"], queryFn: () => historyFn() });
 
   return (
-    <AppShell>
+    <>
       <div className="space-y-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 text-brand-primary">
@@ -80,6 +79,6 @@ function SelfAssessmentsPage() {
           )}
         </section>
       </div>
-    </AppShell>
+    </>
   );
 }

@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { BookOpen, Clock, Search } from "lucide-react";
-import { AppShell } from "@/components/atlas/app-shell";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -31,7 +30,7 @@ function LibraryPage() {
   });
 
   return (
-    <AppShell>
+    <>
       <div className="space-y-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 text-brand-primary">
@@ -104,6 +103,6 @@ function LibraryPage() {
           </div>
         )}
       </div>
-    </AppShell>
+    </>
   );
 }
