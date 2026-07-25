@@ -7,9 +7,16 @@ import { Button } from "@/components/ui/button";
 import { PaymentTestModeBanner } from "@/components/billing/payment-test-mode-banner";
 import { useSession } from "@/hooks/use-session";
 import { useLocale } from "@/i18n/hooks";
-import { PUBLIC_PLANS, TRIAL_DAYS, formatBRL, type PublicPlan } from "@/modules/billing/plans";
-import { displayPriceFromBRL } from "@/modules/billing/currency";
+import {
+  PUBLIC_PLANS,
+  TRIAL_DAYS,
+  billingCurrencyForLocale,
+  resolvePrice,
+  type PublicPlan,
+} from "@/modules/billing/plans";
+import { formatMoney } from "@/modules/billing/currency";
 import { cn } from "@/lib/utils";
+
 
 export const Route = createFileRoute("/planos")({
   head: () => ({
@@ -45,8 +52,10 @@ function PlanosPage() {
   const { t } = useTranslation("landing");
   const { locale } = useLocale();
 
+  const billingCurrency = billingCurrencyForLocale(locale);
+
   const handleChoose = (plan: PublicPlan) => {
-    const priceId = period === "monthly" ? plan.price.monthly : plan.price.yearly;
+    const { priceId } = resolvePrice(plan, period, billingCurrency);
     if (!session) {
       const redirectTo = `/planos/checkout?priceId=${encodeURIComponent(priceId)}`;
       navigate({ to: "/auth", search: { redirect: redirectTo } as never });
@@ -57,6 +66,7 @@ function PlanosPage() {
       search: { priceId } as never,
     });
   };
+
 
   return (
     <div className="min-h-dvh bg-surface-2">
@@ -119,11 +129,13 @@ function PlanosPage() {
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {PUBLIC_PLANS.map((plan) => {
-            const amountBRL =
-              period === "monthly" ? plan.price.monthlyAmountBRL : plan.price.yearlyAmountBRL;
-            const priceInfo = displayPriceFromBRL(amountBRL, locale);
-            const monthlyEquivBRL = Math.round(amountBRL / 12);
-            const monthlyEquiv = displayPriceFromBRL(monthlyEquivBRL, locale);
+            const priceEntry = resolvePrice(plan, period, billingCurrency);
+            const amount = priceEntry.amount;
+            const priceText = formatMoney(amount, locale, billingCurrency);
+            const monthlyEquivAmount = period === "yearly" ? amount / 12 : amount;
+            const monthlyEquivText = formatMoney(monthlyEquivAmount, locale, billingCurrency);
+
+
 
             const featuresRaw = t(`plans.items.${plan.code}.features`, {
               returnObjects: true,
@@ -156,22 +168,18 @@ function PlanosPage() {
                 <p className="mt-1 text-sm text-muted-foreground">{tagline}</p>
                 <div className="mt-6">
                   <p className="text-4xl font-black text-foreground">
-                    {priceInfo.text}
+                    {priceText}
                     <span className="text-base font-medium text-muted-foreground">
                       {period === "monthly" ? t("plans.perMonth") : t("plans.perYear")}
                     </span>
                   </p>
                   {period === "yearly" && (
                     <p className="mt-1 text-xs text-emerald-700">
-                      {t("plans.equivalentMonth", { price: monthlyEquiv.text })}
-                    </p>
-                  )}
-                  {priceInfo.converted && (
-                    <p className="mt-2 text-[11px] leading-snug text-muted-foreground">
-                      {t("plans.convertedNote", { price: formatBRL(amountBRL) })}
+                      {t("plans.equivalentMonth", { price: monthlyEquivText })}
                     </p>
                   )}
                 </div>
+
                 <Button
                   onClick={() => handleChoose(plan)}
                   className="mt-6 w-full"
