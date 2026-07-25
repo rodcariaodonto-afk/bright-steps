@@ -1,51 +1,51 @@
-## Problema
+# Go-live do Stripe — Meu Mundo Azul
 
-Quando o usuário troca o idioma pelo seletor (ex.: Inglês) e depois faz login, a plataforma volta para Português. A escolha manual não persiste através do login.
+O go-live acontece quase todo dentro do Stripe, não no código. Não preciso alterar nada no projeto — os 12 novos preços em USD/EUR que criei hoje são sincronizados automaticamente para o ambiente live quando você concluir os passos abaixo.
 
-## Diagnóstico (a confirmar no fix)
+## Onde começar
+No editor do Lovable → aba **Payments** → alternar para **Live**. Você verá 5 passos. Os 3 primeiros são feitos por você no Stripe; os 2 últimos são automáticos.
 
-O código atual já grava a escolha no `localStorage` (`mma:locale`) e o `LocaleSync` respeita `localStorage` antes do perfil. Mesmo assim o idioma volta para PT-BR após login. Causas prováveis, todas no fluxo de bootstrap do i18n:
+## Passo 1 — Reivindicar a conta Stripe
+Clique em **Claim** no passo 1. Abre uma página do Stripe:
+- Se já tem conta Stripe: **Sign in** e vincule.
+- Se não tem: crie com e-mail, nome, senha e país (Brasil).
 
-1. **Bootstrap sempre inicia em `pt-BR`.** `ensureI18n()` roda no loader do root (SSR + navegação) com `initialLocale = DEFAULT_LOCALE`. Só depois, num `useEffect` do `RootComponent`, o `detectLocale()` roda e chama `changeLocale('en')`. Se o login faz reload de página (ou o subtree `_authenticated` com `ssr: false` remonta o app), a janela em que o i18n está em `pt-BR` fica visível — e em alguns caminhos o `useEffect` de detecção não roda a tempo antes do `LocaleSync` disparar por causa do `profile.locale` recém-carregado (que pode ser `null` ou `pt-BR` do signup).
+Confirme o e-mail de verificação que o Stripe envia.
 
-2. **`LocaleSync` só reage a `profile?.locale`.** Se `getPersistedLocaleLocal()` estiver disponível mas o i18n já foi (re)bootstrapado em `pt-BR` e nenhum efeito reaplica, o idioma "trava" em PT até um novo change do perfil.
+## Passo 2 — Ativar a conta para pagamentos reais
+Botão **Stripe dashboard** no passo 2. Preencha o wizard "Activate your account":
+1. **Verify your business** — tipo (PF ou PJ), CPF/CNPJ, endereço, descrição do negócio, site (meumundoazul.app), categoria.
+2. **Add your bank** — conta bancária brasileira para receber os repasses.
+3. **Secure your account** — 2FA obrigatório (app autenticador ou SMS).
+4. **Add extras** (opcional agora) — pode pular.
+5. **Review and submit**.
 
-3. **Signup salva `pt-BR` no perfil** (via detecção de navegador do trigger `handle_new_user` / cliente), então em contas novas o `profile.locale = 'pt-BR'` compete com o `localStorage = 'en'`. Hoje o `localStorage` ganha — mas só se o efeito rodar.
+Ao final, o Stripe pergunta o que copiar da sandbox para a conta live. **Escolha "Copy" e mantenha marcado o app da Lovable** (assim os produtos, preços e o app instalado migram juntos e você pula o passo 3).
 
-## Plano de correção
+## Passo 3 — Instalar o app da Lovable na conta live
+Só aparece como pendente se você não copiou o app no passo 2. Se aparecer, clique no CTA e autorize a instalação.
 
-Objetivo: a escolha manual do usuário (localStorage) ou o locale detectado se torna a verdade **antes** do i18n inicializar, e nenhum caminho de login/navegação reverte para `pt-BR`.
+## Passo 4 — Provisionamento das chaves live (automático)
+Assim que o passo 3 fica verde, o Stripe dispara webhooks e a Lovable provisiona sozinha:
+- Chaves publishable e secret de live
+- Endpoint de webhook live
+- Secrets sincronizados no backend
 
-### 1. `src/i18n/index.ts` — bootstrap com locale certo desde o início
-- Ler `localStorage.getItem('mma:locale')` e `navigator.language` sincronamente dentro do `bootstrap()` (client-side) e usar como `lng` do `i18next.init`, ignorando `DEFAULT_LOCALE` quando houver escolha manual.
-- No servidor, continuar em `DEFAULT_LOCALE` (não há como saber), mas o cliente hidrata em cima com o valor correto no primeiro render.
+Sem ação sua. Costuma levar alguns segundos a poucos minutos.
 
-### 2. `src/routes/__root.tsx` — `LocaleSync` mais forte
-- Rodar a resolução final (`getPersistedLocaleLocal() ?? profile?.locale`) em **todo** mount do `RootComponent`, não só quando `profile?.locale` muda.
-- Adicionar listener de `supabase.auth.onAuthStateChange` para, em `SIGNED_IN` e `USER_UPDATED`, reaplicar `changeLocale(getPersistedLocaleLocal() ?? profile.locale)`. Isso mata o "reset ao logar".
-- Manter a regra: `localStorage` sempre vence sobre `profile.locale`.
+## Passo 5 — Readiness check (automático)
+A Lovable roda uma checagem final validando produtos, preços e webhook. Se algo falhar, aparece um botão **"Ask Lovable to fix"** que abre um chat comigo para corrigir.
 
-### 3. Login "adota" a escolha do visitante
-- Após `signIn` bem-sucedido, se `getPersistedLocaleLocal()` existir e for diferente de `profile.locale`, chamar `updateProfileLocale({ locale })` uma vez. Assim a conta passa a nascer/logar já com o idioma escolhido no visitante.
+## O que acontece com o que já está no ar
+- Os **9 produtos** (3 planos × 3 moedas × 2 períodos) são copiados para live junto com os `lookup_key` (`familia_plus_monthly_usd` etc). O código não muda.
+- O ambiente do checkout é decidido pelo prefixo do token: preview usa `pk_test_` (sandbox), o site publicado passa a usar `pk_live_` automaticamente.
+- A tabela `subscriptions` já separa por `environment` (sandbox/live), então nada mistura.
 
-### 4. Signup grava locale detectado
-- No fluxo de criação de conta (form de signup), enviar o locale atual (`currentLocale()`) para `updateProfileLocale` imediatamente após o `signUp`. Elimina o `pt-BR` default em contas novas de estrangeiros.
-
-### 5. Validação
-- Playwright cobrindo dois cenários no domínio local:
-  a) Visitante em `pt-BR` troca para `en` → faz login → dashboard permanece em `en` após navegação entre 3 rotas.
-  b) Visitante com `Accept-Language: en-US` + IP EUA → cria conta → `profile.locale = 'en'` no banco, dashboard em `en`.
-- Checar console por warnings do i18n.
-
-## Escopo fora deste plano
-- Não altero traduções existentes, não mexo em `_authenticated/route.tsx` (integração-gerenciada), não toco em `client.ts`/`types.ts`.
+## Sobre a "compliance handling" (tax + fraude + disputas)
+Quando a conta live estiver ativa, posso ativar o `managed_payments: { enabled: true }` no checkout — Stripe passa a lidar com imposto, fraude, disputas e suporte transacional em ~80 países. Custa +3,5% por transação. Fica pra decidir depois do go-live, sem pressa.
 
 ## Detalhes técnicos
+- O URL do webhook live é o mesmo `/api/public/payments/webhook?env=live` já implementado; o secret `PAYMENTS_LIVE_WEBHOOK_SECRET` é gravado no passo 4 automaticamente.
+- Nada em `src/` precisa ser editado para o go-live. Só volte a me chamar se o passo 5 apontar alguma falha.
 
-Arquivos tocados:
-- `src/i18n/index.ts` (bootstrap com locale sync do localStorage/navigator)
-- `src/routes/__root.tsx` (LocaleSync robusto + listener de auth)
-- `src/routes/auth/*` ou hook de login existente (adotar locale do visitante após sign-in)
-- Signup form (persistir locale atual no perfil recém-criado)
-
-Chave de storage mantida: `mma:locale`. Nenhuma migração de banco necessária — coluna `profiles.locale` já existe.
+Quer que eu já publique a versão atual com os preços multi-moeda antes de você começar o fluxo, ou prefere publicar depois que o Stripe estiver ativo?
