@@ -4,7 +4,6 @@ import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { HeartHandshake, Moon, Wind, BookOpen } from "lucide-react";
 import { toast } from "sonner";
-import { AppShell } from "@/components/atlas/app-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -65,7 +64,7 @@ function CaregiverPage() {
   });
 
   return (
-    <AppShell>
+    <>
       <div className="space-y-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 text-rose-600">
@@ -203,6 +202,6 @@ function CaregiverPage() {
           )}
         </section>
       </div>
-    </AppShell>
+    </>
   );
 }
