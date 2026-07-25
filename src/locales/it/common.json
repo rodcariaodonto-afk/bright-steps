@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul",
+    "tagline": "L'ecosistema dello sviluppo infantile"
+  },
+  "actions": {
+    "getStarted": "Inizia ora",
+    "signIn": "Accedi",
+    "signUp": "Crea un account",
+    "signOut": "Esci",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "continue": "Continua",
+    "back": "Indietro",
+    "learnMore": "Scopri di più",
+    "openApp": "Apri applicazione"
+  },
+  "nav": {
+    "product": "Prodotto",
+    "family": "Famiglia",
+    "child": "Bambino",
+    "professionals": "Professionisti",
+    "ai": "Intelligenza Artificiale",
+    "security": "Sicurezza",
+    "pricing": "Piani"
+  },
+  "status": {
+    "comingSoon": "Prossimamente",
+    "beta": "Beta",
+    "preview": "Anteprima"
+  },
+  "banner": {
+    "cloudPending": "Modalità anteprima. Le funzionalità con backend saranno attivate non appena Lovable Cloud sarà abilitato."
+  },
+  "footer": {
+    "rights": "Tutti i diritti riservati.",
+    "lgpd": "LGPD",
+    "privacy": "Privacy",
+    "terms": "Termini"
+  },
+  "language": {
+    "label": "Lingua",
+    "pt-BR": "Portoghese (Brasile)",
+    "en": "Inglese",
+    "es": "Spagnolo",
+    "fr": "Francese",
+    "it": "Italiano",
+    "de": "Tedesco"
+  }
+}

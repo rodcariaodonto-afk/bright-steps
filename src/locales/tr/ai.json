@@ -1,0 +1,14 @@
+{
+  "personas": {
+    "family": "Azul Aile",
+    "clinical": "Azul Klinik",
+    "child": "Azul Arkadaş",
+    "school": "Azul Okul",
+    "admin": "Azul Yönetici"
+  },
+  "guardrails": {
+    "notDiagnosis": "Azul asla teşhis koymaz. Daima bir sağlık uzmanına danışın.",
+    "notSubstitute": "Destekleyici bir araçtır. Doktorların, terapistlerin, psikologların veya pedagogların yerini tutmaz.",
+    "risk": "Riskli durumlarda, 188 CVV, 192 SAMU veya 100 Çocuk Koruma Konseyi'ni arayın."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "personas": {
+    "family": "Azul 가족",
+    "clinical": "Azul 임상",
+    "child": "Azul 친구",
+    "school": "Azul 학교",
+    "admin": "Azul 관리자"
+  },
+  "guardrails": {
+    "notDiagnosis": "Azul은 진단을 내리지 않습니다. 항상 의료 전문가와 상담하십시오.",
+    "notSubstitute": "지원 도구입니다. 의사, 치료사, 심리학자 또는 교육자를 대체하지 않습니다.",
+    "risk": "위험한 상황에서는 CVV 188, SAMU 192 또는 아동 보호 위원회 100에 연락하십시오."
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul Clínico",
+    "tagline": "儿童发展专业人士工作区"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "工作",
+      "clinical": "临床",
+      "collaboration": "协作",
+      "settings": "设置"
+    },
+    "dashboard": "仪表盘",
+    "agenda": "日程",
+    "patients": "患者",
+    "sessions": "会话",
+    "evolution": "进展",
+    "goals": "目标",
+    "scales": "量表",
+    "reports": "报告",
+    "documents": "文档",
+    "messages": "消息",
+    "school": "学校",
+    "indicators": "指标",
+    "ai": "Azul Clínico",
+    "settings": "设置",
+    "profile": "我的个人资料",
+    "newSession": "新会话"
+  },
+  "topbar": {
+    "search": "搜索患者、会话、报告…",
+    "shortcut": "⌘K",
+    "help": "帮助",
+    "profile": "个人资料"
+  },
+  "dashboard": {
+    "title": "早上好，{{name}}",
+    "subtitle": "您今天有 {{count}} 次预约。",
+    "cards": {
+      "todayAgenda": "今日日程",
+      "nextAppointments": "即将到来的预约",
+      "activePatients": "活跃患者",
+      "pending": "待处理",
+      "messages": "消息",
+      "pendingReports": "待处理报告",
+      "newDocuments": "新文档",
+      "sharedGoals": "共享目标",
+      "aiAlerts": "AI 警报",
+      "weekSummary": "周总结",
+      "monthSummary": "月总结"
+    },
+    "empty": "在云服务激活之前，此空间没有数据。",
+    "quickActions": {
+      "newSession": "记录会话",
+      "newReport": "生成报告",
+      "newAppointment": "安排预约",
+      "askAI": "询问 Azul Clínico"
+    }
+  },
+  "patients": {
+    "title": "患者",
+    "subtitle": "仅限经监护人授权访问的儿童。",
+    "columns": {
+      "name": "姓名",
+      "age": "年龄",
+      "diagnosis": "诊断",
+      "support": "支持",
+      "lastSession": "上次会话",
+      "nextSession": "下次会话",
+      "goalsProgress": "目标"
+    },
+    "filters": {
+      "all": "全部",
+      "active": "活跃",
+      "inactive": "不活跃",
+      "byDiagnosis": "按诊断",
+      "bySpecialty": "按专业"
+    },
+    "tabs": {
+      "overview": "概览",
+      "sessions": "会话",
+      "evolution": "进展",
+      "goals": "目标",
+      "scales": "量表",
+      "reports": "报告",
+      "documents": "文档",
+      "school": "学校",
+      "family": "家庭"
+    }
+  },
+  "agenda": {
+    "title": "日程",
+    "views": {
+      "day": "日",
+      "week": "周",
+      "month": "月",
+      "list": "列表"
+    },
+    "empty": "此期间没有预约。",
+    "new": "新预约"
+  },
+  "sessions": {
+    "titleNew": "新会话",
+    "titleEdit": "编辑会话",
+    "fields": {
+      "date": "日期",
+      "time": "时间",
+      "duration": "时长",
+      "child": "儿童",
+      "goals": "已完成目标",
+      "activities": "已进行活动",
+      "materials": "已使用材料",
+      "response": "儿童反应",
+      "observations": "观察",
+      "nextSteps": "后续步骤",
+      "attachments": "附件（照片、视频、音频、文件）"
+    },
+    "reuse": "活跃目标、最新观察和待处理量表将自动预填充。"
+  },
+  "evolution": {
+    "title": "进展",
+    "subtitle": "进展、量表和附件的时间轴。",
+    "share": "分享给",
+    "shareWith": {
+      "family": "家庭",
+      "professionals": "其他专业人士",
+      "school": "学校"
+    }
+  },
+  "goals": {
+    "title": "治疗目标",
+    "subtitle": "与家庭和团队共享的目标。",
+    "fields": {
+      "description": "描述",
+      "category": "类别",
+      "start": "开始",
+      "deadline": "截止日期",
+      "owner": "负责人",
+      "participants": "参与者",
+      "indicators": "指标",
+      "status": "状态",
+      "progress": "进展"
+    }
+  },
+  "scales": {
+    "title": "量表和工具",
+    "subtitle": "注册任何评估工具。开放架构。",
+    "new": "新量表",
+    "applications": "应用"
+  },
+  "reports": {
+    "title": "报告",
+    "subtitle": "AI 辅助生成和安全导出。",
+    "types": {
+      "session": "会话",
+      "weekly": "每周",
+      "monthly": "每月",
+      "quarterly": "每季度",
+      "annual": "每年",
+      "custom": "自定义"
+    },
+    "export": {
+      "pdf": "导出 PDF",
+      "docx": "导出 Word",
+      "share": "分享"
+    }
+  },
+  "documents": {
+    "title": "文档",
+    "subtitle": "带版本控制的共享库。",
+    "categories": {
+      "reports": "报告",
+      "referrals": "转诊",
+      "prescriptions": "处方",
+      "assessments": "评估",
+      "exams": "检查",
+      "photos": "照片",
+      "videos": "视频",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "消息",
+    "subtitle": "按儿童组织的加密通信。",
+    "audiences": {
+      "family": "家庭",
+      "school": "学校",
+      "professionals": "其他专业人士"
+    }
+  },
+  "school": {
+    "title": "学校",
+    "subtitle": "与学校团队交换目标、指导和观察。",
+    "consentRequired": "每次共享都需要家庭的明确同意。"
+  },
+  "indicators": {
+    "title": "指标",
+    "subtitle": "进展、情绪、行为、睡眠等自动图表。",
+    "series": {
+      "evolution": "进展",
+      "frequency": "频率",
+      "participation": "参与度",
+      "goals": "目标",
+      "mood": "情绪",
+      "behavior": "行为",
+      "sleep": "睡眠",
+      "medication": "药物"
+    }
+  },
+  "ai": {
+    "title": "Azul Clínico",
+    "subtitle": "用于总结进展、比较时期、建议活动和起草报告的助手。",
+    "disclaimer": "AI 支持临床推理。它从不诊断，也从不取代专业人士的决定。",
+    "suggestions": [
+      "总结过去 30 天的进展",
+      "比较新例行程序前后的行为",
+      "建议促进共享注意力的活动",
+      "根据会话起草月度报告"
+    ]
+  },
+  "settings": {
+    "title": "设置",
+    "sections": {
+      "profile": "专业资料",
+      "specialties": "专业",
+      "availability": "可用性",
+      "integrations": "集成（Google/Apple/Outlook）",
+      "security": "安全和 LGPD"
+    }
+  },
+  "specialties": {
+    "psychologist": "心理学家",
+    "neuropsychologist": "神经心理学家",
+    "speech_therapist": "言语治疗师",
+    "occupational_therapist": "职业治疗师",
+    "psychopedagogue": "心理教育学家",
+    "physician": "医生",
+    "neurologist": "神经科医生",
+    "psychiatrist": "精神科医生",
+    "pediatrician": "儿科医生",
+    "nutritionist": "营养师",
+    "physical_educator": "体育教育者",
+    "teacher": "教师",
+    "school_coordinator": "学校协调员",
+    "caregiver": "看护人"
+  },
+  "banner": {
+    "previewMode": "预览。一旦 Lovable Cloud 重新激活，专业模块的表格就会上线。不保留任何数据。"
+  }
+}

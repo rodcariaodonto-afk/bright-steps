@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "eyebrow": "Kindesentwicklung · Neurodiversität · KI",
+    "title": "Die Plattform, die Ihre Familie jeden Tag begleitet.",
+    "subtitle": "Mein Blaues Welt verbindet Eltern, Kinder, Therapeuten und Schulen an einem Ort. Routinen, Therapien, Stimmung, Medikamente, Berichte und eine KI, die mit dem Alltag des Kindes lernt.",
+    "primaryCta": "Kostenlos starten",
+    "secondaryCta": "Sehen Sie, wie es funktioniert",
+    "trust": "Mit Unterstützung von Familien und Fachleuten der Neuroentwicklung erstellt"
+  },
+  "pillars": {
+    "title": "Ein Ökosystem, viele Leben.",
+    "subtitle": "Mein Blaues Welt wurde für ASS geboren, wächst aber mit jeder neuroentwicklungsbedingten Erkrankung: ADHS, Legasthenie, Down-Syndrom, oppositionelles Trotzverhalten, Hochbegabung und mehr.",
+    "items": [
+      {
+        "title": "Organisierte Familie",
+        "description": "Routine, Kalender, Medikamente, Stimmung und Verhalten in einem einzigen, einladenden Dashboard."
+      },
+      {
+        "title": "Begeistertes Kind",
+        "description": "Ein Erlebnis, das sich wie Spielen anfühlt. Avatar, Welt, Missionen und KI, die wie ein Freund spricht."
+      },
+      {
+        "title": "Integrierte Fachkräfte",
+        "description": "Therapeuten und Schulen erhalten echten Kontext, wenden Bewertungen an und liefern Berichte in Echtzeit zurück."
+      },
+      {
+        "title": "Echte KI",
+        "description": "Kein Chatbot. Es ist ein Assistent, der sich an die Geschichte des Kindes erinnert und datenbasierte Wege vorschlägt."
+      }
+    ]
+  },
+  "modules": {
+    "title": "Alles spricht miteinander.",
+    "subtitle": "Jede Aktivität speist die Zeitleiste, generiert Berichte, speist die KI und passt Empfehlungen an.",
+    "items": [
+      "Vollständiges klinisches Profil des Kindes",
+      "Vereinheitlichte Zeitleiste aller Ereignisse",
+      "Kalender mit Therapien, Schule und Routinen",
+      "Medikamente mit Erinnerungen und Verlauf",
+      "Stimmungs- und Verhaltensaufzeichnung",
+      "Ziele und Fortschritt mit Grafiken",
+      "Organisierte Dokumente, Gutachten und Rezepte",
+      "Wöchentliche Berichte, generiert von KI"
+    ]
+  },
+  "ai": {
+    "eyebrow": "Künstliche Intelligenz",
+    "title": "Eine KI, die Ihr Kind kennt.",
+    "description": "Mein Blaues Welt spricht in natürlicher Sprache, erstellt personalisierte soziale Geschichten, um neue Momente vorzubereiten, und identifiziert Muster, die im Alltag unbemerkt bleiben.",
+    "bullets": [
+      "Kontextueller Chat mit vollständigem Verlauf",
+      "Soziale Geschichten zur Vorbereitung von Terminen, Reisen und Veränderungen",
+      "Automatische wöchentliche und monatliche Zusammenfassungen",
+      "Routinevorschläge basierend auf dem, was funktioniert"
+    ],
+    "disclaimer": "Die KI von Mein Blaues Welt ist ein Unterstützungswerkzeug. Sie ersetzt niemals Gesundheits- oder Bildungsexperten."
+  },
+  "security": {
+    "title": "Mit absolutem Respekt vor der DSGVO erstellt.",
+    "items": [
+      "Versionierte und jederzeit widerrufbare Zustimmung",
+      "Row Level Security und Audit bei jedem Zugriff",
+      "Export und Löschung von Daten mit einem Klick",
+      "Sensible Daten von Minderjährigen werden mit der gebotenen Sorgfalt behandelt"
+    ]
+  },
+  "cta": {
+    "title": "Beginnen Sie noch heute. Wachsen Sie viele Jahre lang mit Mein Blaues Welt.",
+    "subtitle": "Die Plattform begleitet das Kind in jeder Phase, von der Schlafroutine bis zur Autonomie, von der Kommunikation bis zu den Therapien.",
+    "action": "Mein Konto erstellen"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "eyebrow": "Çocuk gelişimi · Nöroçeşitlilik · Yapay Zeka",
+    "title": "Her gün ailenizin yanında yürüyen platform.",
+    "subtitle": "Meu Mundo Azul, ebeveynleri, çocukları, terapistleri ve okulları tek bir yerde birleştirir. Rutinler, terapiler, ruh hali, ilaçlar, raporlar ve çocuğun günlük yaşamından öğrenen bir yapay zeka.",
+    "primaryCta": "Ücretsiz Başlayın",
+    "secondaryCta": "Nasıl Çalıştığını Görün",
+    "trust": "Ailelerin ve nörogelişim uzmanlarının desteğiyle yapılmıştır"
+  },
+  "pillars": {
+    "title": "Tek bir ekosistem, birçok hayat.",
+    "subtitle": "Meu Mundo Azul, Otizm Spektrum Bozukluğu için doğdu, ancak DEHB, disleksi, Down sendromu, Karşıt Gelme Bozukluğu, üstün yetenekler ve daha fazlası gibi her türlü nörogelişimsel durumla birlikte büyüyor.",
+    "items": [
+      {
+        "title": "Organize aile",
+        "description": "Rutin, takvim, ilaçlar, ruh hali ve davranışlar tek ve sıcak bir panelde."
+      },
+      {
+        "title": "Büyülenmiş çocuk",
+        "description": "Oyun gibi görünen bir deneyim. Avatar, dünya, görevler ve bir arkadaş gibi konuşan yapay zeka."
+      },
+      {
+        "title": "Entegre profesyoneller",
+        "description": "Terapistler ve okullar gerçek bağlamı alır, değerlendirmeler uygular ve gerçek zamanlı raporlar sunar."
+      },
+      {
+        "title": "Gerçek yapay zeka",
+        "description": "Bir sohbet robotu değil. Çocuğun geçmişini hatırlayan ve verilere dayalı yollar öneren bir asistandır."
+      }
+    ]
+  },
+  "modules": {
+    "title": "Her şey birbiriyle konuşur.",
+    "subtitle": "Her aktivite zaman çizelgesini besler, raporlar oluşturur, yapay zekayı besler ve önerileri ayarlar.",
+    "items": [
+      "Çocuğun tam klinik profili",
+      "Olan her şeyin birleşik zaman çizelgesi",
+      "Terapiler, okul ve rutinlerle takvim",
+      "Hatırlatıcılar ve geçmişi olan ilaçlar",
+      "Ruh hali ve davranış kaydı",
+      "Grafiklerle hedefler ve gelişim",
+      "Organize belgeler, raporlar ve reçeteler",
+      "Yapay zeka tarafından oluşturulan haftalık raporlar"
+    ]
+  },
+  "ai": {
+    "eyebrow": "Yapay Zeka",
+    "title": "Çocuğunuzu tanıyan bir yapay zeka.",
+    "description": "Meu Mundo Azul doğal dilde konuşur, yeni anları hazırlamak için kişiselleştirilmiş sosyal hikayeler oluşturur ve günlük yaşamda fark edilmeyen kalıpları tanımlar.",
+    "bullets": [
+      "Tam geçmişi olan bağlamsal sohbet",
+      "Randevuları, seyahatleri ve değişiklikleri hazırlamak için sosyal hikayeler",
+      "Otomatik haftalık ve aylık özetler",
+      "İşe yarayanlara dayalı rutin önerileri"
+    ],
+    "disclaimer": "Meu Mundo Azul'un yapay zekası bir destek aracıdır. Asla sağlık veya eğitim uzmanlarının yerini tutmaz."
+  },
+  "security": {
+    "title": "KVKK'ya mutlak saygıyla yapılmıştır.",
+    "items": [
+      "Her an iptal edilebilir ve sürümlü onay",
+      "Her erişimde Satır Düzeyi Güvenlik ve denetim",
+      "Verilerin tek tıklamayla dışa aktarılması ve silinmesi",
+      "Küçüklerin hassas verileri hak ettikleri özenle işlenir"
+    ]
+  },
+  "cta": {
+    "title": "Bugün başlayın. Meu Mundo Azul ile yıllarca büyüyün.",
+    "subtitle": "Platform, uyku rutininden özerkliğe, iletişimden terapilere kadar çocuğa her aşamada eşlik eder.",
+    "action": "Hesabımı oluştur"
+  }
+}

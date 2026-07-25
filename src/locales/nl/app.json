@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "children": "Kinderen",
+    "timeline": "Tijdlijn",
+    "calendar": "Kalender",
+    "routines": "Routines",
+    "medication": "Medicatie",
+    "documents": "Documenten",
+    "mood": "Gemoedstoestand",
+    "behavior": "Gedrag",
+    "goals": "Doelen",
+    "reports": "Rapporten",
+    "school": "School",
+    "achievements": "Prestaties",
+    "library": "Bibliotheek",
+    "assessments": "Zelfevaluaties",
+    "caregiver": "Welzijn",
+    "community": "Community",
+    "marketplace": "Marketplace",
+    "messages": "Berichten",
+    "ai": "Azul AI",
+    "notifications": "Meldingen",
+    "settings": "Instellingen"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Goedemorgen",
+      "afternoon": "Goedemiddag",
+      "evening": "Goedenavond"
+    },
+    "welcome": "Hier is het overzicht van vandaag.",
+    "cards": {
+      "nextEvent": "Volgende afspraak",
+      "medications": "Medicatie van vandaag",
+      "mood": "Recente gemoedstoestand",
+      "aiSummary": "AI-overzicht",
+      "pending": "In afwachting"
+    },
+    "empty": "Activeer Lovable Cloud om echte gegevens te registreren."
+  },
+  "ai": {
+    "title": "Azul AI",
+    "subtitle": "Praat over de routine, het gedrag, de therapieën en de ontwikkeling van uw kind.",
+    "placeholder": "Bijv.: hoe was de stemming deze week?",
+    "disclaimer": "Azul AI is ondersteuning, geen vervanging voor zorgprofessionals.",
+    "newThread": "Nieuw gesprek",
+    "welcome": "Hallo! Ik ben Azul. Hoe kan ik het gezin vandaag helpen?",
+    "suggestions": [
+      "Stel een fijne slaaproutine voor",
+      "Schrijf een sociaal verhaal over naar de tandarts gaan",
+      "Leg uit hoe je moeilijk gedrag registreert",
+      "Hoe bereid je een kind voor op de eerste schooldag?"
+    ]
+  },
+  "placeholder": {
+    "title": "Deze module is binnenkort beschikbaar",
+    "message": "Zodra Lovable Cloud is ingeschakeld, wordt dit gebied geactiveerd met echte gegevens, RLS en synchronisatie tussen gezinsleden.",
+    "backToDashboard": "Terug naar het dashboard"
+  }
+}

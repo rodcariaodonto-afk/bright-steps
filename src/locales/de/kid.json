@@ -1,0 +1,84 @@
+{
+  "shell": {
+    "title": "Meine Blaue Welt",
+    "greeting": "Hallo, {{name}}!",
+    "greetingFallback": "Hallo, kleiner Freund!",
+    "stars": "Sternchen",
+    "exit": "Welt verlassen",
+    "nav": {
+      "home": "Startseite",
+      "games": "Spiele",
+      "azul": "Mit Azul sprechen",
+      "mood": "Wie ich mich fühle",
+      "breathe": "Atmen",
+      "stories": "Geschichten"
+    }
+  },
+  "home": {
+    "welcome": "Willkommen in deiner Welt!",
+    "subtitle": "Wähle ein Abenteuer für heute.",
+    "cards": {
+      "azul": {
+        "title": "Mit Azul sprechen",
+        "desc": "Dein neugieriger Freund wartet."
+      },
+      "mood": {
+        "title": "Wie ich mich fühle",
+        "desc": "Erzähl Azul, wie es deinem Herzen geht."
+      },
+      "breathe": {
+        "title": "Zusammen atmen",
+        "desc": "Eine schnelle Übung, um ruhig zu werden."
+      },
+      "stories": {
+        "title": "Eine Geschichte",
+        "desc": "Wähle ein Thema und Azul erfindet eine für dich."
+      }
+    }
+  },
+  "mood": {
+    "title": "Wie geht es dir gerade?",
+    "subtitle": "Tippe auf das Gesicht, das zu dir passt.",
+    "options": {
+      "1": "Traurig",
+      "2": "Etwas bedrückt",
+      "3": "Normal",
+      "4": "Glücklich",
+      "5": "Strahlend"
+    },
+    "saved": "Danke fürs Teilen! Du hast ein Sternchen bekommen.",
+    "signIn": "Bitte einen Erwachsenen, sich anzumelden, um zu speichern."
+  },
+  "breathe": {
+    "title": "Lass uns atmen",
+    "subtitle": "Folge dem Ball. Atme ein, halte, atme aus.",
+    "start": "Starten",
+    "stop": "Stoppen",
+    "inhale": "Atme ein...",
+    "hold": "Halten...",
+    "exhale": "Langsam ausatmen...",
+    "done": "Gut gemacht! Du verdienst ein Sternchen."
+  },
+  "stories": {
+    "title": "Azuls Geschichten",
+    "subtitle": "Wähle ein Thema und Azul erfindet eine für dich.",
+    "themes": {
+      "space": "Weltraum",
+      "dinos": "Dinosaurier",
+      "ocean": "Meeresgrund",
+      "forest": "Zauberwald",
+      "cars": "Autos",
+      "animals": "Tierchen"
+    },
+    "generate": "Geschichte erzählen",
+    "loading": "Azul denkt nach...",
+    "another": "Eine andere Geschichte",
+    "reward": "+1 Sternchen fürs Durchlesen!"
+  },
+  "azul": {
+    "title": "Azul, dein Freund",
+    "hint": "Tippe oder bitte einen Erwachsenen um Hilfe.",
+    "placeholder": "Sprich mit Azul...",
+    "send": "Senden"
+  }
+}

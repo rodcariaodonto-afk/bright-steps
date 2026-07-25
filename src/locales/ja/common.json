@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul",
+    "tagline": "子どもの発達のためのエコシステム"
+  },
+  "actions": {
+    "getStarted": "今すぐ始める",
+    "signIn": "サインイン",
+    "signUp": "アカウントを作成する",
+    "signOut": "サインアウト",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "continue": "続ける",
+    "back": "戻る",
+    "learnMore": "詳細はこちら",
+    "openApp": "アプリを開く"
+  },
+  "nav": {
+    "product": "製品",
+    "family": "家族",
+    "child": "子ども",
+    "professionals": "専門家",
+    "ai": "人工知能",
+    "security": "セキュリティ",
+    "pricing": "料金プラン"
+  },
+  "status": {
+    "comingSoon": "近日公開",
+    "beta": "ベータ版",
+    "preview": "プレビュー"
+  },
+  "banner": {
+    "cloudPending": "プレビューモードです。Lovable Cloudが有効になると、バックエンド機能がアクティブになります。"
+  },
+  "footer": {
+    "rights": "全著作権所有。",
+    "lgpd": "LGPD",
+    "privacy": "プライバシー",
+    "terms": "利用規約"
+  },
+  "language": {
+    "label": "言語",
+    "pt-BR": "ポルトガル語（ブラジル）",
+    "en": "英語",
+    "es": "スペイン語",
+    "fr": "フランス語",
+    "it": "イタリア語",
+    "de": "ドイツ語"
+  }
+}

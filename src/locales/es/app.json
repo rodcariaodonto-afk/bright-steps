@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "Panel",
+    "children": "Niños",
+    "timeline": "Línea de tiempo",
+    "calendar": "Calendario",
+    "routines": "Rutinas",
+    "medication": "Medicación",
+    "documents": "Documentos",
+    "mood": "Estado de ánimo",
+    "behavior": "Comportamiento",
+    "goals": "Objetivos",
+    "reports": "Informes",
+    "school": "Escuela",
+    "achievements": "Logros",
+    "library": "Biblioteca",
+    "assessments": "Autoevaluaciones",
+    "caregiver": "Bienestar",
+    "community": "Comunidad",
+    "marketplace": "Marketplace",
+    "messages": "Mensajes",
+    "ai": "Azul IA",
+    "notifications": "Notificaciones",
+    "settings": "Configuración"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Buenos días",
+      "afternoon": "Buenas tardes",
+      "evening": "Buenas noches"
+    },
+    "welcome": "Aquí está el resumen de hoy.",
+    "cards": {
+      "nextEvent": "Próxima cita",
+      "medications": "Medicamentos de hoy",
+      "mood": "Estado de ánimo reciente",
+      "aiSummary": "Resumen de IA",
+      "pending": "Pendientes"
+    },
+    "empty": "Active Lovable Cloud para empezar a registrar datos reales."
+  },
+  "ai": {
+    "title": "Azul IA",
+    "subtitle": "Converse sobre la rutina, el comportamiento, las terapias y la evolución de su hijo.",
+    "placeholder": "Ej.: ¿cómo estuvo el estado de ánimo esta semana?",
+    "disclaimer": "Azul IA es un apoyo, no sustituye a los profesionales de la salud.",
+    "newThread": "Nueva conversación",
+    "welcome": "¡Hola! Soy Azul. ¿Cómo puedo ayudar a la familia hoy?",
+    "suggestions": [
+      "Sugiera una rutina de sueño acogedora",
+      "Escriba una historia social sobre ir al dentista",
+      "Explique cómo registrar comportamientos difíciles",
+      "¿Cómo preparar a un niño para el primer día de clases?"
+    ]
+  },
+  "placeholder": {
+    "title": "Este módulo estará disponible pronto",
+    "message": "Una vez que Lovable Cloud esté habilitado, esta área se activará con datos reales, RLS y sincronización entre los miembros de la familia.",
+    "backToDashboard": "Volver al panel"
+  }
+}

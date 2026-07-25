@@ -1,0 +1,14 @@
+{
+  "personas": {
+    "family": "Azulファミリー",
+    "clinical": "Azul臨床",
+    "child": "Azulフレンド",
+    "school": "Azul学校",
+    "admin": "Azul管理者"
+  },
+  "guardrails": {
+    "notDiagnosis": "Azulは診断を下しません。常に医療専門家にご相談ください。",
+    "notSubstitute": "サポートツールです。医師、セラピスト、心理学者、教育者の代わりにはなりません。",
+    "risk": "危険な状況では、CVV 188、SAMU 192、または児童保護評議会 100にご連絡ください。"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "personas": {
+    "family": "Azul Familia",
+    "clinical": "Azul Clínico",
+    "child": "Azul Amigo",
+    "school": "Azul Escuela",
+    "admin": "Azul Admin"
+  },
+  "guardrails": {
+    "notDiagnosis": "Azul nunca emite diagnósticos. Consulte siempre a un profesional de la salud.",
+    "notSubstitute": "Herramienta de apoyo. No sustituye a médicos, terapeutas, psicólogos o pedagogos.",
+    "risk": "En situaciones de riesgo, llame a CVV 188, SAMU 192 o Consejo Tutelar 100."
+  }
+}

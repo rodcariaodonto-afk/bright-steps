@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "eyebrow": "Rozwój dziecka · Neurodywergencja · AI",
+    "title": "Platforma, która wspiera Twoją rodzinę każdego dnia.",
+    "subtitle": "Mój Niebieski Świat łączy rodziców, dzieci, terapeutów i szkoły w jednym miejscu. Rutyny, terapie, nastrój, leki, raporty i AI, która uczy się na podstawie codziennego życia dziecka.",
+    "primaryCta": "Rozpocznij bezpłatnie",
+    "secondaryCta": "Zobacz, jak to działa",
+    "trust": "Stworzone przy wsparciu rodzin i specjalistów neurorozwoju"
+  },
+  "pillars": {
+    "title": "Jeden ekosystem, wiele żyć.",
+    "subtitle": "Mój Niebieski Świat narodził się dla ASD, ale rozwija się z każdym stanem neurorozwojowym: ADHD, dysleksją, zespołem Downa, ODD, wysokimi zdolnościami i innymi.",
+    "items": [
+      {
+        "title": "Zorganizowana rodzina",
+        "description": "Rutyna, kalendarz, leki, nastrój i zachowanie w jednym, przyjaznym panelu."
+      },
+      {
+        "title": "Zachwycone dziecko",
+        "description": "Doświadczenie, które wydaje się zabawą. Awatar, świat, misje i AI, która rozmawia jak przyjaciel."
+      },
+      {
+        "title": "Zintegrowani profesjonaliści",
+        "description": "Terapeuci i szkoły otrzymują rzeczywisty kontekst, przeprowadzają oceny i dostarczają raporty w czasie rzeczywistym."
+      },
+      {
+        "title": "Prawdziwa AI",
+        "description": "To nie jest chatbot. To asystent, który pamięta historię dziecka i sugeruje ścieżki na podstawie danych."
+      }
+    ]
+  },
+  "modules": {
+    "title": "Wszystko ze sobą rozmawia.",
+    "subtitle": "Każda aktywność zasila oś czasu, generuje raporty, zasila AI i dostosowuje rekomendacje.",
+    "items": [
+      "Pełny profil kliniczny dziecka",
+      "Ujednolicona oś czasu wszystkiego, co się dzieje",
+      "Kalendarz z terapiami, szkołą i rutynami",
+      "Leki z przypomnieniami i historią",
+      "Rejestr nastroju i zachowania",
+      "Cele i ewolucja z wykresami",
+      "Zorganizowane dokumenty, orzeczenia i recepty",
+      "Cotygodniowe raporty generowane przez AI"
+    ]
+  },
+  "ai": {
+    "eyebrow": "Sztuczna Inteligencja",
+    "title": "AI, która zna Twoje dziecko.",
+    "description": "Meu Mundo Azul rozmawia w języku naturalnym, tworzy spersonalizowane historie społeczne, aby przygotować na nowe chwile i identyfikuje wzorce, które pozostają niezauważone w codziennym życiu.",
+    "bullets": [
+      "Kontekstowy czat z pełną historią",
+      "Historie społeczne do przygotowania na wizyty, podróże i zmiany",
+      "Automatyczne podsumowania tygodniowe i miesięczne",
+      "Sugestie dotyczące rutyny oparte na tym, co działa"
+    ],
+    "disclaimer": "AI Meu Mundo Azul jest narzędziem wspierającym. Nigdy nie zastępuje specjalistów ds. zdrowia ani edukacji."
+  },
+  "security": {
+    "title": "Stworzone z absolutnym poszanowaniem RODO.",
+    "items": [
+      "Zgoda wersjonowana i możliwa do odwołania w dowolnym momencie",
+      "Zabezpieczenia na poziomie wiersza i audyt każdego dostępu",
+      "Eksport i usunięcie danych jednym kliknięciem",
+      "Dane wrażliwe małoletnich traktowane z należytą starannością"
+    ]
+  },
+  "cta": {
+    "title": "Zacznij już dziś. Rozwijaj się z Meu Mundo Azul przez wiele lat.",
+    "subtitle": "Platforma towarzyszy dziecku na każdym etapie, od rutyny snu po samodzielność, od komunikacji po terapie.",
+    "action": "Utwórz moje konto"
+  }
+}

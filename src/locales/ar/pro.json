@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul Clínico",
+    "tagline": "مساحة عمل للمتخصصين في تنمية الطفل"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "العمل",
+      "clinical": "العيادة",
+      "collaboration": "التعاون",
+      "settings": "الإعدادات"
+    },
+    "dashboard": "لوحة التحكم",
+    "agenda": "الجدول الزمني",
+    "patients": "المرضى",
+    "sessions": "الجلسات",
+    "evolution": "التطور",
+    "goals": "الأهداف",
+    "scales": "المقاييس",
+    "reports": "التقارير",
+    "documents": "المستندات",
+    "messages": "الرسائل",
+    "school": "المدرسة",
+    "indicators": "المؤشرات",
+    "ai": "Azul Clínico",
+    "settings": "الإعدادات",
+    "profile": "ملفي الشخصي",
+    "newSession": "جلسة جديدة"
+  },
+  "topbar": {
+    "search": "البحث عن المرضى، الجلسات، التقارير...",
+    "shortcut": "⌘K",
+    "help": "المساعدة",
+    "profile": "الملف الشخصي"
+  },
+  "dashboard": {
+    "title": "صباح الخير، {{name}}",
+    "subtitle": "لديك {{count}} موعد اليوم.",
+    "cards": {
+      "todayAgenda": "جدول أعمال اليوم",
+      "nextAppointments": "المواعيد القادمة",
+      "activePatients": "المرضى النشطون",
+      "pending": "المعلقات",
+      "messages": "الرسائل",
+      "pendingReports": "التقارير المعلقة",
+      "newDocuments": "مستندات جديدة",
+      "sharedGoals": "الأهداف المشتركة",
+      "aiAlerts": "تنبيهات الذكاء الاصطناعي",
+      "weekSummary": "ملخص الأسبوع",
+      "monthSummary": "ملخص الشهر"
+    },
+    "empty": "لا توجد بيانات في هذه المساحة حتى يتم تفعيل Cloud.",
+    "quickActions": {
+      "newSession": "تسجيل جلسة",
+      "newReport": "إنشاء تقرير",
+      "newAppointment": "جدولة موعد",
+      "askAI": "اسأل Azul Clínico"
+    }
+  },
+  "patients": {
+    "title": "المرضى",
+    "subtitle": "فقط الأطفال الذين وافق أولياء أمورهم على وصولك.",
+    "columns": {
+      "name": "الاسم",
+      "age": "العمر",
+      "diagnosis": "التشخيص",
+      "support": "الدعم",
+      "lastSession": "الجلسة الأخيرة",
+      "nextSession": "الجلسة القادمة",
+      "goalsProgress": "الأهداف"
+    },
+    "filters": {
+      "all": "الكل",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "byDiagnosis": "حسب التشخيص",
+      "bySpecialty": "حسب التخصص"
+    },
+    "tabs": {
+      "overview": "نظرة عامة",
+      "sessions": "الجلسات",
+      "evolution": "التطور",
+      "goals": "الأهداف",
+      "scales": "المقاييس",
+      "reports": "التقارير",
+      "documents": "المستندات",
+      "school": "المدرسة",
+      "family": "العائلة"
+    }
+  },
+  "agenda": {
+    "title": "الجدول الزمني",
+    "views": {
+      "day": "اليوم",
+      "week": "الأسبوع",
+      "month": "الشهر",
+      "list": "القائمة"
+    },
+    "empty": "لا توجد مواعيد في هذه الفترة.",
+    "new": "موعد جديد"
+  },
+  "sessions": {
+    "titleNew": "جلسة جديدة",
+    "titleEdit": "تعديل الجلسة",
+    "fields": {
+      "date": "التاريخ",
+      "time": "الوقت",
+      "duration": "المدة",
+      "child": "الطفل",
+      "goals": "الأهداف التي تم العمل عليها",
+      "activities": "الأنشطة المنجزة",
+      "materials": "المواد المستخدمة",
+      "response": "استجابة الطفل",
+      "observations": "الملاحظات",
+      "nextSteps": "الخطوات التالية",
+      "attachments": "المرفقات (صور، فيديوهات، تسجيلات صوتية، ملفات)"
+    },
+    "reuse": "سيتم ملء الأهداف النشطة والملاحظات الأخيرة والمقاييس المعلقة تلقائيًا."
+  },
+  "evolution": {
+    "title": "التطور",
+    "subtitle": "موجز زمني للتقدم والمقاييس والمرفقات.",
+    "share": "مشاركة مع",
+    "shareWith": {
+      "family": "العائلة",
+      "professionals": "متخصصون آخرون",
+      "school": "المدرسة"
+    }
+  },
+  "goals": {
+    "title": "الأهداف العلاجية",
+    "subtitle": "أهداف مشتركة مع العائلة والفريق.",
+    "fields": {
+      "description": "الوصف",
+      "category": "الفئة",
+      "start": "البداية",
+      "deadline": "الموعد النهائي",
+      "owner": "المسؤول",
+      "participants": "المشاركون",
+      "indicators": "المؤشرات",
+      "status": "الحالة",
+      "progress": "التقدم"
+    }
+  },
+  "scales": {
+    "title": "المقاييس والأدوات",
+    "subtitle": "سجل أي أداة تقييم. بنية مفتوحة.",
+    "new": "مقياس جديد",
+    "applications": "التطبيقات"
+  },
+  "reports": {
+    "title": "التقارير",
+    "subtitle": "إنشاء بمساعدة الذكاء الاصطناعي وتصدير آمن.",
+    "types": {
+      "session": "جلسة",
+      "weekly": "أسبوعي",
+      "monthly": "شهري",
+      "quarterly": "ربع سنوي",
+      "annual": "سنوي",
+      "custom": "مخصص"
+    },
+    "export": {
+      "pdf": "تصدير PDF",
+      "docx": "تصدير Word",
+      "share": "مشاركة"
+    }
+  },
+  "documents": {
+    "title": "المستندات",
+    "subtitle": "مكتبة مشتركة مع التحكم في الإصدارات.",
+    "categories": {
+      "reports": "التقارير",
+      "referrals": "التقارير الطبية",
+      "prescriptions": "الوصفات الطبية",
+      "assessments": "التقييمات",
+      "exams": "الفحوصات",
+      "photos": "الصور",
+      "videos": "الفيديوهات",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "الرسائل",
+    "subtitle": "تواصل آمن منظم حسب الطفل.",
+    "audiences": {
+      "family": "العائلة",
+      "school": "المدرسة",
+      "professionals": "متخصصون آخرون"
+    }
+  },
+  "school": {
+    "title": "المدرسة",
+    "subtitle": "تبادل الأهداف والتوجيهات والملاحظات مع فريق المدرسة.",
+    "consentRequired": "يتطلب موافقة صريحة من العائلة لكل مشاركة."
+  },
+  "indicators": {
+    "title": "المؤشرات",
+    "subtitle": "رسوم بيانية تلقائية للتطور والمزاج والسلوك والنوم والمزيد.",
+    "series": {
+      "evolution": "التطور",
+      "frequency": "التكرار",
+      "participation": "المشاركة",
+      "goals": "الأهداف",
+      "mood": "المزاج",
+      "behavior": "السلوك",
+      "sleep": "النوم",
+      "medication": "الأدوية"
+    }
+  },
+  "ai": {
+    "title": "Azul Clínico",
+    "subtitle": "مساعد لتلخيص التطورات، مقارنة الفترات، اقتراح الأنشطة، وصياغة التقارير.",
+    "disclaimer": "الذكاء الاصطناعي يدعم التفكير السريري. لا يقوم بالتشخيص أبدًا ولا يحل محل قرار المتخصص أبدًا.",
+    "suggestions": [
+      "تلخيص التطور خلال آخر 30 يومًا",
+      "مقارنة السلوك قبل وبعد الروتين الجديد",
+      "اقتراح أنشطة للعمل على الانتباه المشترك",
+      "صياغة تقرير شهري من الجلسات"
+    ]
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "sections": {
+      "profile": "الملف الشخصي للمتخصص",
+      "specialties": "التخصصات",
+      "availability": "التوفر",
+      "integrations": "التكاملات (Google/Apple/Outlook)",
+      "security": "الأمان واللائحة العامة لحماية البيانات"
+    }
+  },
+  "specialties": {
+    "psychologist": "أخصائي نفسي",
+    "neuropsychologist": "أخصائي نفسي عصبي",
+    "speech_therapist": "أخصائي تخاطب",
+    "occupational_therapist": "معالج وظيفي",
+    "psychopedagogue": "أخصائي تربية نفسية",
+    "physician": "طبيب",
+    "neurologist": "طبيب أعصاب",
+    "psychiatrist": "طبيب نفسي",
+    "pediatrician": "طبيب أطفال",
+    "nutritionist": "أخصائي تغذية",
+    "physical_educator": "معلم تربية بدنية",
+    "teacher": "معلم",
+    "school_coordinator": "منسق مدرسة",
+    "caregiver": "مقدم رعاية"
+  },
+  "banner": {
+    "previewMode": "معاينة. ستظهر جداول وحدة المحترفين بمجرد إعادة تنشيط Lovable Cloud. لا يتم الاحتفاظ بأي بيانات."
+  }
+}

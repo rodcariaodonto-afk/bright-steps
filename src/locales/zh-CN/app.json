@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "仪表盘",
+    "children": "孩子",
+    "timeline": "时间线",
+    "calendar": "日历",
+    "routines": "例行事项",
+    "medication": "药物",
+    "documents": "文档",
+    "mood": "情绪",
+    "behavior": "行为",
+    "goals": "目标",
+    "reports": "报告",
+    "school": "学校",
+    "achievements": "成就",
+    "library": "图书馆",
+    "assessments": "自我评估",
+    "caregiver": "健康",
+    "community": "社区",
+    "marketplace": "市场",
+    "messages": "消息",
+    "ai": "Azul AI",
+    "notifications": "通知",
+    "settings": "设置"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "早上好",
+      "afternoon": "下午好",
+      "evening": "晚上好"
+    },
+    "welcome": "这是今天的摘要。",
+    "cards": {
+      "nextEvent": "下一个约会",
+      "medications": "今日药物",
+      "mood": "近期情绪",
+      "aiSummary": "AI 摘要",
+      "pending": "待处理"
+    },
+    "empty": "激活 Lovable Cloud 以开始记录真实数据。"
+  },
+  "ai": {
+    "title": "Azul AI",
+    "subtitle": "聊聊您孩子的日常、行为、治疗和成长。",
+    "placeholder": "例如：这周情绪怎么样？",
+    "disclaimer": "Azul AI 仅供支持，不能替代专业医疗人员。",
+    "newThread": "新对话",
+    "welcome": "您好！我是 Azul。今天我能如何帮助您的家人？",
+    "suggestions": [
+      "建议一个舒适的睡眠习惯",
+      "写一个关于去看牙医的社交故事",
+      "解释如何记录困难行为",
+      "如何为孩子上学第一天做准备？"
+    ]
+  },
+  "placeholder": {
+    "title": "此模块即将推出",
+    "message": "一旦 Lovable Cloud 启用，此区域将通过真实数据、RLS 和家庭成员之间的同步激活。",
+    "backToDashboard": "返回仪表盘"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "sidebar": {
+    "sections": {
+      "overview": "Übersicht",
+      "people": "Personen",
+      "content": "Inhalt",
+      "commerce": "Handel",
+      "operations": "Operationen",
+      "settings": "System"
+    },
+    "dashboard": "Dashboard",
+    "users": "Benutzer",
+    "families": "Familien",
+    "children": "Kinder",
+    "professionals": "Fachkräfte",
+    "schools": "Schulen",
+    "cms": "Inhalt & CMS",
+    "stories": "Geschichten",
+    "games": "Spiele",
+    "missions": "Missionen",
+    "achievements": "Errungenschaften",
+    "marketplace": "Marktplatz",
+    "community": "Gemeinschaft",
+    "subscriptions": "Abonnements",
+    "finance": "Finanzen",
+    "coupons": "Gutscheine",
+    "notifications": "Benachrichtigungen",
+    "analytics": "Analysen",
+    "reports": "Berichte",
+    "ai": "KI",
+    "logs": "Protokolle",
+    "flags": "Feature-Flags",
+    "permissions": "Berechtigungen",
+    "backups": "Backups",
+    "settings_global": "Globale Einstellungen"
+  },
+  "topbar": {
+    "title": "Administrationspanel",
+    "backToFamily": "Familie",
+    "backToPro": "Fachkräfte"
+  },
+  "banner": {
+    "message": "Admin-Panel im Vorschaumodus. Reale Daten, RBAC und Analysen werden aktiviert, sobald Lovable Cloud reaktiviert wird."
+  },
+  "dashboard": {
+    "title": "Übersicht",
+    "subtitle": "Plattformzustand in Echtzeit",
+    "cards": {
+      "mau": "Aktive Benutzer (Monat)",
+      "dau": "Aktive Benutzer (Tag)",
+      "families": "Registrierte Familien",
+      "professionals": "Aktive Fachkräfte",
+      "children": "Begleitete Kinder",
+      "revenue": "Wiederkehrende Einnahmen",
+      "aiCost": "KI-Kosten (30 Tage)",
+      "conversion": "Konversion Testversion → bezahlt"
+    }
+  },
+  "placeholder": {
+    "back": "Zurück zum Admin-Dashboard",
+    "message": "Dieser Bereich wird verbunden, sobald Lovable Cloud reaktiviert wird. Die Struktur, Tabellen und RLS-Richtlinien sind bereits entworfen."
+  }
+}

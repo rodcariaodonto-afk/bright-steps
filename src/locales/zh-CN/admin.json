@@ -1,0 +1,63 @@
+{
+  "sidebar": {
+    "sections": {
+      "overview": "概览",
+      "people": "人物",
+      "content": "内容",
+      "commerce": "商务",
+      "operations": "运营",
+      "settings": "系统"
+    },
+    "dashboard": "仪表盘",
+    "users": "用户",
+    "families": "家庭",
+    "children": "儿童",
+    "professionals": "专业人士",
+    "schools": "学校",
+    "cms": "内容与CMS",
+    "stories": "故事",
+    "games": "游戏",
+    "missions": "任务",
+    "achievements": "成就",
+    "marketplace": "市场",
+    "community": "社区",
+    "subscriptions": "订阅",
+    "finance": "财务",
+    "coupons": "优惠券",
+    "notifications": "通知",
+    "analytics": "分析",
+    "reports": "报告",
+    "ai": "AI",
+    "logs": "日志",
+    "flags": "功能开关",
+    "permissions": "权限",
+    "backups": "备份",
+    "settings_global": "全局设置"
+  },
+  "topbar": {
+    "title": "管理面板",
+    "backToFamily": "家庭",
+    "backToPro": "专业人士"
+  },
+  "banner": {
+    "message": "管理面板处于预览模式。当 Lovable Cloud 重新激活时，将启用真实数据、RBAC 和分析。"
+  },
+  "dashboard": {
+    "title": "概览",
+    "subtitle": "平台实时健康状况",
+    "cards": {
+      "mau": "月活跃用户",
+      "dau": "日活跃用户",
+      "families": "注册家庭",
+      "professionals": "活跃专业人士",
+      "children": "受关注儿童",
+      "revenue": "经常性收入",
+      "aiCost": "AI成本（30天）",
+      "conversion": "试用 → 付费转化率"
+    }
+  },
+  "placeholder": {
+    "back": "返回管理仪表盘",
+    "message": "当 Lovable Cloud 重新激活时，此区域将连接。结构、表格和 RLS 策略已设计完成。"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "shell": {
+    "title": "Mój Niebieski Świat",
+    "greeting": "Cześć, {{name}}!",
+    "greetingFallback": "Cześć, mały przyjacielu!",
+    "stars": "gwiazdki",
+    "exit": "Wyjdź ze świata",
+    "nav": {
+      "home": "Start",
+      "games": "Gry",
+      "azul": "Porozmawiaj z Azulem",
+      "mood": "Jak się czuję",
+      "breathe": "Oddychaj",
+      "stories": "Historie"
+    }
+  },
+  "home": {
+    "welcome": "Witaj w swoim świecie!",
+    "subtitle": "Wybierz dzisiejszą przygodę.",
+    "cards": {
+      "azul": {
+        "title": "Porozmawiaj z Azulem",
+        "desc": "Twój ciekawy przyjaciel czeka."
+      },
+      "mood": {
+        "title": "Jak się czuję",
+        "desc": "Powiedz Azulowi, co czuje Twoje serce."
+      },
+      "breathe": {
+        "title": "Oddychajmy razem",
+        "desc": "Szybkie ćwiczenie, żeby się uspokoić."
+      },
+      "stories": {
+        "title": "Historia",
+        "desc": "Wybierz temat, a Azul coś dla Ciebie wymyśli."
+      }
+    }
+  },
+  "mood": {
+    "title": "Jak się teraz czujesz?",
+    "subtitle": "Dotknij buźki, która do Ciebie pasuje.",
+    "options": {
+      "1": "Smutny",
+      "2": "Trochę przygnębiony",
+      "3": "Normalnie",
+      "4": "Szczęśliwy",
+      "5": "Promienny"
+    },
+    "saved": "Dziękujemy za podzielenie się! Dostałeś gwiazdkę.",
+    "signIn": "Poproś dorosłego o zalogowanie, aby zapisać."
+  },
+  "breathe": {
+    "title": "Oddychajmy",
+    "subtitle": "Podążaj za kropką. Wciągnij powietrze, wstrzymaj, wypuść.",
+    "start": "Start",
+    "stop": "Stop",
+    "inhale": "Wciągnij powietrze...",
+    "hold": "Wstrzymaj...",
+    "exhale": "Powoli wypuść...",
+    "done": "Świetnie! Zasługujesz na gwiazdkę."
+  },
+  "stories": {
+    "title": "Historie Azula",
+    "subtitle": "Wybierz temat, a Azul coś dla Ciebie wymyśli.",
+    "themes": {
+      "space": "Kosmos",
+      "dinos": "Dinozaury",
+      "ocean": "Głębiny oceanu",
+      "forest": "Magiczny las",
+      "cars": "Samochodziki",
+      "animals": "Zwierzątka"
+    },
+    "generate": "Opowiedz historię",
+    "loading": "Azul myśli...",
+    "another": "Inna historia",
+    "reward": "+1 gwiazdka za przeczytanie do końca!"
+  },
+  "azul": {
+    "title": "Azul, Twój przyjaciel",
+    "hint": "Wpisz lub poproś dorosłego o pomoc.",
+    "placeholder": "Porozmawiaj z Azulem...",
+    "send": "Wyślij"
+  }
+}

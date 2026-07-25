@@ -1,0 +1,63 @@
+{
+  "sidebar": {
+    "sections": {
+      "overview": "Overzicht",
+      "people": "Mensen",
+      "content": "Inhoud",
+      "commerce": "Handel",
+      "operations": "Operaties",
+      "settings": "Systeem"
+    },
+    "dashboard": "Dashboard",
+    "users": "Gebruikers",
+    "families": "Families",
+    "children": "Kinderen",
+    "professionals": "Professionals",
+    "schools": "Scholen",
+    "cms": "Inhoud & CMS",
+    "stories": "Verhalen",
+    "games": "Spellen",
+    "missions": "Missies",
+    "achievements": "Prestaties",
+    "marketplace": "Marktplaats",
+    "community": "Gemeenschap",
+    "subscriptions": "Abonnementen",
+    "finance": "Financieel",
+    "coupons": "Coupons",
+    "notifications": "Meldingen",
+    "analytics": "Analyse",
+    "reports": "Rapporten",
+    "ai": "AI",
+    "logs": "Logs",
+    "flags": "Feature Flags",
+    "permissions": "Machtigingen",
+    "backups": "Back-ups",
+    "settings_global": "Globale instellingen"
+  },
+  "topbar": {
+    "title": "Administratief Paneel",
+    "backToFamily": "Familie",
+    "backToPro": "Professionals"
+  },
+  "banner": {
+    "message": "Admin Paneel in preview-modus. Echte gegevens, RBAC en analyses worden geactiveerd wanneer Lovable Cloud opnieuw wordt geactiveerd."
+  },
+  "dashboard": {
+    "title": "Overzicht",
+    "subtitle": "Platformstatus in realtime",
+    "cards": {
+      "mau": "Actieve gebruikers (maand)",
+      "dau": "Actieve gebruikers (dag)",
+      "families": "Geregistreerde families",
+      "professionals": "Actieve professionals",
+      "children": "Begeleide kinderen",
+      "revenue": "Terugkerende inkomsten",
+      "aiCost": "AI-kosten (30d)",
+      "conversion": "Conversie proef → betaald"
+    }
+  },
+  "placeholder": {
+    "back": "Terug naar admin dashboard",
+    "message": "Dit gebied wordt verbonden wanneer Lovable Cloud opnieuw wordt geactiveerd. De structuur, tabellen en RLS-beleid zijn al ontworpen."
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "儀表板",
+    "children": "孩子們",
+    "timeline": "時間軸",
+    "calendar": "日曆",
+    "routines": "例行公事",
+    "medication": "藥物",
+    "documents": "文件",
+    "mood": "情緒",
+    "behavior": "行為",
+    "goals": "目標",
+    "reports": "報告",
+    "school": "學校",
+    "achievements": "成就",
+    "library": "圖書館",
+    "assessments": "自我評估",
+    "caregiver": "幸福感",
+    "community": "社群",
+    "marketplace": "市集",
+    "messages": "訊息",
+    "ai": "Azul AI",
+    "notifications": "通知",
+    "settings": "設定"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "早安",
+      "afternoon": "午安",
+      "evening": "晚安"
+    },
+    "welcome": "這是今天的摘要。",
+    "cards": {
+      "nextEvent": "下一個約會",
+      "medications": "今天的藥物",
+      "mood": "近期情緒",
+      "aiSummary": "AI 摘要",
+      "pending": "待辦事項"
+    },
+    "empty": "啟用 Lovable Cloud 以開始記錄真實數據。"
+  },
+  "ai": {
+    "title": "Azul AI",
+    "subtitle": "討論您孩子的日常生活、行為、治療和發展。",
+    "placeholder": "例如：這週情緒如何？",
+    "disclaimer": "Azul AI 僅供參考，不能替代專業醫療人員。",
+    "newThread": "新對話",
+    "welcome": "您好！我是 Azul。今天我能為您的家人提供什麼幫助？",
+    "suggestions": [
+      "建議一個舒適的睡眠習慣",
+      "寫一個關於看牙醫的社交故事",
+      "解釋如何記錄困難的行為",
+      "如何為孩子準備開學第一天？"
+    ]
+  },
+  "placeholder": {
+    "title": "此模組即將推出",
+    "message": "一旦啟用 Lovable Cloud，此區域將會啟用真實數據、RLS 和家庭成員之間的同步。",
+    "backToDashboard": "返回儀表板"
+  }
+}

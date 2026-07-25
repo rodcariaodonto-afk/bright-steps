@@ -1,0 +1,63 @@
+{
+  "sidebar": {
+    "sections": {
+      "overview": "Genel Bakış",
+      "people": "Kişiler",
+      "content": "İçerik",
+      "commerce": "Ticaret",
+      "operations": "Operasyonlar",
+      "settings": "Sistem"
+    },
+    "dashboard": "Kontrol Paneli",
+    "users": "Kullanıcılar",
+    "families": "Aileler",
+    "children": "Çocuklar",
+    "professionals": "Profesyoneller",
+    "schools": "Okullar",
+    "cms": "İçerik ve CMS",
+    "stories": "Hikayeler",
+    "games": "Oyunlar",
+    "missions": "Görevler",
+    "achievements": "Başarılar",
+    "marketplace": "Pazar Yeri",
+    "community": "Topluluk",
+    "subscriptions": "Abonelikler",
+    "finance": "Finans",
+    "coupons": "Kuponlar",
+    "notifications": "Bildirimler",
+    "analytics": "Analizler",
+    "reports": "Raporlar",
+    "ai": "YZ",
+    "logs": "Günlükler",
+    "flags": "Özellik Bayrakları",
+    "permissions": "İzinler",
+    "backups": "Yedeklemeler",
+    "settings_global": "Küresel Ayarlar"
+  },
+  "topbar": {
+    "title": "Yönetici Paneli",
+    "backToFamily": "Aile",
+    "backToPro": "Profesyoneller"
+  },
+  "banner": {
+    "message": "Yönetici Paneli önizleme modunda. Lovable Cloud yeniden etkinleştirildiğinde gerçek veriler, RBAC ve analizler eklenecektir."
+  },
+  "dashboard": {
+    "title": "Genel Bakış",
+    "subtitle": "Platform sağlığı gerçek zamanlı",
+    "cards": {
+      "mau": "Aktif Kullanıcılar (aylık)",
+      "dau": "Aktif Kullanıcılar (günlük)",
+      "families": "Kayıtlı Aileler",
+      "professionals": "Aktif Profesyoneller",
+      "children": "Takip Edilen Çocuklar",
+      "revenue": "Tekrarlayan Gelir",
+      "aiCost": "YZ Maliyeti (30 gün)",
+      "conversion": "Deneme → Ücretli Dönüşüm"
+    }
+  },
+  "placeholder": {
+    "back": "Yönetici kontrol paneline geri dön",
+    "message": "Bu alan, Lovable Cloud yeniden etkinleştirildiğinde bağlanacaktır. Yapı, tablolar ve RLS politikaları zaten tasarlanmıştır."
+  }
+}

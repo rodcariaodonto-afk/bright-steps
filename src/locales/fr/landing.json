@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "eyebrow": "Développement de l'enfant · Neurodiversité · IA",
+    "title": "La plateforme qui accompagne votre famille, tous les jours.",
+    "subtitle": "Meu Mundo Azul connecte parents, enfants, thérapeutes et écoles en un seul endroit. Routines, thérapies, humeur, médicaments, rapports et une IA qui apprend du quotidien de l'enfant.",
+    "primaryCta": "Commencer gratuitement",
+    "secondaryCta": "Voir comment ça marche",
+    "trust": "Réalisé avec le soutien de familles et de professionnels du neurodéveloppement"
+  },
+  "pillars": {
+    "title": "Un écosystème, de nombreuses vies.",
+    "subtitle": "Meu Mundo Azul est né pour le TSA, mais se développe avec toute condition neurodéveloppementale : TDAH, dyslexie, trisomie 21, TOP, hauts potentiels et plus encore.",
+    "items": [
+      {
+        "title": "Famille organisée",
+        "description": "Routine, calendrier, médicaments, humeur et comportement dans un tableau de bord unique et accueillant."
+      },
+      {
+        "title": "Enfant enchanté",
+        "description": "Une expérience qui ressemble à un jeu. Avatar, monde, missions et IA qui parle comme un ami."
+      },
+      {
+        "title": "Professionnels intégrés",
+        "description": "Les thérapeutes et les écoles reçoivent un contexte réel, appliquent des évaluations et renvoient des rapports en temps réel."
+      },
+      {
+        "title": "Une vraie IA",
+        "description": "Ce n'est pas un chatbot. C'est un assistant qui se souvient de l'histoire de l'enfant et suggère des pistes basées sur des données."
+      }
+    ]
+  },
+  "modules": {
+    "title": "Tout communique.",
+    "subtitle": "Chaque activité alimente la chronologie, génère des rapports, alimente l'IA et ajuste les recommandations.",
+    "items": [
+      "Profil clinique complet de l'enfant",
+      "Chronologie unifiée de tout ce qui se passe",
+      "Calendrier avec thérapies, école et routines",
+      "Médicaments avec rappels et historique",
+      "Enregistrement de l'humeur et du comportement",
+      "Objectifs et évolution avec graphiques",
+      "Documents, rapports et ordonnances organisés",
+      "Rapports hebdomadaires générés par l'IA"
+    ]
+  },
+  "ai": {
+    "eyebrow": "Intelligence Artificielle",
+    "title": "Une IA qui connaît votre enfant.",
+    "description": "Meu Mundo Azul converse en langage naturel, crée des histoires sociales personnalisées pour préparer de nouveaux moments et identifie des schémas qui passent inaperçus au quotidien.",
+    "bullets": [
+      "Chat contextuel avec l'historique complet",
+      "Histoires sociales pour préparer les consultations, les voyages et les changements",
+      "Résumés hebdomadaires et mensuels automatiques",
+      "Suggestions de routine basées sur ce qui fonctionne"
+    ],
+    "disclaimer": "L'IA de Meu Mundo Azul est un outil de soutien. Elle ne remplace jamais les professionnels de la santé ou de l'éducation."
+  },
+  "security": {
+    "title": "Conçu dans le respect absolu du RGPD.",
+    "items": [
+      "Consentement versionné et révocable à tout moment",
+      "Sécurité au niveau des lignes et audit à chaque accès",
+      "Exportation et suppression des données en un clic",
+      "Données sensibles des mineurs traitées avec le soin qu'elles méritent"
+    ]
+  },
+  "cta": {
+    "title": "Commencez aujourd'hui. Grandissez avec Meu Mundo Azul pendant de nombreuses années.",
+    "subtitle": "La plateforme accompagne l'enfant à chaque étape, de la routine de sommeil à l'autonomie, de la communication aux thérapies.",
+    "action": "Créer mon compte"
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul Clínico",
+    "tagline": "兒童發展專業人士的工作空間"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "工作",
+      "clinical": "臨床",
+      "collaboration": "協作",
+      "settings": "設定"
+    },
+    "dashboard": "儀表板",
+    "agenda": "議程",
+    "patients": "病患",
+    "sessions": "療程",
+    "evolution": "進展",
+    "goals": "目標",
+    "scales": "量表",
+    "reports": "報告",
+    "documents": "文件",
+    "messages": "訊息",
+    "school": "學校",
+    "indicators": "指標",
+    "ai": "Azul Clínico",
+    "settings": "設定",
+    "profile": "我的個人資料",
+    "newSession": "新療程"
+  },
+  "topbar": {
+    "search": "搜尋病患、療程、報告…",
+    "shortcut": "⌘K",
+    "help": "說明",
+    "profile": "個人資料"
+  },
+  "dashboard": {
+    "title": "早安，{{name}}",
+    "subtitle": "您今天有 {{count}} 個預約。",
+    "cards": {
+      "todayAgenda": "今日議程",
+      "nextAppointments": "下一個預約",
+      "activePatients": "活躍病患",
+      "pending": "待辦事項",
+      "messages": "訊息",
+      "pendingReports": "待處理報告",
+      "newDocuments": "新文件",
+      "sharedGoals": "共享目標",
+      "aiAlerts": "AI 警報",
+      "weekSummary": "週摘要",
+      "monthSummary": "月摘要"
+    },
+    "empty": "在 Cloud 啟用之前，此空間沒有數據。",
+    "quickActions": {
+      "newSession": "記錄療程",
+      "newReport": "生成報告",
+      "newAppointment": "安排預約",
+      "askAI": "詢問 Azul Clínico"
+    }
+  },
+  "patients": {
+    "title": "病患",
+    "subtitle": "僅限其監護人已授權您存取的兒童。",
+    "columns": {
+      "name": "姓名",
+      "age": "年齡",
+      "diagnosis": "診斷",
+      "support": "支持",
+      "lastSession": "上次療程",
+      "nextSession": "下次療程",
+      "goalsProgress": "目標"
+    },
+    "filters": {
+      "all": "全部",
+      "active": "活躍",
+      "inactive": "不活躍",
+      "byDiagnosis": "按診斷",
+      "bySpecialty": "按專業"
+    },
+    "tabs": {
+      "overview": "概覽",
+      "sessions": "療程",
+      "evolution": "進展",
+      "goals": "目標",
+      "scales": "量表",
+      "reports": "報告",
+      "documents": "文件",
+      "school": "學校",
+      "family": "家庭"
+    }
+  },
+  "agenda": {
+    "title": "議程",
+    "views": {
+      "day": "日",
+      "week": "週",
+      "month": "月",
+      "list": "列表"
+    },
+    "empty": "此期間沒有預約。",
+    "new": "新預約"
+  },
+  "sessions": {
+    "titleNew": "新療程",
+    "titleEdit": "編輯療程",
+    "fields": {
+      "date": "日期",
+      "time": "時間",
+      "duration": "持續時間",
+      "child": "兒童",
+      "goals": "已完成目標",
+      "activities": "已進行活動",
+      "materials": "已使用材料",
+      "response": "兒童反應",
+      "observations": "觀察",
+      "nextSteps": "下一步",
+      "attachments": "附件（照片、影片、音訊、檔案）"
+    },
+    "reuse": "活躍目標、最新觀察和待處理量表將自動預先填入。"
+  },
+  "evolution": {
+    "title": "進展",
+    "subtitle": "進度、量表和附件的時間軸。",
+    "share": "分享給",
+    "shareWith": {
+      "family": "家庭",
+      "professionals": "其他專業人士",
+      "school": "學校"
+    }
+  },
+  "goals": {
+    "title": "治療目標",
+    "subtitle": "與家庭和團隊共享的目標。",
+    "fields": {
+      "description": "描述",
+      "category": "類別",
+      "start": "開始",
+      "deadline": "截止日期",
+      "owner": "負責人",
+      "participants": "參與者",
+      "indicators": "指標",
+      "status": "狀態",
+      "progress": "進度"
+    }
+  },
+  "scales": {
+    "title": "量表和工具",
+    "subtitle": "註冊任何評估工具。開放式架構。",
+    "new": "新量表",
+    "applications": "應用"
+  },
+  "reports": {
+    "title": "報告",
+    "subtitle": "AI 輔助生成和安全導出。",
+    "types": {
+      "session": "療程",
+      "weekly": "每週",
+      "monthly": "每月",
+      "quarterly": "每季",
+      "annual": "每年",
+      "custom": "自訂"
+    },
+    "export": {
+      "pdf": "導出 PDF",
+      "docx": "導出 Word",
+      "share": "分享"
+    }
+  },
+  "documents": {
+    "title": "文件",
+    "subtitle": "帶有版本控制的共享庫。",
+    "categories": {
+      "reports": "報告",
+      "referrals": "轉介",
+      "prescriptions": "處方",
+      "assessments": "評估",
+      "exams": "檢查",
+      "photos": "照片",
+      "videos": "影片",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "訊息",
+    "subtitle": "按兒童組織的安全通訊。",
+    "audiences": {
+      "family": "家庭",
+      "school": "學校",
+      "professionals": "其他專業人士"
+    }
+  },
+  "school": {
+    "title": "學校",
+    "subtitle": "與學校團隊交換目標、指導和觀察。",
+    "consentRequired": "每次共享都需要家庭的明確同意。"
+  },
+  "indicators": {
+    "title": "指標",
+    "subtitle": "進展、情緒、行為、睡眠等自動圖表。",
+    "series": {
+      "evolution": "進展",
+      "frequency": "頻率",
+      "participation": "參與",
+      "goals": "目標",
+      "mood": "情緒",
+      "behavior": "行為",
+      "sleep": "睡眠",
+      "medication": "藥物"
+    }
+  },
+  "ai": {
+    "title": "Azul Clínico",
+    "subtitle": "用於總結進展、比較時期、建議活動和起草報告的助理。",
+    "disclaimer": "AI 支持臨床推理。它從不診斷，也從不取代專業人士的決定。",
+    "suggestions": [
+      "總結過去 30 天的進展",
+      "比較新常規前後的行為",
+      "建議用於共同注意力的活動",
+      "根據療程起草月度報告"
+    ]
+  },
+  "settings": {
+    "title": "設定",
+    "sections": {
+      "profile": "專業個人資料",
+      "specialties": "專業",
+      "availability": "可用性",
+      "integrations": "整合（Google/Apple/Outlook）",
+      "security": "安全和 LGPD"
+    }
+  },
+  "specialties": {
+    "psychologist": "心理學家",
+    "neuropsychologist": "神經心理學家",
+    "speech_therapist": "語言治療師",
+    "occupational_therapist": "職能治療師",
+    "psychopedagogue": "心理教育學家",
+    "physician": "醫師",
+    "neurologist": "神經科醫師",
+    "psychiatrist": "精神科醫師",
+    "pediatrician": "兒科醫師",
+    "nutritionist": "營養師",
+    "physical_educator": "體育教育家",
+    "teacher": "教師",
+    "school_coordinator": "學校協調員",
+    "caregiver": "照護者"
+  },
+  "banner": {
+    "previewMode": "預覽。專業人士模組的表格將在 Lovable Cloud 重新啟用後立即上線。沒有數據會被保留。"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul",
+    "tagline": "儿童发展生态系统"
+  },
+  "actions": {
+    "getStarted": "立即开始",
+    "signIn": "登录",
+    "signUp": "注册",
+    "signOut": "退出",
+    "cancel": "取消",
+    "save": "保存",
+    "continue": "继续",
+    "back": "返回",
+    "learnMore": "了解更多",
+    "openApp": "打开应用"
+  },
+  "nav": {
+    "product": "产品",
+    "family": "家庭",
+    "child": "孩子",
+    "professionals": "专业人士",
+    "ai": "人工智能",
+    "security": "安全",
+    "pricing": "定价"
+  },
+  "status": {
+    "comingSoon": "即将推出",
+    "beta": "测试版",
+    "preview": "预览"
+  },
+  "banner": {
+    "cloudPending": "预览模式。后端功能将在 Lovable Cloud 启用后激活。"
+  },
+  "footer": {
+    "rights": "保留所有权利。",
+    "lgpd": "LGPD",
+    "privacy": "隐私",
+    "terms": "条款"
+  },
+  "language": {
+    "label": "语言",
+    "pt-BR": "葡萄牙语（巴西）",
+    "en": "英语",
+    "es": "西班牙语",
+    "fr": "法语",
+    "it": "意大利语",
+    "de": "德语"
+  }
+}

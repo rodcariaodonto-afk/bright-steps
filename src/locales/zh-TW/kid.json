@@ -1,0 +1,84 @@
+{
+  "shell": {
+    "title": "我的藍色世界",
+    "greeting": "嗨，{{name}}！",
+    "greetingFallback": "嗨，小朋友！",
+    "stars": "小星星",
+    "exit": "離開世界",
+    "nav": {
+      "home": "首頁",
+      "games": "遊戲",
+      "azul": "和Azul說話",
+      "mood": "我的感受",
+      "breathe": "呼吸",
+      "stories": "故事"
+    }
+  },
+  "home": {
+    "welcome": "歡迎來到你的世界！",
+    "subtitle": "選擇今天的冒險。",
+    "cards": {
+      "azul": {
+        "title": "和Azul說話",
+        "desc": "你好奇的朋友正在等你。"
+      },
+      "mood": {
+        "title": "我的感受",
+        "desc": "告訴Azul你的心境如何。"
+      },
+      "breathe": {
+        "title": "一起呼吸",
+        "desc": "一個快速的練習，讓你平靜下來。"
+      },
+      "stories": {
+        "title": "一個故事",
+        "desc": "選擇一個主題，Azul會為你編造。"
+      }
+    }
+  },
+  "mood": {
+    "title": "你現在感覺如何？",
+    "subtitle": "點擊與你心情相符的臉。",
+    "options": {
+      "1": "悲傷",
+      "2": "有點沮喪",
+      "3": "正常",
+      "4": "開心",
+      "5": "容光煥發"
+    },
+    "saved": "謝謝分享！你得到了一顆小星星。",
+    "signIn": "請大人登入以儲存。"
+  },
+  "breathe": {
+    "title": "我們來呼吸吧",
+    "subtitle": "跟著球。吸氣，屏住，呼氣。",
+    "start": "開始",
+    "stop": "停止",
+    "inhale": "吸氣...",
+    "hold": "屏住...",
+    "exhale": "慢慢呼氣...",
+    "done": "太棒了！你值得一顆小星星。"
+  },
+  "stories": {
+    "title": "Azul的故事",
+    "subtitle": "選擇一個主題，Azul會為你編造。",
+    "themes": {
+      "space": "太空",
+      "dinos": "恐龍",
+      "ocean": "海底",
+      "forest": "魔法森林",
+      "cars": "小汽車",
+      "animals": "小動物"
+    },
+    "generate": "講故事",
+    "loading": "Azul正在思考...",
+    "another": "另一個故事",
+    "reward": "讀到最後獎勵+1顆小星星！"
+  },
+  "azul": {
+    "title": "Azul，你的朋友",
+    "hint": "輸入或請大人幫忙。",
+    "placeholder": "和Azul說話...",
+    "send": "發送"
+  }
+}

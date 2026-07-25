@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "Armaturenbrett",
+    "children": "Kinder",
+    "timeline": "Zeitleiste",
+    "calendar": "Kalender",
+    "routines": "Routinen",
+    "medication": "Medikation",
+    "documents": "Dokumente",
+    "mood": "Stimmung",
+    "behavior": "Verhalten",
+    "goals": "Ziele",
+    "reports": "Berichte",
+    "school": "Schule",
+    "achievements": "Erfolge",
+    "library": "Bibliothek",
+    "assessments": "Selbsteinschätzungen",
+    "caregiver": "Wohlbefinden",
+    "community": "Gemeinschaft",
+    "marketplace": "Marktplatz",
+    "messages": "Nachrichten",
+    "ai": "Azul KI",
+    "notifications": "Benachrichtigungen",
+    "settings": "Einstellungen"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Guten Morgen",
+      "afternoon": "Guten Tag",
+      "evening": "Guten Abend"
+    },
+    "welcome": "Hier ist Ihre heutige Zusammenfassung.",
+    "cards": {
+      "nextEvent": "Nächster Termin",
+      "medications": "Heutige Medikamente",
+      "mood": "Aktuelle Stimmung",
+      "aiSummary": "KI-Zusammenfassung",
+      "pending": "Ausstehendes"
+    },
+    "empty": "Aktivieren Sie Lovable Cloud, um mit der Aufzeichnung realer Daten zu beginnen."
+  },
+  "ai": {
+    "title": "Azul KI",
+    "subtitle": "Sprechen Sie über die Routine, das Verhalten, die Therapien und die Entwicklung Ihres Kindes.",
+    "placeholder": "Z.B.: Wie war die Stimmung diese Woche?",
+    "disclaimer": "Azul KI ist eine Unterstützung und ersetzt keine medizinischen Fachkräfte.",
+    "newThread": "Neue Unterhaltung",
+    "welcome": "Hallo! Ich bin Azul. Wie kann ich Ihrer Familie heute helfen?",
+    "suggestions": [
+      "Schlagen Sie eine gemütliche Schlafroutine vor",
+      "Schreiben Sie eine soziale Geschichte über den Zahnarztbesuch",
+      "Erklären Sie, wie man schwieriges Verhalten aufzeichnet",
+      "Wie bereitet man ein Kind auf den ersten Schultag vor?"
+    ]
+  },
+  "placeholder": {
+    "title": "Dieses Modul wird in Kürze verfügbar sein",
+    "message": "Sobald Lovable Cloud aktiviert ist, wird dieser Bereich mit realen Daten, RLS und Synchronisierung zwischen Familienmitgliedern aktiviert.",
+    "backToDashboard": "Zurück zum Armaturenbrett"
+  }
+}
