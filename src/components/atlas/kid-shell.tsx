@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { Home, MessageCircleHeart, Smile, Wind, BookOpen, LogOut, Star } from "lucide-react";
+import { Home, MessageCircleHeart, Smile, Wind, BookOpen, Gamepad2, LogOut, Star } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import type { ReactNode } from "react";
 
@@ -8,7 +8,7 @@ import { useKidRewards } from "@/hooks/use-kid-rewards";
 import { cn } from "@/lib/utils";
 
 type NavItem = {
-  to: "/kid" | "/kid/azul" | "/kid/humor" | "/kid/respirar" | "/kid/historias";
+  to: "/kid" | "/kid/azul" | "/kid/humor" | "/kid/respirar" | "/kid/historias" | "/kid/jogos";
   key: string;
   icon: typeof Home;
   exact?: boolean;
@@ -16,6 +16,7 @@ type NavItem = {
 
 const NAV: NavItem[] = [
   { to: "/kid", key: "home", exact: true, icon: Home },
+  { to: "/kid/jogos", key: "games", icon: Gamepad2 },
   { to: "/kid/azul", key: "azul", icon: MessageCircleHeart },
   { to: "/kid/humor", key: "mood", icon: Smile },
   { to: "/kid/respirar", key: "breathe", icon: Wind },
