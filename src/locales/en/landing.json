@@ -97,6 +97,60 @@
     "subtitle": "The platform accompanies the child through every phase, from sleep routine to autonomy, from communication to therapies.",
     "action": "Create my account"
   },
+  "plans": {
+    "backToApp": "Go to the app",
+    "trialBadge": "{{days}} days free on any plan",
+    "title": "A plan for every moment of the journey",
+    "subtitle": "Start with Essential, upgrade to Plus when you want more AI and reports, and enable Clinic if you support families professionally.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "yearlyDiscount": "-20%",
+    "perMonth": " /mo",
+    "perYear": " /yr",
+    "equivalentMonth": "Equivalent to {{price}} per month",
+    "highlight": "Most chosen",
+    "cta": "Start free trial",
+    "convertedNote": "Approximate value. Charged in Brazilian Reais (BRL), equivalent to {{price}}.",
+    "footer": "Recurring billing after the trial. Cancel anytime from your subscription portal.",
+    "items": {
+      "familia_essencial": {
+        "name": "Family Essential",
+        "tagline": "The basics done well for one child's routine.",
+        "features": [
+          "1 child + up to 3 caregivers",
+          "Routines, mood, medication and timeline",
+          "Unified calendar",
+          "Blue AI with monthly limit",
+          "Email support"
+        ]
+      },
+      "familia_plus": {
+        "name": "Family Plus",
+        "tagline": "The full family journey with unlimited AI.",
+        "features": [
+          "Up to 3 children + unlimited caregivers",
+          "Everything in Essential",
+          "Unlimited Blue AI",
+          "Weekly AI reports",
+          "Library, self-assessments and community",
+          "Professionals marketplace",
+          "School sharing"
+        ]
+      },
+      "profissional_clinica": {
+        "name": "Clinical Professional",
+        "tagline": "Complete clinical panel for independent professionals.",
+        "features": [
+          "Unlimited patients",
+          "SOAP records + progress notes",
+          "Smart scheduling",
+          "AI-powered scales and reports",
+          "Verified marketplace profile",
+          "Chat with families and schools"
+        ]
+      }
+    }
+  },
   "footer": {
     "rights": "All rights reserved.",
     "lgpd": "Privacy",
@@ -104,3 +158,4 @@
     "terms": "Terms"
   }
 }
+

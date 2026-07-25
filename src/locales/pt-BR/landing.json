@@ -97,6 +97,60 @@
     "subtitle": "A plataforma acompanha a criança em cada fase, da rotina de sono à autonomia, da comunicação às terapias.",
     "action": "Criar minha conta"
   },
+  "plans": {
+    "backToApp": "Ir para o app",
+    "trialBadge": "{{days}} dias grátis em qualquer plano",
+    "title": "Um plano para cada momento da jornada",
+    "subtitle": "Comece pelo Essencial, escale para o Plus quando quiser mais IA e relatórios, e ative o Clínica se você atende famílias profissionalmente.",
+    "monthly": "Mensal",
+    "yearly": "Anual",
+    "yearlyDiscount": "-20%",
+    "perMonth": " /mês",
+    "perYear": " /ano",
+    "equivalentMonth": "Equivale a {{price}} por mês",
+    "highlight": "Mais escolhido",
+    "cta": "Começar teste grátis",
+    "convertedNote": "Valor aproximado. Cobrança processada em Reais (BRL) equivalente a {{price}}.",
+    "footer": "Cobrança recorrente após o período de teste. Cancele quando quiser direto no seu portal de assinatura.",
+    "items": {
+      "familia_essencial": {
+        "name": "Família Essencial",
+        "tagline": "O básico bem feito para a rotina de uma criança.",
+        "features": [
+          "1 criança + até 3 responsáveis",
+          "Rotina, humor, medicação e timeline",
+          "Calendário unificado",
+          "IA Azul com limite mensal",
+          "Suporte por e-mail"
+        ]
+      },
+      "familia_plus": {
+        "name": "Família Plus",
+        "tagline": "A jornada completa da família com IA sem limites.",
+        "features": [
+          "Até 3 crianças + responsáveis ilimitados",
+          "Tudo do Essencial",
+          "IA Azul sem limite",
+          "Relatórios semanais com IA",
+          "Biblioteca, autoavaliações e comunidade",
+          "Marketplace de profissionais",
+          "Compartilhamento com escola"
+        ]
+      },
+      "profissional_clinica": {
+        "name": "Profissional Clínica",
+        "tagline": "Painel clínico completo para profissionais autônomos.",
+        "features": [
+          "Pacientes ilimitados",
+          "Prontuário SOAP + evolução",
+          "Agenda inteligente",
+          "Escalas e relatórios com IA",
+          "Perfil verificado no marketplace",
+          "Chat com famílias e escolas"
+        ]
+      }
+    }
+  },
   "footer": {
     "rights": "Todos os direitos reservados.",
     "lgpd": "LGPD",
@@ -104,3 +158,4 @@
     "terms": "Termos"
   }
 }
+
