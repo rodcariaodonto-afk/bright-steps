@@ -51,24 +51,62 @@ function AdminUsers() {
     queryFn: () => fetchUsers(),
   });
 
+  const createFn = useServerFn(createUserAsAdmin);
+  const grantFn = useServerFn(grantComplimentary);
+
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({ email: "", password: "", fullName: "", roles: [] as string[] });
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    fullName: "",
+    kind: "family" as "family" | "professional" | "admin",
+    grantFree: false,
+    plan: "familia_plus" as string,
+    expiresAt: "" as string,
+    reason: "" as string,
+  });
+
+  const rolesFromKind = (kind: string) =>
+    kind === "admin" ? ["admin"] : kind === "professional" ? ["professional"] : [];
 
   const createMut = useMutation({
-    mutationFn: () =>
-      createFn({
+    mutationFn: async () => {
+      const res = await createFn({
         data: {
           email: form.email,
           password: form.password,
           fullName: form.fullName || undefined,
-          roles: form.roles,
+          roles: rolesFromKind(form.kind),
         },
-      }),
+      });
+      if (form.grantFree && res?.userId) {
+        await grantFn({
+          data: {
+            userId: res.userId,
+            plan: form.plan,
+            expiresAt: form.expiresAt ? new Date(form.expiresAt).toISOString() : null,
+            reason: form.reason || "Cortesia concedida pelo admin",
+          },
+        });
+      }
+      return res;
+    },
     onSuccess: () => {
-      toast.success("Usuário criado");
+      toast.success(
+        form.grantFree ? "Usuário criado com acesso cortesia" : "Usuário criado",
+      );
       qc.invalidateQueries({ queryKey: ["admin", "users"] });
       setOpen(false);
-      setForm({ email: "", password: "", fullName: "", roles: [] });
+      setForm({
+        email: "",
+        password: "",
+        fullName: "",
+        kind: "family",
+        grantFree: false,
+        plan: "familia_plus",
+        expiresAt: "",
+        reason: "",
+      });
     },
     onError: (e: Error) => toast.error(e.message),
   });
