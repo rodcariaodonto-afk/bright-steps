@@ -58,13 +58,37 @@ export async function ensureI18n(initialLocale?: LocaleCode): Promise<I18nInstan
   return i18next;
 }
 
+function readClientLocale(): LocaleCode | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const stored = window.localStorage.getItem("mma:locale");
+    if (stored && stored in LOCALES) return stored as LocaleCode;
+  } catch {
+    // ignore
+  }
+  try {
+    const nav = window.navigator?.language;
+    if (nav) {
+      const lower = nav.toLowerCase();
+      if (lower.startsWith("pt")) return "pt-BR";
+      const base = lower.split("-")[0];
+      if (base in LOCALES) return base as LocaleCode;
+      if (nav in LOCALES) return nav as LocaleCode;
+    }
+  } catch {
+    // ignore
+  }
+  return null;
+}
+
 async function bootstrap(initialLocale: LocaleCode = DEFAULT_LOCALE): Promise<I18nInstance> {
   if (i18next.isInitialized) return i18next;
+  const lng = readClientLocale() ?? initialLocale;
   await i18next
     .use(resourcesToBackend((lng: string, ns: string) => loadNamespace(lng, ns)))
     .use(initReactI18next)
     .init({
-      lng: initialLocale,
+      lng,
       fallbackLng: FALLBACK_LOCALES,
       supportedLngs: SUPPORTED_LOCALES as unknown as string[],
       ns: NAMESPACES as unknown as string[],
@@ -76,9 +100,10 @@ async function bootstrap(initialLocale: LocaleCode = DEFAULT_LOCALE): Promise<I1
       returnEmptyString: false,
     });
 
-  applyDocumentDirection(initialLocale);
+  applyDocumentDirection(lng);
   return i18next;
 }
+
 
 export async function changeLocale(locale: LocaleCode): Promise<void> {
   if (!LOCALES[locale]) return;

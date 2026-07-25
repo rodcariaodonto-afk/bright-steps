@@ -10,6 +10,19 @@ import { Label } from "@/components/ui/label";
 import { AtlasLogo } from "@/components/atlas/atlas-logo";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
+import { getPersistedLocaleLocal } from "@/i18n/detector";
+import { currentLocale } from "@/i18n";
+import { updateProfileLocale } from "@/modules/profile/locale.functions";
+
+async function adoptVisitorLocale() {
+  try {
+    const locale = getPersistedLocaleLocal() ?? currentLocale();
+    if (!locale) return;
+    await updateProfileLocale({ data: { locale } });
+  } catch {
+    // silencioso: não bloqueia o login
+  }
+}
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -63,6 +76,7 @@ function AuthPage() {
         });
         if (error) throw error;
         if (signUpData.session) {
+          await adoptVisitorLocale();
           toast.success("Conta criada!");
           navigate({ to: redirectTo });
         } else {
@@ -71,6 +85,7 @@ function AuthPage() {
           if (signInErr) {
             toast.success("Conta criada! Verifique seu e-mail para confirmar.");
           } else {
+            await adoptVisitorLocale();
             toast.success("Bem-vindo!");
             navigate({ to: redirectTo });
           }
@@ -81,9 +96,11 @@ function AuthPage() {
           password,
         });
         if (error) throw error;
+        await adoptVisitorLocale();
         toast.success("Bem-vindo!");
         navigate({ to: redirectTo });
       }
+
     } catch (err) {
       const message = err instanceof Error ? err.message : "Erro na autenticação";
       toast.error(message);
@@ -100,8 +117,10 @@ function AuthPage() {
       });
       if (result.error) throw result.error;
       if (!result.redirected) {
+        await adoptVisitorLocale();
         navigate({ to: "/app" });
       }
+
     } catch (err) {
       const message = err instanceof Error ? err.message : "Erro no login Google";
       toast.error(message);
