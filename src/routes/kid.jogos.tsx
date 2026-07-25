@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useServerFn } from "@tanstack/react-start";
 import { recommendGames } from "@/modules/games/recommend.functions";
+import { useTranslatedContent } from "@/hooks/use-translated-content";
 
 export const Route = createFileRoute("/kid/jogos")({
   component: KidGamesPage,
