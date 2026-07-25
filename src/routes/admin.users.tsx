@@ -139,23 +139,65 @@ function AdminUsers() {
               <Input placeholder="Senha temporária (mín 8 caracteres)" type="text" value={form.password}
                 onChange={(e) => setForm({ ...form, password: e.target.value })} />
               <div>
-                <p className="mb-2 text-xs font-medium text-muted-foreground">Papéis</p>
-                <div className="flex gap-4">
-                  {ROLE_OPTIONS.map((r) => (
-                    <label key={r} className="flex items-center gap-2 text-sm">
-                      <Checkbox
-                        checked={form.roles.includes(r)}
-                        onCheckedChange={(v) =>
-                          setForm({
-                            ...form,
-                            roles: v ? [...form.roles, r] : form.roles.filter((x) => x !== r),
-                          })
-                        }
-                      />
-                      {r}
-                    </label>
-                  ))}
-                </div>
+                <Label className="mb-2 block text-xs font-medium text-muted-foreground">
+                  Tipo de conta
+                </Label>
+                <Select
+                  value={form.kind}
+                  onValueChange={(v) => setForm({ ...form, kind: v as typeof form.kind })}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="family">Família / usuário comum</SelectItem>
+                    <SelectItem value="professional">Profissional da saúde</SelectItem>
+                    <SelectItem value="admin">Administrador</SelectItem>
+                  </SelectContent>
+                </Select>
+                <p className="mt-1 text-[11px] text-muted-foreground">
+                  Famílias não precisam de papel especial, só uma conta ativa.
+                </p>
+              </div>
+
+              <div className="rounded-lg border border-border/60 bg-muted/30 p-3">
+                <label className="flex items-center gap-2 text-sm font-medium">
+                  <Checkbox
+                    checked={form.grantFree}
+                    onCheckedChange={(v) => setForm({ ...form, grantFree: Boolean(v) })}
+                  />
+                  Conceder acesso gratuito (cortesia)
+                </label>
+                {form.grantFree && (
+                  <div className="mt-3 space-y-2">
+                    <Select
+                      value={form.plan}
+                      onValueChange={(v) => setForm({ ...form, plan: v })}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Plano" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {PUBLIC_PLANS.map((p) => (
+                          <SelectItem key={p.code} value={p.code}>
+                            {p.displayName}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <Input
+                      type="date"
+                      value={form.expiresAt}
+                      onChange={(e) => setForm({ ...form, expiresAt: e.target.value })}
+                      placeholder="Expira em (opcional)"
+                    />
+                    <Input
+                      placeholder="Motivo (ex: divulgação, teste, parceiro)"
+                      value={form.reason}
+                      onChange={(e) => setForm({ ...form, reason: e.target.value })}
+                    />
+                  </div>
+                )}
               </div>
             </div>
             <DialogFooter>
