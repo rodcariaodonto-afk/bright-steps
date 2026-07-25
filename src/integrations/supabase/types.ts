@@ -2571,6 +2571,15 @@ export type Database = {
         Args: { _child_id: string; _difficulty?: string; _game_id: string }
         Returns: string
       }
+      top_kids_leaderboard: {
+        Args: { limit_n?: number }
+        Returns: {
+          display_name: string
+          lifetime_stars: number
+          rank: number
+          stars: number
+        }[]
+      }
       unaccent: { Args: { "": string }; Returns: string }
     }
     Enums: {
