@@ -96,3 +96,36 @@ function FilterChip({ active, onClick, children }: { active: boolean; onClick: (
     </button>
   );
 }
+
+function StoryCard({ story, onOpen }: { story: StoryRow; onOpen: () => void }) {
+  const { data: t } = useTranslatedContent("story", story.id, {
+    title: story.title,
+    summary: story.summary,
+  });
+  return (
+    <Card className="overflow-hidden border-white/60 bg-white/90 p-0 shadow-md">
+      {story.cover_url ? (
+        <img src={story.cover_url} alt={t.title} className="h-32 w-full object-cover" />
+      ) : (
+        <div className="flex h-32 items-center justify-center bg-gradient-to-br from-[#7fd0ff] to-[#0b6cff] text-5xl">
+          📖
+        </div>
+      )}
+      <div className="space-y-2 p-4">
+        <div className="flex items-center gap-1 text-[10px] font-bold uppercase text-[#0b6cff]">
+          {story.story_type === "branching" && <Sparkles className="h-3 w-3" />}
+          {STORY_ENGINES[story.story_type]?.label ?? story.story_type}
+        </div>
+        <h3 className="font-bold text-[#0b2740]">{t.title}</h3>
+        {t.summary && <p className="text-xs text-[#0b2740]/70 line-clamp-2">{t.summary}</p>}
+        <div className="flex items-center justify-between pt-2">
+          <span className="flex items-center gap-1 text-xs font-bold text-yellow-700">
+            <Star className="h-3.5 w-3.5 fill-yellow-500 text-yellow-600" />
+            +{story.stars_reward ?? 3}
+          </span>
+          <Button size="sm" onClick={onOpen}>Ler</Button>
+        </div>
+      </div>
+    </Card>
+  );
+}
