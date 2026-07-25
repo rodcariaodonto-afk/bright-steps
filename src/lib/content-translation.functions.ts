@@ -23,7 +23,7 @@ interface TranslatedPayload {
   title: string;
   summary?: string | null;
   description?: string | null;
-  config?: unknown;
+  config?: Record<string, unknown> | null;
 }
 
 function hashOf(obj: unknown): string {
