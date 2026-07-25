@@ -1,0 +1,63 @@
+{
+  "sidebar": {
+    "sections": {
+      "overview": "개요",
+      "people": "사람들",
+      "content": "콘텐츠",
+      "commerce": "상거래",
+      "operations": "운영",
+      "settings": "시스템"
+    },
+    "dashboard": "대시보드",
+    "users": "사용자",
+    "families": "가족",
+    "children": "어린이",
+    "professionals": "전문가",
+    "schools": "학교",
+    "cms": "콘텐츠 & CMS",
+    "stories": "스토리",
+    "games": "게임",
+    "missions": "미션",
+    "achievements": "업적",
+    "marketplace": "마켓플레이스",
+    "community": "커뮤니티",
+    "subscriptions": "구독",
+    "finance": "재무",
+    "coupons": "쿠폰",
+    "notifications": "알림",
+    "analytics": "분석",
+    "reports": "보고서",
+    "ai": "AI",
+    "logs": "로그",
+    "flags": "기능 플래그",
+    "permissions": "권한",
+    "backups": "백업",
+    "settings_global": "글로벌 설정"
+  },
+  "topbar": {
+    "title": "관리자 패널",
+    "backToFamily": "가족",
+    "backToPro": "전문가"
+  },
+  "banner": {
+    "message": "관리자 패널 미리보기 모드입니다. Lovable Cloud가 다시 활성화되면 실제 데이터, RBAC 및 분석이 제공됩니다."
+  },
+  "dashboard": {
+    "title": "개요",
+    "subtitle": "실시간 플랫폼 상태",
+    "cards": {
+      "mau": "월간 활성 사용자",
+      "dau": "일일 활성 사용자",
+      "families": "등록된 가족",
+      "professionals": "활성 전문가",
+      "children": "관리되는 어린이",
+      "revenue": "반복 수익",
+      "aiCost": "AI 비용 (30일)",
+      "conversion": "체험판 → 유료 전환"
+    }
+  },
+  "placeholder": {
+    "back": "관리자 대시보드로 돌아가기",
+    "message": "Lovable Cloud가 다시 활성화되면 이 영역이 연결될 것입니다. 구조, 테이블 및 RLS 정책은 이미 설계되었습니다."
+  }
+}

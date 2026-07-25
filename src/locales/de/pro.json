@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul Clínico",
+    "tagline": "Arbeitsbereich für Fachkräfte in der kindlichen Entwicklung"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "Arbeit",
+      "clinical": "Klinisch",
+      "collaboration": "Zusammenarbeit",
+      "settings": "Einstellungen"
+    },
+    "dashboard": "Dashboard",
+    "agenda": "Terminplan",
+    "patients": "Patienten",
+    "sessions": "Sitzungen",
+    "evolution": "Entwicklung",
+    "goals": "Ziele",
+    "scales": "Skalen",
+    "reports": "Berichte",
+    "documents": "Dokumente",
+    "messages": "Nachrichten",
+    "school": "Schule",
+    "indicators": "Indikatoren",
+    "ai": "Azul Clínico",
+    "settings": "Einstellungen",
+    "profile": "Mein Profil",
+    "newSession": "Neue Sitzung"
+  },
+  "topbar": {
+    "search": "Patienten, Sitzungen, Berichte suchen…",
+    "shortcut": "⌘K",
+    "help": "Hilfe",
+    "profile": "Profil"
+  },
+  "dashboard": {
+    "title": "Guten Tag, {{name}}",
+    "subtitle": "Sie haben heute {{count}} Termine.",
+    "cards": {
+      "todayAgenda": "Tagesplan",
+      "nextAppointments": "Nächste Termine",
+      "activePatients": "Aktive Patienten",
+      "pending": "Ausstehend",
+      "messages": "Nachrichten",
+      "pendingReports": "Ausstehende Berichte",
+      "newDocuments": "Neue Dokumente",
+      "sharedGoals": "Geteilte Ziele",
+      "aiAlerts": "KI-Benachrichtigungen",
+      "weekSummary": "Wochenübersicht",
+      "monthSummary": "Monatsübersicht"
+    },
+    "empty": "Keine Daten in diesem Bereich, bis die Cloud aktiviert ist.",
+    "quickActions": {
+      "newSession": "Sitzung protokollieren",
+      "newReport": "Bericht erstellen",
+      "newAppointment": "Termin vereinbaren",
+      "askAI": "Azul Clínico fragen"
+    }
+  },
+  "patients": {
+    "title": "Patienten",
+    "subtitle": "Nur Kinder, deren Erziehungsberechtigte Ihnen den Zugang gestattet haben.",
+    "columns": {
+      "name": "Name",
+      "age": "Alter",
+      "diagnosis": "Diagnose",
+      "support": "Unterstützung",
+      "lastSession": "Letzte Sitzung",
+      "nextSession": "Nächste Sitzung",
+      "goalsProgress": "Ziele"
+    },
+    "filters": {
+      "all": "Alle",
+      "active": "Aktiv",
+      "inactive": "Inaktiv",
+      "byDiagnosis": "Nach Diagnose",
+      "bySpecialty": "Nach Spezialität"
+    },
+    "tabs": {
+      "overview": "Übersicht",
+      "sessions": "Sitzungen",
+      "evolution": "Entwicklung",
+      "goals": "Ziele",
+      "scales": "Skalen",
+      "reports": "Berichte",
+      "documents": "Dokumente",
+      "school": "Schule",
+      "family": "Familie"
+    }
+  },
+  "agenda": {
+    "title": "Terminplan",
+    "views": {
+      "day": "Tag",
+      "week": "Woche",
+      "month": "Monat",
+      "list": "Liste"
+    },
+    "empty": "Keine Termine in diesem Zeitraum.",
+    "new": "Neuer Termin"
+  },
+  "sessions": {
+    "titleNew": "Neue Sitzung",
+    "titleEdit": "Sitzung bearbeiten",
+    "fields": {
+      "date": "Datum",
+      "time": "Uhrzeit",
+      "duration": "Dauer",
+      "child": "Kind",
+      "goals": "Bearbeitete Ziele",
+      "activities": "Durchgeführte Aktivitäten",
+      "materials": "Verwendete Materialien",
+      "response": "Reaktion des Kindes",
+      "observations": "Beobachtungen",
+      "nextSteps": "Nächste Schritte",
+      "attachments": "Anhänge (Fotos, Videos, Audios, Dateien)"
+    },
+    "reuse": "Aktive Ziele, letzte Beobachtungen und ausstehende Skalen werden automatisch vorausgefüllt."
+  },
+  "evolution": {
+    "title": "Entwicklung",
+    "subtitle": "Chronologischer Feed von Fortschritten, Skalen und Anhängen.",
+    "share": "Teilen mit",
+    "shareWith": {
+      "family": "Familie",
+      "professionals": "Andere Fachkräfte",
+      "school": "Schule"
+    }
+  },
+  "goals": {
+    "title": "Therapeutische Ziele",
+    "subtitle": "Ziele, die mit Familie und Team geteilt werden.",
+    "fields": {
+      "description": "Beschreibung",
+      "category": "Kategorie",
+      "start": "Start",
+      "deadline": "Frist",
+      "owner": "Verantwortlicher",
+      "participants": "Teilnehmer",
+      "indicators": "Indikatoren",
+      "status": "Status",
+      "progress": "Fortschritt"
+    }
+  },
+  "scales": {
+    "title": "Skalen und Instrumente",
+    "subtitle": "Registrieren Sie jedes Bewertungsinstrument. Offene Architektur.",
+    "new": "Neue Skala",
+    "applications": "Anwendungen"
+  },
+  "reports": {
+    "title": "Berichte",
+    "subtitle": "KI-gestützte Generierung und sicherer Export.",
+    "types": {
+      "session": "Sitzung",
+      "weekly": "Wöchentlich",
+      "monthly": "Monatlich",
+      "quarterly": "Quartalsweise",
+      "annual": "Jährlich",
+      "custom": "Benutzerdefiniert"
+    },
+    "export": {
+      "pdf": "PDF exportieren",
+      "docx": "Word exportieren",
+      "share": "Teilen"
+    }
+  },
+  "documents": {
+    "title": "Dokumente",
+    "subtitle": "Geteilte Bibliothek mit Versionskontrolle.",
+    "categories": {
+      "reports": "Berichte",
+      "referrals": "Gutachten",
+      "prescriptions": "Rezepte",
+      "assessments": "Bewertungen",
+      "exams": "Untersuchungen",
+      "photos": "Fotos",
+      "videos": "Videos",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "Nachrichten",
+    "subtitle": "Sichere Kommunikation, organisiert nach Kind.",
+    "audiences": {
+      "family": "Familie",
+      "school": "Schule",
+      "professionals": "Andere Fachkräfte"
+    }
+  },
+  "school": {
+    "title": "Schule",
+    "subtitle": "Austausch von Zielen, Anleitungen und Beobachtungen mit dem Schulteam.",
+    "consentRequired": "Erfordert die ausdrückliche Zustimmung der Familie für jede Freigabe."
+  },
+  "indicators": {
+    "title": "Indikatoren",
+    "subtitle": "Automatische Grafiken zu Entwicklung, Stimmung, Verhalten, Schlaf und mehr.",
+    "series": {
+      "evolution": "Entwicklung",
+      "frequency": "Häufigkeit",
+      "participation": "Teilnahme",
+      "goals": "Ziele",
+      "mood": "Stimmung",
+      "behavior": "Verhalten",
+      "sleep": "Schlaf",
+      "medication": "Medikation"
+    }
+  },
+  "ai": {
+    "title": "Azul Clínico",
+    "subtitle": "Assistent zum Zusammenfassen von Entwicklungen, Vergleichen von Zeiträumen, Vorschlagen von Aktivitäten und Entwerfen von Berichten.",
+    "disclaimer": "KI unterstützt das klinische Denken. Sie diagnostiziert niemals und ersetzt niemals die Entscheidung des Fachmanns.",
+    "suggestions": [
+      "Die Entwicklung der letzten 30 Tage zusammenfassen",
+      "Verhalten vor und nach der neuen Routine vergleichen",
+      "Aktivitäten zur Förderung der geteilten Aufmerksamkeit vorschlagen",
+      "Monatlichen Bericht aus den Sitzungen entwerfen"
+    ]
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "sections": {
+      "profile": "Berufliches Profil",
+      "specialties": "Spezialitäten",
+      "availability": "Verfügbarkeit",
+      "integrations": "Integrationen (Google/Apple/Outlook)",
+      "security": "Sicherheit und DSGVO"
+    }
+  },
+  "specialties": {
+    "psychologist": "Psychologe/Psychologin",
+    "neuropsychologist": "Neuropsychologe/Neuropsychologin",
+    "speech_therapist": "Logopäde/Logopädin",
+    "occupational_therapist": "Ergotherapeut/Ergotherapeutin",
+    "psychopedagogue": "Psychopädagoge/Psychopädagogin",
+    "physician": "Arzt/Ärztin",
+    "neurologist": "Neurologe/Neurologin",
+    "psychiatrist": "Psychiater/Psychiaterin",
+    "pediatrician": "Kinderarzt/Kinderärztin",
+    "nutritionist": "Ernährungsberater/Ernährungsberaterin",
+    "physical_educator": "Sportlehrer/Sportlehrerin",
+    "teacher": "Lehrer/Lehrerin",
+    "school_coordinator": "Schulkoordinator/Schulkoordinatorin",
+    "caregiver": "Betreuer/Betreuerin"
+  },
+  "banner": {
+    "previewMode": "Vorschau. Die Tabellen des Profi-Moduls werden aktiviert, sobald Lovable Cloud reaktiviert ist. Es werden keine Daten gespeichert."
+  }
+}

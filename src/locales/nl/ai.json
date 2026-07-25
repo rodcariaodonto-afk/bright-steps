@@ -1,0 +1,14 @@
+{
+  "personas": {
+    "family": "Azul Familie",
+    "clinical": "Azul Klinisch",
+    "child": "Azul Vriend",
+    "school": "Azul School",
+    "admin": "Azul Beheerder"
+  },
+  "guardrails": {
+    "notDiagnosis": "Azul stelt nooit een diagnose. Raadpleeg altijd een zorgprofessional.",
+    "notSubstitute": "Ondersteunende tool. Vervangt geen artsen, therapeuten, psychologen of pedagogen.",
+    "risk": "In risicovolle situaties, bel CVV 188, SAMU 192 of Jeugdzorg 100."
+  }
+}

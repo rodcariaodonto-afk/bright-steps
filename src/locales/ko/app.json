@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "대시보드",
+    "children": "자녀",
+    "timeline": "타임라인",
+    "calendar": "캘린더",
+    "routines": "루틴",
+    "medication": "약물",
+    "documents": "문서",
+    "mood": "기분",
+    "behavior": "행동",
+    "goals": "목표",
+    "reports": "보고서",
+    "school": "학교",
+    "achievements": "성취",
+    "library": "라이브러리",
+    "assessments": "자가 평가",
+    "caregiver": "웰빙",
+    "community": "커뮤니티",
+    "marketplace": "마켓플레이스",
+    "messages": "메시지",
+    "ai": "Azul AI",
+    "notifications": "알림",
+    "settings": "설정"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "좋은 아침입니다",
+      "afternoon": "좋은 오후입니다",
+      "evening": "좋은 저녁입니다"
+    },
+    "welcome": "오늘의 요약입니다.",
+    "cards": {
+      "nextEvent": "다음 약속",
+      "medications": "오늘의 약물",
+      "mood": "최근 기분",
+      "aiSummary": "AI 요약",
+      "pending": "미결 항목"
+    },
+    "empty": "실제 데이터 기록을 시작하려면 Lovable Cloud를 활성화하세요."
+  },
+  "ai": {
+    "title": "Azul AI",
+    "subtitle": "자녀의 일상, 행동, 치료 및 발달에 대해 이야기해 보세요.",
+    "placeholder": "예: 이번 주 기분은 어땠나요?",
+    "disclaimer": "Azul AI는 지원 도구이며, 의료 전문가를 대체하지 않습니다.",
+    "newThread": "새 대화",
+    "welcome": "안녕하세요! 저는 Azul입니다. 오늘 가족에게 어떻게 도움을 드릴 수 있을까요?",
+    "suggestions": [
+      "편안한 수면 루틴을 제안해 주세요",
+      "치과 방문에 대한 사회적 이야기를 작성해 주세요",
+      "어려운 행동을 기록하는 방법을 설명해 주세요",
+      "아이의 첫 등교를 어떻게 준비해야 할까요?"
+    ]
+  },
+  "placeholder": {
+    "title": "이 모듈은 곧 제공될 예정입니다",
+    "message": "Lovable Cloud가 활성화되면 이 영역은 실제 데이터, RLS 및 가족 구성원 간의 동기화로 활성화됩니다.",
+    "backToDashboard": "대시보드로 돌아가기"
+  }
+}

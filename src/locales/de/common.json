@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "name": "Mein Blaues Welt",
+    "tagline": "Das Ökosystem der kindlichen Entwicklung"
+  },
+  "actions": {
+    "getStarted": "Jetzt starten",
+    "signIn": "Anmelden",
+    "signUp": "Konto erstellen",
+    "signOut": "Abmelden",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "continue": "Weiter",
+    "back": "Zurück",
+    "learnMore": "Mehr erfahren",
+    "openApp": "App öffnen"
+  },
+  "nav": {
+    "product": "Produkt",
+    "family": "Familie",
+    "child": "Kind",
+    "professionals": "Fachkräfte",
+    "ai": "Künstliche Intelligenz",
+    "security": "Sicherheit",
+    "pricing": "Preise"
+  },
+  "status": {
+    "comingSoon": "Demnächst verfügbar",
+    "beta": "Beta",
+    "preview": "Vorschau"
+  },
+  "banner": {
+    "cloudPending": "Vorschaumodus. Backend-Funktionen werden aktiviert, sobald Lovable Cloud aktiviert ist."
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "lgpd": "DSGVO",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen"
+  },
+  "language": {
+    "label": "Sprache",
+    "pt-BR": "Portugiesisch (Brasilien)",
+    "en": "Englisch",
+    "es": "Spanisch",
+    "fr": "Französisch",
+    "it": "Italienisch",
+    "de": "Deutsch"
+  }
+}

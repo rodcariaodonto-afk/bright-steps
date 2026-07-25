@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "Pannello di controllo",
+    "children": "Bambini",
+    "timeline": "Cronologia",
+    "calendar": "Calendario",
+    "routines": "Routine",
+    "medication": "Farmaci",
+    "documents": "Documenti",
+    "mood": "Umore",
+    "behavior": "Comportamento",
+    "goals": "Obiettivi",
+    "reports": "Rapporti",
+    "school": "Scuola",
+    "achievements": "Risultati",
+    "library": "Libreria",
+    "assessments": "Valutazioni",
+    "caregiver": "Benessere",
+    "community": "Comunità",
+    "marketplace": "Marketplace",
+    "messages": "Messaggi",
+    "ai": "Azul IA",
+    "notifications": "Notifiche",
+    "settings": "Impostazioni"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Buongiorno",
+      "afternoon": "Buon pomeriggio",
+      "evening": "Buonasera"
+    },
+    "welcome": "Ecco il riepilogo di oggi.",
+    "cards": {
+      "nextEvent": "Prossimo appuntamento",
+      "medications": "Farmaci di oggi",
+      "mood": "Umore recente",
+      "aiSummary": "Riepilogo IA",
+      "pending": "In sospeso"
+    },
+    "empty": "Attiva Lovable Cloud per iniziare a registrare dati reali."
+  },
+  "ai": {
+    "title": "Azul IA",
+    "subtitle": "Parla della routine, del comportamento, delle terapie e dell'evoluzione del tuo bambino.",
+    "placeholder": "Es.: com'è stato l'umore questa settimana?",
+    "disclaimer": "Azul IA è un supporto, non sostituisce i professionisti della salute.",
+    "newThread": "Nuova conversazione",
+    "welcome": "Ciao! Sono Azul. Come posso aiutare la famiglia oggi?",
+    "suggestions": [
+      "Suggerisci una routine del sonno accogliente",
+      "Scrivi una storia sociale sull'andare dal dentista",
+      "Spiega come registrare comportamenti difficili",
+      "Come preparare un bambino per il primo giorno di scuola?"
+    ]
+  },
+  "placeholder": {
+    "title": "Questo modulo sarà presto disponibile",
+    "message": "Una volta abilitato Lovable Cloud, quest'area sarà attivata con dati reali, RLS e sincronizzazione tra i membri della famiglia.",
+    "backToDashboard": "Torna al pannello di controllo"
+  }
+}

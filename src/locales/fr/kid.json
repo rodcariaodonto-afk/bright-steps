@@ -1,0 +1,84 @@
+{
+  "shell": {
+    "title": "Mon Monde Bleu",
+    "greeting": "Salut, {{name}} !",
+    "greetingFallback": "Salut, petit ami !",
+    "stars": "petites étoiles",
+    "exit": "Quitter le Monde",
+    "nav": {
+      "home": "Accueil",
+      "games": "Jeux",
+      "azul": "Parler à Azul",
+      "mood": "Comment je me sens",
+      "breathe": "Respirer",
+      "stories": "Histoires"
+    }
+  },
+  "home": {
+    "welcome": "Bienvenue dans ton Monde !",
+    "subtitle": "Choisis une aventure pour aujourd'hui.",
+    "cards": {
+      "azul": {
+        "title": "Parler à Azul",
+        "desc": "Ton ami curieux t'attend."
+      },
+      "mood": {
+        "title": "Comment je me sens",
+        "desc": "Dis à Azul ce que ton cœur ressent."
+      },
+      "breathe": {
+        "title": "Respirons ensemble",
+        "desc": "Un petit exercice pour te calmer."
+      },
+      "stories": {
+        "title": "Une histoire",
+        "desc": "Choisis un thème et Azul l'invente pour toi."
+      }
+    }
+  },
+  "mood": {
+    "title": "Comment te sens-tu maintenant ?",
+    "subtitle": "Touche le visage qui te correspond.",
+    "options": {
+      "1": "Triste",
+      "2": "Un peu abattu",
+      "3": "Normal",
+      "4": "Heureux",
+      "5": "Radieux"
+    },
+    "saved": "Merci d'avoir partagé ! Tu as gagné une petite étoile.",
+    "signIn": "Demande à un adulte de se connecter pour sauvegarder."
+  },
+  "breathe": {
+    "title": "Respirons",
+    "subtitle": "Suis la bulle. Inspire, retiens, expire.",
+    "start": "Commencer",
+    "stop": "Arrêter",
+    "inhale": "Inspire...",
+    "hold": "Retiens...",
+    "exhale": "Expire doucement...",
+    "done": "Bien joué ! Tu mérites une petite étoile."
+  },
+  "stories": {
+    "title": "Histoires d'Azul",
+    "subtitle": "Choisis un thème et Azul l'invente pour toi.",
+    "themes": {
+      "space": "Espace",
+      "dinos": "Dinosaures",
+      "ocean": "Fond marin",
+      "forest": "Forêt magique",
+      "cars": "Voitures",
+      "animals": "Petits animaux"
+    },
+    "generate": "Raconter l'histoire",
+    "loading": "Azul réfléchit...",
+    "another": "Une autre histoire",
+    "reward": "+1 petite étoile pour avoir lu jusqu'à la fin !"
+  },
+  "azul": {
+    "title": "Azul, ton ami",
+    "hint": "Écris ou demande à un adulte de t'aider.",
+    "placeholder": "Parle à Azul...",
+    "send": "Envoyer"
+  }
+}

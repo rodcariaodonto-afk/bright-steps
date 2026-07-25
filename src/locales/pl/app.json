@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "Panel",
+    "children": "Dzieci",
+    "timeline": "Oś czasu",
+    "calendar": "Kalendarz",
+    "routines": "Rutyny",
+    "medication": "Leki",
+    "documents": "Dokumenty",
+    "mood": "Nastrój",
+    "behavior": "Zachowanie",
+    "goals": "Cele",
+    "reports": "Raporty",
+    "school": "Szkoła",
+    "achievements": "Osiągnięcia",
+    "library": "Biblioteka",
+    "assessments": "Samooceny",
+    "caregiver": "Dobre samopoczucie",
+    "community": "Społeczność",
+    "marketplace": "Rynek",
+    "messages": "Wiadomości",
+    "ai": "Azul AI",
+    "notifications": "Powiadomienia",
+    "settings": "Ustawienia"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Dzień dobry",
+      "afternoon": "Dzień dobry",
+      "evening": "Dobry wieczór"
+    },
+    "welcome": "Oto dzisiejsze podsumowanie.",
+    "cards": {
+      "nextEvent": "Następne wydarzenie",
+      "medications": "Dzisiejsze leki",
+      "mood": "Ostatni nastrój",
+      "aiSummary": "Podsumowanie AI",
+      "pending": "Oczekujące"
+    },
+    "empty": "Aktywuj Lovable Cloud, aby rozpocząć rejestrowanie rzeczywistych danych."
+  },
+  "ai": {
+    "title": "Azul AI",
+    "subtitle": "Porozmawiaj o rutynie, zachowaniu, terapiach i rozwoju Twojego dziecka.",
+    "placeholder": "Np.: jaki był nastrój w tym tygodniu?",
+    "disclaimer": "Azul AI to wsparcie, nie zastępuje specjalistów medycznych.",
+    "newThread": "Nowa rozmowa",
+    "welcome": "Cześć! Jestem Azul. Jak mogę dziś pomóc rodzinie?",
+    "suggestions": [
+      "Zaproponuj przyjazną rutynę snu",
+      "Napisz historię społeczną o wizycie u dentysty",
+      "Wyjaśnij, jak rejestrować trudne zachowania",
+      "Jak przygotować dziecko na pierwszy dzień szkoły?"
+    ]
+  },
+  "placeholder": {
+    "title": "Ten moduł będzie dostępny wkrótce",
+    "message": "Gdy Lovable Cloud zostanie włączony, ten obszar zostanie aktywowany z rzeczywistymi danymi, RLS i synchronizacją między członkami rodziny.",
+    "backToDashboard": "Wróć do panelu"
+  }
+}

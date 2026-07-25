@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "Tableau de bord",
+    "children": "Enfants",
+    "timeline": "Chronologie",
+    "calendar": "Calendrier",
+    "routines": "Routines",
+    "medication": "Médicaments",
+    "documents": "Documents",
+    "mood": "Humeur",
+    "behavior": "Comportement",
+    "goals": "Objectifs",
+    "reports": "Rapports",
+    "school": "École",
+    "achievements": "Réalisations",
+    "library": "Bibliothèque",
+    "assessments": "Auto-évaluations",
+    "caregiver": "Bien-être",
+    "community": "Communauté",
+    "marketplace": "Marketplace",
+    "messages": "Messages",
+    "ai": "Azul IA",
+    "notifications": "Notifications",
+    "settings": "Paramètres"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Bonjour",
+      "afternoon": "Bon après-midi",
+      "evening": "Bonsoir"
+    },
+    "welcome": "Voici le résumé d'aujourd'hui.",
+    "cards": {
+      "nextEvent": "Prochain rendez-vous",
+      "medications": "Médicaments d'aujourd'hui",
+      "mood": "Humeur récente",
+      "aiSummary": "Résumé de l'IA",
+      "pending": "En attente"
+    },
+    "empty": "Activez Lovable Cloud pour commencer à enregistrer des données réelles."
+  },
+  "ai": {
+    "title": "Azul IA",
+    "subtitle": "Discutez de la routine, du comportement, des thérapies et de l'évolution de votre enfant.",
+    "placeholder": "Ex : comment était l'humeur cette semaine ?",
+    "disclaimer": "Azul IA est un soutien, il ne remplace pas les professionnels de la santé.",
+    "newThread": "Nouvelle conversation",
+    "welcome": "Bonjour ! Je suis Azul. Comment puis-je aider la famille aujourd'hui ?",
+    "suggestions": [
+      "Suggérez une routine de sommeil apaisante",
+      "Écrivez une histoire sociale sur le fait d'aller chez le dentiste",
+      "Expliquez comment enregistrer les comportements difficiles",
+      "Comment préparer un enfant pour le premier jour d'école ?"
+    ]
+  },
+  "placeholder": {
+    "title": "Ce module sera bientôt disponible",
+    "message": "Dès que Lovable Cloud sera activé, cette zone sera activée avec des données réelles, RLS et la synchronisation entre les membres de la famille.",
+    "backToDashboard": "Retour au tableau de bord"
+  }
+}

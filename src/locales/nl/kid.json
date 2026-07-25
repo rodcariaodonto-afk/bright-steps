@@ -1,0 +1,84 @@
+{
+  "shell": {
+    "title": "Mijn Blauwe Wereld",
+    "greeting": "Hoi, {{name}}!",
+    "greetingFallback": "Hoi, vriendje!",
+    "stars": "sterretjes",
+    "exit": "Wereld verlaten",
+    "nav": {
+      "home": "Start",
+      "games": "Spelletjes",
+      "azul": "Praat met Azul",
+      "mood": "Hoe ik me voel",
+      "breathe": "Ademen",
+      "stories": "Verhalen"
+    }
+  },
+  "home": {
+    "welcome": "Welkom in jouw Wereld!",
+    "subtitle": "Kies vandaag een avontuur.",
+    "cards": {
+      "azul": {
+        "title": "Praat met Azul",
+        "desc": "Je nieuwsgierige vriend wacht op je."
+      },
+      "mood": {
+        "title": "Hoe ik me voel",
+        "desc": "Vertel Azul hoe je hartje zich voelt."
+      },
+      "breathe": {
+        "title": "Samen ademen",
+        "desc": "Een snelle oefening om rustig te worden."
+      },
+      "stories": {
+        "title": "Een verhaal",
+        "desc": "Kies een thema en Azul verzint er een voor je."
+      }
+    }
+  },
+  "mood": {
+    "title": "Hoe voel je je nu?",
+    "subtitle": "Tik op het gezichtje dat bij jou past.",
+    "options": {
+      "1": "Verdrietig",
+      "2": "Een beetje down",
+      "3": "Normaal",
+      "4": "Blij",
+      "5": "Stralend"
+    },
+    "saved": "Bedankt voor het delen! Je hebt een sterretje verdiend.",
+    "signIn": "Vraag een volwassene om in te loggen om op te slaan."
+  },
+  "breathe": {
+    "title": "Laten we ademen",
+    "subtitle": "Volg het balletje. Adem in, houd vast, adem uit.",
+    "start": "Starten",
+    "stop": "Stoppen",
+    "inhale": "Adem in...",
+    "hold": "Houd vast...",
+    "exhale": "Adem langzaam uit...",
+    "done": "Goed zo! Je verdient een sterretje."
+  },
+  "stories": {
+    "title": "Verhalen van Azul",
+    "subtitle": "Kies een thema en Azul verzint er een voor je.",
+    "themes": {
+      "space": "Ruimte",
+      "dinos": "Dino's",
+      "ocean": "Oceaan",
+      "forest": "Magisch bos",
+      "cars": "Auto's",
+      "animals": "Diertjes"
+    },
+    "generate": "Vertel verhaal",
+    "loading": "Azul denkt na...",
+    "another": "Nog een verhaal",
+    "reward": "+1 sterretje voor het uitlezen!"
+  },
+  "azul": {
+    "title": "Azul, je vriend",
+    "hint": "Typ of vraag een volwassene om te helpen.",
+    "placeholder": "Praat met Azul...",
+    "send": "Verzenden"
+  }
+}

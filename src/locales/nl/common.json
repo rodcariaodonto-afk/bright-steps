@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul",
+    "tagline": "Het ecosysteem van kinderontwikkeling"
+  },
+  "actions": {
+    "getStarted": "Nu beginnen",
+    "signIn": "Inloggen",
+    "signUp": "Account aanmaken",
+    "signOut": "Uitloggen",
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "continue": "Doorgaan",
+    "back": "Terug",
+    "learnMore": "Meer informatie",
+    "openApp": "App openen"
+  },
+  "nav": {
+    "product": "Product",
+    "family": "Familie",
+    "child": "Kind",
+    "professionals": "Professionals",
+    "ai": "Kunstmatige intelligentie",
+    "security": "Beveiliging",
+    "pricing": "Abonnementen"
+  },
+  "status": {
+    "comingSoon": "Binnenkort beschikbaar",
+    "beta": "Bèta",
+    "preview": "Voorbeeld"
+  },
+  "banner": {
+    "cloudPending": "Voorbeeldmodus. Backend-functionaliteiten worden geactiveerd zodra Lovable Cloud is ingeschakeld."
+  },
+  "footer": {
+    "rights": "Alle rechten voorbehouden.",
+    "lgpd": "AVG",
+    "privacy": "Privacy",
+    "terms": "Voorwaarden"
+  },
+  "language": {
+    "label": "Taal",
+    "pt-BR": "Portugees (Brazilië)",
+    "en": "Engels",
+    "es": "Spaans",
+    "fr": "Frans",
+    "it": "Italiaans",
+    "de": "Duits"
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul Clínico",
+    "tagline": "Çocuk gelişimi uzmanları için çalışma alanı"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "Çalışma",
+      "clinical": "Klinik",
+      "collaboration": "İşbirliği",
+      "settings": "Ayarlar"
+    },
+    "dashboard": "Kontrol Paneli",
+    "agenda": "Ajanda",
+    "patients": "Hastalar",
+    "sessions": "Seanslar",
+    "evolution": "Gelişim",
+    "goals": "Hedefler",
+    "scales": "Ölçekler",
+    "reports": "Raporlar",
+    "documents": "Belgeler",
+    "messages": "Mesajlar",
+    "school": "Okul",
+    "indicators": "Göstergeler",
+    "ai": "Azul Clínico",
+    "settings": "Ayarlar",
+    "profile": "Profilim",
+    "newSession": "Yeni seans"
+  },
+  "topbar": {
+    "search": "Hasta, seans, rapor ara…",
+    "shortcut": "⌘K",
+    "help": "Yardım",
+    "profile": "Profil"
+  },
+  "dashboard": {
+    "title": "Günaydın, {{name}}",
+    "subtitle": "Bugün {{count}} randevunuz var.",
+    "cards": {
+      "todayAgenda": "Bugünün Ajandası",
+      "nextAppointments": "Yaklaşan Randevular",
+      "activePatients": "Aktif Hastalar",
+      "pending": "Bekleyenler",
+      "messages": "Mesajlar",
+      "pendingReports": "Bekleyen Raporlar",
+      "newDocuments": "Yeni Belgeler",
+      "sharedGoals": "Paylaşılan Hedefler",
+      "aiAlerts": "YZ Uyarıları",
+      "weekSummary": "Haftalık Özet",
+      "monthSummary": "Aylık Özet"
+    },
+    "empty": "Cloud etkinleştirilene kadar bu alanda veri yok.",
+    "quickActions": {
+      "newSession": "Seans kaydet",
+      "newReport": "Rapor oluştur",
+      "newAppointment": "Randevu planla",
+      "askAI": "Azul Clínico'ya sor"
+    }
+  },
+  "patients": {
+    "title": "Hastalar",
+    "subtitle": "Sadece velileri tarafından erişim izni verilen çocuklar.",
+    "columns": {
+      "name": "Ad",
+      "age": "Yaş",
+      "diagnosis": "Tanı",
+      "support": "Destek",
+      "lastSession": "Son seans",
+      "nextSession": "Sonraki seans",
+      "goalsProgress": "Hedefler"
+    },
+    "filters": {
+      "all": "Tümü",
+      "active": "Aktif",
+      "inactive": "Pasif",
+      "byDiagnosis": "Tanıya göre",
+      "bySpecialty": "Uzmanlığa göre"
+    },
+    "tabs": {
+      "overview": "Genel Bakış",
+      "sessions": "Seanslar",
+      "evolution": "Gelişim",
+      "goals": "Hedefler",
+      "scales": "Ölçekler",
+      "reports": "Raporlar",
+      "documents": "Belgeler",
+      "school": "Okul",
+      "family": "Aile"
+    }
+  },
+  "agenda": {
+    "title": "Ajanda",
+    "views": {
+      "day": "Gün",
+      "week": "Hafta",
+      "month": "Ay",
+      "list": "Liste"
+    },
+    "empty": "Bu dönemde randevu yok.",
+    "new": "Yeni randevu"
+  },
+  "sessions": {
+    "titleNew": "Yeni seans",
+    "titleEdit": "Seansı düzenle",
+    "fields": {
+      "date": "Tarih",
+      "time": "Saat",
+      "duration": "Süre",
+      "child": "Çocuk",
+      "goals": "Çalışılan hedefler",
+      "activities": "Yapılan aktiviteler",
+      "materials": "Kullanılan materyaller",
+      "response": "Çocuğun tepkisi",
+      "observations": "Gözlemler",
+      "nextSteps": "Sonraki adımlar",
+      "attachments": "Ekler (fotoğraflar, videolar, sesler, dosyalar)"
+    },
+    "reuse": "Aktif hedefler, son gözlemler ve bekleyen ölçekler otomatik olarak önceden doldurulacaktır."
+  },
+  "evolution": {
+    "title": "Gelişim",
+    "subtitle": "İlerleme, ölçekler ve eklerin kronolojik akışı.",
+    "share": "Şununla paylaş:",
+    "shareWith": {
+      "family": "Aile",
+      "professionals": "Diğer profesyoneller",
+      "school": "Okul"
+    }
+  },
+  "goals": {
+    "title": "Terapötik hedefler",
+    "subtitle": "Aile ve ekiple paylaşılan hedefler.",
+    "fields": {
+      "description": "Açıklama",
+      "category": "Kategori",
+      "start": "Başlangıç",
+      "deadline": "Son tarih",
+      "owner": "Sorumlu",
+      "participants": "Katılımcılar",
+      "indicators": "Göstergeler",
+      "status": "Durum",
+      "progress": "İlerleme"
+    }
+  },
+  "scales": {
+    "title": "Ölçekler ve araçlar",
+    "subtitle": "Herhangi bir değerlendirme aracını kaydedin. Açık mimari.",
+    "new": "Yeni ölçek",
+    "applications": "Uygulamalar"
+  },
+  "reports": {
+    "title": "Raporlar",
+    "subtitle": "YZ destekli oluşturma ve güvenli dışa aktarma.",
+    "types": {
+      "session": "Seans",
+      "weekly": "Haftalık",
+      "monthly": "Aylık",
+      "quarterly": "Üç Aylık",
+      "annual": "Yıllık",
+      "custom": "Özel"
+    },
+    "export": {
+      "pdf": "PDF olarak dışa aktar",
+      "docx": "Word olarak dışa aktar",
+      "share": "Paylaş"
+    }
+  },
+  "documents": {
+    "title": "Belgeler",
+    "subtitle": "Sürüm kontrollü paylaşılan kütüphane.",
+    "categories": {
+      "reports": "Raporlar",
+      "referrals": "Raporlar",
+      "prescriptions": "Reçeteler",
+      "assessments": "Değerlendirmeler",
+      "exams": "Muayeneler",
+      "photos": "Fotoğraflar",
+      "videos": "Videolar",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "Mesajlar",
+    "subtitle": "Çocuğa göre düzenlenmiş güvenli iletişim.",
+    "audiences": {
+      "family": "Aile",
+      "school": "Okul",
+      "professionals": "Diğer profesyoneller"
+    }
+  },
+  "school": {
+    "title": "Okul",
+    "subtitle": "Okul ekibiyle hedeflerin, yönlendirmelerin ve gözlemlerin değişimi.",
+    "consentRequired": "Her paylaşım için aileden açık rıza gereklidir."
+  },
+  "indicators": {
+    "title": "Göstergeler",
+    "subtitle": "Gelişim, ruh hali, davranış, uyku ve daha fazlasının otomatik grafikleri.",
+    "series": {
+      "evolution": "Gelişim",
+      "frequency": "Sıklık",
+      "participation": "Katılım",
+      "goals": "Hedefler",
+      "mood": "Ruh hali",
+      "behavior": "Davranış",
+      "sleep": "Uyku",
+      "medication": "İlaç"
+    }
+  },
+  "ai": {
+    "title": "Azul Clínico",
+    "subtitle": "Gelişmeleri özetlemek, dönemleri karşılaştırmak, aktiviteler önermek ve rapor taslağı hazırlamak için asistan.",
+    "disclaimer": "YZ klinik muhakemeyi destekler. Asla teşhis koymaz ve profesyonelin kararının yerini almaz.",
+    "suggestions": [
+      "Son 30 günün gelişimini özetle",
+      "Yeni rutinden önceki ve sonraki davranışı karşılaştır",
+      "Paylaşılan dikkati geliştirmek için aktiviteler öner",
+      "Seanslardan aylık rapor taslağı hazırla"
+    ]
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "sections": {
+      "profile": "Profesyonel profil",
+      "specialties": "Uzmanlıklar",
+      "availability": "Müsaitlik",
+      "integrations": "Entegrasyonlar (Google/Apple/Outlook)",
+      "security": "Güvenlik ve KVKK"
+    }
+  },
+  "specialties": {
+    "psychologist": "Psikolog",
+    "neuropsychologist": "Nöropsikolog",
+    "speech_therapist": "Dil ve Konuşma Terapisti",
+    "occupational_therapist": "Ergoterapist",
+    "psychopedagogue": "Psikopedagog",
+    "physician": "Hekim",
+    "neurologist": "Nörolog",
+    "psychiatrist": "Psikiyatrist",
+    "pediatrician": "Pediatrist",
+    "nutritionist": "Beslenme Uzmanı",
+    "physical_educator": "Beden Eğitimi Öğretmeni",
+    "teacher": "Öğretmen",
+    "school_coordinator": "Okul Koordinatörü",
+    "caregiver": "Bakıcı"
+  },
+  "banner": {
+    "previewMode": "Önizleme. Lovable Cloud yeniden etkinleştirildiğinde Profesyonel Modül tabloları eklenecektir. Hiçbir veri kalıcı değildir."
+  }
+}

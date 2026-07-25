@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "Gösterge Paneli",
+    "children": "Çocuklar",
+    "timeline": "Zaman Çizelgesi",
+    "calendar": "Takvim",
+    "routines": "Rutinler",
+    "medication": "İlaçlar",
+    "documents": "Belgeler",
+    "mood": "Ruh Hali",
+    "behavior": "Davranış",
+    "goals": "Hedefler",
+    "reports": "Raporlar",
+    "school": "Okul",
+    "achievements": "Başarılar",
+    "library": "Kütüphane",
+    "assessments": "Öz Değerlendirmeler",
+    "caregiver": "Sağlık",
+    "community": "Topluluk",
+    "marketplace": "Pazar Yeri",
+    "messages": "Mesajlar",
+    "ai": "Azul AI",
+    "notifications": "Bildirimler",
+    "settings": "Ayarlar"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Günaydın",
+      "afternoon": "Tünaydın",
+      "evening": "İyi Akşamlar"
+    },
+    "welcome": "İşte bugünün özeti.",
+    "cards": {
+      "nextEvent": "Sıradaki randevu",
+      "medications": "Bugünün ilaçları",
+      "mood": "Son ruh hali",
+      "aiSummary": "AI Özeti",
+      "pending": "Bekleyenler"
+    },
+    "empty": "Gerçek verileri kaydetmeye başlamak için Lovable Cloud'u etkinleştirin."
+  },
+  "ai": {
+    "title": "Azul AI",
+    "subtitle": "Çocuğunuzun rutini, davranışı, terapileri ve gelişimi hakkında konuşun.",
+    "placeholder": "Örn: Bu hafta ruh hali nasıldı?",
+    "disclaimer": "Azul AI bir destektir, sağlık profesyonellerinin yerini tutmaz.",
+    "newThread": "Yeni sohbet",
+    "welcome": "Merhaba! Ben Azul. Bugün aileye nasıl yardımcı olabilirim?",
+    "suggestions": [
+      "Rahatlatıcı bir uyku rutini önerin",
+      "Dişçiye gitmek hakkında sosyal bir hikaye yazın",
+      "Zorlu davranışların nasıl kaydedileceğini açıklayın",
+      "Bir çocuğu ilk okul gününe nasıl hazırlarsınız?"
+    ]
+  },
+  "placeholder": {
+    "title": "Bu modül yakında kullanıma sunulacak",
+    "message": "Lovable Cloud etkinleştirildiğinde, bu alan gerçek veriler, RLS ve aile üyeleri arasında senkronizasyon ile etkinleştirilecektir.",
+    "backToDashboard": "Gösterge paneline geri dön"
+  }
+}

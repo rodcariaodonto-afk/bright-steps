@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "name": "Mój Niebieski Świat",
+    "tagline": "Ekosystem rozwoju dziecka"
+  },
+  "actions": {
+    "getStarted": "Zacznij teraz",
+    "signIn": "Zaloguj się",
+    "signUp": "Zarejestruj się",
+    "signOut": "Wyloguj się",
+    "cancel": "Anuluj",
+    "save": "Zapisz",
+    "continue": "Kontynuuj",
+    "back": "Wstecz",
+    "learnMore": "Dowiedz się więcej",
+    "openApp": "Otwórz aplikację"
+  },
+  "nav": {
+    "product": "Produkt",
+    "family": "Rodzina",
+    "child": "Dziecko",
+    "professionals": "Profesjonaliści",
+    "ai": "Sztuczna inteligencja",
+    "security": "Bezpieczeństwo",
+    "pricing": "Plany"
+  },
+  "status": {
+    "comingSoon": "Wkrótce",
+    "beta": "Beta",
+    "preview": "Podgląd"
+  },
+  "banner": {
+    "cloudPending": "Tryb podglądu. Funkcje z zapleczem zostaną aktywowane po włączeniu Lovable Cloud."
+  },
+  "footer": {
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "lgpd": "RODO",
+    "privacy": "Prywatność",
+    "terms": "Warunki"
+  },
+  "language": {
+    "label": "Język",
+    "pt-BR": "Portugalski (Brazylia)",
+    "en": "Angielski",
+    "es": "Hiszpański",
+    "fr": "Francuski",
+    "it": "Włoski",
+    "de": "Niemiecki"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "ダッシュボード",
+    "children": "お子様",
+    "timeline": "タイムライン",
+    "calendar": "カレンダー",
+    "routines": "ルーティン",
+    "medication": "投薬",
+    "documents": "書類",
+    "mood": "気分",
+    "behavior": "行動",
+    "goals": "目標",
+    "reports": "レポート",
+    "school": "学校",
+    "achievements": "達成",
+    "library": "ライブラリ",
+    "assessments": "自己評価",
+    "caregiver": "ウェルビーイング",
+    "community": "コミュニティ",
+    "marketplace": "マーケットプレイス",
+    "messages": "メッセージ",
+    "ai": "Azul AI",
+    "notifications": "通知",
+    "settings": "設定"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "おはようございます",
+      "afternoon": "こんにちは",
+      "evening": "こんばんは"
+    },
+    "welcome": "本日の概要です。",
+    "cards": {
+      "nextEvent": "次の予定",
+      "medications": "今日の投薬",
+      "mood": "最近の気分",
+      "aiSummary": "AIサマリー",
+      "pending": "保留中の項目"
+    },
+    "empty": "Lovable Cloudを有効にして、実際のデータの記録を開始してください。"
+  },
+  "ai": {
+    "title": "Azul AI",
+    "subtitle": "お子様のルーティン、行動、治療、成長についてお話ししましょう。",
+    "placeholder": "例：今週の気分はどうでしたか？",
+    "disclaimer": "Azul AIはサポートであり、医療専門家の代わりにはなりません。",
+    "newThread": "新しい会話",
+    "welcome": "こんにちは！Azulです。本日、ご家族をどのようにお手伝いできますか？",
+    "suggestions": [
+      "快適な睡眠ルーティンを提案してください",
+      "歯医者に行くことについてのソーシャルストーリーを書いてください",
+      "困難な行動を記録する方法を説明してください",
+      "お子様が初めて学校に行く準備をさせるにはどうすればよいですか？"
+    ]
+  },
+  "placeholder": {
+    "title": "このモジュールは近日中に利用可能になります",
+    "message": "Lovable Cloudが有効になると、このエリアは実際のデータ、RLS、家族間の同期でアクティブになります。",
+    "backToDashboard": "ダッシュボードに戻る"
+  }
+}

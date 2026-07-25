@@ -1,0 +1,14 @@
+{
+  "personas": {
+    "family": "Azul Familie",
+    "clinical": "Azul Klinisch",
+    "child": "Azul Freund",
+    "school": "Azul Schule",
+    "admin": "Azul Admin"
+  },
+  "guardrails": {
+    "notDiagnosis": "Azul stellt niemals Diagnosen. Konsultieren Sie immer eine medizinische Fachkraft.",
+    "notSubstitute": "Unterstützungstool. Ersetzt keine Ärzte, Therapeuten, Psychologen oder Pädagogen.",
+    "risk": "In Risikosituationen kontaktieren Sie bitte CVV 188, SAMU 192 oder den Kinderschutzdienst 100."
+  }
+}

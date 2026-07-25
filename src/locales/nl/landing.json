@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "eyebrow": "Kinderontwikkeling · Neurodiversiteit · AI",
+    "title": "Het platform dat elke dag met uw gezin meeloopt.",
+    "subtitle": "Mijn Blauwe Wereld verbindt ouders, kinderen, therapeuten en scholen op één plek. Routines, therapieën, stemming, medicatie, rapporten en een AI die leert van het dagelijkse leven van het kind.",
+    "primaryCta": "Gratis beginnen",
+    "secondaryCta": "Bekijk hoe het werkt",
+    "trust": "Gemaakt met steun van gezinnen en professionals in neuro-ontwikkeling"
+  },
+  "pillars": {
+    "title": "Eén ecosysteem, vele levens.",
+    "subtitle": "Meu Mundo Azul is ontstaan voor ASS, maar groeit mee met elke neuro-ontwikkelingsstoornis: ADHD, dyslexie, Down, ODD, hoogbegaafdheid en meer.",
+    "items": [
+      {
+        "title": "Georganiseerd gezin",
+        "description": "Routine, kalender, medicatie, stemming en gedrag in één overzichtelijk en gastvrij paneel."
+      },
+      {
+        "title": "Betoverd kind",
+        "description": "Een ervaring die aanvoelt als spelen. Avatar, wereld, missies en AI die praat als een vriend."
+      },
+      {
+        "title": "Geïntegreerde professionals",
+        "description": "Therapeuten en scholen ontvangen echte context, voeren evaluaties uit en leveren rapporten in realtime."
+      },
+      {
+        "title": "Echte AI",
+        "description": "Geen chatbot. Het is een assistent die de geschiedenis van het kind onthoudt en paden voorstelt op basis van gegevens."
+      }
+    ]
+  },
+  "modules": {
+    "title": "Alles communiceert met elkaar.",
+    "subtitle": "Elke activiteit voedt de tijdlijn, genereert rapporten, voedt de AI en past de aanbevelingen aan.",
+    "items": [
+      "Volledig klinisch profiel van het kind",
+      "Uniforme tijdlijn van alles wat er gebeurt",
+      "Kalender met therapieën, school en routines",
+      "Medicatie met herinneringen en geschiedenis",
+      "Registratie van stemming en gedrag",
+      "Doelen en evolutie met grafieken",
+      "Georganiseerde documenten, rapporten en recepten",
+      "Wekelijkse rapporten gegenereerd door AI"
+    ]
+  },
+  "ai": {
+    "eyebrow": "Kunstmatige intelligentie",
+    "title": "Een AI die uw kind kent.",
+    "description": "Mijn Blauwe Wereld communiceert in natuurlijke taal, creëert gepersonaliseerde sociale verhalen om nieuwe momenten voor te bereiden en identificeert patronen die onopgemerkt blijven in het dagelijks leven.",
+    "bullets": [
+      "Contextuele chat met de volledige geschiedenis",
+      "Sociale verhalen om afspraken, reizen en veranderingen voor te bereiden",
+      "Automatische wekelijkse en maandelijkse samenvattingen",
+      "Routine suggesties gebaseerd op wat werkt"
+    ],
+    "disclaimer": "De AI van Meu Mundo Azul is een ondersteunend hulpmiddel. Het vervangt nooit professionals in de gezondheidszorg of het onderwijs."
+  },
+  "security": {
+    "title": "Gemaakt met absoluut respect voor de AVG.",
+    "items": [
+      "Versiebeheerde en op elk moment herroepbare toestemming",
+      "Row Level Security en auditing bij elke toegang",
+      "Export en verwijdering van gegevens met één klik",
+      "Gevoelige gegevens van minderjarigen behandeld met de zorg die ze verdienen"
+    ]
+  },
+  "cta": {
+    "title": "Begin vandaag nog. Groei jarenlang mee met Meu Mundo Azul.",
+    "subtitle": "Het platform begeleidt het kind in elke fase, van slaaproutine tot autonomie, van communicatie tot therapieën.",
+    "action": "Mijn account aanmaken"
+  }
+}

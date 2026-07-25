@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul Clínico",
+    "tagline": "小児発達の専門家向けワークスペース"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "仕事",
+      "clinical": "臨床",
+      "collaboration": "コラボレーション",
+      "settings": "設定"
+    },
+    "dashboard": "ダッシュボード",
+    "agenda": "アジェンダ",
+    "patients": "患者",
+    "sessions": "セッション",
+    "evolution": "進化",
+    "goals": "目標",
+    "scales": "評価尺度",
+    "reports": "レポート",
+    "documents": "ドキュメント",
+    "messages": "メッセージ",
+    "school": "学校",
+    "indicators": "指標",
+    "ai": "Azul Clínico",
+    "settings": "設定",
+    "profile": "私のプロフィール",
+    "newSession": "新規セッション"
+  },
+  "topbar": {
+    "search": "患者、セッション、レポートを検索…",
+    "shortcut": "⌘K",
+    "help": "ヘルプ",
+    "profile": "プロフィール"
+  },
+  "dashboard": {
+    "title": "こんにちは、{{name}}様",
+    "subtitle": "本日は{{count}}件の予約があります。",
+    "cards": {
+      "todayAgenda": "今日の予定",
+      "nextAppointments": "次の予約",
+      "activePatients": "アクティブな患者",
+      "pending": "保留中の項目",
+      "messages": "メッセージ",
+      "pendingReports": "保留中のレポート",
+      "newDocuments": "新規ドキュメント",
+      "sharedGoals": "共有目標",
+      "aiAlerts": "AIアラート",
+      "weekSummary": "週次サマリー",
+      "monthSummary": "月次サマリー"
+    },
+    "empty": "Cloudがアクティブになるまで、このスペースにはデータがありません。",
+    "quickActions": {
+      "newSession": "セッションを記録する",
+      "newReport": "レポートを作成する",
+      "newAppointment": "予約をスケジュールする",
+      "askAI": "Azul Clínicoに質問する"
+    }
+  },
+  "patients": {
+    "title": "患者",
+    "subtitle": "担当者がアクセスを許可したお子様のみです。",
+    "columns": {
+      "name": "名前",
+      "age": "年齢",
+      "diagnosis": "診断",
+      "support": "サポート",
+      "lastSession": "最終セッション",
+      "nextSession": "次のセッション",
+      "goalsProgress": "目標"
+    },
+    "filters": {
+      "all": "すべて",
+      "active": "アクティブ",
+      "inactive": "非アクティブ",
+      "byDiagnosis": "診断別",
+      "bySpecialty": "専門分野別"
+    },
+    "tabs": {
+      "overview": "概要",
+      "sessions": "セッション",
+      "evolution": "進化",
+      "goals": "目標",
+      "scales": "評価尺度",
+      "reports": "レポート",
+      "documents": "ドキュメント",
+      "school": "学校",
+      "family": "家族"
+    }
+  },
+  "agenda": {
+    "title": "アジェンダ",
+    "views": {
+      "day": "日",
+      "week": "週",
+      "month": "月",
+      "list": "リスト"
+    },
+    "empty": "この期間に予定はありません。",
+    "new": "新規予約"
+  },
+  "sessions": {
+    "titleNew": "新規セッション",
+    "titleEdit": "セッションを編集する",
+    "fields": {
+      "date": "日付",
+      "time": "時間",
+      "duration": "期間",
+      "child": "お子様",
+      "goals": "取り組んだ目標",
+      "activities": "実施した活動",
+      "materials": "使用した資料",
+      "response": "お子様の反応",
+      "observations": "観察事項",
+      "nextSteps": "次のステップ",
+      "attachments": "添付ファイル（写真、動画、音声、ファイル）"
+    },
+    "reuse": "アクティブな目標、最新の観察事項、保留中の評価尺度が自動的に事前入力されます。"
+  },
+  "evolution": {
+    "title": "進化",
+    "subtitle": "進捗、評価尺度、添付ファイルの時系列フィードです。",
+    "share": "共有する",
+    "shareWith": {
+      "family": "家族",
+      "professionals": "他の専門家",
+      "school": "学校"
+    }
+  },
+  "goals": {
+    "title": "治療目標",
+    "subtitle": "家族やチームと共有する目標です。",
+    "fields": {
+      "description": "説明",
+      "category": "カテゴリ",
+      "start": "開始",
+      "deadline": "期限",
+      "owner": "担当者",
+      "participants": "参加者",
+      "indicators": "指標",
+      "status": "ステータス",
+      "progress": "進捗"
+    }
+  },
+  "scales": {
+    "title": "評価尺度とツール",
+    "subtitle": "あらゆる評価ツールを登録できます。オープンアーキテクチャです。",
+    "new": "新規評価尺度",
+    "applications": "適用"
+  },
+  "reports": {
+    "title": "レポート",
+    "subtitle": "AIによる生成と安全なエクスポート。",
+    "types": {
+      "session": "セッション",
+      "weekly": "週次",
+      "monthly": "月次",
+      "quarterly": "四半期",
+      "annual": "年次",
+      "custom": "カスタム"
+    },
+    "export": {
+      "pdf": "PDFをエクスポート",
+      "docx": "Wordをエクスポート",
+      "share": "共有する"
+    }
+  },
+  "documents": {
+    "title": "ドキュメント",
+    "subtitle": "バージョン管理された共有ライブラリです。",
+    "categories": {
+      "reports": "レポート",
+      "referrals": "紹介状",
+      "prescriptions": "処方箋",
+      "assessments": "評価",
+      "exams": "検査",
+      "photos": "写真",
+      "videos": "動画",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "メッセージ",
+    "subtitle": "お子様ごとに整理された安全なコミュニケーションです。",
+    "audiences": {
+      "family": "家族",
+      "school": "学校",
+      "professionals": "他の専門家"
+    }
+  },
+  "school": {
+    "title": "学校",
+    "subtitle": "学校のチームとの目標、指導、観察事項の交換です。",
+    "consentRequired": "共有ごとに家族からの明示的な同意が必要です。"
+  },
+  "indicators": {
+    "title": "指標",
+    "subtitle": "進化、気分、行動、睡眠などの自動グラフです。",
+    "series": {
+      "evolution": "進化",
+      "frequency": "頻度",
+      "participation": "参加",
+      "goals": "目標",
+      "mood": "気分",
+      "behavior": "行動",
+      "sleep": "睡眠",
+      "medication": "投薬"
+    }
+  },
+  "ai": {
+    "title": "Azul Clínico",
+    "subtitle": "進化の要約、期間の比較、活動の提案、レポートの下書きを行うアシスタントです。",
+    "disclaimer": "AIは臨床的推論をサポートします。決して診断を下したり、専門家の決定に取って代わるものではありません。",
+    "suggestions": [
+      "過去30日間の進化を要約する",
+      "新しいルーチン前後の行動を比較する",
+      "共有注意力を高めるための活動を提案する",
+      "セッションから月次レポートの下書きを作成する"
+    ]
+  },
+  "settings": {
+    "title": "設定",
+    "sections": {
+      "profile": "専門家プロフィール",
+      "specialties": "専門分野",
+      "availability": "利用可能状況",
+      "integrations": "統合（Google/Apple/Outlook）",
+      "security": "セキュリティとLGPD"
+    }
+  },
+  "specialties": {
+    "psychologist": "心理学者",
+    "neuropsychologist": "神経心理学者",
+    "speech_therapist": "言語聴覚士",
+    "occupational_therapist": "作業療法士",
+    "psychopedagogue": "心理教育学者",
+    "physician": "医師",
+    "neurologist": "神経科医",
+    "psychiatrist": "精神科医",
+    "pediatrician": "小児科医",
+    "nutritionist": "栄養士",
+    "physical_educator": "体育教師",
+    "teacher": "教師",
+    "school_coordinator": "学校コーディネーター",
+    "caregiver": "介護者"
+  },
+  "banner": {
+    "previewMode": "プレビュー。Lovable Cloudが再アクティブ化され次第、プロフェッショナルモジュールのテーブルが利用可能になります。データは永続化されません。"
+  }
+}

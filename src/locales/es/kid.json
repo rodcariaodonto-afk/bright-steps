@@ -1,0 +1,84 @@
+{
+  "shell": {
+    "title": "Mundo Azul",
+    "greeting": "¡Hola, {{name}}!",
+    "greetingFallback": "¡Hola, amiguito!",
+    "stars": "estrellitas",
+    "exit": "Salir del Mundo",
+    "nav": {
+      "home": "Inicio",
+      "games": "Juegos",
+      "azul": "Hablar con Azul",
+      "mood": "Cómo me siento",
+      "breathe": "Respirar",
+      "stories": "Historias"
+    }
+  },
+  "home": {
+    "welcome": "¡Bienvenido a tu Mundo!",
+    "subtitle": "Elige una aventura para hoy.",
+    "cards": {
+      "azul": {
+        "title": "Hablar con Azul",
+        "desc": "Tu amigo curioso te está esperando."
+      },
+      "mood": {
+        "title": "Cómo me siento",
+        "desc": "Cuéntale a Azul cómo está tu corazón."
+      },
+      "breathe": {
+        "title": "Respirar juntos",
+        "desc": "Un ejercicio rápido para calmarte."
+      },
+      "stories": {
+        "title": "Una historia",
+        "desc": "Elige un tema y Azul la inventa para ti."
+      }
+    }
+  },
+  "mood": {
+    "title": "¿Cómo te sientes ahora?",
+    "subtitle": "Toca la carita que te represente.",
+    "options": {
+      "1": "Triste",
+      "2": "Un poco decaído",
+      "3": "Normal",
+      "4": "Feliz",
+      "5": "Radiante"
+    },
+    "saved": "¡Gracias por compartir! Ganaste una estrellita.",
+    "signIn": "Pídele a un adulto que inicie sesión para guardar."
+  },
+  "breathe": {
+    "title": "Vamos a respirar",
+    "subtitle": "Sigue la bolita. Inhala, aguanta, exhala.",
+    "start": "Empezar",
+    "stop": "Parar",
+    "inhale": "Inhala...",
+    "hold": "Aguanta...",
+    "exhale": "Exhala despacio...",
+    "done": "¡Bien! Te mereces una estrellita."
+  },
+  "stories": {
+    "title": "Historias de Azul",
+    "subtitle": "Elige un tema y Azul la inventa para ti.",
+    "themes": {
+      "space": "Espacio",
+      "dinos": "Dinosaurios",
+      "ocean": "Fondo del mar",
+      "forest": "Bosque mágico",
+      "cars": "Coches",
+      "animals": "Animalitos"
+    },
+    "generate": "Contar historia",
+    "loading": "Azul está pensando...",
+    "another": "Otra historia",
+    "reward": "+1 estrellita por leer hasta el final!"
+  },
+  "azul": {
+    "title": "Azul, tu amigo",
+    "hint": "Escribe o pide a un adulto que te ayude.",
+    "placeholder": "Habla con Azul...",
+    "send": "Enviar"
+  }
+}

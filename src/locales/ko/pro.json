@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul Clínico",
+    "tagline": "아동 발달 전문가를 위한 작업 공간"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "업무",
+      "clinical": "임상",
+      "collaboration": "협업",
+      "settings": "설정"
+    },
+    "dashboard": "대시보드",
+    "agenda": "일정",
+    "patients": "환자",
+    "sessions": "세션",
+    "evolution": "진행 상황",
+    "goals": "목표",
+    "scales": "척도",
+    "reports": "보고서",
+    "documents": "문서",
+    "messages": "메시지",
+    "school": "학교",
+    "indicators": "지표",
+    "ai": "Azul 임상",
+    "settings": "설정",
+    "profile": "내 프로필",
+    "newSession": "새 세션"
+  },
+  "topbar": {
+    "search": "환자, 세션, 보고서 검색…",
+    "shortcut": "⌘K",
+    "help": "도움말",
+    "profile": "프로필"
+  },
+  "dashboard": {
+    "title": "안녕하세요, {{name}}님",
+    "subtitle": "오늘은 {{count}}건의 약속이 있습니다.",
+    "cards": {
+      "todayAgenda": "오늘의 일정",
+      "nextAppointments": "다음 약속",
+      "activePatients": "활동 중인 환자",
+      "pending": "보류 중",
+      "messages": "메시지",
+      "pendingReports": "보류 중인 보고서",
+      "newDocuments": "새 문서",
+      "sharedGoals": "공유된 목표",
+      "aiAlerts": "AI 알림",
+      "weekSummary": "주간 요약",
+      "monthSummary": "월간 요약"
+    },
+    "empty": "클라우드가 활성화될 때까지 이 공간에는 데이터가 없습니다.",
+    "quickActions": {
+      "newSession": "세션 기록",
+      "newReport": "보고서 생성",
+      "newAppointment": "약속 잡기",
+      "askAI": "Azul 임상에게 질문하기"
+    }
+  },
+  "patients": {
+    "title": "환자",
+    "subtitle": "보호자가 접근을 승인한 아동만 해당됩니다.",
+    "columns": {
+      "name": "이름",
+      "age": "나이",
+      "diagnosis": "진단",
+      "support": "지원",
+      "lastSession": "마지막 세션",
+      "nextSession": "다음 세션",
+      "goalsProgress": "목표"
+    },
+    "filters": {
+      "all": "모두",
+      "active": "활동 중",
+      "inactive": "비활동 중",
+      "byDiagnosis": "진단별",
+      "bySpecialty": "전문 분야별"
+    },
+    "tabs": {
+      "overview": "개요",
+      "sessions": "세션",
+      "evolution": "진행 상황",
+      "goals": "목표",
+      "scales": "척도",
+      "reports": "보고서",
+      "documents": "문서",
+      "school": "학교",
+      "family": "가족"
+    }
+  },
+  "agenda": {
+    "title": "일정",
+    "views": {
+      "day": "일",
+      "week": "주",
+      "month": "월",
+      "list": "목록"
+    },
+    "empty": "이 기간에는 약속이 없습니다.",
+    "new": "새 약속"
+  },
+  "sessions": {
+    "titleNew": "새 세션",
+    "titleEdit": "세션 편집",
+    "fields": {
+      "date": "날짜",
+      "time": "시간",
+      "duration": "기간",
+      "child": "아동",
+      "goals": "진행된 목표",
+      "activities": "수행된 활동",
+      "materials": "사용된 자료",
+      "response": "아동의 반응",
+      "observations": "관찰",
+      "nextSteps": "다음 단계",
+      "attachments": "첨부 파일 (사진, 비디오, 오디오, 파일)"
+    },
+    "reuse": "활성 목표, 마지막 관찰 및 보류 중인 척도가 자동으로 미리 채워집니다."
+  },
+  "evolution": {
+    "title": "진행 상황",
+    "subtitle": "진행 상황, 척도 및 첨부 파일의 연대기 피드입니다.",
+    "share": "공유 대상",
+    "shareWith": {
+      "family": "가족",
+      "professionals": "다른 전문가",
+      "school": "학교"
+    }
+  },
+  "goals": {
+    "title": "치료 목표",
+    "subtitle": "가족 및 팀과 공유되는 목표입니다.",
+    "fields": {
+      "description": "설명",
+      "category": "범주",
+      "start": "시작",
+      "deadline": "마감일",
+      "owner": "담당자",
+      "participants": "참여자",
+      "indicators": "지표",
+      "status": "상태",
+      "progress": "진행 상황"
+    }
+  },
+  "scales": {
+    "title": "척도 및 도구",
+    "subtitle": "모든 평가 도구를 등록하십시오. 개방형 아키텍처.",
+    "new": "새 척도",
+    "applications": "적용"
+  },
+  "reports": {
+    "title": "보고서",
+    "subtitle": "AI 지원 생성 및 보안 내보내기.",
+    "types": {
+      "session": "세션",
+      "weekly": "주간",
+      "monthly": "월간",
+      "quarterly": "분기별",
+      "annual": "연간",
+      "custom": "사용자 지정"
+    },
+    "export": {
+      "pdf": "PDF 내보내기",
+      "docx": "Word 내보내기",
+      "share": "공유"
+    }
+  },
+  "documents": {
+    "title": "문서",
+    "subtitle": "버전 관리가 가능한 공유 라이브러리.",
+    "categories": {
+      "reports": "보고서",
+      "referrals": "소견서",
+      "prescriptions": "처방전",
+      "assessments": "평가",
+      "exams": "검사",
+      "photos": "사진",
+      "videos": "비디오",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "메시지",
+    "subtitle": "아동별로 정리된 보안 통신.",
+    "audiences": {
+      "family": "가족",
+      "school": "학교",
+      "professionals": "다른 전문가"
+    }
+  },
+  "school": {
+    "title": "학교",
+    "subtitle": "학교 팀과 목표, 지침 및 관찰을 교환합니다.",
+    "consentRequired": "각 공유에 대해 가족의 명시적 동의가 필요합니다."
+  },
+  "indicators": {
+    "title": "지표",
+    "subtitle": "진행 상황, 기분, 행동, 수면 등의 자동 그래프.",
+    "series": {
+      "evolution": "진행 상황",
+      "frequency": "빈도",
+      "participation": "참여",
+      "goals": "목표",
+      "mood": "기분",
+      "behavior": "행동",
+      "sleep": "수면",
+      "medication": "약물"
+    }
+  },
+  "ai": {
+    "title": "Azul 임상",
+    "subtitle": "진행 상황 요약, 기간 비교, 활동 제안 및 보고서 초안 작성을 위한 도우미.",
+    "disclaimer": "AI는 임상적 추론을 지원합니다. 진단하거나 전문가의 결정을 대체하지 않습니다.",
+    "suggestions": [
+      "지난 30일간의 진행 상황 요약",
+      "새로운 루틴 전후의 행동 비교",
+      "공유 주의력 향상을 위한 활동 제안",
+      "세션을 기반으로 월간 보고서 초안 작성"
+    ]
+  },
+  "settings": {
+    "title": "설정",
+    "sections": {
+      "profile": "전문가 프로필",
+      "specialties": "전문 분야",
+      "availability": "이용 가능 여부",
+      "integrations": "통합 (Google/Apple/Outlook)",
+      "security": "보안 및 LGPD"
+    }
+  },
+  "specialties": {
+    "psychologist": "심리학자",
+    "neuropsychologist": "신경심리학자",
+    "speech_therapist": "언어 치료사",
+    "occupational_therapist": "작업 치료사",
+    "psychopedagogue": "심리 교육 전문가",
+    "physician": "의사",
+    "neurologist": "신경과 의사",
+    "psychiatrist": "정신과 의사",
+    "pediatrician": "소아과 의사",
+    "nutritionist": "영양사",
+    "physical_educator": "체육 교육자",
+    "teacher": "교사",
+    "school_coordinator": "학교 코디네이터",
+    "caregiver": "간병인"
+  },
+  "banner": {
+    "previewMode": "미리보기. Lovable Cloud가 다시 활성화되면 전문가 모듈 테이블이 활성화됩니다. 데이터는 영구적으로 저장되지 않습니다."
+  }
+}

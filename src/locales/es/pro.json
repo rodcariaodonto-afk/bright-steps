@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul Clínico",
+    "tagline": "Espacio de trabajo para profesionales del desarrollo infantil"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "Trabajo",
+      "clinical": "Clínico",
+      "collaboration": "Colaboración",
+      "settings": "Ajustes"
+    },
+    "dashboard": "Panel",
+    "agenda": "Agenda",
+    "patients": "Pacientes",
+    "sessions": "Sesiones",
+    "evolution": "Evolución",
+    "goals": "Objetivos",
+    "scales": "Escalas",
+    "reports": "Informes",
+    "documents": "Documentos",
+    "messages": "Mensajes",
+    "school": "Escuela",
+    "indicators": "Indicadores",
+    "ai": "Azul Clínico",
+    "settings": "Configuración",
+    "profile": "Mi Perfil",
+    "newSession": "Nueva sesión"
+  },
+  "topbar": {
+    "search": "Buscar pacientes, sesiones, informes…",
+    "shortcut": "⌘K",
+    "help": "Ayuda",
+    "profile": "Perfil"
+  },
+  "dashboard": {
+    "title": "Buenos días, {{name}}",
+    "subtitle": "Tienes {{count}} citas hoy.",
+    "cards": {
+      "todayAgenda": "Agenda del día",
+      "nextAppointments": "Próximas citas",
+      "activePatients": "Pacientes activos",
+      "pending": "Pendientes",
+      "messages": "Mensajes",
+      "pendingReports": "Informes pendientes",
+      "newDocuments": "Nuevos documentos",
+      "sharedGoals": "Objetivos compartidos",
+      "aiAlerts": "Alertas de IA",
+      "weekSummary": "Resumen semanal",
+      "monthSummary": "Resumen mensual"
+    },
+    "empty": "Sin datos en este espacio hasta que Cloud sea activado.",
+    "quickActions": {
+      "newSession": "Registrar sesión",
+      "newReport": "Generar informe",
+      "newAppointment": "Agendar cita",
+      "askAI": "Preguntar a Azul Clínico"
+    }
+  },
+  "patients": {
+    "title": "Pacientes",
+    "subtitle": "Solo niños cuyos responsables autorizaron su acceso.",
+    "columns": {
+      "name": "Nombre",
+      "age": "Edad",
+      "diagnosis": "Diagnóstico",
+      "support": "Soporte",
+      "lastSession": "Última sesión",
+      "nextSession": "Próxima sesión",
+      "goalsProgress": "Objetivos"
+    },
+    "filters": {
+      "all": "Todos",
+      "active": "Activos",
+      "inactive": "Inactivos",
+      "byDiagnosis": "Por diagnóstico",
+      "bySpecialty": "Por especialidad"
+    },
+    "tabs": {
+      "overview": "Resumen",
+      "sessions": "Sesiones",
+      "evolution": "Evolución",
+      "goals": "Objetivos",
+      "scales": "Escalas",
+      "reports": "Informes",
+      "documents": "Documentos",
+      "school": "Escuela",
+      "family": "Familia"
+    }
+  },
+  "agenda": {
+    "title": "Agenda",
+    "views": {
+      "day": "Día",
+      "week": "Semana",
+      "month": "Mes",
+      "list": "Lista"
+    },
+    "empty": "Sin compromisos en este período.",
+    "new": "Nueva cita"
+  },
+  "sessions": {
+    "titleNew": "Nueva sesión",
+    "titleEdit": "Editar sesión",
+    "fields": {
+      "date": "Fecha",
+      "time": "Hora",
+      "duration": "Duración",
+      "child": "Niño(a)",
+      "goals": "Objetivos trabajados",
+      "activities": "Actividades realizadas",
+      "materials": "Materiales utilizados",
+      "response": "Respuesta del niño(a)",
+      "observations": "Observaciones",
+      "nextSteps": "Próximos pasos",
+      "attachments": "Anexos (fotos, videos, audios, archivos)"
+    },
+    "reuse": "Objetivos activos, últimas observaciones y escalas pendientes se rellenarán automáticamente."
+  },
+  "evolution": {
+    "title": "Evolución",
+    "subtitle": "Feed cronológico de progresos, escalas y anexos.",
+    "share": "Compartir con",
+    "shareWith": {
+      "family": "Familia",
+      "professionals": "Otros profesionales",
+      "school": "Escuela"
+    }
+  },
+  "goals": {
+    "title": "Objetivos terapéuticos",
+    "subtitle": "Metas compartidas con familia y equipo.",
+    "fields": {
+      "description": "Descripción",
+      "category": "Categoría",
+      "start": "Inicio",
+      "deadline": "Plazo",
+      "owner": "Responsable",
+      "participants": "Participantes",
+      "indicators": "Indicadores",
+      "status": "Estado",
+      "progress": "Progreso"
+    }
+  },
+  "scales": {
+    "title": "Escalas e instrumentos",
+    "subtitle": "Registre cualquier instrumento de evaluación. Arquitectura abierta.",
+    "new": "Nueva escala",
+    "applications": "Aplicaciones"
+  },
+  "reports": {
+    "title": "Informes",
+    "subtitle": "Generación asistida por IA y exportación segura.",
+    "types": {
+      "session": "Sesión",
+      "weekly": "Semanal",
+      "monthly": "Mensual",
+      "quarterly": "Trimestral",
+      "annual": "Anual",
+      "custom": "Personalizado"
+    },
+    "export": {
+      "pdf": "Exportar PDF",
+      "docx": "Exportar Word",
+      "share": "Compartir"
+    }
+  },
+  "documents": {
+    "title": "Documentos",
+    "subtitle": "Biblioteca compartida con control de versiones.",
+    "categories": {
+      "reports": "Informes",
+      "referrals": "Informes",
+      "prescriptions": "Recetas",
+      "assessments": "Evaluaciones",
+      "exams": "Exámenes",
+      "photos": "Fotos",
+      "videos": "Videos",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "Mensajes",
+    "subtitle": "Comunicación segura organizada por niño(a).",
+    "audiences": {
+      "family": "Familia",
+      "school": "Escuela",
+      "professionals": "Otros profesionales"
+    }
+  },
+  "school": {
+    "title": "Escuela",
+    "subtitle": "Intercambio de objetivos, orientaciones y observaciones con el equipo escolar.",
+    "consentRequired": "Requiere consentimiento explícito de la familia para cada compartición."
+  },
+  "indicators": {
+    "title": "Indicadores",
+    "subtitle": "Gráficos automáticos de evolución, humor, comportamiento, sueño y más.",
+    "series": {
+      "evolution": "Evolución",
+      "frequency": "Frecuencia",
+      "participation": "Participación",
+      "goals": "Objetivos",
+      "mood": "Humor",
+      "behavior": "Comportamiento",
+      "sleep": "Sueño",
+      "medication": "Medicación"
+    }
+  },
+  "ai": {
+    "title": "Azul Clínico",
+    "subtitle": "Asistente para resumir evoluciones, comparar períodos, sugerir actividades y redactar informes.",
+    "disclaimer": "La IA apoya el razonamiento clínico. Nunca diagnostica y nunca sustituye la decisión del profesional.",
+    "suggestions": [
+      "Resumir la evolución de los últimos 30 días",
+      "Comparar comportamiento antes y después de la nueva rutina",
+      "Sugerir actividades para trabajar la atención compartida",
+      "Redactar informe mensual a partir de las sesiones"
+    ]
+  },
+  "settings": {
+    "title": "Configuración",
+    "sections": {
+      "profile": "Perfil profesional",
+      "specialties": "Especialidades",
+      "availability": "Disponibilidad",
+      "integrations": "Integraciones (Google/Apple/Outlook)",
+      "security": "Seguridad y LGPD"
+    }
+  },
+  "specialties": {
+    "psychologist": "Psicólogo(a)",
+    "neuropsychologist": "Neuropsicólogo(a)",
+    "speech_therapist": "Logopeda",
+    "occupational_therapist": "Terapeuta Ocupacional",
+    "psychopedagogue": "Psicopedagogo(a)",
+    "physician": "Médico(a)",
+    "neurologist": "Neurólogo(a)",
+    "psychiatrist": "Psiquiatra",
+    "pediatrician": "Pediatra",
+    "nutritionist": "Nutricionista",
+    "physical_educator": "Educador(a) Físico(a)",
+    "teacher": "Profesor(a)",
+    "school_coordinator": "Coordinador(a) Escolar",
+    "caregiver": "Cuidador(a)"
+  },
+  "banner": {
+    "previewMode": "Vista previa. Las tablas del Módulo Profesionales se activarán tan pronto como Lovable Cloud sea reactivado. Ningún dato se persiste."
+  }
+}

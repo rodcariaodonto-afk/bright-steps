@@ -1,0 +1,84 @@
+{
+  "shell": {
+    "title": "Mavi Dünya",
+    "greeting": "Merhaba, {{name}}!",
+    "greetingFallback": "Merhaba küçük arkadaşım!",
+    "stars": "yıldızlar",
+    "exit": "Dünyadan Çık",
+    "nav": {
+      "home": "Ana Sayfa",
+      "games": "Oyunlar",
+      "azul": "Azul ile Konuş",
+      "mood": "Nasıl Hissediyorum",
+      "breathe": "Nefes Al",
+      "stories": "Hikayeler"
+    }
+  },
+  "home": {
+    "welcome": "Dünyana hoş geldin!",
+    "subtitle": "Bugünkü maceranı seç.",
+    "cards": {
+      "azul": {
+        "title": "Azul ile Konuş",
+        "desc": "Meraklı arkadaşın seni bekliyor."
+      },
+      "mood": {
+        "title": "Nasıl Hissediyorum",
+        "desc": "Azul'a kalbinin nasıl olduğunu anlat."
+      },
+      "breathe": {
+        "title": "Birlikte Nefes Alalım",
+        "desc": "Sakinleşmek için hızlı bir egzersiz."
+      },
+      "stories": {
+        "title": "Bir Hikaye",
+        "desc": "Bir tema seç ve Azul senin için uydursun."
+      }
+    }
+  },
+  "mood": {
+    "title": "Şu an nasılsın?",
+    "subtitle": "Sana uyan yüze dokun.",
+    "options": {
+      "1": "Üzgün",
+      "2": "Biraz keyifsiz",
+      "3": "Normal",
+      "4": "Mutlu",
+      "5": "Işıl Işıl"
+    },
+    "saved": "Paylaştığın için teşekkürler! Bir yıldız kazandın.",
+    "signIn": "Kaydetmek için bir yetişkinden giriş yapmasını iste."
+  },
+  "breathe": {
+    "title": "Nefes alalım",
+    "subtitle": "Topu takip et. Nefes al, tut, ver.",
+    "start": "Başla",
+    "stop": "Dur",
+    "inhale": "Nefes al...",
+    "hold": "Tut...",
+    "exhale": "Yavaşça ver...",
+    "done": "Aferin! Bir yıldızı hak ettin."
+  },
+  "stories": {
+    "title": "Azul'un Hikayeleri",
+    "subtitle": "Bir tema seç ve Azul senin için uydursun.",
+    "themes": {
+      "space": "Uzay",
+      "dinos": "Dinozorlar",
+      "ocean": "Deniz Altı",
+      "forest": "Sihirli Orman",
+      "cars": "Arabalar",
+      "animals": "Hayvanlar"
+    },
+    "generate": "Hikaye Anlat",
+    "loading": "Azul düşünüyor...",
+    "another": "Başka bir hikaye",
+    "reward": "Sonuna kadar okuduğun için +1 yıldız!"
+  },
+  "azul": {
+    "title": "Azul, arkadaşın",
+    "hint": "Yaz veya bir yetişkinden yardım iste.",
+    "placeholder": "Azul ile konuş...",
+    "send": "Gönder"
+  }
+}

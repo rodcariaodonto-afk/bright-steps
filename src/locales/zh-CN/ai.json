@@ -1,0 +1,14 @@
+{
+  "personas": {
+    "family": "Azul 家庭版",
+    "clinical": "Azul 临床版",
+    "child": "Azul 伙伴版",
+    "school": "Azul 学校版",
+    "admin": "Azul 管理版"
+  },
+  "guardrails": {
+    "notDiagnosis": "Azul 绝不提供诊断。请务必咨询专业医护人员。",
+    "notSubstitute": "辅助工具。不能替代医生、治疗师、心理学家或教育工作者。",
+    "risk": "在紧急情况下，请拨打 CVV 188、SAMU 192 或儿童保护委员会 100。"
+  }
+}

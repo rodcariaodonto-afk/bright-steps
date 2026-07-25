@@ -1,0 +1,14 @@
+{
+  "personas": {
+    "family": "Azul 家庭版",
+    "clinical": "Azul 臨床版",
+    "child": "Azul 兒童版",
+    "school": "Azul 學校版",
+    "admin": "Azul 管理版"
+  },
+  "guardrails": {
+    "notDiagnosis": "Azul 不會提供診斷。請務必諮詢醫療專業人員。",
+    "notSubstitute": "支援工具。不能取代醫生、治療師、心理學家或教育工作者。",
+    "risk": "在危險情況下，請撥打生命線 1980、緊急醫療救護 119 或兒童福利專線 113。"
+  }
+}

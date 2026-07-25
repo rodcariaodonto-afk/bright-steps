@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "Meu Mundo Azul Clínico",
+    "tagline": "Werkruimte voor professionals in de ontwikkeling van kinderen"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "Werk",
+      "clinical": "Klinisch",
+      "collaboration": "Samenwerking",
+      "settings": "Instellingen"
+    },
+    "dashboard": "Dashboard",
+    "agenda": "Agenda",
+    "patients": "Patiënten",
+    "sessions": "Sessies",
+    "evolution": "Evolutie",
+    "goals": "Doelen",
+    "scales": "Schalen",
+    "reports": "Rapporten",
+    "documents": "Documenten",
+    "messages": "Berichten",
+    "school": "School",
+    "indicators": "Indicatoren",
+    "ai": "Azul Clínico",
+    "settings": "Instellingen",
+    "profile": "Mijn Profiel",
+    "newSession": "Nieuwe sessie"
+  },
+  "topbar": {
+    "search": "Zoek patiënten, sessies, rapporten…",
+    "shortcut": "⌘K",
+    "help": "Help",
+    "profile": "Profiel"
+  },
+  "dashboard": {
+    "title": "Goedendag, {{name}}",
+    "subtitle": "U heeft vandaag {{count}} afspraken.",
+    "cards": {
+      "todayAgenda": "Agenda van vandaag",
+      "nextAppointments": "Volgende afspraken",
+      "activePatients": "Actieve patiënten",
+      "pending": "Openstaand",
+      "messages": "Berichten",
+      "pendingReports": "Openstaande rapporten",
+      "newDocuments": "Nieuwe documenten",
+      "sharedGoals": "Gedeelde doelen",
+      "aiAlerts": "AI-waarschuwingen",
+      "weekSummary": "Wekelijks overzicht",
+      "monthSummary": "Maandelijks overzicht"
+    },
+    "empty": "Geen gegevens in deze ruimte totdat de Cloud is geactiveerd.",
+    "quickActions": {
+      "newSession": "Sessie registreren",
+      "newReport": "Rapport genereren",
+      "newAppointment": "Afspraak plannen",
+      "askAI": "Vraag het aan Azul Clínico"
+    }
+  },
+  "patients": {
+    "title": "Patiënten",
+    "subtitle": "Alleen kinderen wiens voogden toestemming hebben gegeven voor uw toegang.",
+    "columns": {
+      "name": "Naam",
+      "age": "Leeftijd",
+      "diagnosis": "Diagnose",
+      "support": "Ondersteuning",
+      "lastSession": "Laatste sessie",
+      "nextSession": "Volgende sessie",
+      "goalsProgress": "Doelen"
+    },
+    "filters": {
+      "all": "Alle",
+      "active": "Actief",
+      "inactive": "Inactief",
+      "byDiagnosis": "Op diagnose",
+      "bySpecialty": "Op specialiteit"
+    },
+    "tabs": {
+      "overview": "Overzicht",
+      "sessions": "Sessies",
+      "evolution": "Evolutie",
+      "goals": "Doelen",
+      "scales": "Schalen",
+      "reports": "Rapporten",
+      "documents": "Documenten",
+      "school": "School",
+      "family": "Familie"
+    }
+  },
+  "agenda": {
+    "title": "Agenda",
+    "views": {
+      "day": "Dag",
+      "week": "Week",
+      "month": "Maand",
+      "list": "Lijst"
+    },
+    "empty": "Geen afspraken in deze periode.",
+    "new": "Nieuwe afspraak"
+  },
+  "sessions": {
+    "titleNew": "Nieuwe sessie",
+    "titleEdit": "Sessie bewerken",
+    "fields": {
+      "date": "Datum",
+      "time": "Tijd",
+      "duration": "Duur",
+      "child": "Kind",
+      "goals": "Behandelde doelen",
+      "activities": "Uitgevoerde activiteiten",
+      "materials": "Gebruikte materialen",
+      "response": "Reactie van het kind",
+      "observations": "Opmerkingen",
+      "nextSteps": "Volgende stappen",
+      "attachments": "Bijlagen (foto's, video's, audio, bestanden)"
+    },
+    "reuse": "Actieve doelen, laatste opmerkingen en openstaande schalen worden automatisch vooraf ingevuld."
+  },
+  "evolution": {
+    "title": "Evolutie",
+    "subtitle": "Chronologische feed van vorderingen, schalen en bijlagen.",
+    "share": "Delen met",
+    "shareWith": {
+      "family": "Familie",
+      "professionals": "Andere professionals",
+      "school": "School"
+    }
+  },
+  "goals": {
+    "title": "Therapeutische doelen",
+    "subtitle": "Doelen gedeeld met familie en team.",
+    "fields": {
+      "description": "Beschrijving",
+      "category": "Categorie",
+      "start": "Start",
+      "deadline": "Deadline",
+      "owner": "Verantwoordelijke",
+      "participants": "Deelnemers",
+      "indicators": "Indicatoren",
+      "status": "Status",
+      "progress": "Voortgang"
+    }
+  },
+  "scales": {
+    "title": "Schalen en instrumenten",
+    "subtitle": "Registreer elk evaluatie-instrument. Open architectuur.",
+    "new": "Nieuwe schaal",
+    "applications": "Toepassingen"
+  },
+  "reports": {
+    "title": "Rapporten",
+    "subtitle": "AI-ondersteunde generatie en veilige export.",
+    "types": {
+      "session": "Sessie",
+      "weekly": "Wekelijks",
+      "monthly": "Maandelijks",
+      "quarterly": "Per kwartaal",
+      "annual": "Jaarlijks",
+      "custom": "Aangepast"
+    },
+    "export": {
+      "pdf": "PDF exporteren",
+      "docx": "Word exporteren",
+      "share": "Delen"
+    }
+  },
+  "documents": {
+    "title": "Documenten",
+    "subtitle": "Gedeelde bibliotheek met versiebeheer.",
+    "categories": {
+      "reports": "Rapporten",
+      "referrals": "Rapporten",
+      "prescriptions": "Recepten",
+      "assessments": "Beoordelingen",
+      "exams": "Examens",
+      "photos": "Foto's",
+      "videos": "Video's",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "Berichten",
+    "subtitle": "Veilige communicatie georganiseerd per kind.",
+    "audiences": {
+      "family": "Familie",
+      "school": "School",
+      "professionals": "Andere professionals"
+    }
+  },
+  "school": {
+    "title": "School",
+    "subtitle": "Uitwisseling van doelen, richtlijnen en observaties met het schoolteam.",
+    "consentRequired": "Vereist expliciete toestemming van de familie voor elke deling."
+  },
+  "indicators": {
+    "title": "Indicatoren",
+    "subtitle": "Automatische grafieken van evolutie, stemming, gedrag, slaap en meer.",
+    "series": {
+      "evolution": "Evolutie",
+      "frequency": "Frequentie",
+      "participation": "Participatie",
+      "goals": "Doelen",
+      "mood": "Stemming",
+      "behavior": "Gedrag",
+      "sleep": "Slaap",
+      "medication": "Medicatie"
+    }
+  },
+  "ai": {
+    "title": "Azul Clínico",
+    "subtitle": "Assistent voor het samenvatten van evoluties, vergelijken van periodes, voorstellen van activiteiten en opstellen van rapporten.",
+    "disclaimer": "AI ondersteunt klinische redenering. Het diagnosticeert nooit en vervangt nooit de beslissing van de professional.",
+    "suggestions": [
+      "Vat de evolutie van de afgelopen 30 dagen samen",
+      "Vergelijk gedrag voor en na de nieuwe routine",
+      "Stel activiteiten voor om gedeelde aandacht te oefenen",
+      "Stel een maandelijks rapport op basis van de sessies op"
+    ]
+  },
+  "settings": {
+    "title": "Instellingen",
+    "sections": {
+      "profile": "Professioneel profiel",
+      "specialties": "Specialismen",
+      "availability": "Beschikbaarheid",
+      "integrations": "Integraties (Google/Apple/Outlook)",
+      "security": "Beveiliging en AVG"
+    }
+  },
+  "specialties": {
+    "psychologist": "Psycholoog",
+    "neuropsychologist": "Neuropsycholoog",
+    "speech_therapist": "Logopedist",
+    "occupational_therapist": "Ergotherapeut",
+    "psychopedagogue": "Psychopedagoog",
+    "physician": "Arts",
+    "neurologist": "Neuroloog",
+    "psychiatrist": "Psychiater",
+    "pediatrician": "Kinderarts",
+    "nutritionist": "Voedingsdeskundige",
+    "physical_educator": "Lichamelijke opvoeder",
+    "teacher": "Leraar",
+    "school_coordinator": "Schoolcoördinator",
+    "caregiver": "Verzorger"
+  },
+  "banner": {
+    "previewMode": "Voorbeeld. De tabellen van de Professionals Module worden geactiveerd zodra Lovable Cloud opnieuw is geactiveerd. Er worden geen gegevens opgeslagen."
+  }
+}
