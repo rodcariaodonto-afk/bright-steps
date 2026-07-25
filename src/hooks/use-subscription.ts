@@ -45,6 +45,20 @@ function isRowActive(row: SubscriptionRow | null): boolean {
 export function useSubscription(userId: string | null | undefined): SubscriptionState {
   const [subscription, setSubscription] = useState<SubscriptionRow | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (!userId) { setIsAdmin(false); return; }
+    supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", userId)
+      .eq("role", "admin")
+      .limit(1)
+      .maybeSingle()
+      .then(({ data }) => setIsAdmin(!!data));
+  }, [userId]);
+
 
   const load = useCallback(async () => {
     if (!userId || !isPaymentsConfigured()) {
@@ -97,7 +111,7 @@ export function useSubscription(userId: string | null | undefined): Subscription
     };
   }, [userId, load]);
 
-  const isActive = isRowActive(subscription);
+  const isActive = isAdmin || isRowActive(subscription);
 
   // planCode: sempre derivado do price_id (lookup_key), que é estável entre
   // sandbox/live. Nunca do product_id (que guarda o `prod_xxx` interno).
@@ -106,12 +120,17 @@ export function useSubscription(userId: string | null | undefined): Subscription
     return findPlanByPriceId(subscription.price_id)?.code ?? null;
   }, [subscription]);
 
-  const entitledPlan: EntitledPlan = isActive && planCode ? planCode : "free";
+  const entitledPlan: EntitledPlan = isAdmin
+    ? "profissional_clinica"
+    : isActive && planCode
+    ? planCode
+    : "free";
 
   const hasFeature = useCallback(
-    (feature: Feature) => hasFeatureImpl(entitledPlan, feature),
-    [entitledPlan],
+    (feature: Feature) => (isAdmin ? true : hasFeatureImpl(entitledPlan, feature)),
+    [entitledPlan, isAdmin],
   );
+
 
   return {
     loading,
