@@ -45,6 +45,20 @@ function isRowActive(row: SubscriptionRow | null): boolean {
 export function useSubscription(userId: string | null | undefined): SubscriptionState {
   const [subscription, setSubscription] = useState<SubscriptionRow | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (!userId) { setIsAdmin(false); return; }
+    supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", userId)
+      .in("role", ["admin", "global_admin"])
+      .limit(1)
+      .maybeSingle()
+      .then(({ data }) => setIsAdmin(!!data));
+  }, [userId]);
+
 
   const load = useCallback(async () => {
     if (!userId || !isPaymentsConfigured()) {
