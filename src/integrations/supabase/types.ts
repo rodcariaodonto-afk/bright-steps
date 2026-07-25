@@ -1031,6 +1031,45 @@ export type Database = {
         }
         Relationships: []
       }
+      content_translations: {
+        Row: {
+          created_at: string
+          entity_id: string
+          entity_type: string
+          id: string
+          locale: string
+          payload: Json
+          source_hash: string
+          source_locale: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          entity_id: string
+          entity_type: string
+          id?: string
+          locale: string
+          payload: Json
+          source_hash: string
+          source_locale?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          entity_id?: string
+          entity_type?: string
+          id?: string
+          locale?: string
+          payload?: Json
+          source_hash?: string
+          source_locale?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       conversations: {
         Row: {
           child_id: string | null
