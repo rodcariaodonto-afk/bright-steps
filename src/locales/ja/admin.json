@@ -1,0 +1,63 @@
+{
+  "sidebar": {
+    "sections": {
+      "overview": "概要",
+      "people": "人々",
+      "content": "コンテンツ",
+      "commerce": "コマース",
+      "operations": "運用",
+      "settings": "システム"
+    },
+    "dashboard": "ダッシュボード",
+    "users": "ユーザー",
+    "families": "家族",
+    "children": "子供たち",
+    "professionals": "専門家",
+    "schools": "学校",
+    "cms": "コンテンツ＆CMS",
+    "stories": "ストーリー",
+    "games": "ゲーム",
+    "missions": "ミッション",
+    "achievements": "実績",
+    "marketplace": "マーケットプレイス",
+    "community": "コミュニティ",
+    "subscriptions": "サブスクリプション",
+    "finance": "財務",
+    "coupons": "クーポン",
+    "notifications": "通知",
+    "analytics": "分析",
+    "reports": "レポート",
+    "ai": "AI",
+    "logs": "ログ",
+    "flags": "機能フラグ",
+    "permissions": "権限",
+    "backups": "バックアップ",
+    "settings_global": "グローバル設定"
+  },
+  "topbar": {
+    "title": "管理パネル",
+    "backToFamily": "家族",
+    "backToPro": "専門家"
+  },
+  "banner": {
+    "message": "管理パネルはプレビューモードです。Lovable Cloudが再アクティブ化された際に、実際のデータ、RBAC、分析が利用可能になります。"
+  },
+  "dashboard": {
+    "title": "概要",
+    "subtitle": "プラットフォームのリアルタイム健全性",
+    "cards": {
+      "mau": "アクティブユーザー（月）",
+      "dau": "アクティブユーザー（日）",
+      "families": "登録家族数",
+      "professionals": "アクティブな専門家",
+      "children": "サポートされている子供たち",
+      "revenue": "経常収益",
+      "aiCost": "AIコスト（30日）",
+      "conversion": "トライアル→有料へのコンバージョン"
+    }
+  },
+  "placeholder": {
+    "back": "管理ダッシュボードに戻る",
+    "message": "このエリアはLovable Cloudが再アクティブ化された際に接続されます。構造、テーブル、RLSポリシーはすでに設計済みです。"
+  }
+}

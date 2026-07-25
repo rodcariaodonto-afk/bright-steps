@@ -1,0 +1,84 @@
+{
+  "shell": {
+    "title": "Mondo Blu",
+    "greeting": "Ciao, {{name}}!",
+    "greetingFallback": "Ciao, amichetto!",
+    "stars": "stelline",
+    "exit": "Esci dal Mondo",
+    "nav": {
+      "home": "Inizio",
+      "games": "Giochi",
+      "azul": "Parla con Azul",
+      "mood": "Come mi sento",
+      "breathe": "Respira",
+      "stories": "Storie"
+    }
+  },
+  "home": {
+    "welcome": "Benvenuto nel tuo Mondo!",
+    "subtitle": "Scegli un'avventura per oggi.",
+    "cards": {
+      "azul": {
+        "title": "Parla con Azul",
+        "desc": "Il tuo amico curioso ti sta aspettando."
+      },
+      "mood": {
+        "title": "Come mi sento",
+        "desc": "Racconta ad Azul come sta il tuo cuore."
+      },
+      "breathe": {
+        "title": "Respiriamo insieme",
+        "desc": "Un esercizio veloce per stare calmi."
+      },
+      "stories": {
+        "title": "Una storia",
+        "desc": "Scegli un tema e Azul la inventa per te."
+      }
+    }
+  },
+  "mood": {
+    "title": "Come stai adesso?",
+    "subtitle": "Tocca la faccina che ti assomiglia.",
+    "options": {
+      "1": "Triste",
+      "2": "Un po' giù",
+      "3": "Normale",
+      "4": "Felice",
+      "5": "Radioso"
+    },
+    "saved": "Grazie per aver condiviso! Hai guadagnato una stellina.",
+    "signIn": "Chiedi a un adulto di accedere per salvare."
+  },
+  "breathe": {
+    "title": "Respiriamo",
+    "subtitle": "Segui la pallina. Inspira, trattieni, espira.",
+    "start": "Inizia",
+    "stop": "Ferma",
+    "inhale": "Inspira...",
+    "hold": "Trattieni...",
+    "exhale": "Espira lentamente...",
+    "done": "Bravo! Ti meriti una stellina."
+  },
+  "stories": {
+    "title": "Storie di Azul",
+    "subtitle": "Scegli un tema e Azul la inventa per te.",
+    "themes": {
+      "space": "Spazio",
+      "dinos": "Dinosauri",
+      "ocean": "Fondo del mare",
+      "forest": "Foresta magica",
+      "cars": "Macchinine",
+      "animals": "Animaletti"
+    },
+    "generate": "Racconta storia",
+    "loading": "Azul sta pensando...",
+    "another": "Un'altra storia",
+    "reward": "+1 stellina per aver letto fino alla fine!"
+  },
+  "azul": {
+    "title": "Azul, il tuo amico",
+    "hint": "Digita o chiedi a un adulto di aiutarti.",
+    "placeholder": "Parla con Azul...",
+    "send": "Invia"
+  }
+}

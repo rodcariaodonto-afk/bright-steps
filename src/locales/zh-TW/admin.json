@@ -1,0 +1,63 @@
+{
+  "sidebar": {
+    "sections": {
+      "overview": "總覽",
+      "people": "人物",
+      "content": "內容",
+      "commerce": "商務",
+      "operations": "營運",
+      "settings": "系統"
+    },
+    "dashboard": "儀表板",
+    "users": "使用者",
+    "families": "家庭",
+    "children": "兒童",
+    "professionals": "專業人士",
+    "schools": "學校",
+    "cms": "內容與 CMS",
+    "stories": "故事",
+    "games": "遊戲",
+    "missions": "任務",
+    "achievements": "成就",
+    "marketplace": "市集",
+    "community": "社群",
+    "subscriptions": "訂閱",
+    "finance": "財務",
+    "coupons": "優惠券",
+    "notifications": "通知",
+    "analytics": "分析",
+    "reports": "報告",
+    "ai": "AI",
+    "logs": "日誌",
+    "flags": "功能開關",
+    "permissions": "權限",
+    "backups": "備份",
+    "settings_global": "全域設定"
+  },
+  "topbar": {
+    "title": "管理面板",
+    "backToFamily": "家庭",
+    "backToPro": "專業人士"
+  },
+  "banner": {
+    "message": "管理面板處於預覽模式。當 Lovable Cloud 重新啟用時，將會導入真實數據、RBAC 和分析。"
+  },
+  "dashboard": {
+    "title": "總覽",
+    "subtitle": "平台即時健康狀況",
+    "cards": {
+      "mau": "月活躍使用者",
+      "dau": "日活躍使用者",
+      "families": "已註冊家庭",
+      "professionals": "活躍專業人士",
+      "children": "受照護兒童",
+      "revenue": "經常性收入",
+      "aiCost": "AI 成本 (30 天)",
+      "conversion": "試用 → 付費轉換率"
+    }
+  },
+  "placeholder": {
+    "back": "返回管理儀表板",
+    "message": "當 Lovable Cloud 重新啟用時，此區域將會連接。結構、表格和 RLS 政策已設計完成。"
+  }
+}
