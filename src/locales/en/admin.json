@@ -1,0 +1,63 @@
+{
+  "sidebar": {
+    "sections": {
+      "overview": "Overview",
+      "people": "People",
+      "content": "Content",
+      "commerce": "Commerce",
+      "operations": "Operations",
+      "settings": "System"
+    },
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "families": "Families",
+    "children": "Children",
+    "professionals": "Professionals",
+    "schools": "Schools",
+    "cms": "Content & CMS",
+    "stories": "Stories",
+    "games": "Games",
+    "missions": "Missions",
+    "achievements": "Achievements",
+    "marketplace": "Marketplace",
+    "community": "Community",
+    "subscriptions": "Subscriptions",
+    "finance": "Finance",
+    "coupons": "Coupons",
+    "notifications": "Notifications",
+    "analytics": "Analytics",
+    "reports": "Reports",
+    "ai": "AI",
+    "logs": "Logs",
+    "flags": "Feature Flags",
+    "permissions": "Permissions",
+    "backups": "Backups",
+    "settings_global": "Global Settings"
+  },
+  "topbar": {
+    "title": "Admin Panel",
+    "backToFamily": "Family",
+    "backToPro": "Professionals"
+  },
+  "banner": {
+    "message": "Admin Panel in preview mode. Real data, RBAC, and analytics arrive once Lovable Cloud is enabled."
+  },
+  "dashboard": {
+    "title": "Overview",
+    "subtitle": "Platform health in real time",
+    "cards": {
+      "mau": "Monthly active users",
+      "dau": "Daily active users",
+      "families": "Registered families",
+      "professionals": "Active professionals",
+      "children": "Children tracked",
+      "revenue": "Recurring revenue",
+      "aiCost": "AI cost (30d)",
+      "conversion": "Trial → paid conversion"
+    }
+  },
+  "placeholder": {
+    "back": "Back to admin dashboard",
+    "message": "This area will be connected once Lovable Cloud is enabled. Tables, structure, and RLS policies are already designed."
+  }
+}

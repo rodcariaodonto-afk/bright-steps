@@ -1,0 +1,47 @@
+{
+  "brand": {
+    "name": "My Blue World",
+    "tagline": "The child development ecosystem"
+  },
+  "actions": {
+    "getStarted": "Get started",
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "signOut": "Sign out",
+    "cancel": "Cancel",
+    "save": "Save",
+    "continue": "Continue",
+    "back": "Back",
+    "learnMore": "Learn more",
+    "openApp": "Open app"
+  },
+  "nav": {
+    "product": "Product",
+    "family": "Family",
+    "child": "Child",
+    "professionals": "Professionals",
+    "ai": "Artificial Intelligence",
+    "security": "Security",
+    "pricing": "Pricing"
+  },
+  "status": {
+    "comingSoon": "Coming soon",
+    "beta": "Beta",
+    "preview": "Preview"
+  },
+  "banner": {
+    "cloudPending": "Preview mode. Backend features will be enabled once Lovable Cloud is turned on."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "lgpd": "Privacy Law",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "language": {
+    "label": "Language",
+    "select": "Select language",
+    "auto": "Automatic (device)",
+    "detected": "Detected from your device"
+  }
+}

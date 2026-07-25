@@ -1,0 +1,237 @@
+{
+  "brand": {
+    "name": "My Blue World Clinical",
+    "tagline": "Workspace for child development professionals"
+  },
+  "sidebar": {
+    "sections": {
+      "work": "Work",
+      "clinical": "Clinical",
+      "collaboration": "Collaboration",
+      "settings": "Settings"
+    },
+    "dashboard": "Dashboard",
+    "agenda": "Schedule",
+    "patients": "Patients",
+    "sessions": "Sessions",
+    "evolution": "Progress",
+    "goals": "Goals",
+    "scales": "Scales",
+    "reports": "Reports",
+    "documents": "Documents",
+    "messages": "Messages",
+    "school": "School",
+    "indicators": "Indicators",
+    "ai": "Blue Clinical",
+    "settings": "Settings",
+    "profile": "My Profile",
+    "newSession": "New session"
+  },
+  "topbar": {
+    "search": "Search patients, sessions, reports…",
+    "shortcut": "⌘K",
+    "help": "Help",
+    "profile": "Profile"
+  },
+  "dashboard": {
+    "title": "Good morning, {{name}}",
+    "subtitle": "You have {{count}} appointments today.",
+    "cards": {
+      "todayAgenda": "Today's schedule",
+      "nextAppointments": "Next appointments",
+      "activePatients": "Active patients",
+      "pending": "Pending",
+      "messages": "Messages",
+      "pendingReports": "Pending reports",
+      "newDocuments": "New documents",
+      "sharedGoals": "Shared goals",
+      "aiAlerts": "AI alerts",
+      "weekSummary": "Weekly summary",
+      "monthSummary": "Monthly summary"
+    },
+    "empty": "No data in this space until Cloud is enabled.",
+    "quickActions": {
+      "newSession": "Record session",
+      "newReport": "Generate report",
+      "newAppointment": "Schedule appointment",
+      "askAI": "Ask Blue Clinical"
+    }
+  },
+  "patients": {
+    "title": "Patients",
+    "subtitle": "Only children whose guardians have authorized your access.",
+    "columns": {
+      "name": "Name",
+      "age": "Age",
+      "diagnosis": "Diagnosis",
+      "support": "Support",
+      "lastSession": "Last session",
+      "nextSession": "Next session",
+      "goalsProgress": "Goals"
+    },
+    "filters": {
+      "all": "All",
+      "active": "Active",
+      "inactive": "Inactive",
+      "byDiagnosis": "By diagnosis",
+      "bySpecialty": "By specialty"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "sessions": "Sessions",
+      "evolution": "Progress",
+      "goals": "Goals",
+      "scales": "Scales",
+      "reports": "Reports",
+      "documents": "Documents",
+      "school": "School",
+      "family": "Family"
+    }
+  },
+  "agenda": {
+    "title": "Schedule",
+    "views": { "day": "Day", "week": "Week", "month": "Month", "list": "List" },
+    "empty": "No appointments in this period.",
+    "new": "New appointment"
+  },
+  "sessions": {
+    "titleNew": "New session",
+    "titleEdit": "Edit session",
+    "fields": {
+      "date": "Date",
+      "time": "Time",
+      "duration": "Duration",
+      "child": "Child",
+      "goals": "Goals worked",
+      "activities": "Activities performed",
+      "materials": "Materials used",
+      "response": "Child's response",
+      "observations": "Observations",
+      "nextSteps": "Next steps",
+      "attachments": "Attachments (photos, videos, audio, files)"
+    },
+    "reuse": "Active goals, latest observations, and pending scales will be pre-filled automatically."
+  },
+  "evolution": {
+    "title": "Progress",
+    "subtitle": "Chronological feed of progress, scales, and attachments.",
+    "share": "Share with",
+    "shareWith": { "family": "Family", "professionals": "Other professionals", "school": "School" }
+  },
+  "goals": {
+    "title": "Therapeutic goals",
+    "subtitle": "Goals shared with family and team.",
+    "fields": {
+      "description": "Description",
+      "category": "Category",
+      "start": "Start",
+      "deadline": "Deadline",
+      "owner": "Owner",
+      "participants": "Participants",
+      "indicators": "Indicators",
+      "status": "Status",
+      "progress": "Progress"
+    }
+  },
+  "scales": {
+    "title": "Scales and instruments",
+    "subtitle": "Register any assessment instrument. Open architecture.",
+    "new": "New scale",
+    "applications": "Applications"
+  },
+  "reports": {
+    "title": "Reports",
+    "subtitle": "AI-assisted generation and secure export.",
+    "types": {
+      "session": "Session",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "annual": "Annual",
+      "custom": "Custom"
+    },
+    "export": { "pdf": "Export PDF", "docx": "Export Word", "share": "Share" }
+  },
+  "documents": {
+    "title": "Documents",
+    "subtitle": "Shared library with version control.",
+    "categories": {
+      "reports": "Reports",
+      "referrals": "Referrals",
+      "prescriptions": "Prescriptions",
+      "assessments": "Assessments",
+      "exams": "Exams",
+      "photos": "Photos",
+      "videos": "Videos",
+      "pdf": "PDF"
+    }
+  },
+  "messages": {
+    "title": "Messages",
+    "subtitle": "Secure communication organized by child.",
+    "audiences": {
+      "family": "Family",
+      "school": "School",
+      "professionals": "Other professionals"
+    }
+  },
+  "school": {
+    "title": "School",
+    "subtitle": "Exchange goals, guidance, and observations with the school team.",
+    "consentRequired": "Requires explicit family consent for each sharing."
+  },
+  "indicators": {
+    "title": "Indicators",
+    "subtitle": "Automatic charts for progress, mood, behavior, sleep, and more.",
+    "series": {
+      "evolution": "Progress",
+      "frequency": "Frequency",
+      "participation": "Participation",
+      "goals": "Goals",
+      "mood": "Mood",
+      "behavior": "Behavior",
+      "sleep": "Sleep",
+      "medication": "Medication"
+    }
+  },
+  "ai": {
+    "title": "Blue Clinical",
+    "subtitle": "Assistant to summarize progress, compare periods, suggest activities, and draft reports.",
+    "disclaimer": "AI supports clinical reasoning. It never diagnoses and never replaces professional judgment.",
+    "suggestions": [
+      "Summarize progress over the last 30 days",
+      "Compare behavior before and after the new routine",
+      "Suggest activities to work on shared attention",
+      "Draft monthly report from sessions"
+    ]
+  },
+  "settings": {
+    "title": "Settings",
+    "sections": {
+      "profile": "Professional profile",
+      "specialties": "Specialties",
+      "availability": "Availability",
+      "integrations": "Integrations (Google/Apple/Outlook)",
+      "security": "Security and privacy"
+    }
+  },
+  "specialties": {
+    "psychologist": "Psychologist",
+    "neuropsychologist": "Neuropsychologist",
+    "speech_therapist": "Speech Therapist",
+    "occupational_therapist": "Occupational Therapist",
+    "psychopedagogue": "Psychopedagogue",
+    "physician": "Physician",
+    "neurologist": "Neurologist",
+    "psychiatrist": "Psychiatrist",
+    "pediatrician": "Pediatrician",
+    "nutritionist": "Nutritionist",
+    "physical_educator": "Physical Educator",
+    "teacher": "Teacher",
+    "school_coordinator": "School Coordinator",
+    "caregiver": "Caregiver"
+  },
+  "banner": {
+    "previewMode": "Preview. Professional module tables arrive as soon as Lovable Cloud is reactivated. No data is persisted."
+  }
+}
