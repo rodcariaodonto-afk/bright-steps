@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { I18nextProvider } from "react-i18next";
 
 import appCss from "../styles.css?url";
@@ -16,6 +16,7 @@ import i18n, { ensureI18n, changeLocale } from "@/i18n";
 import { detectLocale } from "@/i18n/detector";
 import { applyDocumentDirection } from "@/i18n/rtl";
 import { DEFAULT_LOCALE, LOCALES, type LocaleCode } from "@/i18n/config";
+import { useSession } from "@/hooks/use-session";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/atlas/theme-provider";
 
@@ -156,7 +157,6 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
-  const [i18nReady, setI18nReady] = useState(i18n.isInitialized);
 
   // Bootstrap i18n: detecta idioma (perfil > localStorage > navigator > timezone > IP)
   // e aplica lang/dir no <html>.
@@ -171,7 +171,6 @@ function RootComponent() {
       } else {
         applyDocumentDirection(detected);
       }
-      setI18nReady(true);
     })();
     return () => {
       cancelled = true;
@@ -198,10 +197,22 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <I18nextProvider i18n={i18n}>
         <ThemeProvider>
+          <LocaleSync />
           <Outlet />
           <Toaster position="top-right" richColors />
         </ThemeProvider>
       </I18nextProvider>
     </QueryClientProvider>
   );
+}
+
+/** Sincroniza locale do perfil autenticado com o i18next. */
+function LocaleSync() {
+  const { profile } = useSession();
+  useEffect(() => {
+    if (!profile?.locale) return;
+    if (profile.locale === i18n.language) return;
+    changeLocale(profile.locale as LocaleCode).catch(() => undefined);
+  }, [profile?.locale]);
+  return null;
 }
