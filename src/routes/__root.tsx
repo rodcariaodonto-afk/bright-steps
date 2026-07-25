@@ -213,11 +213,34 @@ function RootComponent() {
 /** Sincroniza locale do perfil autenticado com o i18next. */
 function LocaleSync() {
   const { profile } = useSession();
+
+  // Reaplica em toda montagem (após login/hard nav): localStorage > perfil.
   useEffect(() => {
-    const nextLocale = getPersistedLocaleLocal() ?? (profile?.locale as LocaleCode | undefined);
+    const nextLocale =
+      getPersistedLocaleLocal() ?? (profile?.locale as LocaleCode | undefined);
     if (!nextLocale) return;
     if (nextLocale === i18n.language) return;
     changeLocale(nextLocale).catch(() => undefined);
   }, [profile?.locale]);
+
+  // Escuta eventos de auth para reaplicar sem esperar re-render de profile.
+  useEffect(() => {
+    let unsub: (() => void) | undefined;
+    import("@/integrations/supabase/client").then(({ supabase }) => {
+      const { data } = supabase.auth.onAuthStateChange((event) => {
+        if (event !== "SIGNED_IN" && event !== "USER_UPDATED") return;
+        const stored = getPersistedLocaleLocal();
+        if (!stored) return;
+        if (stored === i18n.language) return;
+        changeLocale(stored).catch(() => undefined);
+      });
+      unsub = () => data.subscription.unsubscribe();
+    });
+    return () => {
+      unsub?.();
+    };
+  }, []);
+
   return null;
 }
+
