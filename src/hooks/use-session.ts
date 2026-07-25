@@ -8,6 +8,8 @@ export interface SessionProfile {
   email: string | null;
   avatarUrl: string | null;
   initials: string;
+  locale: string | null;
+  timezone: string | null;
 }
 
 export interface SessionState {
@@ -53,7 +55,7 @@ export function useSession(): SessionState {
       const [{ data: profileRow }, { data: roleRows }] = await Promise.all([
         supabase
           .from("profiles")
-          .select("full_name, avatar_url")
+          .select("full_name, avatar_url, locale, timezone")
           .eq("id", userId)
           .maybeSingle(),
         supabase.from("user_roles").select("role").eq("user_id", userId),
@@ -68,6 +70,8 @@ export function useSession(): SessionState {
         email,
         avatarUrl,
         initials: computeInitials(fullName, email),
+        locale: (profileRow as { locale?: string | null } | null)?.locale ?? null,
+        timezone: (profileRow as { timezone?: string | null } | null)?.timezone ?? null,
       });
       setRoles((roleRows ?? []).map((r) => r.role as string));
     }

@@ -13,6 +13,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { AtlasLogo } from "@/components/atlas/atlas-logo";
+import { LocaleSelector } from "@/components/i18n/locale-selector";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -108,6 +109,7 @@ function Landing() {
             </a>
           </nav>
           <div className="flex items-center gap-2">
+            <LocaleSelector variant="compact" align="end" className="hidden sm:inline-flex" />
             <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
               <Link to="/planos">Planos</Link>
             </Button>

@@ -1,0 +1,72 @@
+{
+  "shell": {
+    "title": "Blue World",
+    "greeting": "Hi, {{name}}!",
+    "greetingFallback": "Hi, friend!",
+    "stars": "stars",
+    "exit": "Leave the World",
+    "nav": {
+      "home": "Home",
+      "games": "Games",
+      "azul": "Talk to Blue",
+      "mood": "How I feel",
+      "breathe": "Breathe",
+      "stories": "Stories"
+    }
+  },
+  "home": {
+    "welcome": "Welcome to your World!",
+    "subtitle": "Choose today's adventure.",
+    "cards": {
+      "azul": { "title": "Talk to Blue", "desc": "Your curious friend is waiting." },
+      "mood": { "title": "How I feel", "desc": "Tell Blue how your heart is." },
+      "breathe": { "title": "Breathe together", "desc": "A quick exercise to calm down." },
+      "stories": { "title": "A story", "desc": "Pick a theme and Blue invents one for you." }
+    }
+  },
+  "mood": {
+    "title": "How are you now?",
+    "subtitle": "Tap the face that matches you.",
+    "options": {
+      "1": "Sad",
+      "2": "A bit down",
+      "3": "Normal",
+      "4": "Happy",
+      "5": "Radiant"
+    },
+    "saved": "Thanks for sharing! You earned a star.",
+    "signIn": "Ask an adult to sign in to save."
+  },
+  "breathe": {
+    "title": "Let's breathe",
+    "subtitle": "Follow the ball. Breathe in, hold, breathe out.",
+    "start": "Start",
+    "stop": "Stop",
+    "inhale": "Breathe in...",
+    "hold": "Hold...",
+    "exhale": "Breathe out slowly...",
+    "done": "Great! You deserve a star."
+  },
+  "stories": {
+    "title": "Blue's stories",
+    "subtitle": "Pick a theme and Blue invents one for you.",
+    "themes": {
+      "space": "Space",
+      "dinos": "Dinosaurs",
+      "ocean": "Deep sea",
+      "forest": "Magical forest",
+      "cars": "Little cars",
+      "animals": "Animals"
+    },
+    "generate": "Tell story",
+    "loading": "Blue is thinking...",
+    "another": "Another story",
+    "reward": "+1 star for reading to the end!"
+  },
+  "azul": {
+    "title": "Blue, your friend",
+    "hint": "Type or ask an adult to help.",
+    "placeholder": "Talk to Blue...",
+    "send": "Send"
+  }
+}

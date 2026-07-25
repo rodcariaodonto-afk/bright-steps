@@ -1,0 +1,69 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "children": "Children",
+    "timeline": "Timeline",
+    "calendar": "Calendar",
+    "routines": "Routines",
+    "medication": "Medication",
+    "documents": "Documents",
+    "mood": "Mood",
+    "behavior": "Behavior",
+    "goals": "Goals",
+    "reports": "Reports",
+    "school": "School",
+    "achievements": "Achievements",
+    "library": "Library",
+    "assessments": "Self-assessments",
+    "caregiver": "Wellbeing",
+    "community": "Community",
+    "marketplace": "Marketplace",
+    "messages": "Messages",
+    "ai": "Blue AI",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "subscription": "Subscription",
+    "groups": {
+      "routine": "Routine & everyday",
+      "health": "Health",
+      "development": "Development",
+      "network": "Support network",
+      "account": "Account"
+    }
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Good morning",
+      "afternoon": "Good afternoon",
+      "evening": "Good evening"
+    },
+    "welcome": "Here is today's summary.",
+    "cards": {
+      "nextEvent": "Next appointment",
+      "medications": "Today's medications",
+      "mood": "Recent mood",
+      "aiSummary": "AI summary",
+      "pending": "Pending"
+    },
+    "empty": "Enable Lovable Cloud to start recording real data."
+  },
+  "ai": {
+    "title": "Blue AI",
+    "subtitle": "Chat about routine, behavior, therapies, and your child's progress.",
+    "placeholder": "E.g. how has mood been this week?",
+    "disclaimer": "Blue AI is a support tool, not a replacement for healthcare professionals.",
+    "newThread": "New conversation",
+    "welcome": "Hi! I'm Blue. How can I help the family today?",
+    "suggestions": [
+      "Suggest a calming sleep routine",
+      "Write a social story about going to the dentist",
+      "Explain how to track difficult behaviors",
+      "How to prepare a child for the first day of school?"
+    ]
+  },
+  "placeholder": {
+    "title": "This module will be available soon",
+    "message": "As soon as Lovable Cloud is enabled, this area will be activated with real data, RLS, and sync between family members.",
+    "backToDashboard": "Back to dashboard"
+  }
+}

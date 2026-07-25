@@ -1,0 +1,14 @@
+{
+  "personas": {
+    "family": "Blue Family",
+    "clinical": "Blue Clinical",
+    "child": "Blue Friend",
+    "school": "Blue School",
+    "admin": "Blue Admin"
+  },
+  "guardrails": {
+    "notDiagnosis": "Blue never issues diagnoses. Always consult a healthcare professional.",
+    "notSubstitute": "A support tool. Does not replace doctors, therapists, psychologists, or educators.",
+    "risk": "In emergencies, contact local emergency services or a crisis hotline."
+  }
+}
