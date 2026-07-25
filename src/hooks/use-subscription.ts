@@ -120,12 +120,17 @@ export function useSubscription(userId: string | null | undefined): Subscription
     return findPlanByPriceId(subscription.price_id)?.code ?? null;
   }, [subscription]);
 
-  const entitledPlan: EntitledPlan = isActive && planCode ? planCode : "free";
+  const entitledPlan: EntitledPlan = isAdmin
+    ? "profissional_clinica"
+    : isActive && planCode
+    ? planCode
+    : "free";
 
   const hasFeature = useCallback(
-    (feature: Feature) => hasFeatureImpl(entitledPlan, feature),
-    [entitledPlan],
+    (feature: Feature) => (isAdmin ? true : hasFeatureImpl(entitledPlan, feature)),
+    [entitledPlan, isAdmin],
   );
+
 
   return {
     loading,
