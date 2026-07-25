@@ -1,49 +1,86 @@
+## Diagnóstico
+
+A seção **Comércio** do Painel Admin tem 5 abas. Apenas **Assinaturas** está funcional. As outras 4 são placeholders (`<AdminPage title=... />` sem conteúdo):
+
+- `/admin/marketplace` — placeholder
+- `/admin/community` — placeholder
+- `/admin/finance` — placeholder
+- `/admin/coupons` — placeholder
+- `/admin/subscriptions` — ✅ já funcional
+
 ## Objetivo
-Deixar o Painel Admin 100% funcional como Super Admin, cobrindo as abas ainda em placeholder (Notificações, Analytics, Relatórios) e adicionando ações de criação em Pessoas (Usuários, Profissionais, Escolas, Famílias, Crianças).
 
-## Escopo
+Implementar as 4 abas restantes com CRUD/analytics reais conectados ao Supabase, mantendo o padrão do Super Admin (server functions + auditoria + RLS admin-only).
 
-### 1. Aba Notificações (`/admin/notifications`)
-- Server functions: `listAllNotifications` (últimas 200, com filtro por tipo e status lido/não), `broadcastNotification` (envia para todos os usuários OU segmento: `admin | professional | family`), `deleteNotificationAdmin`.
-- UI: tabela de notificações recentes + botão "Nova notificação" abre dialog com formulário (título, corpo, prioridade, tipo, público‑alvo, link opcional). Toast + refresh após envio.
+## Escopo por aba
 
-### 2. Aba Analytics (`/admin/analytics`)
-- Server function `getAnalyticsOverview` agregando dados reais do banco:
-  - Séries diárias 30d de novos usuários, novas famílias, novas crianças, sessões clínicas concluídas, jogos concluídos.
-  - Top 5 jogos por sessões, top 5 histórias por leituras, distribuição de humor 30d, MRR ativo por plano.
-- UI com KPIs + gráficos (Recharts já instalado): line, bar, pie.
+### 1. Marketplace (`/admin/marketplace`)
+Gestão dos profissionais listados publicamente em `professional_profiles`.
+- Tabela: nome, conselho, especialidade, status de moderação (`pending/approved/rejected`), rating médio, nº reviews.
+- Ações: aprovar, rejeitar, suspender, editar destaque (`featured`), remover.
+- Filtros: status, especialidade, busca por nome.
+- Métricas topo: total aprovados, pendentes, taxa média de aprovação.
 
-### 3. Aba Relatórios (`/admin/reports`)
-- Server functions:
-  - `listAdminReports` (lê `public.reports`).
-  - `exportPlatformReport({ range, type })` gera CSV consolidado (usuários, famílias, receita, sessões) — retorna string CSV.
-- UI: seletor de período (7/30/90 dias) + tipo de relatório + botão "Gerar CSV" (download client‑side) + lista dos relatórios já gerados em `reports`.
+### 2. Community (`/admin/community`)
+Moderação de `community_posts` e `community_comments`.
+- Feed de posts recentes com autor, likes, comentários, data.
+- Ações: ocultar/remover post, remover comentário, banir autor (via `admin_audit_log`).
+- Filtros: reportados, mais curtidos, recentes.
+- Métricas: posts hoje/semana, comentários hoje, top autores.
 
-### 4. Ações de criação em Pessoas
-Adicionar botão "Adicionar" + dialog em cada tela; usar `supabaseAdmin` no server, sempre após `ensureAdmin`, e registrar em `admin_audit_log`.
+### 3. Finance (`/admin/finance`)
+Visão financeira consolidada (leitura de `subscriptions` + cortesias).
+- KPIs: MRR, ARR, receita últimos 30/90 dias, ticket médio, churn %.
+- Gráfico (Recharts): receita mensal últimos 12 meses.
+- Tabela: últimas 50 transações (usuário, plano, valor, status, data).
+- Export CSV de transações do período.
 
-- **Usuários** (`/admin/users`): "Novo usuário" via `supabaseAdmin.auth.admin.createUser` (email, senha temp, full_name, roles múltiplas: admin/professional). Trigger existente cria profile. Também botão inline "Editar papéis" por linha (adicionar/remover role em `user_roles`).
-- **Profissionais** (`/admin/professionals`): "Cadastrar profissional" — cria auto usuário (se e‑mail não existir) + `professional_profiles` (nome, conselho, número, estado, especialidades, bio) já com `moderation_status='approved'` e role `professional`.
-- **Escolas** (`/admin/schools`): "Vincular escola" — selecionar criança existente + preencher escola/série/turma/professor e inserir em `school_profiles`.
-- **Famílias** (`/admin/families`): "Nova família" — selecionar owner existente por e‑mail + nome.
-- **Crianças** (`/admin/children`): "Nova criança" — selecionar família + nome, apelido, data de nascimento, condições declaradas.
+### 4. Coupons (`/admin/coupons`)
+Sistema de cupons de desconto integrado ao checkout Stripe.
+- Nova tabela `public.coupons`: `code`, `discount_type` (percent/fixed), `discount_value`, `max_redemptions`, `redemptions_count`, `valid_until`, `applies_to_plan`, `active`, `created_by`, timestamps.
+- Migration com RLS: apenas admin gerencia; leitura pública restrita durante validação no checkout.
+- CRUD completo (criar, editar, desativar, deletar).
+- Tabela com cupons ativos, expirados, esgotados.
+- Botão "Copiar código" e status visual.
 
-### 5. Ajustes menores
-- Corrigir string "E,mail" na tabela de usuários.
-- Adicionar chaves i18n necessárias em `pt-BR/admin.json` (títulos, botões, colunas).
+## Backend
 
-## Detalhes técnicos
-- Novos arquivos:
-  - `src/modules/admin/notifications.functions.ts`
-  - `src/modules/admin/analytics.functions.ts`
-  - `src/modules/admin/reports.functions.ts`
-  - `src/modules/admin/people.functions.ts` (create user/professional/school/family/child + set roles)
-- Reescrita das rotas: `admin.notifications.tsx`, `admin.analytics.tsx`, `admin.reports.tsx`, e atualização com dialogs de criação nas 5 rotas de Pessoas.
-- Todas as server fns: `.middleware([requireSupabaseAuth])` + `ensureAdmin` + `supabaseAdmin` carregado dentro do handler; logs em `admin_audit_log`.
-- Gráficos usando Recharts (já no projeto).
-- Sem alteração de schema — as tabelas necessárias já existem (`notifications`, `reports`, `user_roles`, `professional_profiles`, `school_profiles`, `families`, `children`, `admin_audit_log`).
+Novo módulo: `src/modules/admin/commerce.functions.ts` com server functions autenticadas via `requireSupabaseAuth` + verificação `has_role(admin)`:
+- `listMarketplaceProfessionals`, `moderateProfessional`, `toggleFeatured`
+- `listCommunityPosts`, `moderatePost`, `deleteComment`
+- `getFinanceMetrics`, `listRecentTransactions`, `exportTransactionsCsv`
+- `listCoupons`, `createCoupon`, `updateCoupon`, `deleteCoupon`
 
-## Fora de escopo
-- Segmentação avançada de notificações (por família específica) — apenas broadcast por role nesta iteração.
-- Editor visual de relatórios agendados / cron.
-- Edição inline completa de todos os campos das entidades (apenas criação + campos essenciais).
+Cada mutação registra em `admin_audit_log`.
+
+## Migration
+
+```sql
+CREATE TABLE public.coupons (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  code text UNIQUE NOT NULL,
+  discount_type text NOT NULL CHECK (discount_type IN ('percent','fixed')),
+  discount_value numeric NOT NULL,
+  max_redemptions integer,
+  redemptions_count integer NOT NULL DEFAULT 0,
+  valid_until timestamptz,
+  applies_to_plan text,
+  active boolean NOT NULL DEFAULT true,
+  created_by uuid REFERENCES auth.users(id),
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.coupons TO authenticated;
+GRANT ALL ON public.coupons TO service_role;
+ALTER TABLE public.coupons ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "admins manage coupons" ON public.coupons FOR ALL TO authenticated
+  USING (public.has_role(auth.uid(),'admin')) WITH CHECK (public.has_role(auth.uid(),'admin'));
+```
+
+## Design
+
+Mantém identidade do Admin (neutros, cards com borda sutil, `AdminPage` wrapper). Tabelas com paginação simples, badges de status coloridos (verde/âmbar/vermelho), gráficos Recharts consistentes com `/admin/analytics`.
+
+## Entrega
+
+Uma resposta implementa as 4 rotas + módulo backend + migration. Valida tipos com `tsgo` ao final.
