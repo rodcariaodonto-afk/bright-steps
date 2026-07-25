@@ -7,11 +7,24 @@ import { UserPlus } from "lucide-react";
 
 import { AdminPage } from "@/components/admin/admin-page";
 import { listAdminUsers } from "@/modules/admin/api.functions";
-import { createUserAsAdmin, updateUserRoles } from "@/modules/admin/system.functions";
+import {
+  createUserAsAdmin,
+  grantComplimentary,
+  updateUserRoles,
+} from "@/modules/admin/system.functions";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { PUBLIC_PLANS } from "@/modules/billing/plans";
 import {
   Dialog,
   DialogContent,
@@ -30,32 +43,69 @@ const ROLE_OPTIONS = ["admin", "professional"];
 function AdminUsers() {
   const qc = useQueryClient();
   const fetchUsers = useServerFn(listAdminUsers);
-  const createFn = useServerFn(createUserAsAdmin);
   const updateRolesFn = useServerFn(updateUserRoles);
+  const createFn = useServerFn(createUserAsAdmin);
+  const grantFn = useServerFn(grantComplimentary);
 
   const { data, isLoading } = useQuery({
     queryKey: ["admin", "users"],
     queryFn: () => fetchUsers(),
   });
 
+
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({ email: "", password: "", fullName: "", roles: [] as string[] });
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    fullName: "",
+    kind: "family" as "family" | "professional" | "admin",
+    grantFree: false,
+    plan: "familia_plus" as string,
+    expiresAt: "" as string,
+    reason: "" as string,
+  });
+
+  const rolesFromKind = (kind: string) =>
+    kind === "admin" ? ["admin"] : kind === "professional" ? ["professional"] : [];
 
   const createMut = useMutation({
-    mutationFn: () =>
-      createFn({
+    mutationFn: async () => {
+      const res = await createFn({
         data: {
           email: form.email,
           password: form.password,
           fullName: form.fullName || undefined,
-          roles: form.roles,
+          roles: rolesFromKind(form.kind),
         },
-      }),
+      });
+      if (form.grantFree && res?.userId) {
+        await grantFn({
+          data: {
+            userId: res.userId,
+            plan: form.plan,
+            expiresAt: form.expiresAt ? new Date(form.expiresAt).toISOString() : null,
+            reason: form.reason || "Cortesia concedida pelo admin",
+          },
+        });
+      }
+      return res;
+    },
     onSuccess: () => {
-      toast.success("Usuário criado");
+      toast.success(
+        form.grantFree ? "Usuário criado com acesso cortesia" : "Usuário criado",
+      );
       qc.invalidateQueries({ queryKey: ["admin", "users"] });
       setOpen(false);
-      setForm({ email: "", password: "", fullName: "", roles: [] });
+      setForm({
+        email: "",
+        password: "",
+        fullName: "",
+        kind: "family",
+        grantFree: false,
+        plan: "familia_plus",
+        expiresAt: "",
+        reason: "",
+      });
     },
     onError: (e: Error) => toast.error(e.message),
   });
@@ -89,23 +139,65 @@ function AdminUsers() {
               <Input placeholder="Senha temporária (mín 8 caracteres)" type="text" value={form.password}
                 onChange={(e) => setForm({ ...form, password: e.target.value })} />
               <div>
-                <p className="mb-2 text-xs font-medium text-muted-foreground">Papéis</p>
-                <div className="flex gap-4">
-                  {ROLE_OPTIONS.map((r) => (
-                    <label key={r} className="flex items-center gap-2 text-sm">
-                      <Checkbox
-                        checked={form.roles.includes(r)}
-                        onCheckedChange={(v) =>
-                          setForm({
-                            ...form,
-                            roles: v ? [...form.roles, r] : form.roles.filter((x) => x !== r),
-                          })
-                        }
-                      />
-                      {r}
-                    </label>
-                  ))}
-                </div>
+                <Label className="mb-2 block text-xs font-medium text-muted-foreground">
+                  Tipo de conta
+                </Label>
+                <Select
+                  value={form.kind}
+                  onValueChange={(v) => setForm({ ...form, kind: v as typeof form.kind })}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="family">Família / usuário comum</SelectItem>
+                    <SelectItem value="professional">Profissional da saúde</SelectItem>
+                    <SelectItem value="admin">Administrador</SelectItem>
+                  </SelectContent>
+                </Select>
+                <p className="mt-1 text-[11px] text-muted-foreground">
+                  Famílias não precisam de papel especial, só uma conta ativa.
+                </p>
+              </div>
+
+              <div className="rounded-lg border border-border/60 bg-muted/30 p-3">
+                <label className="flex items-center gap-2 text-sm font-medium">
+                  <Checkbox
+                    checked={form.grantFree}
+                    onCheckedChange={(v) => setForm({ ...form, grantFree: Boolean(v) })}
+                  />
+                  Conceder acesso gratuito (cortesia)
+                </label>
+                {form.grantFree && (
+                  <div className="mt-3 space-y-2">
+                    <Select
+                      value={form.plan}
+                      onValueChange={(v) => setForm({ ...form, plan: v })}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Plano" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {PUBLIC_PLANS.map((p) => (
+                          <SelectItem key={p.code} value={p.code}>
+                            {p.displayName}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <Input
+                      type="date"
+                      value={form.expiresAt}
+                      onChange={(e) => setForm({ ...form, expiresAt: e.target.value })}
+                      placeholder="Expira em (opcional)"
+                    />
+                    <Input
+                      placeholder="Motivo (ex: divulgação, teste, parceiro)"
+                      value={form.reason}
+                      onChange={(e) => setForm({ ...form, reason: e.target.value })}
+                    />
+                  </div>
+                )}
               </div>
             </div>
             <DialogFooter>
