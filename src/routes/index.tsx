@@ -28,6 +28,28 @@ export const Route = createFileRoute("/")({
         content:
           "Organize rotina, terapias, humor e medicações. Uma IA acolhedora acompanha a jornada da sua criança do TEA ao TDAH, dislexia e além.",
       },
+      {
+        property: "og:title",
+        content:
+          "Meu Mundo Azul: plataforma para o desenvolvimento infantil e o neurodesenvolvimento",
+      },
+      {
+        property: "og:description",
+        content:
+          "Organize rotina, terapias, humor e medicações. Uma IA acolhedora acompanha a jornada da sua criança do TEA ao TDAH, dislexia e além.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content:
+          "Meu Mundo Azul: plataforma para o desenvolvimento infantil e o neurodesenvolvimento",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Organize rotina, terapias, humor e medicações. Uma IA acolhedora acompanha a jornada da sua criança do TEA ao TDAH, dislexia e além.",
+      },
     ],
   }),
   component: Landing,

@@ -1,6 +1,6 @@
 import i18next, { type i18n as I18nInstance } from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
-import { initReactI18next } from "react-i18next";
+import { initReactI18next, setDefaults } from "react-i18next";
 
 import {
   DEFAULT_LOCALE,
@@ -12,6 +12,8 @@ import {
   type Namespace,
 } from "./config";
 import { applyDocumentDirection } from "./rtl";
+
+setDefaults({ useSuspense: false });
 
 /**
  * Todos os JSONs de tradução são resolvidos via Vite glob.
@@ -51,7 +53,8 @@ export async function ensureI18n(initialLocale?: LocaleCode): Promise<I18nInstan
   if (!bootstrapPromise) bootstrapPromise = bootstrap(initialLocale);
   await bootstrapPromise;
   if (initialLocale && i18next.language !== initialLocale) {
-    await changeLocale(initialLocale);
+    await i18next.changeLanguage(initialLocale);
+    applyDocumentDirection(initialLocale);
   }
   return i18next;
 }
@@ -80,6 +83,12 @@ async function bootstrap(initialLocale: LocaleCode = DEFAULT_LOCALE): Promise<I1
 
 export async function changeLocale(locale: LocaleCode): Promise<void> {
   if (!LOCALES[locale]) return;
+  if (!bootstrapPromise) {
+    bootstrapPromise = bootstrap(locale);
+    await bootstrapPromise;
+    return;
+  }
+  await bootstrapPromise;
   await i18next.changeLanguage(locale);
   applyDocumentDirection(locale);
 }

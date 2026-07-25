@@ -86,6 +86,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  loader: async () => {
+    await ensureI18n(DEFAULT_LOCALE);
+    return null;
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
