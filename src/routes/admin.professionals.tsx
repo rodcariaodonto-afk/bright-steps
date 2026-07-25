@@ -56,7 +56,11 @@ function AdminProfessionals() {
 
   return (
     <AdminPage title={t("sidebar.professionals")} description="Moderação e verificação de profissionais.">
+      <div className="mb-4 flex justify-end">
+        <CreateProfessionalDialog onCreated={() => qc.invalidateQueries({ queryKey: ["admin", "professionals"] })} />
+      </div>
       <div className="overflow-hidden rounded-xl border border-border/60 bg-background">
+
         <table className="w-full text-sm">
           <thead className="bg-muted/40 text-left text-xs uppercase text-muted-foreground">
             <tr>
