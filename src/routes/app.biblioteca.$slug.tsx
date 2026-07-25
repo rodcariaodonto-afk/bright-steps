@@ -2,7 +2,6 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { ArrowLeft, Bookmark, Clock } from "lucide-react";
-import { AppShell } from "@/components/atlas/app-shell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getLibraryArticle, toggleArticleSaved } from "@/modules/library/api.functions";
@@ -16,14 +15,14 @@ export const Route = createFileRoute("/app/biblioteca/$slug")({
     ],
   }),
   errorComponent: ({ error }) => (
-    <AppShell>
+    <>
       <p className="text-destructive">Erro ao carregar: {error.message}</p>
-    </AppShell>
+    </>
   ),
   notFoundComponent: () => (
-    <AppShell>
+    <>
       <p className="text-muted-foreground">Artigo não encontrado.</p>
-    </AppShell>
+    </>
   ),
   component: ArticlePage,
 });
@@ -45,11 +44,11 @@ function ArticlePage() {
     },
   });
 
-  if (isLoading) return <AppShell><p className="text-muted-foreground">Carregando...</p></AppShell>;
+  if (isLoading) return <><p className="text-muted-foreground">Carregando...</p></>;
   if (!article) throw notFound();
 
   return (
-    <AppShell>
+    <>
       <article className="max-w-3xl mx-auto space-y-6">
         <Link to="/app/biblioteca" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
           <ArrowLeft className="h-4 w-4" /> Voltar
@@ -73,6 +72,6 @@ function ArticlePage() {
           {article.body}
         </div>
       </article>
-    </AppShell>
+    </>
   );
 }
