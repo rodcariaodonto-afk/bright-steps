@@ -40,7 +40,7 @@ export const getAnalyticsOverview = createServerFn({ method: "GET" })
       supabaseAdmin.from("children").select("created_at").gte("created_at", sinceIso).is("deleted_at", null),
       supabaseAdmin.from("clinical_sessions").select("created_at").gte("created_at", sinceIso),
       supabaseAdmin.from("game_sessions").select("created_at, game_id, status").gte("created_at", sinceIso),
-      supabaseAdmin.from("mood_logs").select("mood, created_at").gte("created_at", sinceIso),
+      supabaseAdmin.from("mood_logs").select("level, created_at").gte("created_at", sinceIso),
       supabaseAdmin.from("subscriptions").select("status, price_id, product_id"),
     ]);
 
