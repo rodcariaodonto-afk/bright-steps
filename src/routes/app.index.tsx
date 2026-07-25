@@ -2,17 +2,19 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Sparkles,
   Pill,
-  CalendarDays,
   SmilePlus,
   ArrowRight,
   Baby,
   Plus,
+  Repeat,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/hooks/use-session";
 import { useActiveChild } from "@/hooks/use-active-child";
 import { PatternsCard } from "@/components/insights/patterns-card";
+import { DashboardMundoAzulCard } from "@/components/atlas/dashboard-mundo-azul-card";
+import { NextUpCard } from "@/components/atlas/next-up-card";
 
 export const Route = createFileRoute("/app/")({
   head: () => ({
@@ -70,65 +72,45 @@ function Dashboard() {
         <EmptyState />
       ) : (
         <div className="space-y-5">
+          {/* Hero: entrada para o Mundo Azul (modo criança) */}
+          <DashboardMundoAzulCard childName={childName} />
+
+          {/* Bento grid: A seguir ocupa 2 cols, Azul IA 1 col */}
+          <div className="grid gap-5 md:grid-cols-3">
+            <div className="md:col-span-2">
+              <NextUpCard />
+            </div>
+            <AzulIACard />
+          </div>
+
           {activeChild && <PatternsCard childId={activeChild.id} />}
 
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            <Card
-              icon={<CalendarDays className="h-5 w-5" />}
-              title="Próximo compromisso"
-              value="Sem agendamentos"
-              hint="Cadastre a agenda em Calendário"
-              tone="primary"
-            />
-            <Card
+          {/* Cards menores de resumo */}
+          <div className="grid gap-5 md:grid-cols-3">
+            <QuickCard
               icon={<Pill className="h-5 w-5" />}
-              title="Medicações de hoje"
-              value="Sem medicações"
-              hint="Cadastre em Medicação"
+              title="Medicações"
+              hint="Registre doses e horários"
+              cta="Abrir medicação"
+              to="/app/medicacao"
               tone="accent"
             />
-            <Card
+            <QuickCard
               icon={<SmilePlus className="h-5 w-5" />}
-              title="Humor recente"
-              value="Sem registros"
-              hint="Faça o primeiro em Humor"
+              title="Humor"
+              hint="Como a criança está se sentindo"
+              cta="Registrar humor"
+              to="/app/humor"
+              tone="primary"
             />
-
-            <div className="rounded-3xl border border-dashed border-border p-6 md:col-span-2 xl:col-span-2">
-              <p className="text-sm font-semibold text-muted-foreground">
-                Próximo passo
-              </p>
-              <p className="mt-2 text-sm text-foreground">
-                Registre a rotina de {childName ?? "hoje"} para começar o
-                histórico.
-              </p>
-              <Button asChild variant="outline" className="mt-4 rounded-full">
-                <Link to="/app/rotinas">
-                  Ir para Rotinas
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Link>
-              </Button>
-            </div>
-
-            <div className="rounded-3xl border border-primary/20 bg-primary-soft/60 p-6">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
-                  <Sparkles className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <p className="font-display text-base font-bold text-foreground">
-                  Converse com a Azul IA
-                </p>
-              </div>
-              <p className="mt-3 text-sm text-foreground/90">
-                Tire dúvidas sobre rotina, comportamento e terapias.
-              </p>
-              <Button asChild variant="secondary" className="mt-4 rounded-full">
-                <Link to="/app/ia">
-                  Abrir chat
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Link>
-              </Button>
-            </div>
+            <QuickCard
+              icon={<Repeat className="h-5 w-5" />}
+              title="Rotinas"
+              hint="Sequência do dia da criança"
+              cta="Ver rotinas"
+              to="/app/rotinas"
+              tone="muted"
+            />
           </div>
         </div>
       )}
@@ -159,17 +141,41 @@ function EmptyState() {
   );
 }
 
-function Card({
+function AzulIACard() {
+  return (
+    <div className="flex h-full flex-col rounded-3xl border border-primary/20 bg-primary-soft/60 p-6">
+      <div className="flex items-center gap-3">
+        <div className="grid h-10 w-10 place-items-center rounded-2xl bg-primary text-primary-foreground">
+          <Sparkles className="h-5 w-5" aria-hidden="true" />
+        </div>
+        <p className="font-display text-base font-bold text-foreground">Azul IA</p>
+      </div>
+      <p className="mt-3 flex-1 text-sm text-foreground/90">
+        Tire dúvidas sobre rotina, comportamento e terapias.
+      </p>
+      <Button asChild variant="secondary" className="mt-4 rounded-full">
+        <Link to="/app/ia">
+          Abrir chat
+          <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+        </Link>
+      </Button>
+    </div>
+  );
+}
+
+function QuickCard({
   icon,
   title,
-  value,
   hint,
+  cta,
+  to,
   tone = "muted",
 }: {
   icon: React.ReactNode;
   title: string;
-  value: string;
   hint: string;
+  cta: string;
+  to: string;
   tone?: "primary" | "accent" | "muted";
 }) {
   const iconBg =
@@ -179,21 +185,21 @@ function Card({
         ? "bg-accent text-accent-foreground"
         : "bg-surface-2 text-foreground";
   return (
-    <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-sm">
+    <Link
+      to={to}
+      className="group flex flex-col rounded-3xl border border-border/60 bg-card p-6 shadow-sm transition hover:border-primary/40 hover:shadow-md"
+    >
       <div className="flex items-center gap-3">
-        <div
-          className={`flex h-10 w-10 items-center justify-center rounded-2xl ${iconBg}`}
-        >
+        <div className={`grid h-10 w-10 place-items-center rounded-2xl ${iconBg}`}>
           {icon}
         </div>
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          {title}
-        </p>
+        <p className="font-display text-base font-bold text-foreground">{title}</p>
       </div>
-      <p className="mt-4 font-display text-2xl font-bold text-foreground">
-        {value}
+      <p className="mt-3 flex-1 text-sm text-muted-foreground">{hint}</p>
+      <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-primary">
+        {cta}
+        <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" aria-hidden="true" />
       </p>
-      <p className="mt-1 text-sm text-muted-foreground">{hint}</p>
-    </div>
+    </Link>
   );
 }
