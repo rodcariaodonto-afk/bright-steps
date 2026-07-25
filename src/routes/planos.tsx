@@ -7,9 +7,16 @@ import { Button } from "@/components/ui/button";
 import { PaymentTestModeBanner } from "@/components/billing/payment-test-mode-banner";
 import { useSession } from "@/hooks/use-session";
 import { useLocale } from "@/i18n/hooks";
-import { PUBLIC_PLANS, TRIAL_DAYS, formatBRL, type PublicPlan } from "@/modules/billing/plans";
-import { displayPriceFromBRL } from "@/modules/billing/currency";
+import {
+  PUBLIC_PLANS,
+  TRIAL_DAYS,
+  billingCurrencyForLocale,
+  resolvePrice,
+  type PublicPlan,
+} from "@/modules/billing/plans";
+import { formatMoney } from "@/modules/billing/currency";
 import { cn } from "@/lib/utils";
+
 
 export const Route = createFileRoute("/planos")({
   head: () => ({
