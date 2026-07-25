@@ -117,8 +117,10 @@ function AuthPage() {
       });
       if (result.error) throw result.error;
       if (!result.redirected) {
+        await adoptVisitorLocale();
         navigate({ to: "/app" });
       }
+
     } catch (err) {
       const message = err instanceof Error ? err.message : "Erro no login Google";
       toast.error(message);
