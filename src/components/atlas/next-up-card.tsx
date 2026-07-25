@@ -1,15 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, CalendarClock, Sparkles } from "lucide-react";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useCalendarRange } from "@/hooks/use-calendar";
 import { eventColor } from "@/modules/calendar/api";
+import { useLocale } from "@/i18n/hooks";
 
 /**
  * Card "A seguir" — mostra o próximo evento (calendário ou consulta)
  * nos próximos 14 dias. Estado vazio orienta o usuário a cadastrar.
  */
 export function NextUpCard() {
+  const { t } = useTranslation("app");
+  const { locale } = useLocale();
   const { fromISO, toISO } = useMemo(() => {
     const now = new Date();
     const end = new Date();
@@ -45,21 +49,21 @@ export function NextUpCard() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              A seguir
+              {t("dashboard.nextUp.eyebrow")}
             </p>
             <p className="font-display text-lg font-bold text-foreground">
-              Nada agendado nos próximos dias
+              {t("dashboard.nextUp.emptyTitle")}
             </p>
           </div>
         </div>
         <p className="mt-3 text-sm text-muted-foreground">
-          Cadastre consultas, terapias ou compromissos para acompanhar a rotina da criança.
+          {t("dashboard.nextUp.emptyDescription")}
         </p>
         <Link
           to="/app/calendario"
           className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-xs font-bold text-primary-foreground hover:brightness-110"
         >
-          Abrir Calendário
+          {t("dashboard.nextUp.openCalendar")}
           <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
         </Link>
       </div>
@@ -67,14 +71,14 @@ export function NextUpCard() {
   }
 
   const date = new Date(next.startsAt);
-  const dateLabel = date.toLocaleDateString("pt-BR", {
+  const dateLabel = date.toLocaleDateString(locale, {
     weekday: "long",
     day: "2-digit",
     month: "short",
   });
   const timeLabel = next.allDay
-    ? "Dia inteiro"
-    : date.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+    ? t("dashboard.nextUp.allDay")
+    : date.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
   const color = eventColor(next);
 
   return (
@@ -88,7 +92,7 @@ export function NextUpCard() {
         <div className="min-w-0">
           <p className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
             <Sparkles className="h-3 w-3" aria-hidden="true" />
-            A seguir
+            {t("dashboard.nextUp.eyebrow")}
           </p>
           <p className="mt-2 font-display text-xl font-extrabold text-foreground">
             {next.title}
@@ -104,7 +108,7 @@ export function NextUpCard() {
           to="/app/calendario"
           className="shrink-0 rounded-full border border-border px-3 py-1.5 text-xs font-semibold text-foreground hover:bg-muted"
         >
-          Ver agenda
+          {t("dashboard.nextUp.viewAgenda")}
         </Link>
       </div>
     </div>

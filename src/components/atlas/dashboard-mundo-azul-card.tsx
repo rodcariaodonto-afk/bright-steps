@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   childName?: string | null;
@@ -10,6 +11,8 @@ interface Props {
  * Substitui o antigo botão discreto na topbar.
  */
 export function DashboardMundoAzulCard({ childName }: Props) {
+  const { t } = useTranslation("app");
+
   return (
     <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700 p-6 text-white shadow-lg md:p-8">
       {/* bolhas decorativas */}
@@ -24,15 +27,15 @@ export function DashboardMundoAzulCard({ childName }: Props) {
           <div className="min-w-0">
             <p className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-widest backdrop-blur-sm">
               <Sparkles className="h-3 w-3" aria-hidden="true" />
-              Modo criança
+              {t("dashboard.kidMode.eyebrow")}
             </p>
             <h2 className="mt-2 font-display text-2xl font-extrabold leading-tight md:text-3xl">
-              Mundo Azul
+              {t("dashboard.kidMode.title")}
             </h2>
             <p className="mt-1 max-w-md text-sm text-white/90">
               {childName
-                ? `Um espaço lúdico e seguro para ${childName} conversar com o Azul, brincar e ganhar estrelinhas.`
-                : "Um espaço lúdico e seguro com jogos, histórias e o amigo Azul para a criança explorar sozinha."}
+                ? t("dashboard.kidMode.descriptionWithChild", { childName })
+                : t("dashboard.kidMode.description")}
             </p>
           </div>
         </div>
@@ -41,7 +44,7 @@ export function DashboardMundoAzulCard({ childName }: Props) {
           to="/kid"
           className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-blue-700 shadow-sm transition hover:bg-white/95 md:text-base"
         >
-          Abrir modo criança
+          {t("dashboard.kidMode.cta")}
           <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden="true" />
         </Link>
       </div>

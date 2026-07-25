@@ -1,5 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import { Baby, ChevronDown, Plus } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import {
   DropdownMenu,
@@ -12,6 +13,7 @@ import {
 import { useActiveChild } from "@/hooks/use-active-child";
 
 export function ChildPicker() {
+  const { t } = useTranslation("app");
   const { activeChild, children, setActiveChildId } = useActiveChild();
   const navigate = useNavigate();
 
@@ -23,12 +25,12 @@ export function ChildPicker() {
         className="inline-flex items-center gap-2 rounded-full border border-dashed border-primary/40 bg-primary-soft/40 px-3 py-1.5 text-xs font-medium text-primary hover:bg-primary-soft"
       >
         <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-        Adicionar criança
+        {t("childPicker.addChild")}
       </button>
     );
   }
 
-  const label = activeChild?.nickname ?? activeChild?.full_name ?? "Selecionar";
+  const label = activeChild?.nickname ?? activeChild?.full_name ?? t("childPicker.select");
 
   return (
     <DropdownMenu>
@@ -54,7 +56,7 @@ export function ChildPicker() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-56">
         <DropdownMenuLabel className="text-xs uppercase tracking-widest">
-          Criança ativa
+          {t("childPicker.activeChild")}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {children.map((c) => (
@@ -73,7 +75,7 @@ export function ChildPicker() {
             </span>
             {c.id === activeChild?.id ? (
               <span className="ml-2 text-[10px] font-semibold text-primary">
-                atual
+                {t("childPicker.current")}
               </span>
             ) : null}
           </DropdownMenuItem>
@@ -81,7 +83,7 @@ export function ChildPicker() {
         <DropdownMenuSeparator />
         <DropdownMenuItem onSelect={() => navigate({ to: "/app/crianca" })}>
           <Plus className="mr-2 h-4 w-4" aria-hidden="true" />
-          Gerenciar crianças
+          {t("childPicker.manageChildren")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
