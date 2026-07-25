@@ -165,3 +165,84 @@ function RejectDialog({ onConfirm }: { onConfirm: (reason: string) => void }) {
     </Dialog>
   );
 }
+
+function CreateProfessionalDialog({ onCreated }: { onCreated: () => void }) {
+  const createFn = useServerFn(createProfessionalAsAdmin);
+  const [open, setOpen] = useState(false);
+  const [form, setForm] = useState({
+    email: "",
+    full_name: "",
+    council_type: "",
+    council_number: "",
+    council_state: "",
+    specialties: "",
+    bio: "",
+    city: "",
+    state: "",
+  });
+
+  const mut = useMutation({
+    mutationFn: () =>
+      createFn({
+        data: {
+          email: form.email,
+          full_name: form.full_name,
+          council_type: form.council_type || undefined,
+          council_number: form.council_number || undefined,
+          council_state: form.council_state || undefined,
+          specialties: form.specialties.split(",").map((s) => s.trim()).filter(Boolean),
+          bio: form.bio || undefined,
+          city: form.city || undefined,
+          state: form.state || undefined,
+        },
+      }),
+    onSuccess: () => {
+      toast.success("Profissional cadastrado e aprovado");
+      onCreated();
+      setOpen(false);
+      setForm({ email: "", full_name: "", council_type: "", council_number: "", council_state: "", specialties: "", bio: "", city: "", state: "" });
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button><Plus className="mr-2 h-4 w-4" />Cadastrar profissional</Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-lg">
+        <DialogHeader><DialogTitle>Novo profissional</DialogTitle></DialogHeader>
+        <div className="space-y-3">
+          <Input placeholder="Nome completo" value={form.full_name}
+            onChange={(e) => setForm({ ...form, full_name: e.target.value })} />
+          <Input placeholder="E‑mail (cria usuário se não existir)" value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })} />
+          <div className="grid grid-cols-3 gap-2">
+            <Input placeholder="Conselho (CRP, CRM…)" value={form.council_type}
+              onChange={(e) => setForm({ ...form, council_type: e.target.value })} />
+            <Input placeholder="Número" value={form.council_number}
+              onChange={(e) => setForm({ ...form, council_number: e.target.value })} />
+            <Input placeholder="UF" value={form.council_state}
+              onChange={(e) => setForm({ ...form, council_state: e.target.value })} />
+          </div>
+          <Input placeholder="Especialidades (separadas por vírgula)" value={form.specialties}
+            onChange={(e) => setForm({ ...form, specialties: e.target.value })} />
+          <div className="grid grid-cols-2 gap-2">
+            <Input placeholder="Cidade" value={form.city}
+              onChange={(e) => setForm({ ...form, city: e.target.value })} />
+            <Input placeholder="UF" value={form.state}
+              onChange={(e) => setForm({ ...form, state: e.target.value })} />
+          </div>
+          <Textarea rows={3} placeholder="Bio" value={form.bio}
+            onChange={(e) => setForm({ ...form, bio: e.target.value })} />
+        </div>
+        <DialogFooter>
+          <Button variant="ghost" onClick={() => setOpen(false)}>Cancelar</Button>
+          <Button onClick={() => mut.mutate()} disabled={!form.email || !form.full_name || mut.isPending}>
+            {mut.isPending ? "Salvando…" : "Cadastrar"}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
