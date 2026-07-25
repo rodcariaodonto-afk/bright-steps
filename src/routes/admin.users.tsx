@@ -43,16 +43,15 @@ const ROLE_OPTIONS = ["admin", "professional"];
 function AdminUsers() {
   const qc = useQueryClient();
   const fetchUsers = useServerFn(listAdminUsers);
-  const createFn = useServerFn(createUserAsAdmin);
   const updateRolesFn = useServerFn(updateUserRoles);
+  const createFn = useServerFn(createUserAsAdmin);
+  const grantFn = useServerFn(grantComplimentary);
 
   const { data, isLoading } = useQuery({
     queryKey: ["admin", "users"],
     queryFn: () => fetchUsers(),
   });
 
-  const createFn = useServerFn(createUserAsAdmin);
-  const grantFn = useServerFn(grantComplimentary);
 
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({
