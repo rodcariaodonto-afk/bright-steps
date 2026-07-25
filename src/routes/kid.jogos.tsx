@@ -32,6 +32,9 @@ function KidGamesPage() {
   const [games, setGames] = useState<GameRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [playing, setPlaying] = useState<GameRow | null>(null);
+  const [recs, setRecs] = useState<{ id: string; slug: string; title: string; reason: string }[]>([]);
+  const [recLoading, setRecLoading] = useState(false);
+  const recommendFn = useServerFn(recommendGames);
 
   useEffect(() => {
     let cancelled = false;
@@ -49,10 +52,17 @@ function KidGamesPage() {
         setLoading(false);
       }
     })();
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, []);
+
+  useEffect(() => {
+    if (!activeChild?.id) return;
+    setRecLoading(true);
+    recommendFn({ data: { childId: activeChild.id } })
+      .then((r) => setRecs(r.recommendations ?? []))
+      .catch(() => setRecs([]))
+      .finally(() => setRecLoading(false));
+  }, [activeChild?.id, recommendFn]);
 
   if (!activeChild) {
     return (
