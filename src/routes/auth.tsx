@@ -56,6 +56,8 @@ function AuthPage() {
     typeof search?.redirect === "string" && search.redirect.startsWith("/")
       ? search.redirect
       : "/app";
+  // Novos cadastros vão direto para /planos (checkout com cartão obrigatório).
+  const signUpTarget = "/planos";
 
   // Redireciona se já estiver logado
   useEffect(() => {
@@ -73,15 +75,15 @@ function AuthPage() {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}${redirectTo}`,
+            emailRedirectTo: `${window.location.origin}${signUpTarget}`,
             data: { full_name: name },
           },
         });
         if (error) throw error;
         if (signUpData.session) {
           await adoptVisitorLocale();
-          toast.success("Conta criada!");
-          navigate({ to: redirectTo });
+          toast.success("Conta criada! Escolha seu plano.");
+          navigate({ to: signUpTarget });
         } else {
           // Auto-confirm desativado: tenta login imediato
           const { error: signInErr } = await supabase.auth.signInWithPassword({ email, password });
@@ -89,8 +91,8 @@ function AuthPage() {
             toast.success("Conta criada! Verifique seu e-mail para confirmar.");
           } else {
             await adoptVisitorLocale();
-            toast.success("Bem-vindo!");
-            navigate({ to: redirectTo });
+            toast.success("Bem-vindo! Escolha seu plano.");
+            navigate({ to: signUpTarget });
           }
         }
       } else {
