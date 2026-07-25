@@ -214,10 +214,11 @@ function RootComponent() {
 function LocaleSync() {
   const { profile } = useSession();
 
-  // Reaplica em toda montagem (após login/hard nav): localStorage > perfil.
+  // localStorage SEMPRE vence sobre profile.locale — evita que o default
+  // "pt-BR" do banco sobrescreva o idioma que o usuário escolheu na landing.
   useEffect(() => {
-    const nextLocale =
-      getPersistedLocaleLocal() ?? (profile?.locale as LocaleCode | undefined);
+    const stored = getPersistedLocaleLocal();
+    const nextLocale = stored ?? (profile?.locale as LocaleCode | undefined);
     if (!nextLocale) return;
     if (nextLocale === i18n.language) return;
     changeLocale(nextLocale).catch(() => undefined);
