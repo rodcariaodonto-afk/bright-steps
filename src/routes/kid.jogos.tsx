@@ -1,11 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Loader2, Star } from "lucide-react";
+import { Loader2, Star, Sparkles, Trophy } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useActiveChild } from "@/hooks/use-active-child";
 import { GamePlayer } from "@/modules/games/runtime/game-player";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useServerFn } from "@tanstack/react-start";
+import { recommendGames } from "@/modules/games/recommend.functions";
 
 export const Route = createFileRoute("/kid/jogos")({
   component: KidGamesPage,
