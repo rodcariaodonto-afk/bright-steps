@@ -3,6 +3,9 @@ import { echoEngine } from "../engines/echo";
 import { quizEngine } from "../engines/quiz";
 import { memoryEngine } from "../engines/memory";
 import { dragDropEngine } from "../engines/drag_drop";
+import { sequenceEngine } from "../engines/sequence";
+import { categorizationEngine } from "../engines/categorization";
+import { branchingStoryEngine } from "../engines/branching_story";
 
 const registry = new Map<EngineCode, EngineDefinition<any>>();
 
@@ -22,4 +25,7 @@ registerEngine(echoEngine);
 registerEngine(quizEngine);
 registerEngine(memoryEngine);
 registerEngine(dragDropEngine);
+registerEngine(sequenceEngine);
+registerEngine(categorizationEngine);
+registerEngine(branchingStoryEngine);
 
