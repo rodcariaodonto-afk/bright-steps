@@ -412,7 +412,7 @@ export const exportTableCsv = createServerFn({ method: "POST" })
     const { data: rows, error } = await supabaseAdmin.from(data.table as any).select("*");
     if (error) throw new Error(error.message);
 
-    const list = (rows ?? []) as Record<string, unknown>[];
+    const list = (rows ?? []) as unknown as Record<string, unknown>[];
     if (list.length === 0) {
       await audit(supabaseAdmin, context.userId, "export.csv", "table", data.table, {
         rows: 0,
