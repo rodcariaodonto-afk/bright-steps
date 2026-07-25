@@ -76,6 +76,7 @@ function AuthPage() {
         });
         if (error) throw error;
         if (signUpData.session) {
+          await adoptVisitorLocale();
           toast.success("Conta criada!");
           navigate({ to: redirectTo });
         } else {
@@ -84,6 +85,7 @@ function AuthPage() {
           if (signInErr) {
             toast.success("Conta criada! Verifique seu e-mail para confirmar.");
           } else {
+            await adoptVisitorLocale();
             toast.success("Bem-vindo!");
             navigate({ to: redirectTo });
           }
@@ -94,9 +96,11 @@ function AuthPage() {
           password,
         });
         if (error) throw error;
+        await adoptVisitorLocale();
         toast.success("Bem-vindo!");
         navigate({ to: redirectTo });
       }
+
     } catch (err) {
       const message = err instanceof Error ? err.message : "Erro na autenticação";
       toast.error(message);
