@@ -4,10 +4,12 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Plus } from "lucide-react";
 
 import { AdminPage } from "@/components/admin/admin-page";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
@@ -19,6 +21,7 @@ import {
 } from "@/components/ui/dialog";
 import { listAdminProfessionals } from "@/modules/admin/api.functions";
 import { moderateProfessional } from "@/modules/marketplace/api.functions";
+import { createProfessionalAsAdmin } from "@/modules/admin/people.functions";
 
 export const Route = createFileRoute("/admin/professionals")({
   component: AdminProfessionals,
