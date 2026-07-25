@@ -7,11 +7,24 @@ import { UserPlus } from "lucide-react";
 
 import { AdminPage } from "@/components/admin/admin-page";
 import { listAdminUsers } from "@/modules/admin/api.functions";
-import { createUserAsAdmin, updateUserRoles } from "@/modules/admin/system.functions";
+import {
+  createUserAsAdmin,
+  grantComplimentary,
+  updateUserRoles,
+} from "@/modules/admin/system.functions";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { PUBLIC_PLANS } from "@/modules/billing/plans";
 import {
   Dialog,
   DialogContent,
