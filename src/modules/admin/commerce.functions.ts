@@ -394,7 +394,7 @@ export const updateCoupon = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     await ensureAdmin(context.supabase, context.userId);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const patch: Record<string, unknown> = {};
+    const patch: { active?: boolean; valid_until?: string | null } = {};
     if (typeof data.active === "boolean") patch.active = data.active;
     if (data.valid_until !== undefined) patch.valid_until = data.valid_until;
     const { error } = await supabaseAdmin.from("coupons").update(patch).eq("id", data.id);
