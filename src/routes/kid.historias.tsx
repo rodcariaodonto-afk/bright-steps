@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Loader2, Star, BookOpen, Sparkles } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useActiveChild } from "@/hooks/use-active-child";
+import { useTranslatedContent } from "@/hooks/use-translated-content";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { StoryPlayer } from "@/modules/stories/runtime/story-player";
