@@ -13,6 +13,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { AtlasLogo } from "@/components/atlas/atlas-logo";
+import { LocaleSelector } from "@/components/i18n/locale-selector";
 
 export const Route = createFileRoute("/")({
   head: () => ({
