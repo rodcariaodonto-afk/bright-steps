@@ -7,12 +7,15 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { I18nextProvider } from "react-i18next";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import i18n from "../lib/i18n";
+import i18n, { ensureI18n, changeLocale } from "@/i18n";
+import { detectLocale } from "@/i18n/detector";
+import { applyDocumentDirection } from "@/i18n/rtl";
+import { DEFAULT_LOCALE, LOCALES, type LocaleCode } from "@/i18n/config";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/atlas/theme-provider";
 
@@ -135,8 +138,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const initialLocale: LocaleCode = DEFAULT_LOCALE;
+  const dir = LOCALES[initialLocale].dir;
   return (
-    <html lang="pt-BR">
+    <html lang={initialLocale} dir={dir}>
       <head>
         <HeadContent />
       </head>
@@ -151,6 +156,27 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+  const [i18nReady, setI18nReady] = useState(i18n.isInitialized);
+
+  // Bootstrap i18n: detecta idioma (perfil > localStorage > navigator > timezone > IP)
+  // e aplica lang/dir no <html>.
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      await ensureI18n(DEFAULT_LOCALE);
+      const detected = await detectLocale(null);
+      if (cancelled) return;
+      if (detected !== i18n.language) {
+        await changeLocale(detected);
+      } else {
+        applyDocumentDirection(detected);
+      }
+      setI18nReady(true);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     import("@/integrations/supabase/client").then(({ supabase }) => {
