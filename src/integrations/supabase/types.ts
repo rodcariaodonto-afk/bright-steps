@@ -83,6 +83,39 @@ export type Database = {
         }
         Relationships: []
       }
+      ai_persona_settings: {
+        Row: {
+          display_name: string
+          enabled: boolean
+          extra_instructions: string | null
+          model: string
+          persona_id: string
+          temperature: number | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          display_name: string
+          enabled?: boolean
+          extra_instructions?: string | null
+          model: string
+          persona_id: string
+          temperature?: number | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          display_name?: string
+          enabled?: boolean
+          extra_instructions?: string | null
+          model?: string
+          persona_id?: string
+          temperature?: number | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       app_settings: {
         Row: {
           description: string | null
