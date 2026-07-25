@@ -275,17 +275,32 @@ function AdminGamesPage() {
             </div>
             <div className="grid gap-1.5">
               <Label>
-                Config JSON {selectedEngine && <span className="text-xs text-muted-foreground">(schema do motor {selectedEngine.name})</span>}
+                Configuração do jogo {selectedEngine && <span className="text-xs text-muted-foreground">(motor {selectedEngine.name})</span>}
               </Label>
-              <Textarea rows={10} className="font-mono text-xs"
-                value={configText} onChange={(e) => setConfigText(e.target.value)} />
-              {configError && <p className="text-xs text-destructive">{configError}</p>}
-              {selectedEngine?.config_schema && (
-                <details className="text-xs text-muted-foreground">
-                  <summary className="cursor-pointer">Ver JSON Schema esperado</summary>
-                  <pre className="mt-1 max-h-40 overflow-auto rounded bg-muted p-2">{JSON.stringify(selectedEngine.config_schema, null, 2)}</pre>
-                </details>
-              )}
+              <Tabs defaultValue="visual">
+                <TabsList>
+                  <TabsTrigger value="visual">Editor visual</TabsTrigger>
+                  <TabsTrigger value="json">JSON avançado</TabsTrigger>
+                </TabsList>
+                <TabsContent value="visual" className="mt-3">
+                  <GameConfigBuilder
+                    engineCode={form.engine_code}
+                    config={(() => { try { return JSON.parse(configText || "{}"); } catch { return {}; } })()}
+                    onChange={(next) => { setConfigText(JSON.stringify(next, null, 2)); setConfigError(null); }}
+                  />
+                </TabsContent>
+                <TabsContent value="json" className="mt-3">
+                  <Textarea rows={12} className="font-mono text-xs"
+                    value={configText} onChange={(e) => setConfigText(e.target.value)} />
+                  {configError && <p className="mt-1 text-xs text-destructive">{configError}</p>}
+                  {selectedEngine?.config_schema && (
+                    <details className="mt-2 text-xs text-muted-foreground">
+                      <summary className="cursor-pointer">Ver JSON Schema esperado</summary>
+                      <pre className="mt-1 max-h-40 overflow-auto rounded bg-muted p-2">{JSON.stringify(selectedEngine.config_schema, null, 2)}</pre>
+                    </details>
+                  )}
+                </TabsContent>
+              </Tabs>
             </div>
             <div className="flex items-center gap-2">
               <input id="published" type="checkbox" checked={!!form.published}
