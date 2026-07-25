@@ -108,6 +108,7 @@ function Landing() {
             </a>
           </nav>
           <div className="flex items-center gap-2">
+            <LocaleSelector variant="compact" align="end" className="hidden sm:inline-flex" />
             <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
               <Link to="/planos">Planos</Link>
             </Button>
