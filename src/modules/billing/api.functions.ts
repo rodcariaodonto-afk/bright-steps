@@ -120,8 +120,14 @@ export const createCheckoutSession = createServerFn({ method: "POST" })
         locale: toStripeLocale(data.locale) as never,
         metadata: { userId },
         ...(isRecurring && {
+          // Trial obrigatório com cartão: exige método de pagamento no checkout
+          // e cancela automaticamente se o cartão falhar ao fim do trial.
+          payment_method_collection: "always",
           subscription_data: {
             trial_period_days: TRIAL_DAYS,
+            trial_settings: {
+              end_behavior: { missing_payment_method: "cancel" },
+            },
             metadata: { userId },
           },
         }),
