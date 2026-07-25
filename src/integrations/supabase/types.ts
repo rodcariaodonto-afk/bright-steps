@@ -949,11 +949,14 @@ export type Database = {
           age_max: number | null
           age_min: number | null
           body: string | null
+          config: Json
           cover_url: string | null
           created_at: string | null
           id: string
           published: boolean | null
           slug: string
+          stars_reward: number
+          story_type: string
           summary: string | null
           tags: string[] | null
           title: string
@@ -963,11 +966,14 @@ export type Database = {
           age_max?: number | null
           age_min?: number | null
           body?: string | null
+          config?: Json
           cover_url?: string | null
           created_at?: string | null
           id?: string
           published?: boolean | null
           slug: string
+          stars_reward?: number
+          story_type?: string
           summary?: string | null
           tags?: string[] | null
           title: string
@@ -977,11 +983,14 @@ export type Database = {
           age_max?: number | null
           age_min?: number | null
           body?: string | null
+          config?: Json
           cover_url?: string | null
           created_at?: string | null
           id?: string
           published?: boolean | null
           slug?: string
+          stars_reward?: number
+          story_type?: string
           summary?: string | null
           tags?: string[] | null
           title?: string

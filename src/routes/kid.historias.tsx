@@ -1,125 +1,120 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useChat } from "@ai-sdk/react";
-import { DefaultChatTransport } from "ai";
-
+import { useEffect, useState } from "react";
+import { Loader2, Star, BookOpen, Sparkles } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import { useActiveChild } from "@/hooks/use-active-child";
-import { useKidRewards } from "@/hooks/use-kid-rewards";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { StoryPlayer } from "@/modules/stories/runtime/story-player";
+import { STORY_ENGINES } from "@/modules/stories/story-registry";
+import type { StoryRow, StoryType } from "@/modules/stories/types";
 
 export const Route = createFileRoute("/kid/historias")({
   component: KidStories,
 });
 
-const THEMES = [
-  { id: "space", emoji: "🚀" },
-  { id: "dinos", emoji: "🦖" },
-  { id: "ocean", emoji: "🐙" },
-  { id: "forest", emoji: "🌳" },
-  { id: "cars", emoji: "🏎️" },
-  { id: "animals", emoji: "🐶" },
-] as const;
-
 function KidStories() {
-  const { t } = useTranslation("kid");
   const { activeChild } = useActiveChild();
-  const { addStars } = useKidRewards(activeChild?.id);
-  const [theme, setTheme] = useState<string | null>(null);
-  const [rewarded, setRewarded] = useState(false);
+  const [stories, setStories] = useState<StoryRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [playing, setPlaying] = useState<StoryRow | null>(null);
+  const [filter, setFilter] = useState<StoryType | "all">("all");
 
-  const { messages, sendMessage, status, setMessages } = useChat({
-    transport: new DefaultChatTransport({
-      api: "/api/chat",
-      body: { persona: "child", childId: activeChild?.id },
-    }),
-  });
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase
+        .from("content_stories")
+        .select("*")
+        .eq("published", true)
+        .order("created_at", { ascending: false });
+      setStories((data ?? []) as StoryRow[]);
+      setLoading(false);
+    })();
+  }, []);
 
-  const loading = status === "submitted" || status === "streaming";
-  const story = messages.filter((m) => m.role === "assistant").at(-1);
-
-  function pick(id: string) {
-    setTheme(id);
-    setMessages([]);
-    setRewarded(false);
-    const name = activeChild?.nickname ?? activeChild?.full_name?.split(" ")[0] ?? "amiguinho";
-    const themeLabel = t(`stories.themes.${id}`);
-    sendMessage({
-      text: `Invente uma história curta (4 a 6 parágrafos curtos), acolhedora e divertida, sobre "${themeLabel}", para ${name}. Use frases simples, sem violência, com um final feliz. Comece direto pela história, sem introdução.`,
-    });
+  if (!activeChild) {
+    return (
+      <div className="p-6 text-center text-[#0b2740]/70">
+        Escolha uma criança no painel principal para ler histórias.
+      </div>
+    );
   }
 
-  function finish() {
-    if (rewarded) return;
-    addStars(1, "Historia criada", "story");
-    setRewarded(true);
+  if (playing) {
+    return <StoryPlayer childId={activeChild.id} story={playing} onExit={() => setPlaying(null)} />;
   }
+
+  const shown = stories.filter((s) => filter === "all" || s.story_type === filter);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <div className="text-center">
-        <h1 className="text-2xl font-black">{t("stories.title")}</h1>
-        <p className="mt-1 text-sm font-semibold text-[#0b2740]/70">
-          {t("stories.subtitle")}
-        </p>
+        <div className="mx-auto mb-2 inline-flex h-14 w-14 items-center justify-center rounded-full bg-white/90 shadow-lg">
+          <BookOpen className="h-8 w-8 text-[#0b6cff]" />
+        </div>
+        <h1 className="text-2xl font-black text-[#0b2740]">Histórias</h1>
+        <p className="text-sm text-[#0b2740]/70">Leia, escolha caminhos e ganhe estrelas!</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-2">
-        {THEMES.map((tt) => (
-          <button
-            key={tt.id}
-            type="button"
-            onClick={() => pick(tt.id)}
-            disabled={loading}
-            className={`flex flex-col items-center gap-1 rounded-2xl p-3 shadow-md transition active:scale-95 disabled:opacity-50 ${
-              theme === tt.id ? "bg-[#0b6cff] text-white" : "bg-white/90 text-[#0b2740]"
-            }`}
-          >
-            <span className="text-3xl">{tt.emoji}</span>
-            <span className="text-[11px] font-bold">
-              {t(`stories.themes.${tt.id}`)}
-            </span>
-          </button>
+      <div className="flex flex-wrap justify-center gap-2">
+        <FilterChip active={filter === "all"} onClick={() => setFilter("all")}>Todas</FilterChip>
+        {Object.values(STORY_ENGINES).map((e) => (
+          <FilterChip key={e.code} active={filter === e.code} onClick={() => setFilter(e.code)}>
+            {e.label}
+          </FilterChip>
         ))}
       </div>
 
-      {theme && (
-        <div className="rounded-3xl bg-white/95 p-5 shadow-xl">
-          {loading && !story ? (
-            <div className="text-center text-sm font-semibold text-[#0b2740]/70">
-              {t("stories.loading")}
-            </div>
-          ) : story ? (
-            <>
-              <div className="prose prose-sm max-w-none whitespace-pre-wrap text-[#0b2740]">
-                {story.parts
-                  .filter((p) => p.type === "text")
-                  .map((p, i) => (
-                    <p key={i}>{(p as { text: string }).text}</p>
-                  ))}
-              </div>
-              {!loading && (
-                <div className="mt-4 flex flex-wrap justify-center gap-2">
-                  <button
-                    type="button"
-                    onClick={finish}
-                    disabled={rewarded}
-                    className="rounded-full bg-yellow-300 px-4 py-2 text-sm font-black text-yellow-900 shadow-md disabled:opacity-60"
-                  >
-                    ⭐ {t("stories.reward")}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => pick(theme)}
-                    className="rounded-full bg-[#0b6cff] px-4 py-2 text-sm font-black text-white shadow-md"
-                  >
-                    {t("stories.another")}
-                  </button>
+      {loading ? (
+        <div className="flex justify-center py-16"><Loader2 className="h-6 w-6 animate-spin text-[#0b2740]/60" /></div>
+      ) : shown.length === 0 ? (
+        <Card className="p-8 text-center text-sm text-[#0b2740]/70">
+          Nenhuma história por aqui ainda.
+        </Card>
+      ) : (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {shown.map((s) => (
+            <Card key={s.id} className="overflow-hidden border-white/60 bg-white/90 p-0 shadow-md">
+              {s.cover_url ? (
+                <img src={s.cover_url} alt={s.title} className="h-32 w-full object-cover" />
+              ) : (
+                <div className="flex h-32 items-center justify-center bg-gradient-to-br from-[#7fd0ff] to-[#0b6cff] text-5xl">
+                  📖
                 </div>
               )}
-            </>
-          ) : null}
+              <div className="space-y-2 p-4">
+                <div className="flex items-center gap-1 text-[10px] font-bold uppercase text-[#0b6cff]">
+                  {s.story_type === "branching" && <Sparkles className="h-3 w-3" />}
+                  {STORY_ENGINES[s.story_type]?.label ?? s.story_type}
+                </div>
+                <h3 className="font-bold text-[#0b2740]">{s.title}</h3>
+                {s.summary && <p className="text-xs text-[#0b2740]/70 line-clamp-2">{s.summary}</p>}
+                <div className="flex items-center justify-between pt-2">
+                  <span className="flex items-center gap-1 text-xs font-bold text-yellow-700">
+                    <Star className="h-3.5 w-3.5 fill-yellow-500 text-yellow-600" />
+                    +{s.stars_reward ?? 3}
+                  </span>
+                  <Button size="sm" onClick={() => setPlaying(s)}>Ler</Button>
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
       )}
     </div>
+  );
+}
+
+function FilterChip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <button
+      onClick={onClick}
+      className={
+        "rounded-full px-3 py-1 text-xs font-bold transition " +
+        (active ? "bg-[#0b6cff] text-white shadow" : "bg-white/80 text-[#0b2740] hover:bg-white")
+      }
+    >
+      {children}
+    </button>
   );
 }
