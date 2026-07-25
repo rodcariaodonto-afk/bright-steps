@@ -1,22 +1,34 @@
 /**
  * Catálogo de planos exibido em /planos, /app/assinatura e /admin/subscriptions.
  * Os price_id devem coincidir com o que foi cadastrado no provedor de pagamentos.
+ *
+ * Multi-currency: cada plano tem preços nativos em BRL, USD e EUR.
+ * Locales fora dessas moedas caem para USD (padrão global) ou EUR (zona euro).
  */
 
-export type PlanCode = "familia_essencial" | "familia_plus" | "profissional_clinica";
+import type { LocaleCode } from "@/i18n/config";
+import { LOCALES } from "@/i18n/config";
 
-export interface PlanPrice {
-  monthly: string;
-  yearly: string;
-  monthlyAmountBRL: number;
-  yearlyAmountBRL: number;
+export type PlanCode = "familia_essencial" | "familia_plus" | "profissional_clinica";
+export type BillingCurrency = "BRL" | "USD" | "EUR";
+export type BillingPeriod = "monthly" | "yearly";
+
+export interface PriceEntry {
+  priceId: string;
+  amount: number; // valor "humano" (ex: 19, 3.99), já pronto para formatação
+}
+
+export interface PlanPricing {
+  BRL: { monthly: PriceEntry; yearly: PriceEntry };
+  USD: { monthly: PriceEntry; yearly: PriceEntry };
+  EUR: { monthly: PriceEntry; yearly: PriceEntry };
 }
 
 export interface PublicPlan {
   code: PlanCode;
   displayName: string;
   tagline: string;
-  price: PlanPrice;
+  pricing: PlanPricing;
   highlight?: boolean;
   features: string[];
   audience: "family" | "professional";
@@ -27,13 +39,21 @@ export const PUBLIC_PLANS: PublicPlan[] = [
     code: "familia_essencial",
     displayName: "Família Essencial",
     tagline: "O básico bem feito para a rotina de uma criança.",
-    price: {
-      monthly: "familia_essencial_monthly",
-      yearly: "familia_essencial_yearly",
-      monthlyAmountBRL: 19,
-      yearlyAmountBRL: 182,
-    },
     audience: "family",
+    pricing: {
+      BRL: {
+        monthly: { priceId: "familia_essencial_monthly", amount: 19 },
+        yearly: { priceId: "familia_essencial_yearly", amount: 182 },
+      },
+      USD: {
+        monthly: { priceId: "familia_essencial_monthly_usd", amount: 3.99 },
+        yearly: { priceId: "familia_essencial_yearly_usd", amount: 38 },
+      },
+      EUR: {
+        monthly: { priceId: "familia_essencial_monthly_eur", amount: 3.99 },
+        yearly: { priceId: "familia_essencial_yearly_eur", amount: 38 },
+      },
+    },
     features: [
       "1 criança + até 3 responsáveis",
       "Rotina, humor, medicação e timeline",
@@ -47,13 +67,21 @@ export const PUBLIC_PLANS: PublicPlan[] = [
     displayName: "Família Plus",
     tagline: "A jornada completa da família com IA sem limites.",
     highlight: true,
-    price: {
-      monthly: "familia_plus_monthly",
-      yearly: "familia_plus_yearly",
-      monthlyAmountBRL: 49,
-      yearlyAmountBRL: 470,
-    },
     audience: "family",
+    pricing: {
+      BRL: {
+        monthly: { priceId: "familia_plus_monthly", amount: 49 },
+        yearly: { priceId: "familia_plus_yearly", amount: 470 },
+      },
+      USD: {
+        monthly: { priceId: "familia_plus_monthly_usd", amount: 8.99 },
+        yearly: { priceId: "familia_plus_yearly_usd", amount: 89 },
+      },
+      EUR: {
+        monthly: { priceId: "familia_plus_monthly_eur", amount: 8.99 },
+        yearly: { priceId: "familia_plus_yearly_eur", amount: 89 },
+      },
+    },
     features: [
       "Até 3 crianças + responsáveis ilimitados",
       "Tudo do Essencial",
@@ -68,13 +96,21 @@ export const PUBLIC_PLANS: PublicPlan[] = [
     code: "profissional_clinica",
     displayName: "Profissional Clínica",
     tagline: "Painel clínico completo para profissionais autônomos.",
-    price: {
-      monthly: "profissional_clinica_monthly",
-      yearly: "profissional_clinica_yearly",
-      monthlyAmountBRL: 129,
-      yearlyAmountBRL: 1238,
-    },
     audience: "professional",
+    pricing: {
+      BRL: {
+        monthly: { priceId: "profissional_clinica_monthly", amount: 129 },
+        yearly: { priceId: "profissional_clinica_yearly", amount: 1238 },
+      },
+      USD: {
+        monthly: { priceId: "profissional_clinica_monthly_usd", amount: 24.99 },
+        yearly: { priceId: "profissional_clinica_yearly_usd", amount: 239 },
+      },
+      EUR: {
+        monthly: { priceId: "profissional_clinica_monthly_eur", amount: 22.99 },
+        yearly: { priceId: "profissional_clinica_yearly_eur", amount: 219 },
+      },
+    },
     features: [
       "Pacientes ilimitados",
       "Prontuário SOAP + evolução",
@@ -88,14 +124,44 @@ export const PUBLIC_PLANS: PublicPlan[] = [
 
 export const TRIAL_DAYS = 7;
 
+/** Mapa locale → moeda de cobrança suportada. */
+const EURO_COUNTRIES = new Set([
+  "AT","BE","CY","EE","FI","FR","DE","GR","IE","IT","LV","LT","LU","MT","NL","PT","SK","SI","ES",
+]);
+
+export function billingCurrencyForLocale(locale: LocaleCode): BillingCurrency {
+  if (locale === "pt-BR") return "BRL";
+  const meta = LOCALES[locale];
+  if (meta?.defaultCurrency === "EUR" || EURO_COUNTRIES.has(meta?.country ?? "")) return "EUR";
+  // qualquer outro (en, ja, ko, zh, ru, tr, ar, pl…) cobra em USD por padrão
+  return "USD";
+}
+
+export function resolvePrice(
+  plan: PublicPlan,
+  period: BillingPeriod,
+  currency: BillingCurrency,
+): PriceEntry {
+  return plan.pricing[currency][period];
+}
+
 export function findPlanByPriceId(priceId: string): PublicPlan | undefined {
-  return PUBLIC_PLANS.find(
-    (p) => p.price.monthly === priceId || p.price.yearly === priceId,
+  return PUBLIC_PLANS.find((p) =>
+    (["BRL", "USD", "EUR"] as BillingCurrency[]).some(
+      (c) => p.pricing[c].monthly.priceId === priceId || p.pricing[c].yearly.priceId === priceId,
+    ),
   );
 }
 
-export function findPlanByCode(code: string): PublicPlan | undefined {
-  return PUBLIC_PLANS.find((p) => p.code === code);
+/** Detecta a moeda a partir de qualquer priceId conhecido. */
+export function currencyOfPriceId(priceId: string): BillingCurrency | undefined {
+  for (const plan of PUBLIC_PLANS) {
+    for (const c of ["BRL", "USD", "EUR"] as BillingCurrency[]) {
+      if (plan.pricing[c].monthly.priceId === priceId) return c;
+      if (plan.pricing[c].yearly.priceId === priceId) return c;
+    }
+  }
+  return undefined;
 }
 
 export function formatBRL(value: number): string {
