@@ -61,13 +61,13 @@ type PillarItem = { title: string; description: string };
 type StatItem = { n: string; d: string };
 
 function Landing() {
-  const { t } = useTranslation("landing");
+  const { t } = useTranslation("landing", { useSuspense: false });
 
-  const pillars = t("pillars.items", { returnObjects: true }) as PillarItem[];
-  const modules = t("modules.items", { returnObjects: true }) as string[];
-  const aiBullets = t("ai.bullets", { returnObjects: true }) as string[];
-  const securityItems = t("security.items", { returnObjects: true }) as string[];
-  const stats = t("awareness.stats", { returnObjects: true }) as StatItem[];
+  const pillars = asArray<PillarItem>(t("pillars.items", { returnObjects: true }));
+  const modules = asArray<string>(t("modules.items", { returnObjects: true }));
+  const aiBullets = asArray<string>(t("ai.bullets", { returnObjects: true }));
+  const securityItems = asArray<string>(t("security.items", { returnObjects: true }));
+  const stats = asArray<StatItem>(t("awareness.stats", { returnObjects: true }));
 
   return (
     <div className="min-h-dvh bg-background">
@@ -323,6 +323,10 @@ function Landing() {
       </footer>
     </div>
   );
+}
+
+function asArray<T>(value: unknown): T[] {
+  return Array.isArray(value) ? value : [];
 }
 
 function HeroPreview() {

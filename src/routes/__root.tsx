@@ -13,7 +13,7 @@ import { I18nextProvider } from "react-i18next";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import i18n, { ensureI18n, changeLocale } from "@/i18n";
-import { detectLocale } from "@/i18n/detector";
+import { detectLocale, getPersistedLocaleLocal } from "@/i18n/detector";
 import { applyDocumentDirection } from "@/i18n/rtl";
 import { DEFAULT_LOCALE, LOCALES, type LocaleCode } from "@/i18n/config";
 import { useSession } from "@/hooks/use-session";
@@ -214,9 +214,10 @@ function RootComponent() {
 function LocaleSync() {
   const { profile } = useSession();
   useEffect(() => {
-    if (!profile?.locale) return;
-    if (profile.locale === i18n.language) return;
-    changeLocale(profile.locale as LocaleCode).catch(() => undefined);
+    const nextLocale = getPersistedLocaleLocal() ?? (profile?.locale as LocaleCode | undefined);
+    if (!nextLocale) return;
+    if (nextLocale === i18n.language) return;
+    changeLocale(nextLocale).catch(() => undefined);
   }, [profile?.locale]);
   return null;
 }
