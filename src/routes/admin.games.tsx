@@ -11,6 +11,8 @@ import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { GameConfigBuilder } from "@/modules/games/admin/GameConfigBuilder";
 
 export const Route = createFileRoute("/admin/games")({
   component: AdminGamesPage,
