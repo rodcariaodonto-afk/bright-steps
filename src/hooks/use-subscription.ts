@@ -53,7 +53,7 @@ export function useSubscription(userId: string | null | undefined): Subscription
       .from("user_roles")
       .select("role")
       .eq("user_id", userId)
-      .in("role", ["admin", "global_admin"])
+      .eq("role", "admin")
       .limit(1)
       .maybeSingle()
       .then(({ data }) => setIsAdmin(!!data));
