@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Star } from "lucide-react";
+import { ArrowLeft, Loader2, Star } from "lucide-react";
 import { useKidRewards } from "@/hooks/use-kid-rewards";
+import { useTranslatedContent } from "@/hooks/use-translated-content";
 import { getStoryEngine } from "../story-registry";
 import type { StoryRow } from "../types";
 
@@ -13,6 +14,11 @@ interface Props {
 export function StoryPlayer({ childId, story, onExit }: Props) {
   const engine = getStoryEngine(story.story_type);
   const { addStars } = useKidRewards(childId);
+  const { data: t, loading } = useTranslatedContent("story", story.id, {
+    title: story.title,
+    summary: story.summary,
+    config: story.config as never,
+  });
 
   if (!engine) {
     return (
@@ -27,7 +33,7 @@ export function StoryPlayer({ childId, story, onExit }: Props) {
 
   const finish = () => {
     const stars = story.stars_reward ?? 3;
-    addStars(stars, `História: ${story.title}`, `story:${story.id}`);
+    addStars(stars, `História: ${t.title}`, `story:${story.id}`);
   };
 
   return (
@@ -41,14 +47,23 @@ export function StoryPlayer({ childId, story, onExit }: Props) {
           +{story.stars_reward ?? 3}
         </div>
       </div>
-      <h1 className="text-center text-xl font-black text-[#0b2740]">{story.title}</h1>
-      <Comp
-        config={story.config as any}
-        onFinish={(res) => {
-          if (res.completed) finish();
-          onExit();
-        }}
-      />
+      <h1 className="text-center text-xl font-black text-[#0b2740]">
+        {loading ? <Loader2 className="mx-auto h-5 w-5 animate-spin" /> : t.title}
+      </h1>
+      {loading ? (
+        <div className="flex justify-center py-12">
+          <Loader2 className="h-6 w-6 animate-spin text-[#0b2740]/50" />
+        </div>
+      ) : (
+        <Comp
+          config={t.config as never}
+          onFinish={(res) => {
+            if (res.completed) finish();
+            onExit();
+          }}
+        />
+      )}
     </div>
   );
 }
+

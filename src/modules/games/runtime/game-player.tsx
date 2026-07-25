@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { getEngine } from "../registry/engine-registry";
 import { startGameSession, recordGameEvent, completeGameSession } from "../api.functions";
 import type { EngineResult, GameEventInput } from "../engines/types";
+import { useTranslatedContent } from "@/hooks/use-translated-content";
 
 interface Props {
   childId: string;
@@ -34,6 +35,10 @@ export function GamePlayer({ childId, game, onExit }: Props) {
   const completeFn = useServerFn(completeGameSession);
 
   const engine = game.engine_code ? getEngine(game.engine_code) : undefined;
+  const { data: t, loading: tLoading } = useTranslatedContent("game", game.id, {
+    title: game.title,
+    config: game.config as never,
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -122,7 +127,7 @@ export function GamePlayer({ childId, game, onExit }: Props) {
       <header className="flex items-center justify-between border-b px-4 py-3">
         <div>
           <p className="text-xs uppercase tracking-wide text-muted-foreground">Jogando</p>
-          <h2 className="font-semibold">{game.title}</h2>
+          <h2 className="font-semibold">{t.title}</h2>
         </div>
         <Button variant="ghost" size="sm" onClick={handleExit}>
           <X className="mr-1 h-4 w-4" /> Sair
@@ -146,12 +151,12 @@ export function GamePlayer({ childId, game, onExit }: Props) {
               Voltar
             </Button>
           </div>
-        ) : !sessionId ? (
+        ) : !sessionId || tLoading ? (
           <div className="flex h-full items-center justify-center">
             <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
           </div>
         ) : (
-          <engine.Component config={game.config as never} emit={emit} onFinish={finish} a11y={a11y} />
+          <engine.Component config={t.config as never} emit={emit} onFinish={finish} a11y={a11y} />
         )}
       </main>
     </div>
