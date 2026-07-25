@@ -12,4 +12,5 @@ export {
   SUPPORTED_LOCALES,
   NAMESPACES,
 } from "@/i18n";
-export type { LocaleCode, SupportedLocale } from "@/i18n";
+export type { LocaleCode } from "@/i18n";
+export type SupportedLocale = import("@/i18n").LocaleCode;
