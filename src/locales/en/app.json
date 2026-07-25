@@ -37,7 +37,36 @@
       "afternoon": "Good afternoon",
       "evening": "Good evening"
     },
+    "fallbackName": "there",
+    "childFallback": "your child",
+    "childSummary": "Today’s follow-up for {{childName}}.",
     "welcome": "Here is today's summary.",
+    "aiCard": {
+      "description": "Ask about routine, behavior, and therapies.",
+      "cta": "Open chat"
+    },
+    "quick": {
+      "medication": {
+        "title": "Medications",
+        "hint": "Log doses and schedules",
+        "cta": "Open medication"
+      },
+      "mood": {
+        "title": "Mood",
+        "hint": "How your child is feeling",
+        "cta": "Log mood"
+      },
+      "routines": {
+        "title": "Routines",
+        "hint": "Your child’s daily sequence",
+        "cta": "View routines"
+      }
+    },
+    "emptyState": {
+      "title": "Welcome to My Blue World",
+      "description": "Start by creating your child’s profile. This unlocks routines, medication, mood, games, and conversations with Blue AI.",
+      "cta": "Add first child"
+    },
     "cards": {
       "nextEvent": "Next appointment",
       "medications": "Today's medications",

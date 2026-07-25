@@ -21,7 +21,19 @@
     "messages": "Mensagens",
     "ai": "Azul IA",
     "notifications": "Notificações",
-    "settings": "Configurações"
+    "subscription": "Assinatura",
+    "settings": "Configurações",
+    "groups": {
+      "routine": "Rotina & dia a dia",
+      "health": "Saúde",
+      "development": "Desenvolvimento",
+      "network": "Rede de apoio",
+      "account": "Conta"
+    }
+  },
+  "shell": {
+    "openMenu": "Abrir menu",
+    "familyFallback": "Família"
   },
   "dashboard": {
     "greeting": {
@@ -29,7 +41,36 @@
       "afternoon": "Boa tarde",
       "evening": "Boa noite"
     },
+    "fallbackName": "olá",
+    "childFallback": "sua criança",
+    "childSummary": "Acompanhamento de {{childName}} hoje.",
     "welcome": "Aqui está o resumo de hoje.",
+    "aiCard": {
+      "description": "Tire dúvidas sobre rotina, comportamento e terapias.",
+      "cta": "Abrir chat"
+    },
+    "quick": {
+      "medication": {
+        "title": "Medicações",
+        "hint": "Registre doses e horários",
+        "cta": "Abrir medicação"
+      },
+      "mood": {
+        "title": "Humor",
+        "hint": "Como a criança está se sentindo",
+        "cta": "Registrar humor"
+      },
+      "routines": {
+        "title": "Rotinas",
+        "hint": "Sequência do dia da criança",
+        "cta": "Ver rotinas"
+      }
+    },
+    "emptyState": {
+      "title": "Bem-vindo ao Meu Mundo Azul",
+      "description": "Comece cadastrando o perfil da sua criança. Isso destrava rotina, medicação, humor, jogos e conversas com a Azul IA.",
+      "cta": "Adicionar primeira criança"
+    },
     "cards": {
       "nextEvent": "Próximo compromisso",
       "medications": "Medicações de hoje",

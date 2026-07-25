@@ -8,6 +8,7 @@ import {
   Plus,
   Repeat,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/hooks/use-session";
@@ -32,9 +33,9 @@ export const Route = createFileRoute("/app/")({
 
 function getGreetingKey() {
   const h = new Date().getHours();
-  if (h < 12) return "Bom dia";
-  if (h < 18) return "Boa tarde";
-  return "Boa noite";
+  if (h < 12) return "dashboard.greeting.morning";
+  if (h < 18) return "dashboard.greeting.afternoon";
+  return "dashboard.greeting.evening";
 }
 
 function firstName(name: string | null | undefined, fallback: string): string {
@@ -43,13 +44,14 @@ function firstName(name: string | null | undefined, fallback: string): string {
 }
 
 function Dashboard() {
+  const { t } = useTranslation("app");
   const { profile } = useSession();
   const { activeChild, children } = useActiveChild();
   const greeting = getGreetingKey();
 
-  const displayName = firstName(profile?.fullName, "olá");
+  const displayName = firstName(profile?.fullName, t("dashboard.fallbackName"));
   const childName = activeChild
-    ? activeChild.nickname ?? firstName(activeChild.full_name, "sua criança")
+    ? activeChild.nickname ?? firstName(activeChild.full_name, t("dashboard.childFallback"))
     : null;
 
   return (
@@ -59,12 +61,12 @@ function Dashboard() {
           Meu Mundo Azul
         </p>
         <h1 className="mt-2 font-display text-3xl font-extrabold text-foreground md:text-4xl">
-          {greeting}, {displayName}.
+          {t(greeting)}, {displayName}.
         </h1>
         <p className="mt-1 text-muted-foreground">
           {childName
-            ? `Acompanhamento de ${childName} hoje.`
-            : "Aqui está o resumo de hoje."}
+            ? t("dashboard.childSummary", { childName })
+            : t("dashboard.welcome")}
         </p>
       </header>
 
@@ -89,25 +91,25 @@ function Dashboard() {
           <div className="grid gap-5 md:grid-cols-3">
             <QuickCard
               icon={<Pill className="h-5 w-5" />}
-              title="Medicações"
-              hint="Registre doses e horários"
-              cta="Abrir medicação"
+              title={t("dashboard.quick.medication.title")}
+              hint={t("dashboard.quick.medication.hint")}
+              cta={t("dashboard.quick.medication.cta")}
               to="/app/medicacao"
               tone="accent"
             />
             <QuickCard
               icon={<SmilePlus className="h-5 w-5" />}
-              title="Humor"
-              hint="Como a criança está se sentindo"
-              cta="Registrar humor"
+              title={t("dashboard.quick.mood.title")}
+              hint={t("dashboard.quick.mood.hint")}
+              cta={t("dashboard.quick.mood.cta")}
               to="/app/humor"
               tone="primary"
             />
             <QuickCard
               icon={<Repeat className="h-5 w-5" />}
-              title="Rotinas"
-              hint="Sequência do dia da criança"
-              cta="Ver rotinas"
+              title={t("dashboard.quick.routines.title")}
+              hint={t("dashboard.quick.routines.hint")}
+              cta={t("dashboard.quick.routines.cta")}
               to="/app/rotinas"
               tone="muted"
             />
@@ -119,22 +121,22 @@ function Dashboard() {
 }
 
 function EmptyState() {
+  const { t } = useTranslation("app");
   return (
     <div className="mx-auto max-w-xl rounded-3xl border border-dashed border-primary/30 bg-primary-soft/40 p-10 text-center">
       <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
         <Baby className="h-6 w-6" aria-hidden="true" />
       </div>
       <h2 className="mt-6 font-display text-2xl font-bold text-foreground">
-        Bem-vindo ao Meu Mundo Azul
+        {t("dashboard.emptyState.title")}
       </h2>
       <p className="mt-3 text-sm text-muted-foreground">
-        Comece cadastrando o perfil da sua criança. Isso destrava rotina,
-        medicação, humor, jogos e conversas com a Azul IA.
+        {t("dashboard.emptyState.description")}
       </p>
       <Button asChild size="lg" className="mt-6 rounded-full">
         <Link to="/app/crianca">
           <Plus className="mr-2 h-4 w-4" aria-hidden="true" />
-          Adicionar primeira criança
+          {t("dashboard.emptyState.cta")}
         </Link>
       </Button>
     </div>
@@ -142,20 +144,21 @@ function EmptyState() {
 }
 
 function AzulIACard() {
+  const { t } = useTranslation("app");
   return (
     <div className="flex h-full flex-col rounded-3xl border border-primary/20 bg-primary-soft/60 p-6">
       <div className="flex items-center gap-3">
         <div className="grid h-10 w-10 place-items-center rounded-2xl bg-primary text-primary-foreground">
           <Sparkles className="h-5 w-5" aria-hidden="true" />
         </div>
-        <p className="font-display text-base font-bold text-foreground">Azul IA</p>
+        <p className="font-display text-base font-bold text-foreground">{t("ai.title")}</p>
       </div>
       <p className="mt-3 flex-1 text-sm text-foreground/90">
-        Tire dúvidas sobre rotina, comportamento e terapias.
+        {t("dashboard.aiCard.description")}
       </p>
       <Button asChild variant="secondary" className="mt-4 rounded-full">
         <Link to="/app/ia">
-          Abrir chat
+          {t("dashboard.aiCard.cta")}
           <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
         </Link>
       </Button>
