@@ -36,7 +36,7 @@ export function useTranslatedContent<T extends TranslatedPayload>(
     fetchFn({ data: { entityType, entityId, locale } })
       .then((res) => {
         if (cancelled) return;
-        const payload = (res as { payload?: Partial<T> } | undefined)?.payload;
+        const payload = (res as unknown as { payload?: Partial<T> } | undefined)?.payload;
         setData({ ...fallback, ...(payload ?? {}) });
       })
       .catch(() => {
