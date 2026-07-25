@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { AtlasLogo } from "@/components/atlas/atlas-logo";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
-import { getPersistedLocaleLocal } from "@/i18n/detector";
+import { getPersistedLocaleLocal, persistLocaleLocal } from "@/i18n/detector";
 import { currentLocale } from "@/i18n";
 import { updateProfileLocale } from "@/modules/profile/locale.functions";
 
@@ -18,6 +18,9 @@ async function adoptVisitorLocale() {
   try {
     const locale = getPersistedLocaleLocal() ?? currentLocale();
     if (!locale) return;
+    // Garante que o idioma escolhido na landing persista após o login,
+    // mesmo se o perfil no banco tiver o default (pt-BR).
+    persistLocaleLocal(locale);
     await updateProfileLocale({ data: { locale } });
   } catch {
     // silencioso: não bloqueia o login
