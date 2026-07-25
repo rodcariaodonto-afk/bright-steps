@@ -24,15 +24,26 @@ export interface PlanPricing {
   EUR: { monthly: PriceEntry; yearly: PriceEntry };
 }
 
+/** Compat: preserva shape antigo baseado em BRL para telas admin/assinatura. */
+export interface LegacyPlanPrice {
+  monthly: string;
+  yearly: string;
+  monthlyAmountBRL: number;
+  yearlyAmountBRL: number;
+}
+
 export interface PublicPlan {
   code: PlanCode;
   displayName: string;
   tagline: string;
   pricing: PlanPricing;
+  /** @deprecated use `pricing.BRL` ou `resolvePrice()`. Mantido para compat. */
+  price: LegacyPlanPrice;
   highlight?: boolean;
   features: string[];
   audience: "family" | "professional";
 }
+
 
 export const PUBLIC_PLANS: PublicPlan[] = [
   {
