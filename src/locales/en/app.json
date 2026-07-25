@@ -31,6 +31,17 @@
       "account": "Account"
     }
   },
+  "shell": {
+    "openMenu": "Open menu",
+    "familyFallback": "Family"
+  },
+  "childPicker": {
+    "addChild": "Add child",
+    "select": "Select",
+    "activeChild": "Active child",
+    "current": "current",
+    "manageChildren": "Manage children"
+  },
   "dashboard": {
     "greeting": {
       "morning": "Good morning",
@@ -41,6 +52,40 @@
     "childFallback": "your child",
     "childSummary": "Today’s follow-up for {{childName}}.",
     "welcome": "Here is today's summary.",
+    "kidMode": {
+      "eyebrow": "Child mode",
+      "title": "Blue World",
+      "descriptionWithChild": "A playful, safe space for {{childName}} to talk with Blue, play, and earn stars.",
+      "description": "A playful, safe space with games, stories, and Blue for your child to explore independently.",
+      "cta": "Open child mode"
+    },
+    "nextUp": {
+      "eyebrow": "Next up",
+      "emptyTitle": "Nothing scheduled in the coming days",
+      "emptyDescription": "Add appointments, therapies, or commitments to keep track of your child’s routine.",
+      "openCalendar": "Open Calendar",
+      "viewAgenda": "View schedule",
+      "allDay": "All day"
+    },
+    "patterns": {
+      "eyebrow": "Patterns detected by Blue",
+      "title": "Last 30 days",
+      "subtitle": "Automatic analysis of mood, behavior, and medication.",
+      "refresh": "Refresh",
+      "loading": "Analyzing records…",
+      "error": "Could not load patterns.",
+      "serviceUnavailable": "Service temporarily unavailable.",
+      "evidence": "Evidence: {{evidence}}",
+      "readArticle": "Read related article",
+      "noPatterns": "There are no patterns to show yet.",
+      "disclaimer": "These patterns are AI-supported observations about recent records. They are not a diagnosis. Talk to the clinical team before making decisions.",
+      "emptyShort": "There is not enough data yet.",
+      "empty": "There is not enough data from the last 30 days to detect patterns yet.",
+      "emptyHint": "Log at least 5 events over the next few days so Blue can start identifying patterns.",
+      "logMood": "Log mood",
+      "logBehavior": "Log behavior",
+      "logMedication": "Log medication"
+    },
     "aiCard": {
       "description": "Ask about routine, behavior, and therapies.",
       "cta": "Open chat"

@@ -35,6 +35,13 @@
     "openMenu": "Abrir menu",
     "familyFallback": "Família"
   },
+  "childPicker": {
+    "addChild": "Adicionar criança",
+    "select": "Selecionar",
+    "activeChild": "Criança ativa",
+    "current": "atual",
+    "manageChildren": "Gerenciar crianças"
+  },
   "dashboard": {
     "greeting": {
       "morning": "Bom dia",
@@ -45,6 +52,40 @@
     "childFallback": "sua criança",
     "childSummary": "Acompanhamento de {{childName}} hoje.",
     "welcome": "Aqui está o resumo de hoje.",
+    "kidMode": {
+      "eyebrow": "Modo criança",
+      "title": "Mundo Azul",
+      "descriptionWithChild": "Um espaço lúdico e seguro para {{childName}} conversar com o Azul, brincar e ganhar estrelinhas.",
+      "description": "Um espaço lúdico e seguro com jogos, histórias e o amigo Azul para a criança explorar sozinha.",
+      "cta": "Abrir modo criança"
+    },
+    "nextUp": {
+      "eyebrow": "A seguir",
+      "emptyTitle": "Nada agendado nos próximos dias",
+      "emptyDescription": "Cadastre consultas, terapias ou compromissos para acompanhar a rotina da criança.",
+      "openCalendar": "Abrir Calendário",
+      "viewAgenda": "Ver agenda",
+      "allDay": "Dia inteiro"
+    },
+    "patterns": {
+      "eyebrow": "Padrões detectados pela Azul",
+      "title": "Últimos 30 dias",
+      "subtitle": "Análise automática de humor, comportamento e medicação.",
+      "refresh": "Atualizar",
+      "loading": "Analisando registros…",
+      "error": "Não foi possível carregar os padrões.",
+      "serviceUnavailable": "Serviço temporariamente indisponível.",
+      "evidence": "Evidência: {{evidence}}",
+      "readArticle": "Ler artigo relacionado",
+      "noPatterns": "Ainda não há padrões para exibir.",
+      "disclaimer": "Estes padrões são observações apoiadas por IA sobre os registros recentes. Não são diagnóstico. Converse com a equipe clínica antes de tomar decisões.",
+      "emptyShort": "Ainda não há dados suficientes.",
+      "empty": "Ainda não há dados suficientes dos últimos 30 dias para detectar padrões.",
+      "emptyHint": "Registre ao menos 5 eventos nos próximos dias para a Azul começar a identificar padrões.",
+      "logMood": "Registrar humor",
+      "logBehavior": "Registrar comportamento",
+      "logMedication": "Registrar medicação"
+    },
     "aiCard": {
       "description": "Tire dúvidas sobre rotina, comportamento e terapias.",
       "cta": "Abrir chat"

@@ -11,6 +11,7 @@ import {
   Activity,
   Pill,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
 import { getChildInsights } from "@/modules/insights/api.functions";
@@ -21,6 +22,7 @@ interface PatternsCardProps {
 }
 
 export function PatternsCard({ childId, variant = "family" }: PatternsCardProps) {
+  const { t } = useTranslation("app");
   const fetchInsights = useServerFn(getChildInsights);
   const qc = useQueryClient();
   const queryKey = ["insights", childId];
@@ -51,17 +53,17 @@ export function PatternsCard({ childId, variant = "family" }: PatternsCardProps)
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              Padrões detectados pela Azul
+              {t("dashboard.patterns.eyebrow")}
             </p>
             <h2
               id={`patterns-${childId}`}
               className="font-display text-lg font-bold text-foreground"
             >
-              Últimos 30 dias
+              {t("dashboard.patterns.title")}
             </h2>
             {!isPro && (
               <p className="mt-0.5 text-xs text-muted-foreground">
-                Análise automática de humor, comportamento e medicação.
+                {t("dashboard.patterns.subtitle")}
               </p>
             )}
           </div>
@@ -78,23 +80,23 @@ export function PatternsCard({ childId, variant = "family" }: PatternsCardProps)
             className={`mr-1.5 h-3.5 w-3.5 ${refresh.isPending ? "animate-spin" : ""}`}
             aria-hidden="true"
           />
-          Atualizar
+          {t("dashboard.patterns.refresh")}
         </Button>
       </header>
 
       <div className="mt-4">
         {isLoading || refresh.isPending ? (
-          <p className="text-sm text-muted-foreground">Analisando registros…</p>
+          <p className="text-sm text-muted-foreground">{t("dashboard.patterns.loading")}</p>
         ) : isError ? (
           <p className="flex items-center gap-2 text-sm text-destructive">
             <AlertCircle className="h-4 w-4" aria-hidden="true" />
-            Não foi possível carregar os padrões.
+            {t("dashboard.patterns.error")}
           </p>
         ) : data?.status === "empty" ? (
-          <EmptyInsights variant={variant} message={data.message} />
+          <EmptyInsights variant={variant} />
         ) : data?.status === "error" ? (
           <p className="text-sm text-muted-foreground">
-            {data.message ?? "Serviço temporariamente indisponível."}
+            {data.message ?? t("dashboard.patterns.serviceUnavailable")}
           </p>
         ) : data && data.insights.length > 0 ? (
           <ul className="space-y-3">
@@ -106,7 +108,7 @@ export function PatternsCard({ childId, variant = "family" }: PatternsCardProps)
                 <p className="font-semibold text-foreground">{p.title}</p>
                 <p className="mt-1 text-sm text-foreground/80">{p.description}</p>
                 <p className="mt-2 text-xs text-muted-foreground">
-                  Evidência: {p.evidence}
+                  {t("dashboard.patterns.evidence", { evidence: p.evidence })}
                 </p>
                 {p.suggested_article_slug && (
                   <Link
@@ -115,7 +117,7 @@ export function PatternsCard({ childId, variant = "family" }: PatternsCardProps)
                     className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
                   >
                     <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
-                    Ler artigo relacionado
+                    {t("dashboard.patterns.readArticle")}
                   </Link>
                 )}
               </li>
@@ -123,14 +125,13 @@ export function PatternsCard({ childId, variant = "family" }: PatternsCardProps)
           </ul>
         ) : (
           <p className="text-sm text-muted-foreground">
-            Ainda não há padrões para exibir.
+            {t("dashboard.patterns.noPatterns")}
           </p>
         )}
       </div>
 
       <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground">
-        Estes padrões são observações apoiadas por IA sobre os registros recentes. Não
-        são diagnóstico. Converse com a equipe clínica antes de tomar decisões.
+        {t("dashboard.patterns.disclaimer")}
       </p>
     </section>
   );
@@ -138,45 +139,43 @@ export function PatternsCard({ childId, variant = "family" }: PatternsCardProps)
 
 function EmptyInsights({
   variant,
-  message,
 }: {
   variant: "family" | "pro";
-  message?: string;
 }) {
+  const { t } = useTranslation("app");
+
   if (variant === "pro") {
     return (
       <p className="text-sm text-muted-foreground">
-        {message ?? "Ainda não há dados suficientes."}
+        {t("dashboard.patterns.emptyShort")}
       </p>
     );
   }
   return (
     <div className="rounded-2xl border border-dashed border-primary/30 bg-card/60 p-4">
       <p className="text-sm text-foreground">
-        {message ??
-          "Ainda não há dados suficientes dos últimos 30 dias para detectar padrões."}
+        {t("dashboard.patterns.empty")}
       </p>
       <p className="mt-1 text-xs text-muted-foreground">
-        Registre ao menos 5 eventos nos próximos dias para a Azul começar a
-        identificar padrões.
+        {t("dashboard.patterns.emptyHint")}
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         <Button asChild size="sm" variant="secondary" className="rounded-full">
           <Link to="/app/humor">
             <SmilePlus className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
-            Registrar humor
+            {t("dashboard.patterns.logMood")}
           </Link>
         </Button>
         <Button asChild size="sm" variant="secondary" className="rounded-full">
           <Link to="/app/comportamento">
             <Activity className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
-            Registrar comportamento
+            {t("dashboard.patterns.logBehavior")}
           </Link>
         </Button>
         <Button asChild size="sm" variant="secondary" className="rounded-full">
           <Link to="/app/medicacao">
             <Pill className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
-            Registrar medicação
+            {t("dashboard.patterns.logMedication")}
           </Link>
         </Button>
       </div>
