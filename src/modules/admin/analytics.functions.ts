@@ -93,7 +93,7 @@ export const getAnalyticsOverview = createServerFn({ method: "GET" })
         activeSubscriptions: activeSubs.length,
       },
       topGames,
-      moodDistribution: Array.from(moodDist.entries()).map(([mood, count]) => ({ mood, count })),
+      moodDistribution: Array.from(moodDist.entries()).map(([level, count]) => ({ mood: level, count })),
       plans: Array.from(planCounts.entries()).map(([plan, count]) => ({ plan, count })),
     };
   });
