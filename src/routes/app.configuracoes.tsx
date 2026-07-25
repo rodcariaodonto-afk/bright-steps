@@ -12,6 +12,8 @@ import {
   Stethoscope,
 } from "lucide-react";
 
+import { LocaleSelector } from "@/components/i18n/locale-selector";
+
 import { useChildren } from "@/hooks/use-family";
 import { proWrites } from "@/modules/professional/repositories/supabase";
 
@@ -108,6 +110,16 @@ function SettingsPage() {
               {profile?.fullName ?? "Você"}
             </p>
             <p className="text-sm text-muted-foreground">{profile?.email}</p>
+            <Separator className="my-4" />
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold text-foreground">Idioma</p>
+                <p className="text-xs text-muted-foreground">
+                  Aplicado em toda a plataforma e sincronizado no seu perfil.
+                </p>
+              </div>
+              <LocaleSelector variant="full" align="end" />
+            </div>
             <Separator className="my-4" />
             <p className="text-xs text-muted-foreground">
               Para sair, use o menu do avatar no canto superior. Para excluir a conta,
