@@ -58,10 +58,40 @@ async function resolveOrCreateCustomer(
   return created.id;
 }
 
+// Mapeia nossos LocaleCode para os locales aceitos pelo Stripe Checkout.
+// https://docs.stripe.com/js/appendix/supported_locales
+const STRIPE_LOCALE_MAP: Record<string, string> = {
+  "pt-BR": "pt-BR",
+  en: "en",
+  es: "es",
+  fr: "fr",
+  it: "it",
+  de: "de",
+  nl: "nl",
+  pl: "pl",
+  tr: "tr",
+  ja: "ja",
+  ko: "ko",
+  "zh-CN": "zh",
+  "zh-TW": "zh-TW",
+  ru: "ru",
+  // ar não é suportado pelo Stripe Checkout → auto
+};
+
+function toStripeLocale(locale?: string): string {
+  if (!locale) return "auto";
+  return STRIPE_LOCALE_MAP[locale] ?? "auto";
+}
+
 export const createCheckoutSession = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator(
-    (data: { priceId: string; returnUrl: string; environment: StripeEnv }) => {
+    (data: {
+      priceId: string;
+      returnUrl: string;
+      environment: StripeEnv;
+      locale?: string;
+    }) => {
       if (!/^[a-zA-Z0-9_-]+$/.test(data.priceId)) throw new Error("Invalid priceId");
       return data;
     },
@@ -87,6 +117,7 @@ export const createCheckoutSession = createServerFn({ method: "POST" })
         ui_mode: "embedded_page",
         return_url: data.returnUrl,
         customer: customerId,
+        locale: toStripeLocale(data.locale) as never,
         metadata: { userId },
         ...(isRecurring && {
           subscription_data: {
@@ -101,6 +132,7 @@ export const createCheckoutSession = createServerFn({ method: "POST" })
       return { error: getStripeErrorMessage(error) };
     }
   });
+
 
 export const createPortalSession = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
