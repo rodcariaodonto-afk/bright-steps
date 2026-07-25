@@ -1066,6 +1066,54 @@ export type Database = {
           },
         ]
       }
+      coupons: {
+        Row: {
+          active: boolean
+          applies_to_plan: string | null
+          code: string
+          created_at: string
+          created_by: string | null
+          description: string | null
+          discount_type: string
+          discount_value: number
+          id: string
+          max_redemptions: number | null
+          redemptions_count: number
+          updated_at: string
+          valid_until: string | null
+        }
+        Insert: {
+          active?: boolean
+          applies_to_plan?: string | null
+          code: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          discount_type: string
+          discount_value: number
+          id?: string
+          max_redemptions?: number | null
+          redemptions_count?: number
+          updated_at?: string
+          valid_until?: string | null
+        }
+        Update: {
+          active?: boolean
+          applies_to_plan?: string | null
+          code?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          discount_type?: string
+          discount_value?: number
+          id?: string
+          max_redemptions?: number | null
+          redemptions_count?: number
+          updated_at?: string
+          valid_until?: string | null
+        }
+        Relationships: []
+      }
       evolution_entries: {
         Row: {
           attachments: Json
