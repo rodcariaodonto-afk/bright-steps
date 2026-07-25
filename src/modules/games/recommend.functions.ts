@@ -146,10 +146,10 @@ Escolha EXATAMENTE 3 jogos do catálogo respeitando:
 - Sugerir 1 jogo alinhado ao interesse dominante quando possível;
 - Motivo em UMA frase curta e afetiva em português (máx 90 caracteres).`;
 
-      const { experimental_output } = await generateText({
+      const { output } = await generateText({
         model: gateway("google/gemini-3.6-flash"),
         prompt,
-        experimental_output: Output.object({
+        output: Output.object({
           schema: z.object({
             recommendations: z
               .array(z.object({ id: z.string(), reason: z.string() }))
@@ -158,7 +158,7 @@ Escolha EXATAMENTE 3 jogos do catálogo respeitando:
         }),
       });
 
-      const out = experimental_output as { recommendations: { id: string; reason: string }[] };
+      const out = output as { recommendations: { id: string; reason: string }[] };
       const enriched = out.recommendations
         .map((r) => {
           const g = catalog.find((c) => c.id === r.id);
