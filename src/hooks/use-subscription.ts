@@ -111,7 +111,7 @@ export function useSubscription(userId: string | null | undefined): Subscription
     };
   }, [userId, load]);
 
-  const isActive = isRowActive(subscription);
+  const isActive = isAdmin || isRowActive(subscription);
 
   // planCode: sempre derivado do price_id (lookup_key), que é estável entre
   // sandbox/live. Nunca do product_id (que guarda o `prod_xxx` interno).
