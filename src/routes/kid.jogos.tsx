@@ -122,24 +122,7 @@ function KidGamesPage() {
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {games.map((g) => (
-            <Card key={g.id} className="overflow-hidden border-white/60 bg-white/80 p-0 shadow-md">
-              {g.cover_url ? (
-                <img src={g.cover_url} alt={g.title} className="h-32 w-full object-cover" />
-              ) : (
-                <div className="flex h-32 items-center justify-center bg-gradient-to-br from-[#7fd0ff] to-[#0b6cff] text-5xl">🎮</div>
-              )}
-              <div className="space-y-2 p-4">
-                <h3 className="font-bold text-[#0b2740]">{g.title}</h3>
-                {g.description && <p className="text-xs text-[#0b2740]/70 line-clamp-2">{g.description}</p>}
-                <div className="flex items-center justify-between pt-2">
-                  <span className="flex items-center gap-1 text-xs font-bold text-yellow-700">
-                    <Star className="h-3.5 w-3.5 fill-yellow-500 text-yellow-600" />
-                    até {g.stars_reward ?? 5}
-                  </span>
-                  <Button size="sm" onClick={() => setPlaying(g)}>Jogar</Button>
-                </div>
-              </div>
-            </Card>
+            <GameCard key={g.id} game={g} onOpen={() => setPlaying(g)} />
           ))}
         </div>
       )}
