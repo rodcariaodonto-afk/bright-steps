@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { Check, Globe, Loader2 } from "lucide-react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
@@ -33,6 +33,43 @@ interface LocaleSelectorProps {
  * quando há sessão, também no perfil (profiles.locale).
  */
 export function LocaleSelector({
+  variant = "compact",
+  align = "end",
+  className,
+}: LocaleSelectorProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <Button
+        variant="ghost"
+        size={variant === "icon" ? "icon" : "sm"}
+        className={cn("gap-2", className)}
+        aria-label="Selecionar idioma"
+        disabled
+      >
+        <span className="text-base leading-none">🌐</span>
+        {variant === "compact" && (
+          <span className="text-xs font-medium uppercase">PT</span>
+        )}
+        {variant === "full" && (
+          <>
+            <span className="text-sm">Idioma</span>
+            <Globe className="h-3 w-3 opacity-60" />
+          </>
+        )}
+      </Button>
+    );
+  }
+
+  return <MountedLocaleSelector variant={variant} align={align} className={className} />;
+}
+
+function MountedLocaleSelector({
   variant = "compact",
   align = "end",
   className,
