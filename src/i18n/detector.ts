@@ -10,47 +10,25 @@ const IP_CACHE_KEY = "mma:ip-locale";
 
 /**
  * Ordem de detecção (primeiro que resolver ganha):
- *  1. profile.locale (passado como preferredLocale)
- *  2. localStorage
- *  3. navigator.language + navigator.languages
+ *  1. localStorage, quando o usuário escolheu manualmente neste aparelho
+ *  2. profile.locale, quando autenticado e sem escolha local explícita
+ *  3. IP geo, para visitantes públicos abrirem no idioma do país
  *  4. timezone → mapa fraco
- *  5. IP geo (sessão)
+ *  5. navigator.language + navigator.languages
  *  6. DEFAULT_LOCALE
  */
 export async function detectLocale(preferredLocale?: string | null): Promise<LocaleCode> {
-  // 1. Preferência do perfil (backend)
+  // 1. Escolha manual neste aparelho
+  const stored = getPersistedLocaleLocal();
+  if (stored) return stored;
+
+  // 2. Preferência do perfil (backend)
   const fromProfile = normalizeLocale(preferredLocale);
   if (fromProfile) return fromProfile;
 
   if (typeof window === "undefined") return DEFAULT_LOCALE;
 
-  // 2. localStorage
-  try {
-    const stored = normalizeLocale(localStorage.getItem(STORAGE_KEY));
-    if (stored) return stored;
-  } catch {
-    // ignore
-  }
-
-  // 3. navigator
-  const navLangs: string[] = [];
-  if (navigator.language) navLangs.push(navigator.language);
-  if (navigator.languages) navLangs.push(...navigator.languages);
-  for (const l of navLangs) {
-    const norm = normalizeLocale(l);
-    if (norm) return norm;
-  }
-
-  // 4. Timezone → sinal fraco
-  try {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const fromTz = localeByTimezone(tz);
-    if (fromTz) return fromTz;
-  } catch {
-    // ignore
-  }
-
-  // 5. IP (cache de sessão pra evitar chamadas repetidas)
+  // 3. IP geo (cache de sessão pra evitar chamadas repetidas)
   try {
     const cached = sessionStorage.getItem(IP_CACHE_KEY);
     if (cached) {
@@ -70,7 +48,35 @@ export async function detectLocale(preferredLocale?: string | null): Promise<Loc
     // ignore
   }
 
+  // 4. Timezone → sinal fraco
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const fromTz = localeByTimezone(tz);
+    if (fromTz) return fromTz;
+  } catch {
+    // ignore
+  }
+
+  // 5. navigator
+  const navLangs: string[] = [];
+  if (navigator.language) navLangs.push(navigator.language);
+  if (navigator.languages) navLangs.push(...navigator.languages);
+  for (const l of navLangs) {
+    const norm = normalizeLocale(l);
+    if (norm) return norm;
+  }
+
   return DEFAULT_LOCALE;
+}
+
+/** Lê a escolha manual salva neste navegador. */
+export function getPersistedLocaleLocal(): LocaleCode | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return normalizeLocale(localStorage.getItem(STORAGE_KEY));
+  } catch {
+    return null;
+  }
 }
 
 /** Persiste escolha manual do usuário (também sincronizada com o perfil). */
