@@ -1,4 +1,5 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, spyOn } from "bun:test";
+const vi = { spyOn };
 
 import { buildContext, serializeContext } from "../builder";
 import { hasConsent, type ConsentField } from "../consent";
