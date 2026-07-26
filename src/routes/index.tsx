@@ -154,21 +154,22 @@ function Landing() {
           </div>
         </section>
 
-        {/* Pilares */}
+        {/* Empatia */}
         <section id="pilares" className="border-t border-border/60 bg-surface-2/60 py-24">
           <div className="container-atlas">
             <div className="max-w-2xl">
               <h2 className="text-4xl font-bold tracking-tight text-foreground">
-                {t("pillars.title")}
+                {t("empathy.title")}
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground">{t("pillars.subtitle")}</p>
+              <p className="mt-4 text-lg text-muted-foreground">{t("empathy.subtitle")}</p>
+              <p className="mt-4 text-lg text-muted-foreground">{t("empathy.subtitleExtra")}</p>
             </div>
             <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {pillars.map((pillar, idx) => {
-                const Icon = pillarIcons[idx] ?? Sparkles;
+              {empathyItems.map((item, idx) => {
+                const Icon = empathyIcons[idx] ?? Sparkles;
                 return (
                   <motion.div
-                    key={pillar.title}
+                    key={item.title}
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-80px" }}
@@ -178,16 +179,41 @@ function Landing() {
                     <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-soft text-primary">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground">{pillar.title}</h3>
+                    <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {pillar.description}
+                      {item.description}
                     </p>
                   </motion.div>
                 );
               })}
             </div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5 }}
+              className="mt-12 rounded-3xl bg-primary-soft p-8 md:p-10"
+            >
+              <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <div className="max-w-2xl">
+                  <h3 className="text-2xl font-semibold text-foreground">
+                    {t("empathy.highlight.title")}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                    {t("empathy.highlight.description")}
+                  </p>
+                </div>
+                <Button asChild size="lg" className="rounded-full">
+                  <a href="#modulos">
+                    {t("empathy.highlight.cta")}
+                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                  </a>
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </section>
+
 
         {/* Módulos */}
         <section id="modulos" className="py-24">
