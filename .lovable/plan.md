@@ -1,42 +1,50 @@
-Escopo
+## Objetivo
 
-Rewrite completo da copy do Hero da landing + dois ajustes no mockup (linha de medicação + card da IA). Sem tocar em layout, cores, tipografia, componentes, grid, responsividade ou seções abaixo do Hero.
+Trocar a seção "pillars" (Um ecossistema, muitas vidas) por uma nova seção emocional "empathy" que gera identificação com a dor da família antes de apresentar a solução. Sem mudar identidade visual, largura, tipografia, espaçamento, cards ou responsividade.
 
-## Arquivos
+## Mudanças
 
-**1. `src/locales/pt-BR/landing.json**` (fonte de verdade PT-BR)
+### 1. Copy (i18n)
 
-Substituir os valores das chaves existentes (sem renomear chaves, para não mexer no `index.tsx`):
+`src/locales/pt-BR/landing.json`
+- Remover o bloco `pillars` inteiro.
+- Adicionar novo bloco `empathy` com:
+  - `title`: "Você cuida do seu filho. Mas quem cuida das informações dele?"
+  - `subtitle`: parágrafo com dois blocos (dor + convite à centralização).
+  - `items` (array de 4): título e descrição conforme especificado (mesma história / informações espalhadas / cada profissional vê uma parte / família vira central).
+  - `highlight.title`: "O Meu Mundo Azul muda essa realidade."
+  - `highlight.description`: texto do bloco verde.
+  - `highlight.cta`: "Conheça como funciona"
 
-- `hero.eyebrow` → `Neurodesenvolvimento • IA • Família • Escola • Profissionais`
-- `hero.title` → `Chega de contar a história do seu filho do zero em toda consulta.`
-- `hero.subtitle` → `O Meu Mundo Azul conecta família, terapeutas e escola em um único lugar. Toda informação importante acompanha a criança, permitindo um cuidado mais organizado, contínuo e inteligente.`
-- `hero.primaryCta` → `Criar minha conta gratuitamente`
-- `hero.secondaryCta` → `Ver como funciona`
-- `hero.trust` → `Criado com famílias, terapeutas e especialistas em neurodesenvolvimento.`
-- `heroPreview.row2Title` → `Medicação`
-- `heroPreview.row2Subtitle` → `Confirmar administração` (já é isso; manter)
-- `heroPreview.aiMessage` (o card lateral do mockup do dia) → `Percebi que o Bento dormiu melhor nos últimos cinco dias. Manter a rotina das 20h30 pode ajudar a preservar essa evolução.`
+Depois, deletar as chaves `pillars` correspondentes nos outros 14 locales e rodar `scripts/i18n-translate.ts` com `ONLY_NS=landing` para gerar `empathy` traduzido em todos.
 
-O card grande "Azul IA" da seção IA (mais abaixo) fica intacto, é fora do Hero. O `aiLabel` do Hero já é "Azul IA".
+### 2. Componente
 
-**2. Demais 14 locales** (`ar, de, en, es, fr, it, ja, ko, nl, pl, ru, tr, zh-CN, zh-TW`)
+`src/routes/index.tsx`
+- Remover leitura de `pillars.items` e o `<section id="pilares">` inteiro (linhas 154-187 aprox.), mais o array `pillarIcons` que só serve à seção antiga.
+- Inserir no mesmo lugar uma nova `<section id="empathy">` com a mesma casca visual dos pilares:
+  - Container `container-atlas`, header `max-w-2xl` (h2 4xl bold + subtítulo `text-lg text-muted-foreground`, respeitando quebras de parágrafo do subtítulo).
+  - Grid `mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4` com 4 cards no mesmo estilo (`rounded-3xl border bg-card p-6 shadow-sm`, ícone em `bg-primary-soft text-primary`, título `text-lg font-semibold`, descrição `text-sm text-muted-foreground`) preservando as animações `motion.div`.
+  - Ícones lucide: `MessagesSquare` (conversa), `Files` (documentos), `Network` (conexão), `Users` (família).
+- Abaixo do grid, um bloco de destaque:
+  - Card `rounded-3xl` com fundo verde suave usando o token existente `bg-primary-soft` (mesma família visual dos badges "primary-soft" do site, mantém identidade).
+  - Título forte + parágrafo em `text-muted-foreground` + `Button` primário arredondado (`rounded-full`) linkando para `#modulos` (âncora "Conheça como funciona" leva ao bloco de módulos que já explica o funcionamento).
+- Manter o `id="pilares"` como âncora legada? Não. A navbar hoje aponta para `#pilares`; trocar o link do menu para `#empathy` ou renomear o id. Vou verificar antes de aplicar.
 
-Regenerar apenas essas 6 chaves de `hero.*` + `heroPreview.row2Title` + `heroPreview.aiMessage` via `scripts/i18n-translate.ts` (mesmo pipeline Gemini já usado no projeto). `row2Subtitle` continua como está em cada locale (equivalente de "Confirmar administração").
+### 3. Verificações pós-edição
 
-Se o script não suporta target-por-chave, alternativa: rodar o script sobre `landing.json` inteiro, tratando PT-BR como fonte — vai apenas atualizar campos que mudaram. Confirmo essa capacidade antes de rodar; se não existir, faço as 6 chaves manualmente por locale.
+- Ler o nav da landing (`src/routes/index.tsx` topo) para confirmar qual `href` referencia `#pilares` e atualizar junto (ou manter `id="pilares"` na nova section por compatibilidade — decisão: manter `id="pilares"` para não quebrar o link do menu; label do menu segue "Família").
+- Rodar o build automático para checar tipos.
+- Validar visualmente no viewport atual (1138×682) que grid vira 2 colunas em md e 4 em lg, e que o bloco verde não estoura a largura do container.
 
-## Não altero
+## Detalhes técnicos
 
-- Nenhum outro texto/seção da landing.
-- `index.tsx` (nenhuma chave renomeada, então JSX permanece).
-- Cores, gradientes, motion, layout de duas colunas, `HeroPreview` estrutural.
-- `AIChatPreview` da seção IA (fora do Hero, fora do pedido).
-- `webhook.ts`, rotas, backend.
+- Nenhum token de cor novo. Usar `bg-primary-soft` (já definido em `styles.css`) para o bloco verde de destaque, mantendo o mesmo tom institucional dos badges/ícones existentes.
+- Ícones importados de `lucide-react` no topo do arquivo, removendo os imports não mais usados (`Sparkles` etc. só se ficarem órfãos).
+- Nenhuma copy usa travessão "—", conforme regra do projeto.
+- Tradução automática dos 14 idiomas via script existente (`ONLY_NS=landing`), preservando cache das demais chaves.
 
-## Validação
+## Fora de escopo
 
-- Abrir `/` em PT-BR: novo hero e mockup atualizados.
-- Trocar locale para EN/ES: hero traduzido, mockup com "Medicação"/"aiMessage" traduzidos.
-- Sem quebra de build (só JSONs mudam).  
-OBSERVAÇÃ0: NAO MUDAR NADA NO i18N, cada usuario de um pais que acessar, ele precisa ver a pagina e toda a plataforma na lingua nativa dele.
+- Não altero Hero, Módulos, IA, Segurança, CTA final, nem cores/tokens globais.
+- Não mudo o fluxo de rotas nem componentes compartilhados.
