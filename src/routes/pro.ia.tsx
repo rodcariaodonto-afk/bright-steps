@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useChat } from "@ai-sdk/react";
-import { DefaultChatTransport } from "ai";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Sparkles, Send, Loader2, AlertTriangle, ShieldAlert } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { createAuthedChatTransport } from "@/lib/authed-chat-transport";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/pro/ia")({
@@ -23,7 +23,7 @@ function ProAiPage() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const { messages, sendMessage, status } = useChat({
-    transport: new DefaultChatTransport({
+    transport: createAuthedChatTransport({
       api: "/api/chat",
       body: { persona: "clinical" },
     }),
