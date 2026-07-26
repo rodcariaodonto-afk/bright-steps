@@ -64,11 +64,15 @@
       "Otomatik haftalık ve aylık özetler",
       "İşe yarayanlara dayalı rutin önerileri"
     ],
-    "disclaimer": "Meu Mundo Azul'un yapay zekası bir destek aracıdır. Asla sağlık veya eğitim uzmanlarının yerini tutmaz."
+    "disclaimer": "Meu Mundo Azul'un yapay zekası bir destek aracıdır. Asla sağlık veya eğitim uzmanlarının yerini tutmaz.",
+    "title": "An AI that knows the child's story.",
+    "description": "Azul doesn't just answer questions. It tracks the child's development over time. Based on the history recorded by the family, school, and therapists, it identifies patterns, creates personalized social stories, generates automatic summaries, and helps everyone make decisions with more context."
   },
   "aiPreview": {
     "name": "Azul YZ",
-    "context": "Aktif bağlam · Bento, 6 yaşında"
+    "context": "Aktif bağlam · Bento, 6 yaşında",
+    "userMessage": "Bento will be anxious because tomorrow is his first dental appointment.",
+    "aiMessage": "Based on Bento's profile, I've prepared a personalized social story to help him understand what the appointment will be like and reduce anxiety."
   },
   "security": {
     "items": [
@@ -76,7 +80,9 @@
       "Her erişimde Satır Düzeyi Güvenlik ve denetim",
       "Verilerin tek tıklamayla dışa aktarılması ve silinmesi",
       "Küçüklerin hassas verileri hak ettikleri özenle işlenir"
-    ]
+    ],
+    "title": "Security for those who care about what matters most.",
+    "subtitle": "All data is protected following best security practices and LGPD."
   },
   "awareness": {
     "eyebrow": "Farkındalık",
@@ -98,9 +104,20 @@
         "d": "okul çağındaki çocukların DEHB'si vardır (Sağlık Bakanlığı)."
       }
     ],
-    "sources": "Kaynaklar: Dünya Sağlık Örgütü, Hastalık Kontrol ve Önleme Merkezleri ve Brezilya Sağlık Bakanlığı."
+    "sources": "Kaynaklar: Dünya Sağlık Örgütü, Hastalık Kontrol ve Önleme Merkezleri ve Brezilya Sağlık Bakanlığı.",
+    "title": "Millions of families face this challenge every day.",
+    "subtitle": "Neurodevelopment requires continuous monitoring. The greater the integration between family, school, and professionals, the greater the chances of progress."
   },
-  "cta": {},
+  "cta": {
+    "title": "Your child's story deserves to continue.",
+    "subtitle": "Child development happens every day. Don't let important information get lost between appointments, schools, and therapies. With Meu Mundo Azul, the child's entire journey remains connected.",
+    "action": "Create my free account",
+    "microcopy": [
+      "No credit card required.",
+      "Setup in minutes.",
+      "Data protected by LGPD."
+    ]
+  },
   "plans": {
     "backToApp": "Uygulamaya git",
     "trialBadge": "Herhangi bir planda {{days}} gün ücretsiz",
@@ -160,5 +177,89 @@
     "lgpd": "LGPD",
     "privacy": "Gizlilik",
     "terms": "Şartlar"
+  },
+  "flow": {
+    "title": "Every child continues to evolve. Their monitoring should too.",
+    "description": "Today, doctors, therapists, teachers, and family members only see parts of a child's journey. Meu Mundo Azul connects everything into a single intelligent timeline, allowing everyone to follow the same progress with complete context.",
+    "steps": [
+      {
+        "title": "Family records daily life.",
+        "description": "Routine, behavior, sleep, diet, medication, and important events."
+      },
+      {
+        "title": "Meu Mundo Azul organizes everything.",
+        "description": "All information is connected in a single timeline."
+      },
+      {
+        "title": "Azul AI learns continuously.",
+        "description": "The AI understands the child's history, identifies patterns, and generates suggestions based on real progress."
+      },
+      {
+        "title": "School and therapists follow along together.",
+        "description": "Everyone works with the same context, reducing rework and improving care."
+      }
+    ],
+    "highlight": {
+      "title": "The difference isn't having Artificial Intelligence.",
+      "lines": [
+        "The difference is that it remembers the child's story.",
+        "It connects information over time to support families and professionals.",
+        "It never replaces doctors, therapists, or teachers."
+      ],
+      "cta": "Learn about Meu Mundo Azul"
+    }
+  },
+  "beforeAfter": {
+    "title": "More time caring. Less time organizing.",
+    "beforeLabel": "Before",
+    "afterLabel": "After",
+    "cards": [
+      {
+        "before": [
+          "WhatsApp",
+          "Calendar",
+          "Papers",
+          "Reports",
+          "Spreadsheets"
+        ],
+        "after": "Everything in one place."
+      },
+      {
+        "before": [
+          "Explain everything again."
+        ],
+        "after": "The entire story accompanies the child."
+      },
+      {
+        "before": [
+          "Each professional works alone."
+        ],
+        "after": "Everyone follows the same progress."
+      }
+    ],
+    "cta": "Create my free account"
+  },
+  "modules": {
+    "title": "Everything you need in one place.",
+    "subtitle": "Organize your child's routine, track their development, and share information with those involved in their growth.",
+    "cta": "Create my free account",
+    "items": [
+      {
+        "title": "Organized family",
+        "description": "Routine, medication, mood, and documents in one place, with all guardians on the same page."
+      },
+      {
+        "title": "Engaged child",
+        "description": "A playful world with stories, games, and a character that speaks their language."
+      },
+      {
+        "title": "Connected professionals",
+        "description": "Therapists and school track real progress, without needing to reconstruct context at each session."
+      },
+      {
+        "title": "AI that tracks development",
+        "description": "Azul learns from the child's history and suggests paths based on what truly works."
+      }
+    ]
   }
 }
