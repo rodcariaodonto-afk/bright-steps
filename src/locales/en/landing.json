@@ -28,6 +28,22 @@
     "aiLabel": "Blue AI",
     "aiMessage": "I noticed Bento has been sleeping better over the last five days. Keeping the 8:30 pm routine can help preserve this progress."
   },
+  "empathy": {
+    "title": "You take care of your child. But who takes care of their information?",
+    "subtitle": "Every day, families have to repeat the same story to doctors, therapists, and school. Meanwhile, documents get scattered, information is lost, and important decisions end up being made without the full context.",
+    "subtitleExtra": "Centralize everything in one place and let everyone follow the same journey.",
+    "items": [
+      { "title": "The same story, over and over.", "description": "You explain the same events to every new professional, appointment, or school meeting." },
+      { "title": "Information scattered everywhere.", "description": "WhatsApp, calendar, reports, photos, prescriptions, and notes stay separate and hard to find when you need them most." },
+      { "title": "Each professional sees only one part.", "description": "Without a complete view of the child's progress, important opportunities can go unnoticed." },
+      { "title": "The family becomes mission control.", "description": "Beyond caring for the child, you also have to organize information, remember dates, share documents, and keep track of every detail." }
+    ],
+    "highlight": {
+      "title": "Meu Mundo Azul changes this reality.",
+      "description": "It connects family, therapists, and school in one intelligent ecosystem, where every piece of information follows the child throughout their journey.",
+      "cta": "See how it works"
+    }
+  },
   "modules": {
     "title": "Everything talks to each other.",
     "subtitle": "Every activity feeds the timeline, generates reports, informs the AI, and refines recommendations.",
