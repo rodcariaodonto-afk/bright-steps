@@ -28,6 +28,22 @@
     "aiLabel": "Azul YZ",
     "aiMessage": "Bento'nun son beş gündür daha iyi uyuduğunu fark ettim. Saat 20:30 rutinini sürdürmek bu gelişimi korumaya yardımcı olabilir."
   },
+  "empathy": {
+    "title": "Çocuğunuza siz bakıyorsunuz. Peki bilgilerine kim bakıyor?",
+    "subtitle": "Her gün aileler doktorlara, terapistlere ve okula aynı hikayeyi tekrarlamak zorunda kalıyor. Bu sırada belgeler dağınık duruyor, bilgiler kayboluyor ve önemli kararlar tüm bağlam olmadan alınıyor.",
+    "subtitleExtra": "Her şeyi tek bir yerde toplayın ve herkesin aynı yolculuğu takip etmesine izin verin.",
+    "items": [
+      { "title": "Aynı hikaye, tekrar tekrar.", "description": "Her yeni profesyonele, randevuya veya okul toplantısına aynı olayları anlatıyorsunuz." },
+      { "title": "Dağınık bilgiler.", "description": "WhatsApp, ajanda, raporlar, fotoğraflar, reçeteler ve notlar ayrı ayrı duruyor ve en çok ihtiyaç duyulduğunda bulunması zor." },
+      { "title": "Her profesyonel yalnızca bir parçayı görüyor.", "description": "Çocuğun gelişiminin tam bir görünümü olmadan önemli fırsatlar gözden kaçabilir." },
+      { "title": "Aile her şeyin merkezi oluyor.", "description": "Çocuğa bakmanın yanı sıra bilgileri düzenlemek, tarihleri hatırlamak, belgeleri paylaşmak ve her ayrıntıyı takip etmek zorundasınız." }
+    ],
+    "highlight": {
+      "title": "Meu Mundo Azul bu gerçeği değiştiriyor.",
+      "description": "Aileyi, terapistleri ve okulu tek bir akıllı ekosistemde birleştiriyor; burada her bilgi çocuğun yolculuğu boyunca onunla birlikte ilerliyor.",
+      "cta": "Nasıl çalıştığını görün"
+    }
+  },
   "modules": {
     "title": "Her şey birbiriyle konuşur.",
     "subtitle": "Her aktivite zaman çizelgesini besler, raporlar oluşturur, yapay zekayı besler ve önerileri ayarlar.",
