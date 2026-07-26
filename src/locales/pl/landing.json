@@ -56,25 +56,64 @@
       "cta": "Dowiedz się, jak to działa"
     }
   },
+  "flow": {
+    "title": "Każde dziecko nadal się rozwija. Jego opieka również powinna.",
+    "description": "Dziś lekarze, terapeuci, nauczyciele i członkowie rodziny widzą tylko fragmenty podróży dziecka. Meu Mundo Azul łączy wszystko w jedną inteligentną oś czasu, pozwalając wszystkim śledzić ten sam rozwój z pełnym kontekstem.",
+    "steps": [
+      {
+        "title": "Rodzina rejestruje codzienne życie.",
+        "description": "Rutyna, zachowanie, sen, jedzenie, leki i ważne wydarzenia."
+      },
+      {
+        "title": "Meu Mundo Azul wszystko organizuje.",
+        "description": "Wszystkie informacje są połączone w jedną oś czasu."
+      },
+      {
+        "title": "Azul AI uczy się ciągle.",
+        "description": "AI rozumie historię dziecka, identyfikuje wzorce i generuje sugestie oparte na rzeczywistym rozwoju."
+      },
+      {
+        "title": "Szkoła i terapeuci współpracują.",
+        "description": "Wszyscy pracują w tym samym kontekście, redukując powtarzalność pracy i poprawiając opiekę."
+      }
+    ],
+    "highlight": {
+      "title": "Różnica nie polega na posiadaniu sztucznej inteligencji.",
+      "lines": [
+        "Różnica polega na tym, że pamięta historię dziecka.",
+        "Łączy informacje w czasie, aby wspierać rodziny i specjalistów.",
+        "Nigdy nie zastępuje lekarzy, terapeutów ani nauczycieli."
+      ],
+      "cta": "Poznaj Meu Mundo Azul"
+    }
+  },
   "modules": {
-    "title": "Wszystko ze sobą rozmawia.",
-    "subtitle": "Każda aktywność zasila oś czasu, generuje raporty, zasila AI i dostosowuje rekomendacje.",
-    "cta": "Zacznij teraz",
+    "title": "Wszystko, czego potrzebujesz w jednym miejscu.",
+    "subtitle": "Organizuj rutynę dziecka, śledź jego rozwój i udostępniaj informacje tym, którzy uczestniczą w jego rozwoju.",
+    "cta": "Utwórz moje konto za darmo",
     "items": [
-      "Pełny profil kliniczny dziecka",
-      "Ujednolicona oś czasu wszystkiego, co się dzieje",
-      "Kalendarz z terapiami, szkołą i rutynami",
-      "Leki z przypomnieniami i historią",
-      "Rejestr nastroju i zachowania",
-      "Cele i ewolucja z wykresami",
-      "Zorganizowane dokumenty, orzeczenia i recepty",
-      "Cotygodniowe raporty generowane przez AI"
+      {
+        "title": "Zorganizowana rodzina",
+        "description": "Rutyna, leki, nastrój i dokumenty w jednym miejscu, z wszystkimi odpowiedzialnymi osobami na tej samej stronie."
+      },
+      {
+        "title": "Zaangażowane dziecko",
+        "description": "Zabawny świat z historiami, grami i postacią, która mówi jego językiem."
+      },
+      {
+        "title": "Połączeni specjaliści",
+        "description": "Terapeuci i szkoła śledzą rzeczywisty rozwój, bez konieczności odtwarzania kontekstu na każdej sesji."
+      },
+      {
+        "title": "AI, która śledzi rozwój",
+        "description": "Azul uczy się z historii dziecka i sugeruje ścieżki oparte na tym, co naprawdę działa."
+      }
     ]
   },
   "ai": {
     "eyebrow": "Sztuczna Inteligencja",
-    "title": "AI, która zna Twoje dziecko.",
-    "description": "Meu Mundo Azul rozmawia w języku naturalnym, tworzy spersonalizowane historie społeczne, aby przygotować na nowe chwile i identyfikuje wzorce, które pozostają niezauważone w codziennym życiu.",
+    "title": "AI, która zna historię dziecka.",
+    "description": "Azul nie tylko odpowiada na pytania. Śledzi rozwój dziecka w czasie. Na podstawie historii zarejestrowanej przez rodzinę, szkołę i terapeutów, identyfikuje wzorce, tworzy spersonalizowane historie społeczne, generuje automatyczne podsumowania i pomaga wszystkim podejmować decyzje z większym kontekstem.",
     "bullets": [
       "Kontekstowy czat z pełną historią",
       "Historie społeczne do przygotowania na wizyty, podróże i zmiany",
@@ -86,11 +125,12 @@
   "aiPreview": {
     "name": "Azul AI",
     "context": "Aktywny kontekst · Bento, 6 lat",
-    "userMessage": "Stwórz historię dla Bento o jego pierwszej wizycie u dentysty.",
-    "aiMessage": "Jasne! „Dziś Bento pozna dentystę. Usiądzie na dużym krześle, które podnosi się i opuszcza. Dentystka policzy do 3 przed każdym krokiem…” Chcesz, żebym kontynuował i dodał rysunki?"
+    "userMessage": "Bento będzie niespokojny, ponieważ jutro będzie jego pierwsza wizyta u dentysty.",
+    "aiMessage": "Na podstawie profilu Bento przygotowałam spersonalizowaną historię społeczną, aby pomóc mu zrozumieć, jak będzie wyglądała wizyta i zmniejszyć jego niepokój."
   },
   "security": {
-    "title": "Stworzone z absolutnym poszanowaniem RODO.",
+    "title": "Bezpieczeństwo dla tych, którzy dbają o to, co najważniejsze.",
+    "subtitle": "Wszystkie dane są chronione zgodnie z najlepszymi praktykami bezpieczeństwa i RODO.",
     "items": [
       "Zgoda wersjonowana i możliwa do odwołania w dowolnym momencie",
       "Zabezpieczenia na poziomie wiersza i audyt każdego dostępu",
@@ -100,8 +140,8 @@
   },
   "awareness": {
     "eyebrow": "Świadomość",
-    "title": "Neurorozwój w liczbach",
-    "subtitle": "Oficjalne dane, które podkreślają pilną potrzebę wspierania, informowania i łączenia rodzin, profesjonalistów i szkół.",
+    "title": "Miliony rodzin codziennie borykają się z tym wyzwaniem.",
+    "subtitle": "Neurorozwój wymaga ciągłego monitorowania. Im większa integracja między rodziną, szkołą i specjalistami, tym większe szanse na rozwój.",
     "stats": [
       {
         "n": "1 na 100",
@@ -122,10 +162,45 @@
     ],
     "sources": "Źródła: Światowa Organizacja Zdrowia, Centers for Disease Control and Prevention i Ministerstwo Zdrowia Brazylii."
   },
+  "beforeAfter": {
+    "title": "Więcej czasu na opiekę. Mniej czasu na organizację.",
+    "beforeLabel": "Przed",
+    "afterLabel": "Po",
+    "cards": [
+      {
+        "before": [
+          "WhatsApp",
+          "Kalendarz",
+          "Papiery",
+          "Raporty",
+          "Arkusze kalkulacyjne"
+        ],
+        "after": "Wszystko w jednym miejscu."
+      },
+      {
+        "before": [
+          "Wyjaśnij wszystko od nowa."
+        ],
+        "after": "Cała historia towarzyszy dziecku."
+      },
+      {
+        "before": [
+          "Każdy specjalista pracuje samodzielnie."
+        ],
+        "after": "Wszyscy śledzą ten sam rozwój."
+      }
+    ],
+    "cta": "Utwórz moje konto za darmo"
+  },
   "cta": {
-    "title": "Zacznij już dziś. Rozwijaj się z Meu Mundo Azul przez wiele lat.",
-    "subtitle": "Platforma towarzyszy dziecku na każdym etapie, od rutyny snu po samodzielność, od komunikacji po terapie.",
-    "action": "Utwórz moje konto"
+    "title": "Historia Twojego dziecka zasługuje na kontynuację.",
+    "subtitle": "Rozwój dziecka odbywa się każdego dnia. Nie pozwól, aby ważne informacje zaginęły między wizytami, szkołami i terapiami. Dzięki Meu Mundo Azul cała podróż dziecka pozostaje połączona.",
+    "action": "Utwórz moje konto za darmo",
+    "microcopy": [
+      "Bez karty kredytowej.",
+      "Konfiguracja w kilka minut.",
+      "Dane chronione przez RODO."
+    ]
   },
   "plans": {
     "backToApp": "Przejdź do aplikacji",

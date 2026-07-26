@@ -56,25 +56,64 @@
       "cta": "Ontdek hoe het werkt"
     }
   },
+  "flow": {
+    "title": "Elk kind blijft zich ontwikkelen. De begeleiding ervan zou dat ook moeten doen.",
+    "description": "Tegenwoordig zien artsen, therapeuten, leerkrachten en familieleden slechts delen van de reis van het kind. Meu Mundo Azul verbindt alles in één intelligente tijdlijn, waardoor iedereen dezelfde ontwikkeling kan volgen met volledige context.",
+    "steps": [
+      {
+        "title": "Familie registreert de dagelijkse routine.",
+        "description": "Routine, gedrag, slaap, voeding, medicatie en belangrijke gebeurtenissen."
+      },
+      {
+        "title": "Meu Mundo Azul organiseert alles.",
+        "description": "Alle informatie is verbonden in één tijdlijn."
+      },
+      {
+        "title": "Azul AI leert continu.",
+        "description": "De AI begrijpt de geschiedenis van het kind, identificeert patronen en genereert suggesties op basis van de werkelijke ontwikkeling."
+      },
+      {
+        "title": "School en therapeuten volgen samen.",
+        "description": "Iedereen werkt met dezelfde context, wat dubbel werk vermindert en de zorg verbetert."
+      }
+    ],
+    "highlight": {
+      "title": "Het verschil is niet dat er Kunstmatige Intelligentie is.",
+      "lines": [
+        "Het verschil is dat het de geschiedenis van het kind onthoudt.",
+        "Het verbindt informatie in de loop van de tijd om families en professionals te ondersteunen.",
+        "Het vervangt nooit artsen, therapeuten of leerkrachten."
+      ],
+      "cta": "Maak kennis met Meu Mundo Azul"
+    }
+  },
   "modules": {
-    "title": "Alles communiceert met elkaar.",
-    "subtitle": "Elke activiteit voedt de tijdlijn, genereert rapporten, voedt de AI en past de aanbevelingen aan.",
-    "cta": "Nu beginnen",
+    "title": "Alles wat u nodig heeft op één plek.",
+    "subtitle": "Organiseer de routine van het kind, volg de ontwikkeling en deel informatie met degenen die betrokken zijn bij de ontwikkeling.",
+    "cta": "Maak mijn gratis account aan",
     "items": [
-      "Volledig klinisch profiel van het kind",
-      "Uniforme tijdlijn van alles wat er gebeurt",
-      "Kalender met therapieën, school en routines",
-      "Medicatie met herinneringen en geschiedenis",
-      "Registratie van stemming en gedrag",
-      "Doelen en evolutie met grafieken",
-      "Georganiseerde documenten, rapporten en recepten",
-      "Wekelijkse rapporten gegenereerd door AI"
+      {
+        "title": "Georganiseerde familie",
+        "description": "Routine, medicatie, stemming en documenten op één plek, met alle verantwoordelijken op dezelfde pagina."
+      },
+      {
+        "title": "Betrokken kind",
+        "description": "Een speelse wereld met verhalen, spelletjes en een personage dat zijn taal spreekt."
+      },
+      {
+        "title": "Verbonden professionals",
+        "description": "Therapeuten en school volgen de werkelijke ontwikkeling, zonder de context bij elke sessie opnieuw te hoeven opbouwen."
+      },
+      {
+        "title": "AI die de ontwikkeling volgt",
+        "description": "Azul leert van de geschiedenis van het kind en stelt paden voor op basis van wat echt werkt."
+      }
     ]
   },
   "ai": {
     "eyebrow": "Kunstmatige intelligentie",
-    "title": "Een AI die uw kind kent.",
-    "description": "Mijn Blauwe Wereld communiceert in natuurlijke taal, creëert gepersonaliseerde sociale verhalen om nieuwe momenten voor te bereiden en identificeert patronen die onopgemerkt blijven in het dagelijks leven.",
+    "title": "Een AI die de geschiedenis van het kind kent.",
+    "description": "Azul beantwoordt niet alleen vragen. Het volgt de ontwikkeling van het kind in de loop van de tijd. Op basis van de geschiedenis die door de familie, school en therapeuten is vastgelegd, identificeert het patronen, creëert het gepersonaliseerde sociale verhalen, genereert het automatische samenvattingen en helpt het iedereen om beslissingen te nemen met meer context.",
     "bullets": [
       "Contextuele chat met de volledige geschiedenis",
       "Sociale verhalen om afspraken, reizen en veranderingen voor te bereiden",
@@ -86,11 +125,12 @@
   "aiPreview": {
     "name": "Azul AI",
     "context": "Actieve context · Bento, 6 jaar",
-    "userMessage": "Maak een verhaal voor Bento over zijn eerste bezoek aan de tandarts.",
-    "aiMessage": "Natuurlijk! \"Vandaag gaat Bento de tandarts ontmoeten. Hij gaat zitten op een grote stoel die omhoog en omlaag gaat. De tandarts telt tot 3 voor elke stap...\" Wil je dat ik doorga en tekeningen toevoeg?"
+    "userMessage": "Bento zal angstig zijn omdat morgen zijn eerste tandartsafspraak is.",
+    "aiMessage": "Op basis van Bento's profiel heb ik een gepersonaliseerd sociaal verhaal voorbereid om hem te helpen begrijpen hoe de afspraak zal zijn en de angst te verminderen."
   },
   "security": {
-    "title": "Gemaakt met absoluut respect voor de AVG.",
+    "title": "Beveiliging voor degenen die zorgen voor wat het belangrijkst is.",
+    "subtitle": "Alle gegevens worden beschermd volgens de beste beveiligingspraktijken en de AVG.",
     "items": [
       "Versiebeheerde en op elk moment herroepbare toestemming",
       "Row Level Security en auditing bij elke toegang",
@@ -100,8 +140,8 @@
   },
   "awareness": {
     "eyebrow": "Bewustwording",
-    "title": "Neuro-ontwikkeling in cijfers",
-    "subtitle": "Officiële gegevens die de urgentie benadrukken om families, professionals en scholen te verwelkomen, te informeren en te verbinden.",
+    "title": "Miljoenen families ervaren deze uitdaging elke dag.",
+    "subtitle": "Neuro-ontwikkeling vereist continue begeleiding. Hoe groter de integratie tussen familie, school en professionals, hoe groter de kans op ontwikkeling.",
     "stats": [
       {
         "n": "1 op 100",
@@ -122,10 +162,45 @@
     ],
     "sources": "Bronnen: Wereldgezondheidsorganisatie, Centers for Disease Control and Prevention en Ministerie van Volksgezondheid van Brazilië."
   },
+  "beforeAfter": {
+    "title": "Meer tijd voor zorg. Minder tijd voor organisatie.",
+    "beforeLabel": "Voor",
+    "afterLabel": "Na",
+    "cards": [
+      {
+        "before": [
+          "WhatsApp",
+          "Agenda",
+          "Papieren",
+          "Rapporten",
+          "Spreadsheets"
+        ],
+        "after": "Alles op één plek."
+      },
+      {
+        "before": [
+          "Alles opnieuw uitleggen."
+        ],
+        "after": "Het hele verhaal volgt het kind."
+      },
+      {
+        "before": [
+          "Elke professional werkt alleen."
+        ],
+        "after": "Iedereen volgt dezelfde ontwikkeling."
+      }
+    ],
+    "cta": "Maak mijn gratis account aan"
+  },
   "cta": {
-    "title": "Begin vandaag nog. Groei jarenlang mee met Meu Mundo Azul.",
-    "subtitle": "Het platform begeleidt het kind in elke fase, van slaaproutine tot autonomie, van communicatie tot therapieën.",
-    "action": "Mijn account aanmaken"
+    "title": "Het verhaal van uw kind verdient het om door te gaan.",
+    "subtitle": "De ontwikkeling van kinderen vindt elke dag plaats. Laat belangrijke informatie niet verloren gaan tussen afspraken, scholen en therapieën. Met Meu Mundo Azul blijft de hele reis van het kind verbonden.",
+    "action": "Maak mijn gratis account aan",
+    "microcopy": [
+      "Geen creditcard nodig.",
+      "Binnen enkele minuten ingesteld.",
+      "Gegevens beschermd door de AVG."
+    ]
   },
   "plans": {
     "backToApp": "Ga naar de app",

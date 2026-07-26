@@ -33,10 +33,22 @@
     "subtitle": "Her gün aileler doktorlara, terapistlere ve okula aynı hikayeyi tekrarlamak zorunda kalıyor. Bu sırada belgeler dağınık duruyor, bilgiler kayboluyor ve önemli kararlar tüm bağlam olmadan alınıyor.",
     "subtitleExtra": "Her şeyi tek bir yerde toplayın ve herkesin aynı yolculuğu takip etmesine izin verin.",
     "items": [
-      { "title": "Aynı hikaye, tekrar tekrar.", "description": "Her yeni profesyonele, randevuya veya okul toplantısına aynı olayları anlatıyorsunuz." },
-      { "title": "Dağınık bilgiler.", "description": "WhatsApp, ajanda, raporlar, fotoğraflar, reçeteler ve notlar ayrı ayrı duruyor ve en çok ihtiyaç duyulduğunda bulunması zor." },
-      { "title": "Her profesyonel yalnızca bir parçayı görüyor.", "description": "Çocuğun gelişiminin tam bir görünümü olmadan önemli fırsatlar gözden kaçabilir." },
-      { "title": "Aile her şeyin merkezi oluyor.", "description": "Çocuğa bakmanın yanı sıra bilgileri düzenlemek, tarihleri hatırlamak, belgeleri paylaşmak ve her ayrıntıyı takip etmek zorundasınız." }
+      {
+        "title": "Aynı hikaye, tekrar tekrar.",
+        "description": "Her yeni profesyonele, randevuya veya okul toplantısına aynı olayları anlatıyorsunuz."
+      },
+      {
+        "title": "Dağınık bilgiler.",
+        "description": "WhatsApp, ajanda, raporlar, fotoğraflar, reçeteler ve notlar ayrı ayrı duruyor ve en çok ihtiyaç duyulduğunda bulunması zor."
+      },
+      {
+        "title": "Her profesyonel yalnızca bir parçayı görüyor.",
+        "description": "Çocuğun gelişiminin tam bir görünümü olmadan önemli fırsatlar gözden kaçabilir."
+      },
+      {
+        "title": "Aile her şeyin merkezi oluyor.",
+        "description": "Çocuğa bakmanın yanı sıra bilgileri düzenlemek, tarihleri hatırlamak, belgeleri paylaşmak ve her ayrıntıyı takip etmek zorundasınız."
+      }
     ],
     "highlight": {
       "title": "Meu Mundo Azul bu gerçeği değiştiriyor.",
@@ -44,25 +56,8 @@
       "cta": "Nasıl çalıştığını görün"
     }
   },
-  "modules": {
-    "title": "Her şey birbiriyle konuşur.",
-    "subtitle": "Her aktivite zaman çizelgesini besler, raporlar oluşturur, yapay zekayı besler ve önerileri ayarlar.",
-    "cta": "Şimdi Başla",
-    "items": [
-      "Çocuğun tam klinik profili",
-      "Olan her şeyin birleşik zaman çizelgesi",
-      "Terapiler, okul ve rutinlerle takvim",
-      "Hatırlatıcılar ve geçmişi olan ilaçlar",
-      "Ruh hali ve davranış kaydı",
-      "Grafiklerle hedefler ve gelişim",
-      "Organize belgeler, raporlar ve reçeteler",
-      "Yapay zeka tarafından oluşturulan haftalık raporlar"
-    ]
-  },
   "ai": {
     "eyebrow": "Yapay Zeka",
-    "title": "Çocuğunuzu tanıyan bir yapay zeka.",
-    "description": "Meu Mundo Azul doğal dilde konuşur, yeni anları hazırlamak için kişiselleştirilmiş sosyal hikayeler oluşturur ve günlük yaşamda fark edilmeyen kalıpları tanımlar.",
     "bullets": [
       "Tam geçmişi olan bağlamsal sohbet",
       "Randevuları, seyahatleri ve değişiklikleri hazırlamak için sosyal hikayeler",
@@ -73,12 +68,9 @@
   },
   "aiPreview": {
     "name": "Azul YZ",
-    "context": "Aktif bağlam · Bento, 6 yaşında",
-    "userMessage": "Bento için ilk kez dişçiye gitmesi hakkında bir hikaye oluştur.",
-    "aiMessage": "Elbette! \"Bugün Bento dişçiyle tanışacak. Büyük, inip kalkan bir sandalyeye oturacak. Dişçi her adımdan önce 3'e kadar sayacak...\" Devam etmemi ve çizimler eklememi ister misin?"
+    "context": "Aktif bağlam · Bento, 6 yaşında"
   },
   "security": {
-    "title": "KVKK'ya mutlak saygıyla yapılmıştır.",
     "items": [
       "Her an iptal edilebilir ve sürümlü onay",
       "Her erişimde Satır Düzeyi Güvenlik ve denetim",
@@ -88,8 +80,6 @@
   },
   "awareness": {
     "eyebrow": "Farkındalık",
-    "title": "Sayılarla nörogelişim",
-    "subtitle": "Aileleri, profesyonelleri ve okulları ağırlama, bilgilendirme ve birleştirme aciliyetini pekiştiren resmi veriler.",
     "stats": [
       {
         "n": "100'de 1",
@@ -110,11 +100,7 @@
     ],
     "sources": "Kaynaklar: Dünya Sağlık Örgütü, Hastalık Kontrol ve Önleme Merkezleri ve Brezilya Sağlık Bakanlığı."
   },
-  "cta": {
-    "title": "Bugün başlayın. Meu Mundo Azul ile yıllarca büyüyün.",
-    "subtitle": "Platform, uyku rutininden özerkliğe, iletişimden terapilere kadar çocuğa her aşamada eşlik eder.",
-    "action": "Hesabımı oluştur"
-  },
+  "cta": {},
   "plans": {
     "backToApp": "Uygulamaya git",
     "trialBadge": "Herhangi bir planda {{days}} gün ücretsiz",

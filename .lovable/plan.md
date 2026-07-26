@@ -1,50 +1,59 @@
-## Objetivo
 
-Trocar a seção "pillars" (Um ecossistema, muitas vidas) por uma nova seção emocional "empathy" que gera identificação com a dor da família antes de apresentar a solução. Sem mudar identidade visual, largura, tipografia, espaçamento, cards ou responsividade.
+# Reestruturação da Landing: foco em conversão e transformação
 
-## Mudanças
+Vou reorganizar a ordem das seções da landing, trocar copies e adicionar 1 nova seção (Antes/Depois), reaproveitando 100% dos componentes visuais já existentes (cards, botões, tipografia, cores, motion). Toda a mudança de texto passa por `src/locales/pt-BR/landing.json` e depois é propagada para os 14 idiomas restantes via `scripts/i18n-translate.ts`.
 
-### 1. Copy (i18n)
+## Nova ordem de seções em `src/routes/index.tsx`
 
-`src/locales/pt-BR/landing.json`
-- Remover o bloco `pillars` inteiro.
-- Adicionar novo bloco `empathy` com:
-  - `title`: "Você cuida do seu filho. Mas quem cuida das informações dele?"
-  - `subtitle`: parágrafo com dois blocos (dor + convite à centralização).
-  - `items` (array de 4): título e descrição conforme especificado (mesma história / informações espalhadas / cada profissional vê uma parte / família vira central).
-  - `highlight.title`: "O Meu Mundo Azul muda essa realidade."
-  - `highlight.description`: texto do bloco verde.
-  - `highlight.cta`: "Conheça como funciona"
+1. Hero (mantido)
+2. Dor da Família (`empathy` atual, mantido)
+3. Nova forma de pensar (substitui a antiga seção "Tudo conversa entre si" / bloco de destaque atual) → nova chave `flow`
+4. Funcionalidades (a atual "Um ecossistema" vai virar `modules` reescrito, com 4 bullets de benefício)
+5. IA (mantida, copy trocada + novo exemplo de chat com Bento/consulta odontológica)
+6. Segurança (mantida, só o título/subtítulo mudam)
+7. Dados / Conscientização (mantido, só título/subtítulo mudam)
+8. Antes x Depois (NOVA seção `beforeAfter` com 3 cards e CTA)
+9. CTA final (copy substituída + microcopy de reforço "sem cartão, LGPD, poucos minutos")
 
-Depois, deletar as chaves `pillars` correspondentes nos outros 14 locales e rodar `scripts/i18n-translate.ts` com `ONLY_NS=landing` para gerar `empathy` traduzido em todos.
+Section id `#pilares` fica no bloco 3 (nova forma de pensar) para preservar o link do nav; `#modulos`, `#ia`, `#seguranca` continuam válidos.
 
-### 2. Componente
+## Alterações em `src/routes/index.tsx`
 
-`src/routes/index.tsx`
-- Remover leitura de `pillars.items` e o `<section id="pilares">` inteiro (linhas 154-187 aprox.), mais o array `pillarIcons` que só serve à seção antiga.
-- Inserir no mesmo lugar uma nova `<section id="empathy">` com a mesma casca visual dos pilares:
-  - Container `container-atlas`, header `max-w-2xl` (h2 4xl bold + subtítulo `text-lg text-muted-foreground`, respeitando quebras de parágrafo do subtítulo).
-  - Grid `mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4` com 4 cards no mesmo estilo (`rounded-3xl border bg-card p-6 shadow-sm`, ícone em `bg-primary-soft text-primary`, título `text-lg font-semibold`, descrição `text-sm text-muted-foreground`) preservando as animações `motion.div`.
-  - Ícones lucide: `MessagesSquare` (conversa), `Files` (documentos), `Network` (conexão), `Users` (família).
-- Abaixo do grid, um bloco de destaque:
-  - Card `rounded-3xl` com fundo verde suave usando o token existente `bg-primary-soft` (mesma família visual dos badges "primary-soft" do site, mantém identidade).
-  - Título forte + parágrafo em `text-muted-foreground` + `Button` primário arredondado (`rounded-full`) linkando para `#modulos` (âncora "Conheça como funciona" leva ao bloco de módulos que já explica o funcionamento).
-- Manter o `id="pilares"` como âncora legada? Não. A navbar hoje aponta para `#pilares`; trocar o link do menu para `#empathy` ou renomear o id. Vou verificar antes de aplicar.
+- Reordenar os JSX blocks para a sequência acima.
+- Substituir a seção atual pós-empathy (linhas ~218-242) pelo novo bloco `flow`:
+  - Título + subtítulo
+  - 4 cards horizontais com seta ↓ entre eles em mobile, com ícones já disponíveis (`Users`, `Network`, `Sparkles`, `HeartHandshake` ou similar do lucide já importados).
+  - Destaque verde (mesma casca do `empathy.highlight` — `rounded-3xl bg-primary-soft`) com título, texto de 3 linhas e CTA "Conhecer o Meu Mundo Azul".
+- Reescrever a seção `modules`: manter o mesmo grid, trocar o título/subtítulo e reduzir a lista para os 4 benefícios ("Família organizada", "Criança engajada", "Profissionais conectados", "IA que acompanha a evolução"), cada um com um subtexto curto (usar variant de card com título + descrição em vez de string plana; ajustar o `map` para o novo shape).
+- Seção IA: substituir o exemplo de chat dentro de `AIChatPreview` para a conversa Família/Azul sobre a consulta odontológica do Bento (via novas chaves `aiChat.userMessage` / `aiChat.aiMessage`). Manter disclaimer.
+- Adicionar nova seção `beforeAfter` antes do CTA final: 3 cards com colunas "Antes" (lista) / "Depois" (frase), separador visual, e botão "Criar minha conta gratuitamente" apontando para `/auth`.
+- CTA final: nova copy + microcopy de 3 itens abaixo do botão.
+- Ajuste geral: garantir que qualquer referência a medicamento específico no `HeroPreview` (row2/row3 subtitles) esteja como "Medicação / Confirmar administração" nas strings do `landing.json` (já foi feito antes, revalidar).
 
-### 3. Verificações pós-edição
+## Alterações em `src/locales/pt-BR/landing.json`
 
-- Ler o nav da landing (`src/routes/index.tsx` topo) para confirmar qual `href` referencia `#pilares` e atualizar junto (ou manter `id="pilares"` na nova section por compatibilidade — decisão: manter `id="pilares"` para não quebrar o link do menu; label do menu segue "Família").
-- Rodar o build automático para checar tipos.
-- Validar visualmente no viewport atual (1138×682) que grid vira 2 colunas em md e 4 em lg, e que o bloco verde não estoura a largura do container.
+- Remover: chaves antigas de conexão entre módulos que não serão usadas.
+- Manter: `hero`, `heroPreview`, `empathy`, `nav`, `footer`, `security.items`, `awareness.stats`, `awareness.sources`, `ai.bullets`, `ai.disclaimer`, `ai.eyebrow`.
+- Substituir textos: `ai.title`, `ai.description`, `security.title`, `security.subtitle` (nova), `awareness.title`, `awareness.subtitle`, `cta.title`, `cta.subtitle`, `cta.action`, `cta.microcopy` (novo array de 3 itens).
+- Reescrever `modules.title`, `modules.subtitle`, e transformar `modules.items` de `string[]` para `{ title, description }[]` com 4 itens de benefício. Ajustar o consumo em `index.tsx`.
+- Adicionar bloco novo `flow`: `{ title, description, steps: [{title, description}]×4, highlight: {title, lines[3], cta} }`.
+- Adicionar bloco novo `aiChat`: `{ userMessage, aiMessage }`.
+- Adicionar bloco novo `beforeAfter`: `{ title, cards: [{ before: string|string[], after: string }]×3, cta }`.
 
-## Detalhes técnicos
+## Propagação i18n
 
-- Nenhum token de cor novo. Usar `bg-primary-soft` (já definido em `styles.css`) para o bloco verde de destaque, mantendo o mesmo tom institucional dos badges/ícones existentes.
-- Ícones importados de `lucide-react` no topo do arquivo, removendo os imports não mais usados (`Sparkles` etc. só se ficarem órfãos).
-- Nenhuma copy usa travessão "—", conforme regra do projeto.
-- Tradução automática dos 14 idiomas via script existente (`ONLY_NS=landing`), preservando cache das demais chaves.
+- Rodar `bun run scripts/i18n-translate.ts` para os 14 locales (`en, es, fr, it, de, nl, pl, tr, ru, ja, ko, zh-CN, zh-TW, ar`) atualizando somente as chaves novas/alteradas.
+- Validar JSON de cada locale (parse + presença das chaves-chave: `flow.title`, `modules.items[0].title`, `beforeAfter.cta`, `cta.microcopy[0]`).
+- Se algum locale truncar (padrão observado em EN/PL/TR/ZH-CN), aumentar `max_tokens` temporariamente ou completar as chaves faltantes manualmente, como feito nas ondas anteriores.
 
-## Fora de escopo
+## Fora de escopo (preservado)
 
-- Não altero Hero, Módulos, IA, Segurança, CTA final, nem cores/tokens globais.
-- Não mudo o fluxo de rotas nem componentes compartilhados.
+- Identidade visual, tokens de cor, tipografia, `AtlasLogo`, `LocaleSelector`, `Button`, container `container-atlas`, grids e responsividade atuais.
+- Meta tags SEO da rota `/`.
+- Nav (`#pilares`, `#modulos`, `#ia`, `#seguranca`, `/planos`, `/auth`).
+- Nenhuma mudança em rotas backend, RLS, i18n runtime, ou paywall.
+
+## Verificação final
+
+- `bunx tsgo` para checar tipos após mudar o shape de `modules.items`.
+- Abrir `/` no preview em `pt-BR` e `en` via Playwright, capturar screenshot da página inteira em desktop 1280 e mobile 390, confirmar ordem das 9 seções e ausência de referências a medicamento específico.

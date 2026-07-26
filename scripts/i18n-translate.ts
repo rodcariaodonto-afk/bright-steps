@@ -13,7 +13,7 @@ if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY missing");
 const SOURCE_DIR = "src/locales/pt-BR";
 const OUT_ROOT = "src/locales";
 
-const TARGETS: Record<string, string> = {
+const TARGETS: Record<string, string> = { en: 'English (US)',
   es: "Spanish (Spain, neutral Latin American Spanish acceptable)",
   fr: "French (France)",
   it: "Italian",
@@ -84,7 +84,7 @@ ${JSON.stringify(source)}`;
         { role: "user", content: prompt },
       ],
       temperature: 0.2,
-      max_tokens: 16000,
+      max_tokens: 32000,
     }),
   });
 
