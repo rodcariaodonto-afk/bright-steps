@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type { UIMessage } from "ai";
 
 import { getLovableAiGatewayRunId } from "@/lib/ai-gateway.server";
+import { createUserScopedSupabaseFromRequest } from "@/integrations/supabase/user-scoped.server";
 import { runAtlasStream } from "@/modules/ai/gateway";
 import type { PersonaId } from "@/modules/ai/personas";
 
@@ -31,14 +32,19 @@ export const Route = createFileRoute("/api/chat")({
           return new Response("LOVABLE_API_KEY ausente", { status: 500 });
         }
 
+        // Client Supabase escopado ao usuário do request (RLS aplica).
+        // Sem sessão → supabase=null → gate de consentimento fail-closed.
+        const { supabase, userId } = await createUserScopedSupabaseFromRequest(request);
+
         try {
           const { result } = await runAtlasStream({
             persona,
-            requesterId: body.requesterId ?? "anon",
+            requesterId: userId ?? body.requesterId ?? "anon",
             childId: body.childId,
             messages: body.messages as UIMessage[],
             lovableApiKey: key,
             initialRunId: getLovableAiGatewayRunId(request),
+            supabase,
           });
 
           return result.toUIMessageStreamResponse({
@@ -52,3 +58,4 @@ export const Route = createFileRoute("/api/chat")({
     },
   },
 });
+

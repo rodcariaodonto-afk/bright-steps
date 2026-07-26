@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useChat } from "@ai-sdk/react";
-import { DefaultChatTransport } from "ai";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Send } from "lucide-react";
 
 import { useActiveChild } from "@/hooks/use-active-child";
+import { createAuthedChatTransport } from "@/lib/authed-chat-transport";
 
 export const Route = createFileRoute("/kid/azul")({
   component: KidAzulChat,
@@ -18,7 +18,7 @@ function KidAzulChat() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const { messages, sendMessage, status } = useChat({
-    transport: new DefaultChatTransport({
+    transport: createAuthedChatTransport({
       api: "/api/chat",
       body: { persona: "child", childId: activeChild?.id },
     }),
