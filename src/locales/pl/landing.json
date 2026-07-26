@@ -28,27 +28,33 @@
     "aiLabel": "Azul AI",
     "aiMessage": "Zauważyłem, że Bento lepiej spał przez ostatnie pięć dni. Utrzymanie rutyny o 20:30 może pomóc w utrzymaniu tego postępu."
   },
-  "pillars": {
-    "title": "Jeden ekosystem, wiele żyć.",
-    "subtitle": "Mój Niebieski Świat narodził się dla ASD, ale rozwija się z każdym stanem neurorozwojowym: ADHD, dysleksją, zespołem Downa, ODD, wysokimi zdolnościami i innymi.",
+  "empathy": {
+    "title": "Ty opiekujesz się swoim dzieckiem. Ale kto dba o jego informacje?",
+    "subtitle": "Każdego dnia rodziny muszą powtarzać tę samą historię lekarzom, terapeutom i szkole. W międzyczasie dokumenty są rozproszone, informacje giną, a ważne decyzje są podejmowane bez pełnego kontekstu.",
+    "subtitleExtra": "Scentralizuj wszystko w jednym miejscu i pozwól wszystkim śledzić tę samą podróż.",
     "items": [
       {
-        "title": "Zorganizowana rodzina",
-        "description": "Rutyna, kalendarz, leki, nastrój i zachowanie w jednym, przyjaznym panelu."
+        "title": "Ta sama historia, wiele razy.",
+        "description": "Wyjaśniasz te same wydarzenia każdemu nowemu specjaliście, na każdej konsultacji czy spotkaniu szkolnym."
       },
       {
-        "title": "Zachwycone dziecko",
-        "description": "Doświadczenie, które wydaje się zabawą. Awatar, świat, misje i AI, która rozmawia jak przyjaciel."
+        "title": "Rozproszone informacje.",
+        "description": "WhatsApp, kalendarz, raporty, zdjęcia, recepty, sprawozdania i notatki są oddzielone i trudne do znalezienia, gdy są najbardziej potrzebne."
       },
       {
-        "title": "Zintegrowani profesjonaliści",
-        "description": "Terapeuci i szkoły otrzymują rzeczywisty kontekst, przeprowadzają oceny i dostarczają raporty w czasie rzeczywistym."
+        "title": "Każdy specjalista widzi tylko część.",
+        "description": "Bez pełnego obrazu rozwoju dziecka, ważne możliwości mogą pozostać niezauważone."
       },
       {
-        "title": "Prawdziwa AI",
-        "description": "To nie jest chatbot. To asystent, który pamięta historię dziecka i sugeruje ścieżki na podstawie danych."
+        "title": "Rodzina staje się centrum wszystkiego.",
+        "description": "Oprócz opieki nad dzieckiem, musisz także organizować informacje, pamiętać o datach, udostępniać dokumenty i śledzić każdy szczegół."
       }
-    ]
+    ],
+    "highlight": {
+      "title": "Meu Mundo Azul zmienia tę rzeczywistość.",
+      "description": "Łączy rodzinę, terapeutów i szkołę w jeden inteligentny ekosystem, gdzie wszystkie informacje towarzyszą dziecku przez całą jego podróż.",
+      "cta": "Dowiedz się, jak to działa"
+    }
   },
   "modules": {
     "title": "Wszystko ze sobą rozmawia.",

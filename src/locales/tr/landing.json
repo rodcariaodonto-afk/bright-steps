@@ -28,27 +28,21 @@
     "aiLabel": "Azul YZ",
     "aiMessage": "Bento'nun son beş gündür daha iyi uyuduğunu fark ettim. Saat 20:30 rutinini sürdürmek bu gelişimi korumaya yardımcı olabilir."
   },
-  "pillars": {
-    "title": "Tek bir ekosistem, birçok hayat.",
-    "subtitle": "Meu Mundo Azul, Otizm Spektrum Bozukluğu için doğdu, ancak DEHB, disleksi, Down sendromu, Karşıt Gelme Bozukluğu, üstün yetenekler ve daha fazlası gibi her türlü nörogelişimsel durumla birlikte büyüyor.",
+  "empathy": {
+    "title": "Çocuğunuza siz bakıyorsunuz. Peki bilgilerine kim bakıyor?",
+    "subtitle": "Her gün aileler doktorlara, terapistlere ve okula aynı hikayeyi tekrarlamak zorunda kalıyor. Bu sırada belgeler dağınık duruyor, bilgiler kayboluyor ve önemli kararlar tüm bağlam olmadan alınıyor.",
+    "subtitleExtra": "Her şeyi tek bir yerde toplayın ve herkesin aynı yolculuğu takip etmesine izin verin.",
     "items": [
-      {
-        "title": "Organize aile",
-        "description": "Rutin, takvim, ilaçlar, ruh hali ve davranışlar tek ve sıcak bir panelde."
-      },
-      {
-        "title": "Büyülenmiş çocuk",
-        "description": "Oyun gibi görünen bir deneyim. Avatar, dünya, görevler ve bir arkadaş gibi konuşan yapay zeka."
-      },
-      {
-        "title": "Entegre profesyoneller",
-        "description": "Terapistler ve okullar gerçek bağlamı alır, değerlendirmeler uygular ve gerçek zamanlı raporlar sunar."
-      },
-      {
-        "title": "Gerçek yapay zeka",
-        "description": "Bir sohbet robotu değil. Çocuğun geçmişini hatırlayan ve verilere dayalı yollar öneren bir asistandır."
-      }
-    ]
+      { "title": "Aynı hikaye, tekrar tekrar.", "description": "Her yeni profesyonele, randevuya veya okul toplantısına aynı olayları anlatıyorsunuz." },
+      { "title": "Dağınık bilgiler.", "description": "WhatsApp, ajanda, raporlar, fotoğraflar, reçeteler ve notlar ayrı ayrı duruyor ve en çok ihtiyaç duyulduğunda bulunması zor." },
+      { "title": "Her profesyonel yalnızca bir parçayı görüyor.", "description": "Çocuğun gelişiminin tam bir görünümü olmadan önemli fırsatlar gözden kaçabilir." },
+      { "title": "Aile her şeyin merkezi oluyor.", "description": "Çocuğa bakmanın yanı sıra bilgileri düzenlemek, tarihleri hatırlamak, belgeleri paylaşmak ve her ayrıntıyı takip etmek zorundasınız." }
+    ],
+    "highlight": {
+      "title": "Meu Mundo Azul bu gerçeği değiştiriyor.",
+      "description": "Aileyi, terapistleri ve okulu tek bir akıllı ekosistemde birleştiriyor; burada her bilgi çocuğun yolculuğu boyunca onunla birlikte ilerliyor.",
+      "cta": "Nasıl çalıştığını görün"
+    }
   },
   "modules": {
     "title": "Her şey birbiriyle konuşur.",
