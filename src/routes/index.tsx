@@ -58,15 +58,15 @@ export const Route = createFileRoute("/")({
   component: Landing,
 });
 
-const pillarIcons = [HeartHandshake, Sparkles, MessagesSquare, LineChart];
+const empathyIcons = [MessagesSquare, Files, Network, Users];
 
-type PillarItem = { title: string; description: string };
+type EmpathyItem = { title: string; description: string };
 type StatItem = { n: string; d: string };
 
 function Landing() {
   const { t } = useTranslation("landing", { useSuspense: false });
 
-  const pillars = asArray<PillarItem>(t("pillars.items", { returnObjects: true }));
+  const empathyItems = asArray<EmpathyItem>(t("empathy.items", { returnObjects: true }));
   const modules = asArray<string>(t("modules.items", { returnObjects: true }));
   const aiBullets = asArray<string>(t("ai.bullets", { returnObjects: true }));
   const securityItems = asArray<string>(t("security.items", { returnObjects: true }));
