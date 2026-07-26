@@ -20,11 +20,13 @@ function makeSupabase(handlers: {
   const chain = (rows: any) => {
     const q: any = {
       _rows: Array.isArray(rows) ? rows : rows ? [rows] : [],
-      _single: !Array.isArray(rows),
-      eq() {
+      _filters: [] as Array<(r: any) => boolean>,
+      eq(col: string, val: any) {
+        this._filters.push((r) => r?.[col] === val);
         return this;
       },
-      in() {
+      in(col: string, vals: any[]) {
+        this._filters.push((r) => vals.includes(r?.[col]));
         return this;
       },
       is() {
@@ -39,11 +41,14 @@ function makeSupabase(handlers: {
       select() {
         return this;
       },
+      _apply() {
+        return this._rows.filter((r: any) => this._filters.every((f: any) => f(r)));
+      },
       async maybeSingle() {
-        return { data: this._rows[0] ?? null, error: null };
+        return { data: this._apply()[0] ?? null, error: null };
       },
       then(resolve: any) {
-        resolve({ data: this._rows, error: null });
+        resolve({ data: this._apply(), error: null });
       },
     };
     return q;
