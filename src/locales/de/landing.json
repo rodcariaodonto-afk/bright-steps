@@ -56,25 +56,64 @@
       "cta": "Erfahren Sie, wie es funktioniert"
     }
   },
+  "flow": {
+    "title": "Jedes Kind entwickelt sich weiter. Seine Begleitung sollte es auch.",
+    "description": "Heute sehen Ärzte, Therapeuten, Lehrer und Familien nur Teile der Reise des Kindes. Meu Mundo Azul verbindet alles in einer einzigen intelligenten Zeitleiste, sodass alle dieselbe Entwicklung mit vollständigem Kontext verfolgen können.",
+    "steps": [
+      {
+        "title": "Familie dokumentiert den Alltag.",
+        "description": "Routine, Verhalten, Schlaf, Ernährung, Medikation und wichtige Ereignisse."
+      },
+      {
+        "title": "Meu Mundo Azul organisiert alles.",
+        "description": "Alle Informationen sind in einer einzigen Zeitleiste verbunden."
+      },
+      {
+        "title": "Azul KI lernt kontinuierlich.",
+        "description": "Die KI versteht die Geschichte des Kindes, identifiziert Muster und generiert Vorschläge basierend auf der tatsächlichen Entwicklung."
+      },
+      {
+        "title": "Schule und Therapeuten begleiten gemeinsam.",
+        "description": "Alle arbeiten mit demselben Kontext, reduzieren Doppelarbeit und verbessern die Betreuung."
+      }
+    ],
+    "highlight": {
+      "title": "Der Unterschied ist nicht, Künstliche Intelligenz zu haben.",
+      "lines": [
+        "Der Unterschied ist, dass sie sich an die Geschichte des Kindes erinnert.",
+        "Sie verbindet Informationen über die Zeit hinweg, um Familien und Fachleute zu unterstützen.",
+        "Sie ersetzt niemals Ärzte, Therapeuten oder Lehrer."
+      ],
+      "cta": "Lernen Sie Meu Mundo Azul kennen"
+    }
+  },
   "modules": {
-    "title": "Alles spricht miteinander.",
-    "subtitle": "Jede Aktivität speist die Zeitleiste, generiert Berichte, speist die KI und passt Empfehlungen an.",
-    "cta": "Jetzt starten",
+    "title": "Alles, was Sie brauchen, an einem einzigen Ort.",
+    "subtitle": "Organisieren Sie den Alltag des Kindes, verfolgen Sie seine Entwicklung und teilen Sie Informationen mit allen, die an der Entwicklung beteiligt sind.",
+    "cta": "Kostenloses Konto erstellen",
     "items": [
-      "Vollständiges klinisches Profil des Kindes",
-      "Vereinheitlichte Zeitleiste aller Ereignisse",
-      "Kalender mit Therapien, Schule und Routinen",
-      "Medikamente mit Erinnerungen und Verlauf",
-      "Stimmungs- und Verhaltensaufzeichnung",
-      "Ziele und Fortschritt mit Grafiken",
-      "Organisierte Dokumente, Gutachten und Rezepte",
-      "Wöchentliche Berichte, generiert von KI"
+      {
+        "title": "Organisierte Familie",
+        "description": "Routine, Medikation, Stimmung und Dokumente an einem Ort, mit allen Verantwortlichen auf dem gleichen Stand."
+      },
+      {
+        "title": "Engagiertes Kind",
+        "description": "Eine spielerische Welt mit Geschichten, Spielen und einer Figur, die seine Sprache spricht."
+      },
+      {
+        "title": "Vernetzte Fachkräfte",
+        "description": "Therapeuten und Schule verfolgen die tatsächliche Entwicklung, ohne den Kontext bei jeder Sitzung neu aufbauen zu müssen."
+      },
+      {
+        "title": "KI, die die Entwicklung begleitet",
+        "description": "Azul lernt aus der Geschichte des Kindes und schlägt Wege vor, basierend auf dem, was wirklich funktioniert."
+      }
     ]
   },
   "ai": {
     "eyebrow": "Künstliche Intelligenz",
-    "title": "Eine KI, die Ihr Kind kennt.",
-    "description": "Mein Blaues Welt spricht in natürlicher Sprache, erstellt personalisierte soziale Geschichten, um neue Momente vorzubereiten, und identifiziert Muster, die im Alltag unbemerkt bleiben.",
+    "title": "Eine KI, die die Geschichte des Kindes kennt.",
+    "description": "Azul beantwortet nicht nur Fragen. Sie begleitet die Entwicklung des Kindes über die Zeit hinweg. Basierend auf der von Familie, Schule und Therapeuten aufgezeichneten Historie identifiziert sie Muster, erstellt personalisierte soziale Geschichten, generiert automatische Zusammenfassungen und hilft allen, Entscheidungen mit mehr Kontext zu treffen.",
     "bullets": [
       "Kontextueller Chat mit vollständigem Verlauf",
       "Soziale Geschichten zur Vorbereitung von Terminen, Reisen und Veränderungen",
@@ -86,11 +125,12 @@
   "aiPreview": {
     "name": "Azul KI",
     "context": "Aktiver Kontext · Bento, 6 Jahre",
-    "userMessage": "Erstellen Sie eine Geschichte für Bento über seinen ersten Zahnarztbesuch.",
-    "aiMessage": "Gerne! „Heute wird Bento den Zahnarzt kennenlernen. Er wird auf einem großen Stuhl sitzen, der hoch und runter fährt. Die Zahnärztin wird bis 3 zählen, bevor sie jeden Schritt macht...“ Soll ich fortfahren und Zeichnungen hinzufügen?"
+    "userMessage": "Bento wird ängstlich sein, weil morgen sein erster Zahnarzttermin ist.",
+    "aiMessage": "Basierend auf Bentos Profil habe ich eine personalisierte soziale Geschichte erstellt, um ihm zu helfen, den Termin zu verstehen und die Angst zu reduzieren."
   },
   "security": {
-    "title": "Mit absolutem Respekt vor der DSGVO erstellt.",
+    "title": "Sicherheit für diejenigen, die sich um das Wichtigste kümmern.",
+    "subtitle": "Alle Daten werden nach den besten Sicherheitspraktiken und der DSGVO geschützt.",
     "items": [
       "Versionierte und jederzeit widerrufbare Zustimmung",
       "Row Level Security und Audit bei jedem Zugriff",
@@ -100,8 +140,8 @@
   },
   "awareness": {
     "eyebrow": "Bewusstsein",
-    "title": "Neuroentwicklung in Zahlen",
-    "subtitle": "Offizielle Daten, die die Dringlichkeit unterstreichen, Familien, Fachkräfte und Schulen zu unterstützen, zu informieren und zu vernetzen.",
+    "title": "Millionen von Familien erleben diese Herausforderung jeden Tag.",
+    "subtitle": "Die Neuroentwicklung erfordert eine kontinuierliche Begleitung. Je größer die Integration zwischen Familie, Schule und Fachkräften, desto größer sind die Chancen auf Entwicklung.",
     "stats": [
       {
         "n": "1 von 100",
@@ -122,10 +162,45 @@
     ],
     "sources": "Quellen: Weltgesundheitsorganisation, Centers for Disease Control and Prevention und brasilianisches Gesundheitsministerium."
   },
+  "beforeAfter": {
+    "title": "Mehr Zeit für die Pflege. Weniger Zeit für die Organisation.",
+    "beforeLabel": "Vorher",
+    "afterLabel": "Nachher",
+    "cards": [
+      {
+        "before": [
+          "WhatsApp",
+          "Terminkalender",
+          "Papiere",
+          "Berichte",
+          "Tabellen"
+        ],
+        "after": "Alles an einem einzigen Ort."
+      },
+      {
+        "before": [
+          "Alles noch einmal erklären."
+        ],
+        "after": "Die gesamte Geschichte begleitet das Kind."
+      },
+      {
+        "before": [
+          "Jeder Fachmann arbeitet allein."
+        ],
+        "after": "Alle verfolgen dieselbe Entwicklung."
+      }
+    ],
+    "cta": "Kostenloses Konto erstellen"
+  },
   "cta": {
-    "title": "Beginnen Sie noch heute. Wachsen Sie viele Jahre lang mit Mein Blaues Welt.",
-    "subtitle": "Die Plattform begleitet das Kind in jeder Phase, von der Schlafroutine bis zur Autonomie, von der Kommunikation bis zu den Therapien.",
-    "action": "Mein Konto erstellen"
+    "title": "Die Geschichte Ihres Kindes verdient es, weiterzugehen.",
+    "subtitle": "Die kindliche Entwicklung findet jeden Tag statt. Lassen Sie wichtige Informationen nicht zwischen Terminen, Schulen und Therapien verloren gehen. Mit Meu Mundo Azul bleibt die gesamte Reise des Kindes verbunden.",
+    "action": "Kostenloses Konto erstellen",
+    "microcopy": [
+      "Keine Kreditkarte erforderlich.",
+      "Einrichtung in wenigen Minuten.",
+      "Daten durch DSGVO geschützt."
+    ]
   },
   "plans": {
     "backToApp": "Zur App gehen",

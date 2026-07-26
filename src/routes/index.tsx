@@ -7,11 +7,16 @@ import {
   MessagesSquare,
   Shield,
   ArrowRight,
+  ArrowDown,
   BookOpenText,
-  LineChart,
   Files,
   Network,
   Users,
+  ClipboardList,
+  Layers,
+  Brain,
+  GraduationCap,
+  Check,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -59,18 +64,29 @@ export const Route = createFileRoute("/")({
 });
 
 const empathyIcons = [MessagesSquare, Files, Network, Users];
+const flowIcons = [ClipboardList, Layers, Brain, GraduationCap];
+const moduleIcons = [HeartHandshake, Sparkles, Network, Brain];
 
-type EmpathyItem = { title: string; description: string };
+type NamedItem = { title: string; description: string };
 type StatItem = { n: string; d: string };
+type FlowHighlight = { title: string; lines: string[]; cta: string };
+type BeforeAfterCard = { before: string[]; after: string };
 
 function Landing() {
   const { t } = useTranslation("landing", { useSuspense: false });
 
-  const empathyItems = asArray<EmpathyItem>(t("empathy.items", { returnObjects: true }));
-  const modules = asArray<string>(t("modules.items", { returnObjects: true }));
+  const empathyItems = asArray<NamedItem>(t("empathy.items", { returnObjects: true }));
+  const flowSteps = asArray<NamedItem>(t("flow.steps", { returnObjects: true }));
+  const flowHighlight = t("flow.highlight", { returnObjects: true }) as FlowHighlight;
+  const flowHighlightLines = asArray<string>(flowHighlight?.lines);
+  const modules = asArray<NamedItem>(t("modules.items", { returnObjects: true }));
   const aiBullets = asArray<string>(t("ai.bullets", { returnObjects: true }));
   const securityItems = asArray<string>(t("security.items", { returnObjects: true }));
   const stats = asArray<StatItem>(t("awareness.stats", { returnObjects: true }));
+  const beforeAfterCards = asArray<BeforeAfterCard>(
+    t("beforeAfter.cards", { returnObjects: true }),
+  );
+  const ctaMicrocopy = asArray<string>(t("cta.microcopy", { returnObjects: true }));
 
   return (
     <div className="min-h-dvh bg-background">
@@ -103,7 +119,7 @@ function Landing() {
       </header>
 
       <main>
-        {/* Hero */}
+        {/* 1. Hero */}
         <section className="relative overflow-hidden">
           <div
             aria-hidden="true"
@@ -154,8 +170,8 @@ function Landing() {
           </div>
         </section>
 
-        {/* Empatia */}
-        <section id="pilares" className="border-t border-border/60 bg-surface-2/60 py-24">
+        {/* 2. Dor da Família */}
+        <section className="border-t border-border/60 bg-surface-2/60 py-24">
           <div className="container-atlas">
             <div className="max-w-2xl">
               <h2 className="text-4xl font-bold tracking-tight text-foreground">
@@ -204,7 +220,7 @@ function Landing() {
                   </p>
                 </div>
                 <Button asChild size="lg" className="rounded-full">
-                  <a href="#modulos">
+                  <a href="#pilares">
                     {t("empathy.highlight.cta")}
                     <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                   </a>
@@ -214,34 +230,129 @@ function Landing() {
           </div>
         </section>
 
+        {/* 3. Nova forma de pensar */}
+        <section id="pilares" className="py-24">
+          <div className="container-atlas">
+            <div className="max-w-3xl">
+              <h2 className="text-4xl font-bold tracking-tight text-foreground">
+                {t("flow.title")}
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">{t("flow.description")}</p>
+            </div>
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {flowSteps.map((step, idx) => {
+                const Icon = flowIcons[idx] ?? Sparkles;
+                const isLast = idx === flowSteps.length - 1;
+                return (
+                  <motion.div
+                    key={step.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                    className="relative rounded-3xl border border-border/70 bg-card p-6 shadow-sm"
+                  >
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-soft text-primary">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </div>
+                      <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {step.description}
+                    </p>
+                    {!isLast && (
+                      <div
+                        aria-hidden="true"
+                        className="mt-4 flex items-center justify-center text-primary/60 lg:absolute lg:right-[-14px] lg:top-1/2 lg:mt-0 lg:-translate-y-1/2 lg:rotate-[-90deg]"
+                      >
+                        <ArrowDown className="h-5 w-5" />
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
 
-        {/* Módulos */}
-        <section id="modulos" className="py-24">
-          <div className="container-atlas grid gap-12 lg:grid-cols-[1fr_1.1fr]">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5 }}
+              className="mt-12 rounded-3xl bg-primary-soft p-8 md:p-10"
+            >
+              <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <div className="max-w-2xl">
+                  <h3 className="text-2xl font-semibold text-foreground">
+                    {flowHighlight?.title}
+                  </h3>
+                  <ul className="mt-3 space-y-2">
+                    {flowHighlightLines.map((line) => (
+                      <li
+                        key={line}
+                        className="flex items-start gap-2 text-base leading-relaxed text-muted-foreground"
+                      >
+                        <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <Button asChild size="lg" className="rounded-full">
+                  <a href="#modulos">
+                    {flowHighlight?.cta}
+                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                  </a>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 4. Funcionalidades (benefícios) */}
+        <section id="modulos" className="border-t border-border/60 bg-surface-2/60 py-24">
+          <div className="container-atlas">
+            <div className="max-w-3xl">
               <h2 className="text-4xl font-bold tracking-tight text-foreground">
                 {t("modules.title")}
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">{t("modules.subtitle")}</p>
-              <Button asChild size="lg" className="mt-8 rounded-full">
+            </div>
+            <div className="mt-14 grid gap-6 md:grid-cols-2">
+              {modules.map((item, idx) => {
+                const Icon = moduleIcons[idx] ?? Sparkles;
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                    className="rounded-3xl border border-border/70 bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
+                  >
+                    <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-soft text-primary">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+            <div className="mt-10 flex justify-start">
+              <Button asChild size="lg" className="rounded-full">
                 <Link to="/auth">{t("modules.cta")}</Link>
               </Button>
             </div>
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {modules.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 rounded-2xl border border-border/60 bg-card p-4"
-                >
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                  <span className="text-sm font-medium text-foreground">{item}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
 
-        {/* IA */}
+        {/* 5. IA */}
         <section
           id="ia"
           className="relative overflow-hidden border-y border-border/60 bg-primary-soft/60 py-24"
@@ -272,7 +383,7 @@ function Landing() {
           </div>
         </section>
 
-        {/* Segurança */}
+        {/* 6. Segurança */}
         <section id="seguranca" className="py-24">
           <div className="container-atlas grid gap-12 md:grid-cols-[1fr_1.2fr]">
             <div>
@@ -282,6 +393,7 @@ function Landing() {
               <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground">
                 {t("security.title")}
               </h2>
+              <p className="mt-4 text-lg text-muted-foreground">{t("security.subtitle")}</p>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2">
               {securityItems.map((item) => (
@@ -296,7 +408,7 @@ function Landing() {
           </div>
         </section>
 
-        {/* Conscientização */}
+        {/* 7. Dados */}
         <section className="border-t border-border/60 bg-primary-soft/40 py-24">
           <div className="container-atlas space-y-10">
             <div className="max-w-2xl">
@@ -320,6 +432,63 @@ function Landing() {
           </div>
         </section>
 
+        {/* 8. Antes x Depois */}
+        <section className="py-24">
+          <div className="container-atlas">
+            <div className="max-w-3xl">
+              <h2 className="text-4xl font-bold tracking-tight text-foreground">
+                {t("beforeAfter.title")}
+              </h2>
+            </div>
+            <div className="mt-14 grid gap-6 md:grid-cols-3">
+              {beforeAfterCards.map((card, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  className="flex flex-col rounded-3xl border border-border/70 bg-card p-6 shadow-sm"
+                >
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                      {t("beforeAfter.beforeLabel")}
+                    </p>
+                    <ul className="mt-3 space-y-1.5">
+                      {asArray<string>(card.before).map((line) => (
+                        <li key={line} className="text-sm text-foreground/80">
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div
+                    aria-hidden="true"
+                    className="my-5 flex items-center justify-center text-primary/60"
+                  >
+                    <ArrowDown className="h-5 w-5" />
+                  </div>
+                  <div className="rounded-2xl bg-primary-soft p-4">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                      {t("beforeAfter.afterLabel")}
+                    </p>
+                    <p className="mt-2 text-base font-semibold text-foreground">{card.after}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            <div className="mt-10 flex justify-center">
+              <Button asChild size="lg" className="rounded-full">
+                <Link to="/auth">
+                  {t("beforeAfter.cta")}
+                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* 9. CTA final */}
         <section className="pb-24">
           <div className="container-atlas">
             <div className="rounded-3xl bg-foreground px-8 py-16 text-center text-background md:px-16">
@@ -334,6 +503,16 @@ function Landing() {
               >
                 <Link to="/auth">{t("cta.action")}</Link>
               </Button>
+              {ctaMicrocopy.length > 0 && (
+                <ul className="mx-auto mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm opacity-75">
+                  {ctaMicrocopy.map((line) => (
+                    <li key={line} className="flex items-center gap-2">
+                      <Check className="h-4 w-4" aria-hidden="true" />
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         </section>

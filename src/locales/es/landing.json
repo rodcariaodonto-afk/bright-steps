@@ -56,25 +56,64 @@
       "cta": "Conozca cómo funciona"
     }
   },
+  "flow": {
+    "title": "Todo niño sigue evolucionando. Su seguimiento también debería.",
+    "description": "Hoy, médicos, terapeutas, maestros y familiares solo ven partes del camino del niño. Meu Mundo Azul conecta todo en una única línea de tiempo inteligente, permitiendo que todos sigan la misma evolución con un contexto completo.",
+    "steps": [
+      {
+        "title": "La familia registra el día a día.",
+        "description": "Rutina, comportamiento, sueño, alimentación, medicación y acontecimientos importantes."
+      },
+      {
+        "title": "Meu Mundo Azul organiza todo.",
+        "description": "Toda la información se conecta en una única línea de tiempo."
+      },
+      {
+        "title": "Azul IA aprende continuamente.",
+        "description": "La IA entiende el historial del niño, identifica patrones y genera sugerencias basadas en la evolución real."
+      },
+      {
+        "title": "Escuela y terapeutas acompañan juntos.",
+        "description": "Todos trabajan con el mismo contexto, reduciendo el retrabajo y mejorando el cuidado."
+      }
+    ],
+    "highlight": {
+      "title": "La diferencia no es tener Inteligencia Artificial.",
+      "lines": [
+        "La diferencia es que recuerda la historia del niño.",
+        "Conecta información a lo largo del tiempo para apoyar a familias y profesionales.",
+        "Nunca reemplaza a médicos, terapeutas o maestros."
+      ],
+      "cta": "Conocer Meu Mundo Azul"
+    }
+  },
   "modules": {
-    "title": "Todo se conecta.",
-    "subtitle": "Cada actividad alimenta la línea de tiempo, genera informes, alimenta la IA y ajusta las recomendaciones.",
-    "cta": "Empezar ahora",
+    "title": "Todo lo que necesitas en un solo lugar.",
+    "subtitle": "Organiza la rutina del niño, sigue su evolución y comparte información con quienes participan en su desarrollo.",
+    "cta": "Crear mi cuenta gratis",
     "items": [
-      "Perfil clínico completo del niño",
-      "Línea de tiempo unificada de todo lo que sucede",
-      "Calendario con terapias, escuela y rutinas",
-      "Medicaciones con recordatorios e historial",
-      "Registro de estado de ánimo y comportamiento",
-      "Objetivos y evolución con gráficos",
-      "Documentos, informes y recetas organizados",
-      "Informes semanales generados por IA"
+      {
+        "title": "Familia organizada",
+        "description": "Rutina, medicación, estado de ánimo y documentos en un solo lugar, con todos los responsables en la misma sintonía."
+      },
+      {
+        "title": "Niño comprometido",
+        "description": "Un mundo lúdico con historias, juegos y un personaje que habla su idioma."
+      },
+      {
+        "title": "Profesionales conectados",
+        "description": "Terapeutas y escuela siguen la evolución real, sin necesidad de reconstruir el contexto en cada sesión."
+      },
+      {
+        "title": "IA que sigue la evolución",
+        "description": "Azul aprende del historial del niño y sugiere caminos basados en lo que realmente funciona."
+      }
     ]
   },
   "ai": {
     "eyebrow": "Inteligencia Artificial",
-    "title": "Una IA que conoce a tu hijo.",
-    "description": "Meu Mundo Azul conversa en lenguaje natural, crea historias sociales personalizadas para preparar nuevos momentos e identifica patrones que pasan desapercibidos en el día a día.",
+    "title": "Una IA que conoce la historia del niño.",
+    "description": "Azul no solo responde preguntas. Sigue la evolución del niño a lo largo del tiempo. Basándose en el historial registrado por la familia, la escuela y los terapeutas, identifica patrones, crea historias sociales personalizadas, genera resúmenes automáticos y ayuda a todos a tomar decisiones con más contexto.",
     "bullets": [
       "Chat contextual con el historial completo",
       "Historias sociales para preparar consultas, viajes y cambios",
@@ -86,11 +125,12 @@
   "aiPreview": {
     "name": "Azul IA",
     "context": "Contexto activo · Bento, 6 años",
-    "userMessage": "Crea una historia para Bento sobre ir al dentista por primera vez.",
-    "aiMessage": "¡Claro! \"Hoy Bento va a conocer al dentista. Se sentará en una silla grande que sube y baja. La dentista contará hasta 3 antes de cada paso...\" ¿Quieres que continúe y añada dibujos?"
+    "userMessage": "Bento estará ansioso porque mañana será su primera consulta odontológica.",
+    "aiMessage": "Basándome en el perfil de Bento, preparé una historia social personalizada para ayudarlo a entender cómo será la consulta y reducir la ansiedad."
   },
   "security": {
-    "title": "Hecho con respeto absoluto por la LGPD.",
+    "title": "Seguridad para quienes cuidan lo que más importa.",
+    "subtitle": "Todos los datos están protegidos siguiendo las mejores prácticas de seguridad y la LGPD.",
     "items": [
       "Consentimiento versionado y revocable en cualquier momento",
       "Seguridad a nivel de fila y auditoría en cada acceso",
@@ -100,8 +140,8 @@
   },
   "awareness": {
     "eyebrow": "Concienciación",
-    "title": "El neurodesarrollo en números",
-    "subtitle": "Datos oficiales que refuerzan la urgencia de acoger, informar y conectar a familias, profesionales y escuelas.",
+    "title": "Millones de familias viven este desafío todos los días.",
+    "subtitle": "El neurodesarrollo exige un seguimiento continuo. Cuanto mayor sea la integración entre familia, escuela y profesionales, mayores serán las posibilidades de evolución.",
     "stats": [
       {
         "n": "1 de cada 100",
@@ -122,10 +162,45 @@
     ],
     "sources": "Fuentes: Organización Mundial de la Salud, Centers for Disease Control and Prevention y Ministerio de Salud de Brasil."
   },
+  "beforeAfter": {
+    "title": "Más tiempo cuidando. Menos tiempo organizando.",
+    "beforeLabel": "Antes",
+    "afterLabel": "Después",
+    "cards": [
+      {
+        "before": [
+          "WhatsApp",
+          "Agenda",
+          "Papeles",
+          "Informes",
+          "Hojas de cálculo"
+        ],
+        "after": "Todo en un solo lugar."
+      },
+      {
+        "before": [
+          "Explicar todo de nuevo."
+        ],
+        "after": "Toda la historia acompaña al niño."
+      },
+      {
+        "before": [
+          "Cada profesional trabaja solo."
+        ],
+        "after": "Todos siguen la misma evolución."
+      }
+    ],
+    "cta": "Crear mi cuenta gratis"
+  },
   "cta": {
-    "title": "Empieza hoy. Crece con Meu Mundo Azul por muchos años.",
-    "subtitle": "La plataforma acompaña al niño en cada fase, desde la rutina de sueño hasta la autonomía, desde la comunicación hasta las terapias.",
-    "action": "Crear mi cuenta"
+    "title": "La historia de tu hijo merece continuar.",
+    "subtitle": "El desarrollo infantil ocurre todos los días. No dejes que información importante se pierda entre consultas, escuelas y terapias. Con Meu Mundo Azul, todo el camino del niño permanece conectado.",
+    "action": "Crear mi cuenta gratis",
+    "microcopy": [
+      "Sin tarjeta de crédito.",
+      "Configuración en pocos minutos.",
+      "Datos protegidos por la LGPD."
+    ]
   },
   "plans": {
     "backToApp": "Ir a la aplicación",
