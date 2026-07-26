@@ -10,7 +10,7 @@ import { hasConsent, type ConsentField } from "../consent";
  * Cada chamada `.from(table)` consulta a factory `handlers[table]` que devolve as linhas.
  */
 function makeSupabase(handlers: {
-  consent_records?: Array<{ scope: string; purpose: string }>;
+  consent_records?: Array<Record<string, any>>;
   children?: Record<string, any> | null;
   medications?: any[];
   goals?: any[];
