@@ -28,15 +28,21 @@
     "aiLabel": "Azul IA",
     "aiMessage": "Percebi que o Bento dormiu melhor nos últimos cinco dias. Manter a rotina das 20h30 pode ajudar a preservar essa evolução."
   },
-  "pillars": {
-    "title": "Um ecossistema, muitas vidas.",
-    "subtitle": "Meu Mundo Azul nasceu para o TEA, mas cresce com qualquer condição do neurodesenvolvimento: TDAH, dislexia, Down, TOD, altas habilidades e mais.",
+  "empathy": {
+    "title": "Você cuida do seu filho. Mas quem cuida das informações dele?",
+    "subtitle": "Todos os dias, famílias precisam repetir a mesma história para médicos, terapeutas e escola. Enquanto isso, documentos ficam espalhados, informações se perdem e decisões importantes acabam sendo tomadas sem todo o contexto.",
+    "subtitleExtra": "Centralize tudo em um único lugar e permita que todos acompanhem a mesma jornada.",
     "items": [
-      { "title": "Família organizada", "description": "Rotina, calendário, medicações, humor e comportamento em um painel único e acolhedor." },
-      { "title": "Criança encantada", "description": "Uma experiência que parece brincadeira. Avatar, mundo, missões e IA que conversa como um amigo." },
-      { "title": "Profissionais integrados", "description": "Terapeutas e escolas recebem contexto real, aplicam avaliações e devolvem relatórios em tempo real." },
-      { "title": "IA de verdade", "description": "Não é um chatbot. É um assistente que lembra da história da criança e sugere caminhos com base em dados." }
-    ]
+      { "title": "A mesma história, várias vezes.", "description": "Você explica os mesmos acontecimentos para cada novo profissional, consulta ou reunião escolar." },
+      { "title": "Informações espalhadas.", "description": "WhatsApp, agenda, laudos, fotos, receitas, relatórios e anotações ficam separados e difíceis de encontrar quando mais precisam." },
+      { "title": "Cada profissional vê apenas uma parte.", "description": "Sem uma visão completa da evolução da criança, oportunidades importantes podem passar despercebidas." },
+      { "title": "A família vira a central de tudo.", "description": "Além de cuidar da criança, você ainda precisa organizar informações, lembrar datas, compartilhar documentos e acompanhar cada detalhe." }
+    ],
+    "highlight": {
+      "title": "O Meu Mundo Azul muda essa realidade.",
+      "description": "Ele conecta família, terapeutas e escola em um único ecossistema inteligente, onde toda informação acompanha a criança ao longo da sua jornada.",
+      "cta": "Conheça como funciona"
+    }
   },
   "modules": {
     "title": "Tudo conversa entre si.",
