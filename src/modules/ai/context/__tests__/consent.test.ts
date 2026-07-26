@@ -22,11 +22,11 @@ function makeSupabase(handlers: {
       _rows: Array.isArray(rows) ? rows : rows ? [rows] : [],
       _filters: [] as Array<(r: any) => boolean>,
       eq(col: string, val: any) {
-        this._filters.push((r) => r?.[col] === val);
+        this._filters.push((r: any) => r?.[col] === val);
         return this;
       },
       in(col: string, vals: any[]) {
-        this._filters.push((r) => vals.includes(r?.[col]));
+        this._filters.push((r: any) => vals.includes(r?.[col]));
         return this;
       },
       is() {
