@@ -132,6 +132,7 @@ describe("buildContext", () => {
     const sb = makeSupabase({
       consent_records: [{ scope: "ai_context", purpose: "child.name" }],
       children: {
+        id: "c1",
         full_name: "Ana Silva",
         declared_conditions: ["TEA"],
         dominant_interest: "dinossauros",
