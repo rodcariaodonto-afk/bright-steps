@@ -1,11 +1,32 @@
 {
+  "nav": {
+    "product": "Product",
+    "family": "Familie",
+    "ai": "Kunstmatige intelligentie",
+    "pricing": "Abonnementen",
+    "security": "Beveiliging",
+    "signIn": "Inloggen",
+    "start": "Nu beginnen"
+  },
   "hero": {
-    "eyebrow": "Kinderontwikkeling · Neurodiversiteit · AI",
-    "title": "Het platform dat elke dag met uw gezin meeloopt.",
-    "subtitle": "Mijn Blauwe Wereld verbindt ouders, kinderen, therapeuten en scholen op één plek. Routines, therapieën, stemming, medicatie, rapporten en een AI die leert van het dagelijkse leven van het kind.",
-    "primaryCta": "Gratis beginnen",
+    "eyebrow": "Neuro-ontwikkeling • AI • Familie • School • Professionals",
+    "title": "Nooit meer het verhaal van uw kind vanaf nul vertellen bij elke afspraak.",
+    "subtitle": "Meu Mundo Azul verbindt familie, therapeuten en school op één plek. Alle belangrijke informatie volgt het kind, wat zorgt voor een meer georganiseerde, continue en intelligente zorg.",
+    "primaryCta": "Maak mijn gratis account aan",
     "secondaryCta": "Bekijk hoe het werkt",
-    "trust": "Gemaakt met steun van gezinnen en professionals in neuro-ontwikkeling"
+    "trust": "Gemaakt met families, therapeuten en neuro-ontwikkelingsspecialisten."
+  },
+  "heroPreview": {
+    "greeting": "Goedemorgen, Ana",
+    "childDay": "Bento's dag",
+    "row1Title": "Ergotherapie",
+    "row1Subtitle": "Dr. Marina · online",
+    "row2Title": "Medicatie",
+    "row2Subtitle": "Toediening bevestigen",
+    "row3Title": "Logopedie: lezen",
+    "row3Subtitle": "Praktijk",
+    "aiLabel": "Azul AI",
+    "aiMessage": "Ik merkte dat Bento de afgelopen vijf dagen beter heeft geslapen. Het aanhouden van de routine van 20:30 uur kan helpen deze vooruitgang te behouden."
   },
   "pillars": {
     "title": "Eén ecosysteem, vele levens.",
@@ -32,6 +53,7 @@
   "modules": {
     "title": "Alles communiceert met elkaar.",
     "subtitle": "Elke activiteit voedt de tijdlijn, genereert rapporten, voedt de AI en past de aanbevelingen aan.",
+    "cta": "Nu beginnen",
     "items": [
       "Volledig klinisch profiel van het kind",
       "Uniforme tijdlijn van alles wat er gebeurt",
@@ -55,6 +77,12 @@
     ],
     "disclaimer": "De AI van Meu Mundo Azul is een ondersteunend hulpmiddel. Het vervangt nooit professionals in de gezondheidszorg of het onderwijs."
   },
+  "aiPreview": {
+    "name": "Azul AI",
+    "context": "Actieve context · Bento, 6 jaar",
+    "userMessage": "Maak een verhaal voor Bento over zijn eerste bezoek aan de tandarts.",
+    "aiMessage": "Natuurlijk! \"Vandaag gaat Bento de tandarts ontmoeten. Hij gaat zitten op een grote stoel die omhoog en omlaag gaat. De tandarts telt tot 3 voor elke stap...\" Wil je dat ik doorga en tekeningen toevoeg?"
+  },
   "security": {
     "title": "Gemaakt met absoluut respect voor de AVG.",
     "items": [
@@ -64,9 +92,93 @@
       "Gevoelige gegevens van minderjarigen behandeld met de zorg die ze verdienen"
     ]
   },
+  "awareness": {
+    "eyebrow": "Bewustwording",
+    "title": "Neuro-ontwikkeling in cijfers",
+    "subtitle": "Officiële gegevens die de urgentie benadrukken om families, professionals en scholen te verwelkomen, te informeren en te verbinden.",
+    "stats": [
+      {
+        "n": "1 op 100",
+        "d": "kinderen wereldwijd gediagnosticeerd met ASS (WHO, 2023)."
+      },
+      {
+        "n": "2,4 miljoen",
+        "d": "Brazilianen leven met autisme, volgens schatting van Wet 13.977/2020."
+      },
+      {
+        "n": "1 op 36",
+        "d": "kinderen van 8 jaar geïdentificeerd met ASS in de VS (CDC, 2023)."
+      },
+      {
+        "n": "5% tot 8%",
+        "d": "van schoolgaande kinderen heeft ADHD (Ministerie van Volksgezondheid)."
+      }
+    ],
+    "sources": "Bronnen: Wereldgezondheidsorganisatie, Centers for Disease Control and Prevention en Ministerie van Volksgezondheid van Brazilië."
+  },
   "cta": {
     "title": "Begin vandaag nog. Groei jarenlang mee met Meu Mundo Azul.",
     "subtitle": "Het platform begeleidt het kind in elke fase, van slaaproutine tot autonomie, van communicatie tot therapieën.",
     "action": "Mijn account aanmaken"
+  },
+  "plans": {
+    "backToApp": "Ga naar de app",
+    "trialBadge": "{{days}} dagen gratis bij elk abonnement",
+    "title": "Een abonnement voor elk moment van de reis",
+    "subtitle": "Begin met Essentieel, upgrade naar Plus wanneer u meer AI en rapporten wilt, en activeer Kliniek als u professioneel gezinnen begeleidt.",
+    "monthly": "Maandelijks",
+    "yearly": "Jaarlijks",
+    "yearlyDiscount": "-20%",
+    "perMonth": " /maand",
+    "perYear": " /jaar",
+    "equivalentMonth": "Gelijk aan {{price}} per maand",
+    "highlight": "Meest gekozen",
+    "cta": "Start gratis proefperiode",
+    "convertedNote": "Geschatte waarde. De betaling wordt verwerkt in Reais (BRL) gelijk aan {{price}}.",
+    "footer": "Terugkerende betaling na de proefperiode. Annuleer op elk moment rechtstreeks in uw abonnementsportaal.",
+    "items": {
+      "familia_essencial": {
+        "name": "Familie Essentieel",
+        "tagline": "De basis goed gedaan voor de routine van een kind.",
+        "features": [
+          "1 kind + tot 3 verzorgers",
+          "Routine, stemming, medicatie en tijdlijn",
+          "Uniforme kalender",
+          "Azul AI met maandelijkse limiet",
+          "E-mailondersteuning"
+        ]
+      },
+      "familia_plus": {
+        "name": "Familie Plus",
+        "tagline": "De complete familiereis met onbeperkte AI.",
+        "features": [
+          "Tot 3 kinderen + onbeperkt aantal verzorgers",
+          "Alles van Essentieel",
+          "Onbeperkte Azul AI",
+          "Wekelijkse rapporten met AI",
+          "Bibliotheek, zelfevaluaties en community",
+          "Marketplace voor professionals",
+          "Delen met school"
+        ]
+      },
+      "profissional_clinica": {
+        "name": "Professionele Kliniek",
+        "tagline": "Compleet klinisch dashboard voor zelfstandige professionals.",
+        "features": [
+          "Onbeperkt aantal patiënten",
+          "SOAP-dossier + voortgang",
+          "Slimme agenda",
+          "Schalen en rapporten met AI",
+          "Geverifieerd profiel op de marketplace",
+          "Chat met families en scholen"
+        ]
+      }
+    }
+  },
+  "footer": {
+    "rights": "Alle rechten voorbehouden.",
+    "lgpd": "AVG",
+    "privacy": "Privacy",
+    "terms": "Voorwaarden"
   }
 }

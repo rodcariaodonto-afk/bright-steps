@@ -1,11 +1,32 @@
 {
+  "nav": {
+    "product": "Produkt",
+    "family": "Familie",
+    "ai": "Künstliche Intelligenz",
+    "pricing": "Preise",
+    "security": "Sicherheit",
+    "signIn": "Anmelden",
+    "start": "Jetzt starten"
+  },
   "hero": {
-    "eyebrow": "Kindesentwicklung · Neurodiversität · KI",
-    "title": "Die Plattform, die Ihre Familie jeden Tag begleitet.",
-    "subtitle": "Mein Blaues Welt verbindet Eltern, Kinder, Therapeuten und Schulen an einem Ort. Routinen, Therapien, Stimmung, Medikamente, Berichte und eine KI, die mit dem Alltag des Kindes lernt.",
-    "primaryCta": "Kostenlos starten",
+    "eyebrow": "Neuroentwicklung • KI • Familie • Schule • Fachkräfte",
+    "title": "Nie wieder die Geschichte Ihres Kindes bei jeder Konsultation von Grund auf neu erzählen.",
+    "subtitle": "Mein Blaues Welt verbindet Familie, Therapeuten und Schule an einem einzigen Ort. Alle wichtigen Informationen begleiten das Kind und ermöglichen eine organisiertere, kontinuierlichere und intelligentere Betreuung.",
+    "primaryCta": "Mein kostenloses Konto erstellen",
     "secondaryCta": "Sehen Sie, wie es funktioniert",
-    "trust": "Mit Unterstützung von Familien und Fachleuten der Neuroentwicklung erstellt"
+    "trust": "Entwickelt mit Familien, Therapeuten und Neuroentwicklungsexperten."
+  },
+  "heroPreview": {
+    "greeting": "Guten Morgen, Ana",
+    "childDay": "Bentos Tag",
+    "row1Title": "Ergotherapie",
+    "row1Subtitle": "Dr. Marina · online",
+    "row2Title": "Medikation",
+    "row2Subtitle": "Verabreichung bestätigen",
+    "row3Title": "Logopädie: Lesen",
+    "row3Subtitle": "Praxis",
+    "aiLabel": "Azul KI",
+    "aiMessage": "Ich habe bemerkt, dass Bento in den letzten fünf Tagen besser geschlafen hat. Die Beibehaltung der Routine um 20:30 Uhr könnte dazu beitragen, diese Entwicklung zu erhalten."
   },
   "pillars": {
     "title": "Ein Ökosystem, viele Leben.",
@@ -32,6 +53,7 @@
   "modules": {
     "title": "Alles spricht miteinander.",
     "subtitle": "Jede Aktivität speist die Zeitleiste, generiert Berichte, speist die KI und passt Empfehlungen an.",
+    "cta": "Jetzt starten",
     "items": [
       "Vollständiges klinisches Profil des Kindes",
       "Vereinheitlichte Zeitleiste aller Ereignisse",
@@ -55,6 +77,12 @@
     ],
     "disclaimer": "Die KI von Mein Blaues Welt ist ein Unterstützungswerkzeug. Sie ersetzt niemals Gesundheits- oder Bildungsexperten."
   },
+  "aiPreview": {
+    "name": "Azul KI",
+    "context": "Aktiver Kontext · Bento, 6 Jahre",
+    "userMessage": "Erstellen Sie eine Geschichte für Bento über seinen ersten Zahnarztbesuch.",
+    "aiMessage": "Gerne! „Heute wird Bento den Zahnarzt kennenlernen. Er wird auf einem großen Stuhl sitzen, der hoch und runter fährt. Die Zahnärztin wird bis 3 zählen, bevor sie jeden Schritt macht...“ Soll ich fortfahren und Zeichnungen hinzufügen?"
+  },
   "security": {
     "title": "Mit absolutem Respekt vor der DSGVO erstellt.",
     "items": [
@@ -64,9 +92,93 @@
       "Sensible Daten von Minderjährigen werden mit der gebotenen Sorgfalt behandelt"
     ]
   },
+  "awareness": {
+    "eyebrow": "Bewusstsein",
+    "title": "Neuroentwicklung in Zahlen",
+    "subtitle": "Offizielle Daten, die die Dringlichkeit unterstreichen, Familien, Fachkräfte und Schulen zu unterstützen, zu informieren und zu vernetzen.",
+    "stats": [
+      {
+        "n": "1 von 100",
+        "d": "Kindern weltweit wird mit ASS diagnostiziert (WHO, 2023)."
+      },
+      {
+        "n": "2,4 Mio.",
+        "d": "Brasilianer leben mit Autismus, laut Schätzung des Gesetzes 13.977/2020."
+      },
+      {
+        "n": "1 von 36",
+        "d": "Kindern im Alter von 8 Jahren wurde in den USA ASS diagnostiziert (CDC, 2023)."
+      },
+      {
+        "n": "5% bis 8%",
+        "d": "der Schulkinder haben ADHS (Gesundheitsministerium)."
+      }
+    ],
+    "sources": "Quellen: Weltgesundheitsorganisation, Centers for Disease Control and Prevention und brasilianisches Gesundheitsministerium."
+  },
   "cta": {
     "title": "Beginnen Sie noch heute. Wachsen Sie viele Jahre lang mit Mein Blaues Welt.",
     "subtitle": "Die Plattform begleitet das Kind in jeder Phase, von der Schlafroutine bis zur Autonomie, von der Kommunikation bis zu den Therapien.",
     "action": "Mein Konto erstellen"
+  },
+  "plans": {
+    "backToApp": "Zur App gehen",
+    "trialBadge": "{{days}} Tage kostenlos bei jedem Plan",
+    "title": "Ein Plan für jeden Moment der Reise",
+    "subtitle": "Beginnen Sie mit Essential, wechseln Sie zu Plus, wenn Sie mehr KI und Berichte wünschen, und aktivieren Sie Clinic, wenn Sie Familien professionell betreuen.",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "yearlyDiscount": "-20 %",
+    "perMonth": " /Monat",
+    "perYear": " /Jahr",
+    "equivalentMonth": "Entspricht {{price}} pro Monat",
+    "highlight": "Am beliebtesten",
+    "cta": "Kostenlose Testversion starten",
+    "convertedNote": "Ungefährer Wert. Die Abrechnung erfolgt in Reais (BRL) im Gegenwert von {{price}}.",
+    "footer": "Wiederkehrende Abrechnung nach der Testphase. Sie können jederzeit direkt in Ihrem Abonnementportal kündigen.",
+    "items": {
+      "familia_essencial": {
+        "name": "Familie Essential",
+        "tagline": "Das Wesentliche gut gemacht für die Routine eines Kindes.",
+        "features": [
+          "1 Kind + bis zu 3 Betreuer",
+          "Routine, Stimmung, Medikamente und Zeitleiste",
+          "Einheitlicher Kalender",
+          "Azul KI mit monatlichem Limit",
+          "E-Mail-Support"
+        ]
+      },
+      "familia_plus": {
+        "name": "Familie Plus",
+        "tagline": "Die komplette Familienreise mit unbegrenzter KI.",
+        "features": [
+          "Bis zu 3 Kinder + unbegrenzte Betreuer",
+          "Alles aus Essential",
+          "Azul KI ohne Limit",
+          "Wöchentliche Berichte mit KI",
+          "Bibliothek, Selbstbewertungen und Community",
+          "Marktplatz für Fachkräfte",
+          "Teilen mit der Schule"
+        ]
+      },
+      "profissional_clinica": {
+        "name": "Professionelle Klinik",
+        "tagline": "Vollständiges klinisches Dashboard für selbstständige Fachkräfte.",
+        "features": [
+          "Unbegrenzte Patienten",
+          "SOAP-Akte + Entwicklung",
+          "Intelligenter Kalender",
+          "Skalen und Berichte mit KI",
+          "Verifiziertes Profil auf dem Marktplatz",
+          "Chat mit Familien und Schulen"
+        ]
+      }
+    }
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "lgpd": "DSGVO",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen"
   }
 }

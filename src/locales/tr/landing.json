@@ -1,11 +1,32 @@
 {
+  "nav": {
+    "product": "Ürün",
+    "family": "Aile",
+    "ai": "Yapay Zeka",
+    "pricing": "Planlar",
+    "security": "Güvenlik",
+    "signIn": "Giriş Yap",
+    "start": "Şimdi Başla"
+  },
   "hero": {
-    "eyebrow": "Çocuk gelişimi · Nöroçeşitlilik · Yapay Zeka",
-    "title": "Her gün ailenizin yanında yürüyen platform.",
-    "subtitle": "Meu Mundo Azul, ebeveynleri, çocukları, terapistleri ve okulları tek bir yerde birleştirir. Rutinler, terapiler, ruh hali, ilaçlar, raporlar ve çocuğun günlük yaşamından öğrenen bir yapay zeka.",
-    "primaryCta": "Ücretsiz Başlayın",
-    "secondaryCta": "Nasıl Çalıştığını Görün",
-    "trust": "Ailelerin ve nörogelişim uzmanlarının desteğiyle yapılmıştır"
+    "eyebrow": "Nörogelişim • YZ • Aile • Okul • Profesyoneller",
+    "title": "Her randevuda çocuğunuzun hikayesini sıfırdan anlatmaya son.",
+    "subtitle": "Meu Mundo Azul, aileleri, terapistleri ve okulu tek bir yerde birleştirir. Tüm önemli bilgiler çocuğa eşlik ederek daha düzenli, sürekli ve akıllı bir bakım sağlar.",
+    "primaryCta": "Ücretsiz hesabımı oluştur",
+    "secondaryCta": "Nasıl çalıştığını gör",
+    "trust": "Aileler, terapistler ve nörogelişim uzmanlarıyla birlikte oluşturuldu."
+  },
+  "heroPreview": {
+    "greeting": "Günaydın, Ana",
+    "childDay": "Bento'nun Günü",
+    "row1Title": "Mesleki terapi",
+    "row1Subtitle": "Dr. Marina · çevrimiçi",
+    "row2Title": "İlaç",
+    "row2Subtitle": "Uygulamayı onayla",
+    "row3Title": "Konuşma terapisi: okuma",
+    "row3Subtitle": "Klinik",
+    "aiLabel": "Azul YZ",
+    "aiMessage": "Bento'nun son beş gündür daha iyi uyuduğunu fark ettim. Saat 20:30 rutinini sürdürmek bu gelişimi korumaya yardımcı olabilir."
   },
   "pillars": {
     "title": "Tek bir ekosistem, birçok hayat.",
@@ -32,6 +53,7 @@
   "modules": {
     "title": "Her şey birbiriyle konuşur.",
     "subtitle": "Her aktivite zaman çizelgesini besler, raporlar oluşturur, yapay zekayı besler ve önerileri ayarlar.",
+    "cta": "Şimdi Başla",
     "items": [
       "Çocuğun tam klinik profili",
       "Olan her şeyin birleşik zaman çizelgesi",
@@ -55,6 +77,12 @@
     ],
     "disclaimer": "Meu Mundo Azul'un yapay zekası bir destek aracıdır. Asla sağlık veya eğitim uzmanlarının yerini tutmaz."
   },
+  "aiPreview": {
+    "name": "Azul YZ",
+    "context": "Aktif bağlam · Bento, 6 yaşında",
+    "userMessage": "Bento için ilk kez dişçiye gitmesi hakkında bir hikaye oluştur.",
+    "aiMessage": "Elbette! \"Bugün Bento dişçiyle tanışacak. Büyük, inip kalkan bir sandalyeye oturacak. Dişçi her adımdan önce 3'e kadar sayacak...\" Devam etmemi ve çizimler eklememi ister misin?"
+  },
   "security": {
     "title": "KVKK'ya mutlak saygıyla yapılmıştır.",
     "items": [
@@ -64,9 +92,93 @@
       "Küçüklerin hassas verileri hak ettikleri özenle işlenir"
     ]
   },
+  "awareness": {
+    "eyebrow": "Farkındalık",
+    "title": "Sayılarla nörogelişim",
+    "subtitle": "Aileleri, profesyonelleri ve okulları ağırlama, bilgilendirme ve birleştirme aciliyetini pekiştiren resmi veriler.",
+    "stats": [
+      {
+        "n": "100'de 1",
+        "d": "dünyadaki çocukların TEA tanısı konulur (WHO, 2023)."
+      },
+      {
+        "n": "2,4 milyon",
+        "d": "2020 tarihli 13.977 sayılı Yasaya göre, Brezilyalılar otizmle yaşıyor."
+      },
+      {
+        "n": "36'da 1",
+        "d": "ABD'de TEA ile tanımlanan 8 yaşındaki çocuklar (CDC, 2023)."
+      },
+      {
+        "n": "%5 ila %8",
+        "d": "okul çağındaki çocukların DEHB'si vardır (Sağlık Bakanlığı)."
+      }
+    ],
+    "sources": "Kaynaklar: Dünya Sağlık Örgütü, Hastalık Kontrol ve Önleme Merkezleri ve Brezilya Sağlık Bakanlığı."
+  },
   "cta": {
     "title": "Bugün başlayın. Meu Mundo Azul ile yıllarca büyüyün.",
     "subtitle": "Platform, uyku rutininden özerkliğe, iletişimden terapilere kadar çocuğa her aşamada eşlik eder.",
     "action": "Hesabımı oluştur"
+  },
+  "plans": {
+    "backToApp": "Uygulamaya git",
+    "trialBadge": "Herhangi bir planda {{days}} gün ücretsiz",
+    "title": "Yolculuğun her anı için bir plan",
+    "subtitle": "Temel ile başlayın, daha fazla YZ ve rapor istediğinizde Plus'a geçin ve profesyonel olarak ailelere hizmet veriyorsanız Klinik'i etkinleştirin.",
+    "monthly": "Aylık",
+    "yearly": "Yıllık",
+    "yearlyDiscount": "-%20",
+    "perMonth": " /ay",
+    "perYear": " /yıl",
+    "equivalentMonth": "Aylık {{price}}'e eşdeğer",
+    "highlight": "En çok tercih edilen",
+    "cta": "Ücretsiz denemeyi başlat",
+    "convertedNote": "Yaklaşık değer. Ödeme, {{price}}'e eşdeğer Brezilya Reali (BRL) cinsinden işlenir.",
+    "footer": "Deneme süresinden sonra yinelenen faturalandırma. Abonelik portalınızdan istediğiniz zaman iptal edin.",
+    "items": {
+      "familia_essencial": {
+        "name": "Temel Aile",
+        "tagline": "Bir çocuğun rutini için iyi yapılmış temel.",
+        "features": [
+          "1 çocuk + en fazla 3 sorumlu",
+          "Rutin, ruh hali, ilaç ve zaman çizelgesi",
+          "Birleşik takvim",
+          "Aylık limitli Azul YZ",
+          "E-posta desteği"
+        ]
+      },
+      "familia_plus": {
+        "name": "Artı Aile",
+        "tagline": "Sınırsız YZ ile ailenin tam yolculuğu.",
+        "features": [
+          "Sınırsız sorumlu + en fazla 3 çocuk",
+          "Temel'deki her şey",
+          "Sınırsız Azul YZ",
+          "YZ ile haftalık raporlar",
+          "Kütüphane, öz değerlendirmeler ve topluluk",
+          "Profesyonel pazar yeri",
+          "Okul ile paylaşım"
+        ]
+      },
+      "profissional_clinica": {
+        "name": "Klinik Profesyonel",
+        "tagline": "Bağımsız profesyoneller için eksiksiz klinik panel.",
+        "features": [
+          "Sınırsız hasta",
+          "SOAP kaydı + gelişim",
+          "Akıllı ajanda",
+          "YZ ile ölçekler ve raporlar",
+          "Pazar yerinde doğrulanmış profil",
+          "Aileler ve okullarla sohbet"
+        ]
+      }
+    }
+  },
+  "footer": {
+    "rights": "Tüm hakları saklıdır.",
+    "lgpd": "LGPD",
+    "privacy": "Gizlilik",
+    "terms": "Şartlar"
   }
 }
