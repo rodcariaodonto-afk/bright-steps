@@ -9,24 +9,24 @@
     "start": "Começar agora"
   },
   "hero": {
-    "eyebrow": "Desenvolvimento infantil · Neurodivergência · IA",
-    "title": "A plataforma que caminha ao lado da sua família, todos os dias.",
-    "subtitle": "Meu Mundo Azul conecta pais, crianças, terapeutas e escolas em um único lugar. Rotinas, terapias, humor, medicações, relatórios e uma IA que aprende com o dia a dia da criança.",
-    "primaryCta": "Começar gratuitamente",
+    "eyebrow": "Neurodesenvolvimento • IA • Família • Escola • Profissionais",
+    "title": "Chega de contar a história do seu filho do zero em toda consulta.",
+    "subtitle": "O Meu Mundo Azul conecta família, terapeutas e escola em um único lugar. Toda informação importante acompanha a criança, permitindo um cuidado mais organizado, contínuo e inteligente.",
+    "primaryCta": "Criar minha conta gratuitamente",
     "secondaryCta": "Ver como funciona",
-    "trust": "Feito com apoio de famílias e profissionais do neurodesenvolvimento"
+    "trust": "Criado com famílias, terapeutas e especialistas em neurodesenvolvimento."
   },
   "heroPreview": {
     "greeting": "Bom dia, Ana",
     "childDay": "O dia do Bento",
     "row1Title": "Terapia ocupacional",
     "row1Subtitle": "Dra. Marina · online",
-    "row2Title": "Metilfenidato · 10mg",
+    "row2Title": "Medicação",
     "row2Subtitle": "Confirmar administração",
     "row3Title": "Fono: leitura",
     "row3Subtitle": "Consultório",
     "aiLabel": "Azul IA",
-    "aiMessage": "O sono do Bento melhorou 22% esta semana. Continuemos com a rotina das 20h30, funcionou nos últimos 5 dias."
+    "aiMessage": "Percebi que o Bento dormiu melhor nos últimos cinco dias. Manter a rotina das 20h30 pode ajudar a preservar essa evolução."
   },
   "pillars": {
     "title": "Um ecossistema, muitas vidas.",
