@@ -4,6 +4,7 @@ import { Sparkles, FileText, Trash2, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
 import { useActiveChild } from "@/hooks/use-active-child";
 import { NoChildSelected } from "@/components/atlas/no-child-selected";
 import {
@@ -109,14 +110,19 @@ function ReportsPage() {
     try {
       const stats = aggregateStats();
       const periodLabel = `${weekRange.start.toLocaleDateString("pt-BR")} a ${weekRange.end.toLocaleDateString("pt-BR")}`;
-      const firstName =
-        activeChild!.nickname ?? activeChild!.full_name.split(" ")[0];
+
+      const { data: sess } = await supabase.auth.getSession();
+      const token = sess.session?.access_token;
+      if (!token) throw new Error("Sessão expirada, entre novamente.");
 
       const res = await fetch("/api/reports/weekly", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({
-          childFirstName: firstName,
+          childId: activeChild!.id,
           periodLabel,
           stats,
         }),

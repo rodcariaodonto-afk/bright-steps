@@ -1,0 +1,1 @@
+- [ ] **Rate limit real via Cloudflare KV para endpoints de IA.** Hoje `src/routes/api/reports.weekly.ts` (e futuros endpoints de IA) usa Map in-memory que não sobrevive entre isolates. Migrar para KV com contador + TTL. Bloqueio de abuso real por usuário autenticado gerando IA em loop depende disso. (Aberto após fix de auth em jul/2026.)
