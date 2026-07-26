@@ -1,3 +1,4 @@
+// @ts-expect-error bun:test não tem types instalados; runtime via `bun test`.
 import { describe, expect, it, spyOn } from "bun:test";
 const vi = { spyOn };
 
