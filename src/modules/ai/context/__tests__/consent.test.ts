@@ -95,7 +95,7 @@ describe("hasConsent", () => {
 
   it("retorna true quando há registro ativo", async () => {
     const sb = makeSupabase({
-      consent_records: [{ scope: "ai_context", purpose: "child.diagnosis" }],
+      consent_records: [{ scope: "ai_context", purpose: "child.diagnosis", granted: true, subject_child_id: "c1" }],
     });
     // maybeSingle é usada em hasConsent; o mock devolve a primeira linha.
     expect(await hasConsent("child.diagnosis", ctx(sb))).toBe(true);
@@ -130,7 +130,7 @@ describe("buildContext", () => {
 
   it("consent só de name → firstName presente, campos clínicos omitidos", async () => {
     const sb = makeSupabase({
-      consent_records: [{ scope: "ai_context", purpose: "child.name" }],
+      consent_records: [{ scope: "ai_context", purpose: "child.name", granted: true, subject_child_id: "c1" }],
       children: {
         id: "c1",
         full_name: "Ana Silva",
@@ -154,8 +154,8 @@ describe("buildContext", () => {
   it("respeita revogação — nova build com set vazio remove diagnósticos", async () => {
     const withConsent = makeSupabase({
       consent_records: [
-        { scope: "ai_context", purpose: "child.name" },
-        { scope: "ai_context", purpose: "child.diagnosis" },
+        { scope: "ai_context", purpose: "child.name", granted: true, subject_child_id: "c1" },
+        { scope: "ai_context", purpose: "child.diagnosis", granted: true, subject_child_id: "c1" },
       ],
       children: { id: "c1", full_name: "Ana", declared_conditions: ["TEA"] },
     });
@@ -168,7 +168,7 @@ describe("buildContext", () => {
     expect(first.childProfile?.diagnoses).toEqual(["TEA"]);
 
     const revoked = makeSupabase({
-      consent_records: [{ scope: "ai_context", purpose: "child.name" }],
+      consent_records: [{ scope: "ai_context", purpose: "child.name", granted: true, subject_child_id: "c1" }],
       children: { id: "c1", full_name: "Ana", declared_conditions: ["TEA"] },
     });
     const second = await buildContext({
@@ -184,8 +184,8 @@ describe("buildContext", () => {
     const sb = makeSupabase({
       consent_records: [
         // consents granulares existem, mas o scope clinical_share está ausente
-        { scope: "ai_context", purpose: "child.name" },
-        { scope: "ai_context", purpose: "child.diagnosis" },
+        { scope: "ai_context", purpose: "child.name", granted: true, subject_child_id: "c1" },
+        { scope: "ai_context", purpose: "child.diagnosis", granted: true, subject_child_id: "c1" },
       ],
       children: { id: "c1", full_name: "Ana", declared_conditions: ["TEA"] },
     });
