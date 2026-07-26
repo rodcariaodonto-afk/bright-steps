@@ -8,15 +8,25 @@
     "signIn": "Sign in",
     "start": "Get started"
   },
+  "hero": {
+    "eyebrow": "Neurodevelopment • AI • Family • School • Professionals",
+    "title": "No more telling your child's story from scratch at every appointment.",
+    "subtitle": "Meu Mundo Azul brings family, therapists, and school together in one place. Every important detail follows the child, enabling care that is more organized, continuous, and intelligent.",
+    "primaryCta": "Create my free account",
+    "secondaryCta": "See how it works",
+    "trust": "Built with families, therapists, and neurodevelopment specialists."
+  },
   "heroPreview": {
     "greeting": "Good morning, Ana",
     "childDay": "Bento's day",
     "row1Title": "Occupational therapy",
     "row1Subtitle": "Dr. Marina · online",
+    "row2Title": "Medication",
     "row2Subtitle": "Confirm administration",
     "row3Title": "Speech: reading",
     "row3Subtitle": "Clinic",
-    "aiLabel": "Blue AI"
+    "aiLabel": "Blue AI",
+    "aiMessage": "I noticed Bento has been sleeping better over the last five days. Keeping the 8:30 pm routine can help preserve this progress."
   },
   "pillars": {
     "title": "One ecosystem, many lives.",
