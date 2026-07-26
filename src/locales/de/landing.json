@@ -28,27 +28,33 @@
     "aiLabel": "Azul KI",
     "aiMessage": "Ich habe bemerkt, dass Bento in den letzten fünf Tagen besser geschlafen hat. Die Beibehaltung der Routine um 20:30 Uhr könnte dazu beitragen, diese Entwicklung zu erhalten."
   },
-  "pillars": {
-    "title": "Ein Ökosystem, viele Leben.",
-    "subtitle": "Mein Blaues Welt wurde für ASS geboren, wächst aber mit jeder neuroentwicklungsbedingten Erkrankung: ADHS, Legasthenie, Down-Syndrom, oppositionelles Trotzverhalten, Hochbegabung und mehr.",
+  "empathy": {
+    "title": "Sie kümmern sich um Ihr Kind. Aber wer kümmert sich um seine Informationen?",
+    "subtitle": "Jeden Tag müssen Familien Ärzten, Therapeuten und der Schule dieselbe Geschichte erzählen. Währenddessen sind Dokumente verstreut, Informationen gehen verloren und wichtige Entscheidungen werden ohne den vollständigen Kontext getroffen.",
+    "subtitleExtra": "Zentralisieren Sie alles an einem einzigen Ort und ermöglichen Sie allen, dieselbe Reise zu verfolgen.",
     "items": [
       {
-        "title": "Organisierte Familie",
-        "description": "Routine, Kalender, Medikamente, Stimmung und Verhalten in einem einzigen, einladenden Dashboard."
+        "title": "Dieselbe Geschichte, immer wieder.",
+        "description": "Sie erklären dieselben Ereignisse jedem neuen Fachmann, jeder Konsultation oder jedem Schultreffen."
       },
       {
-        "title": "Begeistertes Kind",
-        "description": "Ein Erlebnis, das sich wie Spielen anfühlt. Avatar, Welt, Missionen und KI, die wie ein Freund spricht."
+        "title": "Verstreute Informationen.",
+        "description": "WhatsApp, Terminkalender, Befunde, Fotos, Rezepte, Berichte und Notizen sind getrennt und schwer zu finden, wenn sie am dringendsten benötigt werden."
       },
       {
-        "title": "Integrierte Fachkräfte",
-        "description": "Therapeuten und Schulen erhalten echten Kontext, wenden Bewertungen an und liefern Berichte in Echtzeit zurück."
+        "title": "Jeder Fachmann sieht nur einen Teil.",
+        "description": "Ohne eine vollständige Sicht auf die Entwicklung des Kindes können wichtige Gelegenheiten unbemerkt bleiben."
       },
       {
-        "title": "Echte KI",
-        "description": "Kein Chatbot. Es ist ein Assistent, der sich an die Geschichte des Kindes erinnert und datenbasierte Wege vorschlägt."
+        "title": "Die Familie wird zum Zentrum von allem.",
+        "description": "Neben der Betreuung des Kindes müssen Sie auch Informationen organisieren, Termine merken, Dokumente teilen und jedes Detail verfolgen."
       }
-    ]
+    ],
+    "highlight": {
+      "title": "Mein Blaues Welt ändert diese Realität.",
+      "description": "Es verbindet Familie, Therapeuten und Schule in einem einzigen intelligenten Ökosystem, in dem alle Informationen das Kind auf seiner Reise begleiten.",
+      "cta": "Erfahren Sie, wie es funktioniert"
+    }
   },
   "modules": {
     "title": "Alles spricht miteinander.",

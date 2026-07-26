@@ -28,28 +28,6 @@
     "aiLabel": "Blue AI",
     "aiMessage": "I noticed Bento has been sleeping better over the last five days. Keeping the 8:30 pm routine can help preserve this progress."
   },
-  "pillars": {
-    "title": "One ecosystem, many lives.",
-    "subtitle": "My Blue World was born for autism, but grows with any neurodevelopmental condition: ADHD, dyslexia, Down syndrome, ODD, giftedness, and more.",
-    "items": [
-      {
-        "title": "Organized family",
-        "description": "Routine, calendar, medications, mood, and behavior in a single, welcoming dashboard."
-      },
-      {
-        "title": "Delighted child",
-        "description": "An experience that feels like play. Avatar, world, missions, and an AI that chats like a friend."
-      },
-      {
-        "title": "Integrated professionals",
-        "description": "Therapists and schools receive real context, apply assessments, and return reports in real time."
-      },
-      {
-        "title": "Real AI",
-        "description": "Not a chatbot. An assistant that remembers the child's history and suggests paths based on data."
-      }
-    ]
-  },
   "modules": {
     "title": "Everything talks to each other.",
     "subtitle": "Every activity feeds the timeline, generates reports, informs the AI, and refines recommendations.",

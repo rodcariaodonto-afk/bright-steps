@@ -28,27 +28,33 @@
     "aiLabel": "Azul AI",
     "aiMessage": "Ik merkte dat Bento de afgelopen vijf dagen beter heeft geslapen. Het aanhouden van de routine van 20:30 uur kan helpen deze vooruitgang te behouden."
   },
-  "pillars": {
-    "title": "Eén ecosysteem, vele levens.",
-    "subtitle": "Meu Mundo Azul is ontstaan voor ASS, maar groeit mee met elke neuro-ontwikkelingsstoornis: ADHD, dyslexie, Down, ODD, hoogbegaafdheid en meer.",
+  "empathy": {
+    "title": "U zorgt voor uw kind. Maar wie zorgt voor zijn informatie?",
+    "subtitle": "Elke dag moeten families hetzelfde verhaal herhalen aan artsen, therapeuten en school. Ondertussen liggen documenten verspreid, gaat informatie verloren en worden belangrijke beslissingen genomen zonder de volledige context.",
+    "subtitleExtra": "Centraliseer alles op één plek en laat iedereen dezelfde reis volgen.",
     "items": [
       {
-        "title": "Georganiseerd gezin",
-        "description": "Routine, kalender, medicatie, stemming en gedrag in één overzichtelijk en gastvrij paneel."
+        "title": "Hetzelfde verhaal, meerdere keren.",
+        "description": "U legt dezelfde gebeurtenissen uit aan elke nieuwe professional, consultatie of schoolvergadering."
       },
       {
-        "title": "Betoverd kind",
-        "description": "Een ervaring die aanvoelt als spelen. Avatar, wereld, missies en AI die praat als een vriend."
+        "title": "Verspreide informatie.",
+        "description": "WhatsApp, agenda, rapporten, foto's, recepten, verslagen en notities zijn gescheiden en moeilijk te vinden wanneer u ze het meest nodig heeft."
       },
       {
-        "title": "Geïntegreerde professionals",
-        "description": "Therapeuten en scholen ontvangen echte context, voeren evaluaties uit en leveren rapporten in realtime."
+        "title": "Elke professional ziet slechts een deel.",
+        "description": "Zonder een volledig beeld van de ontwikkeling van het kind kunnen belangrijke kansen onopgemerkt blijven."
       },
       {
-        "title": "Echte AI",
-        "description": "Geen chatbot. Het is een assistent die de geschiedenis van het kind onthoudt en paden voorstelt op basis van gegevens."
+        "title": "De familie wordt het centrum van alles.",
+        "description": "Naast de zorg voor het kind, moet u ook informatie organiseren, data onthouden, documenten delen en elk detail bijhouden."
       }
-    ]
+    ],
+    "highlight": {
+      "title": "Meu Mundo Azul verandert deze realiteit.",
+      "description": "Het verbindt familie, therapeuten en school in één intelligent ecosysteem, waar alle informatie het kind volgt gedurende zijn reis.",
+      "cta": "Ontdek hoe het werkt"
+    }
   },
   "modules": {
     "title": "Alles communiceert met elkaar.",

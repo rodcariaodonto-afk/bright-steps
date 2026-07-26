@@ -28,28 +28,6 @@
     "aiLabel": "Azul YZ",
     "aiMessage": "Bento'nun son beş gündür daha iyi uyuduğunu fark ettim. Saat 20:30 rutinini sürdürmek bu gelişimi korumaya yardımcı olabilir."
   },
-  "pillars": {
-    "title": "Tek bir ekosistem, birçok hayat.",
-    "subtitle": "Meu Mundo Azul, Otizm Spektrum Bozukluğu için doğdu, ancak DEHB, disleksi, Down sendromu, Karşıt Gelme Bozukluğu, üstün yetenekler ve daha fazlası gibi her türlü nörogelişimsel durumla birlikte büyüyor.",
-    "items": [
-      {
-        "title": "Organize aile",
-        "description": "Rutin, takvim, ilaçlar, ruh hali ve davranışlar tek ve sıcak bir panelde."
-      },
-      {
-        "title": "Büyülenmiş çocuk",
-        "description": "Oyun gibi görünen bir deneyim. Avatar, dünya, görevler ve bir arkadaş gibi konuşan yapay zeka."
-      },
-      {
-        "title": "Entegre profesyoneller",
-        "description": "Terapistler ve okullar gerçek bağlamı alır, değerlendirmeler uygular ve gerçek zamanlı raporlar sunar."
-      },
-      {
-        "title": "Gerçek yapay zeka",
-        "description": "Bir sohbet robotu değil. Çocuğun geçmişini hatırlayan ve verilere dayalı yollar öneren bir asistandır."
-      }
-    ]
-  },
   "modules": {
     "title": "Her şey birbiriyle konuşur.",
     "subtitle": "Her aktivite zaman çizelgesini besler, raporlar oluşturur, yapay zekayı besler ve önerileri ayarlar.",

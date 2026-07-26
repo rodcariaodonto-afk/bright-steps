@@ -28,28 +28,6 @@
     "aiLabel": "Azul AI",
     "aiMessage": "Zauważyłem, że Bento lepiej spał przez ostatnie pięć dni. Utrzymanie rutyny o 20:30 może pomóc w utrzymaniu tego postępu."
   },
-  "pillars": {
-    "title": "Jeden ekosystem, wiele żyć.",
-    "subtitle": "Mój Niebieski Świat narodził się dla ASD, ale rozwija się z każdym stanem neurorozwojowym: ADHD, dysleksją, zespołem Downa, ODD, wysokimi zdolnościami i innymi.",
-    "items": [
-      {
-        "title": "Zorganizowana rodzina",
-        "description": "Rutyna, kalendarz, leki, nastrój i zachowanie w jednym, przyjaznym panelu."
-      },
-      {
-        "title": "Zachwycone dziecko",
-        "description": "Doświadczenie, które wydaje się zabawą. Awatar, świat, misje i AI, która rozmawia jak przyjaciel."
-      },
-      {
-        "title": "Zintegrowani profesjonaliści",
-        "description": "Terapeuci i szkoły otrzymują rzeczywisty kontekst, przeprowadzają oceny i dostarczają raporty w czasie rzeczywistym."
-      },
-      {
-        "title": "Prawdziwa AI",
-        "description": "To nie jest chatbot. To asystent, który pamięta historię dziecka i sugeruje ścieżki na podstawie danych."
-      }
-    ]
-  },
   "modules": {
     "title": "Wszystko ze sobą rozmawia.",
     "subtitle": "Każda aktywność zasila oś czasu, generuje raporty, zasila AI i dostosowuje rekomendacje.",

@@ -28,27 +28,33 @@
     "aiLabel": "Azul IA",
     "aiMessage": "He notado que Bento ha dormido mejor en los últimos cinco días. Mantener la rutina de las 20:30 puede ayudar a preservar esta evolución."
   },
-  "pillars": {
-    "title": "Un ecosistema, muchas vidas.",
-    "subtitle": "Meu Mundo Azul nació para el TEA, pero crece con cualquier condición del neurodesarrollo: TDAH, dislexia, Down, TOD, altas capacidades y más.",
+  "empathy": {
+    "title": "Usted cuida de su hijo. Pero, ¿quién cuida de su información?",
+    "subtitle": "Todos los días, las familias tienen que repetir la misma historia a médicos, terapeutas y la escuela. Mientras tanto, los documentos están dispersos, la información se pierde y las decisiones importantes se toman sin todo el contexto.",
+    "subtitleExtra": "Centralice todo en un solo lugar y permita que todos sigan el mismo camino.",
     "items": [
       {
-        "title": "Familia organizada",
-        "description": "Rutina, calendario, medicaciones, estado de ánimo y comportamiento en un panel único y acogedor."
+        "title": "La misma historia, varias veces.",
+        "description": "Usted explica los mismos acontecimientos a cada nuevo profesional, consulta o reunión escolar."
       },
       {
-        "title": "Niño encantado",
-        "description": "Una experiencia que parece un juego. Avatar, mundo, misiones e IA que conversa como un amigo."
+        "title": "Información dispersa.",
+        "description": "WhatsApp, agenda, informes, fotos, recetas, reportes y notas están separados y son difíciles de encontrar cuando más se necesitan."
       },
       {
-        "title": "Profesionales integrados",
-        "description": "Terapeutas y escuelas reciben contexto real, aplican evaluaciones y devuelven informes en tiempo real."
+        "title": "Cada profesional ve solo una parte.",
+        "description": "Sin una visión completa de la evolución del niño, oportunidades importantes pueden pasar desapercibidas."
       },
       {
-        "title": "IA de verdad",
-        "description": "No es un chatbot. Es un asistente que recuerda la historia del niño y sugiere caminos basados en datos."
+        "title": "La familia se convierte en el centro de todo.",
+        "description": "Además de cuidar al niño, usted también necesita organizar información, recordar fechas, compartir documentos y seguir cada detalle."
       }
-    ]
+    ],
+    "highlight": {
+      "title": "Meu Mundo Azul cambia esta realidad.",
+      "description": "Conecta a la familia, terapeutas y escuela en un único ecosistema inteligente, donde toda la información acompaña al niño a lo largo de su camino.",
+      "cta": "Conozca cómo funciona"
+    }
   },
   "modules": {
     "title": "Todo se conecta.",
