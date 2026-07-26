@@ -9,6 +9,9 @@ import {
   ArrowRight,
   BookOpenText,
   LineChart,
+  Files,
+  Network,
+  Users,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
