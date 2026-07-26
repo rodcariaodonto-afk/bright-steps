@@ -155,7 +155,7 @@ describe("buildContext", () => {
         { scope: "ai_context", purpose: "child.name" },
         { scope: "ai_context", purpose: "child.diagnosis" },
       ],
-      children: { full_name: "Ana", declared_conditions: ["TEA"] },
+      children: { id: "c1", full_name: "Ana", declared_conditions: ["TEA"] },
     });
     const first = await buildContext({
       persona: "family",
@@ -167,7 +167,7 @@ describe("buildContext", () => {
 
     const revoked = makeSupabase({
       consent_records: [{ scope: "ai_context", purpose: "child.name" }],
-      children: { full_name: "Ana", declared_conditions: ["TEA"] },
+      children: { id: "c1", full_name: "Ana", declared_conditions: ["TEA"] },
     });
     const second = await buildContext({
       persona: "family",
@@ -185,7 +185,7 @@ describe("buildContext", () => {
         { scope: "ai_context", purpose: "child.name" },
         { scope: "ai_context", purpose: "child.diagnosis" },
       ],
-      children: { full_name: "Ana", declared_conditions: ["TEA"] },
+      children: { id: "c1", full_name: "Ana", declared_conditions: ["TEA"] },
     });
     const b = await buildContext({
       persona: "clinical",
