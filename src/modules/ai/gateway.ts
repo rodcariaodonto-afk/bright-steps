@@ -1,4 +1,5 @@
 import { convertToModelMessages, streamText, type UIMessage } from "ai";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 import {
   createLovableAiGatewayProvider,
@@ -24,6 +25,12 @@ export interface RunAtlasStreamInput {
   messages: UIMessage[];
   lovableApiKey: string;
   initialRunId?: string;
+  /**
+   * Client Supabase autenticado do request (RLS como o usuário chamador).
+   * NUNCA passe um client service-role aqui — os gates de consentimento
+   * dependem de RLS para respeitar visibilidade.
+   */
+  supabase?: SupabaseClient<any, any, any> | null;
 }
 
 export async function runAtlasStream(input: RunAtlasStreamInput) {
@@ -34,6 +41,7 @@ export async function runAtlasStream(input: RunAtlasStreamInput) {
     persona: input.persona,
     requesterId: input.requesterId,
     childId: input.childId,
+    supabase: input.supabase ?? null,
   });
   const authorizedContext = serializeContext(bundle);
 
