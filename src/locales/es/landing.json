@@ -1,11 +1,32 @@
 {
+  "nav": {
+    "product": "Producto",
+    "family": "Familia",
+    "ai": "Inteligencia Artificial",
+    "pricing": "Planes",
+    "security": "Seguridad",
+    "signIn": "Iniciar sesión",
+    "start": "Empezar ahora"
+  },
   "hero": {
-    "eyebrow": "Desarrollo infantil · Neurodivergencia · IA",
-    "title": "La plataforma que acompaña a tu familia, todos los días.",
-    "subtitle": "Meu Mundo Azul conecta a padres, niños, terapeutas y escuelas en un solo lugar. Rutinas, terapias, estado de ánimo, medicaciones, informes y una IA que aprende del día a día del niño.",
-    "primaryCta": "Empezar gratis",
+    "eyebrow": "Neurodesarrollo • IA • Familia • Escuela • Profesionales",
+    "title": "No más contar la historia de su hijo desde cero en cada consulta.",
+    "subtitle": "Meu Mundo Azul conecta a la familia, terapeutas y escuela en un solo lugar. Toda la información importante acompaña al niño, permitiendo un cuidado más organizado, continuo e inteligente.",
+    "primaryCta": "Crear mi cuenta gratis",
     "secondaryCta": "Ver cómo funciona",
-    "trust": "Hecho con el apoyo de familias y profesionales del neurodesarrollo"
+    "trust": "Creado con familias, terapeutas y especialistas en neurodesarrollo."
+  },
+  "heroPreview": {
+    "greeting": "Buenos días, Ana",
+    "childDay": "El día de Bento",
+    "row1Title": "Terapia ocupacional",
+    "row1Subtitle": "Dra. Marina · online",
+    "row2Title": "Medicación",
+    "row2Subtitle": "Confirmar administración",
+    "row3Title": "Fono: lectura",
+    "row3Subtitle": "Consultorio",
+    "aiLabel": "Azul IA",
+    "aiMessage": "He notado que Bento ha dormido mejor en los últimos cinco días. Mantener la rutina de las 20:30 puede ayudar a preservar esta evolución."
   },
   "pillars": {
     "title": "Un ecosistema, muchas vidas.",
@@ -32,6 +53,7 @@
   "modules": {
     "title": "Todo se conecta.",
     "subtitle": "Cada actividad alimenta la línea de tiempo, genera informes, alimenta la IA y ajusta las recomendaciones.",
+    "cta": "Empezar ahora",
     "items": [
       "Perfil clínico completo del niño",
       "Línea de tiempo unificada de todo lo que sucede",
@@ -55,6 +77,12 @@
     ],
     "disclaimer": "La IA de Meu Mundo Azul es una herramienta de apoyo. Nunca sustituye a profesionales de la salud o la educación."
   },
+  "aiPreview": {
+    "name": "Azul IA",
+    "context": "Contexto activo · Bento, 6 años",
+    "userMessage": "Crea una historia para Bento sobre ir al dentista por primera vez.",
+    "aiMessage": "¡Claro! \"Hoy Bento va a conocer al dentista. Se sentará en una silla grande que sube y baja. La dentista contará hasta 3 antes de cada paso...\" ¿Quieres que continúe y añada dibujos?"
+  },
   "security": {
     "title": "Hecho con respeto absoluto por la LGPD.",
     "items": [
@@ -64,9 +92,93 @@
       "Datos sensibles de menores tratados con el cuidado que merecen"
     ]
   },
+  "awareness": {
+    "eyebrow": "Concienciación",
+    "title": "El neurodesarrollo en números",
+    "subtitle": "Datos oficiales que refuerzan la urgencia de acoger, informar y conectar a familias, profesionales y escuelas.",
+    "stats": [
+      {
+        "n": "1 de cada 100",
+        "d": "niños en el mundo es diagnosticado con TEA (OMS, 2023)."
+      },
+      {
+        "n": "2,4 millones",
+        "d": "de brasileños viven con autismo, según estimación de la Ley 13.977/2020."
+      },
+      {
+        "n": "1 de cada 36",
+        "d": "niños de 8 años identificados con TEA en EE. UU. (CDC, 2023)."
+      },
+      {
+        "n": "5% a 8%",
+        "d": "de los niños en edad escolar presentan TDAH (Ministerio de Salud)."
+      }
+    ],
+    "sources": "Fuentes: Organización Mundial de la Salud, Centers for Disease Control and Prevention y Ministerio de Salud de Brasil."
+  },
   "cta": {
     "title": "Empieza hoy. Crece con Meu Mundo Azul por muchos años.",
     "subtitle": "La plataforma acompaña al niño en cada fase, desde la rutina de sueño hasta la autonomía, desde la comunicación hasta las terapias.",
     "action": "Crear mi cuenta"
+  },
+  "plans": {
+    "backToApp": "Ir a la aplicación",
+    "trialBadge": "{{days}} días gratis en cualquier plan",
+    "title": "Un plan para cada momento del viaje",
+    "subtitle": "Empiece por el Esencial, escale al Plus cuando quiera más IA e informes, y active el Clínica si atiende a familias profesionalmente.",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "yearlyDiscount": "-20%",
+    "perMonth": " /mes",
+    "perYear": " /año",
+    "equivalentMonth": "Equivale a {{price}} por mes",
+    "highlight": "Más elegido",
+    "cta": "Empezar prueba gratis",
+    "convertedNote": "Valor aproximado. Cargo procesado en Reales (BRL) equivalente a {{price}}.",
+    "footer": "Cargo recurrente después del período de prueba. Cancele cuando quiera directamente en su portal de suscripción.",
+    "items": {
+      "familia_essencial": {
+        "name": "Familia Esencial",
+        "tagline": "Lo básico bien hecho para la rutina de un niño.",
+        "features": [
+          "1 niño + hasta 3 responsables",
+          "Rutina, estado de ánimo, medicación y línea de tiempo",
+          "Calendario unificado",
+          "IA Azul con límite mensual",
+          "Soporte por correo electrónico"
+        ]
+      },
+      "familia_plus": {
+        "name": "Familia Plus",
+        "tagline": "El viaje completo de la familia con IA ilimitada.",
+        "features": [
+          "Hasta 3 niños + responsables ilimitados",
+          "Todo lo del Esencial",
+          "IA Azul sin límite",
+          "Informes semanales con IA",
+          "Biblioteca, autoevaluaciones y comunidad",
+          "Marketplace de profesionales",
+          "Compartir con la escuela"
+        ]
+      },
+      "profissional_clinica": {
+        "name": "Profesional Clínica",
+        "tagline": "Panel clínico completo para profesionales autónomos.",
+        "features": [
+          "Pacientes ilimitados",
+          "Historial médico SOAP + evolución",
+          "Agenda inteligente",
+          "Escalas e informes con IA",
+          "Perfil verificado en el marketplace",
+          "Chat con familias y escuelas"
+        ]
+      }
+    }
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "lgpd": "LGPD",
+    "privacy": "Privacidad",
+    "terms": "Términos"
   }
 }

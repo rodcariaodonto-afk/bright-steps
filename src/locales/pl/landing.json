@@ -1,11 +1,32 @@
 {
+  "nav": {
+    "product": "Produkt",
+    "family": "Rodzina",
+    "ai": "Sztuczna Inteligencja",
+    "pricing": "Plany",
+    "security": "Bezpieczeństwo",
+    "signIn": "Zaloguj się",
+    "start": "Zacznij teraz"
+  },
   "hero": {
-    "eyebrow": "Rozwój dziecka · Neurodywergencja · AI",
-    "title": "Platforma, która wspiera Twoją rodzinę każdego dnia.",
-    "subtitle": "Mój Niebieski Świat łączy rodziców, dzieci, terapeutów i szkoły w jednym miejscu. Rutyny, terapie, nastrój, leki, raporty i AI, która uczy się na podstawie codziennego życia dziecka.",
-    "primaryCta": "Rozpocznij bezpłatnie",
+    "eyebrow": "Neurorozwój • AI • Rodzina • Szkoła • Profesjonaliści",
+    "title": "Koniec z opowiadaniem historii Twojego dziecka od zera na każdej wizycie.",
+    "subtitle": "Meu Mundo Azul łączy rodzinę, terapeutów i szkołę w jednym miejscu. Wszystkie ważne informacje towarzyszą dziecku, umożliwiając bardziej zorganizowaną, ciągłą i inteligentną opiekę.",
+    "primaryCta": "Utwórz moje konto za darmo",
     "secondaryCta": "Zobacz, jak to działa",
-    "trust": "Stworzone przy wsparciu rodzin i specjalistów neurorozwoju"
+    "trust": "Stworzone z rodzinami, terapeutami i specjalistami od neurorozwoju."
+  },
+  "heroPreview": {
+    "greeting": "Dzień dobry, Anno",
+    "childDay": "Dzień Bento",
+    "row1Title": "Terapia zajęciowa",
+    "row1Subtitle": "Dr Marina · online",
+    "row2Title": "Leki",
+    "row2Subtitle": "Potwierdź podanie",
+    "row3Title": "Logopeda: czytanie",
+    "row3Subtitle": "Gabinet",
+    "aiLabel": "Azul AI",
+    "aiMessage": "Zauważyłem, że Bento lepiej spał przez ostatnie pięć dni. Utrzymanie rutyny o 20:30 może pomóc w utrzymaniu tego postępu."
   },
   "pillars": {
     "title": "Jeden ekosystem, wiele żyć.",
@@ -32,6 +53,7 @@
   "modules": {
     "title": "Wszystko ze sobą rozmawia.",
     "subtitle": "Każda aktywność zasila oś czasu, generuje raporty, zasila AI i dostosowuje rekomendacje.",
+    "cta": "Zacznij teraz",
     "items": [
       "Pełny profil kliniczny dziecka",
       "Ujednolicona oś czasu wszystkiego, co się dzieje",
@@ -55,6 +77,12 @@
     ],
     "disclaimer": "AI Meu Mundo Azul jest narzędziem wspierającym. Nigdy nie zastępuje specjalistów ds. zdrowia ani edukacji."
   },
+  "aiPreview": {
+    "name": "Azul AI",
+    "context": "Aktywny kontekst · Bento, 6 lat",
+    "userMessage": "Stwórz historię dla Bento o jego pierwszej wizycie u dentysty.",
+    "aiMessage": "Jasne! „Dziś Bento pozna dentystę. Usiądzie na dużym krześle, które podnosi się i opuszcza. Dentystka policzy do 3 przed każdym krokiem…” Chcesz, żebym kontynuował i dodał rysunki?"
+  },
   "security": {
     "title": "Stworzone z absolutnym poszanowaniem RODO.",
     "items": [
@@ -64,9 +92,93 @@
       "Dane wrażliwe małoletnich traktowane z należytą starannością"
     ]
   },
+  "awareness": {
+    "eyebrow": "Świadomość",
+    "title": "Neurorozwój w liczbach",
+    "subtitle": "Oficjalne dane, które podkreślają pilną potrzebę wspierania, informowania i łączenia rodzin, profesjonalistów i szkół.",
+    "stats": [
+      {
+        "n": "1 na 100",
+        "d": "dzieci na świecie ma zdiagnozowane TEA (WHO, 2023)."
+      },
+      {
+        "n": "2,4 mln",
+        "d": "Brazylijczyków żyje z autyzmem, według szacunków ustawy 13.977/2020."
+      },
+      {
+        "n": "1 na 36",
+        "d": "dzieci w wieku 8 lat zidentyfikowanych z TEA w USA (CDC, 2023)."
+      },
+      {
+        "n": "5% do 8%",
+        "d": "dzieci w wieku szkolnym ma ADHD (Ministerstwo Zdrowia)."
+      }
+    ],
+    "sources": "Źródła: Światowa Organizacja Zdrowia, Centers for Disease Control and Prevention i Ministerstwo Zdrowia Brazylii."
+  },
   "cta": {
     "title": "Zacznij już dziś. Rozwijaj się z Meu Mundo Azul przez wiele lat.",
     "subtitle": "Platforma towarzyszy dziecku na każdym etapie, od rutyny snu po samodzielność, od komunikacji po terapie.",
     "action": "Utwórz moje konto"
+  },
+  "plans": {
+    "backToApp": "Przejdź do aplikacji",
+    "trialBadge": "{{days}} dni za darmo w każdym planie",
+    "title": "Plan na każdy moment podróży",
+    "subtitle": "Zacznij od Essential, przejdź na Plus, gdy potrzebujesz więcej AI i raportów, i aktywuj Clinic, jeśli profesjonalnie obsługujesz rodziny.",
+    "monthly": "Miesięcznie",
+    "yearly": "Rocznie",
+    "yearlyDiscount": "-20%",
+    "perMonth": " /miesiąc",
+    "perYear": " /rok",
+    "equivalentMonth": "Odpowiednik {{price}} miesięcznie",
+    "highlight": "Najczęściej wybierany",
+    "cta": "Rozpocznij bezpłatny okres próbny",
+    "convertedNote": "Przybliżona wartość. Opłata przetwarzana w Realach (BRL) równoważna {{price}}.",
+    "footer": "Opłata cykliczna po okresie próbnym. Anuluj w dowolnym momencie bezpośrednio w portalu subskrypcji.",
+    "items": {
+      "familia_essencial": {
+        "name": "Rodzina Essential",
+        "tagline": "Podstawy dobrze wykonane dla rutyny dziecka.",
+        "features": [
+          "1 dziecko + do 3 opiekunów",
+          "Rutyna, nastrój, leki i oś czasu",
+          "Ujednolicony kalendarz",
+          "Azul AI z miesięcznym limitem",
+          "Wsparcie e-mailowe"
+        ]
+      },
+      "familia_plus": {
+        "name": "Rodzina Plus",
+        "tagline": "Kompletna podróż rodziny z nieograniczoną AI.",
+        "features": [
+          "Do 3 dzieci + nieograniczona liczba opiekunów",
+          "Wszystko z Essential",
+          "Azul AI bez limitu",
+          "Cotygodniowe raporty z AI",
+          "Biblioteka, samooceny i społeczność",
+          "Marketplace profesjonalistów",
+          "Udostępnianie szkole"
+        ]
+      },
+      "profissional_clinica": {
+        "name": "Klinika Profesjonalna",
+        "tagline": "Kompletny panel kliniczny dla niezależnych profesjonalistów.",
+        "features": [
+          "Nieograniczona liczba pacjentów",
+          "Dokumentacja SOAP + postępy",
+          "Inteligentny harmonogram",
+          "Skale i raporty z AI",
+          "Zweryfikowany profil w marketplace",
+          "Czat z rodzinami i szkołami"
+        ]
+      }
+    }
+  },
+  "footer": {
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "lgpd": "RODO",
+    "privacy": "Prywatność",
+    "terms": "Warunki"
   }
 }

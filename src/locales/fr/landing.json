@@ -1,11 +1,32 @@
 {
+  "nav": {
+    "product": "Produit",
+    "family": "Famille",
+    "ai": "Intelligence Artificielle",
+    "pricing": "Forfaits",
+    "security": "Sécurité",
+    "signIn": "Se connecter",
+    "start": "Commencer maintenant"
+  },
   "hero": {
-    "eyebrow": "Développement de l'enfant · Neurodiversité · IA",
-    "title": "La plateforme qui accompagne votre famille, tous les jours.",
-    "subtitle": "Meu Mundo Azul connecte parents, enfants, thérapeutes et écoles en un seul endroit. Routines, thérapies, humeur, médicaments, rapports et une IA qui apprend du quotidien de l'enfant.",
-    "primaryCta": "Commencer gratuitement",
+    "eyebrow": "Neurodéveloppement • IA • Famille • École • Professionnels",
+    "title": "Fini de raconter l'histoire de votre enfant à chaque consultation.",
+    "subtitle": "Meu Mundo Azul connecte la famille, les thérapeutes et l'école en un seul endroit. Toutes les informations importantes suivent l'enfant, permettant des soins plus organisés, continus et intelligents.",
+    "primaryCta": "Créer mon compte gratuitement",
     "secondaryCta": "Voir comment ça marche",
-    "trust": "Réalisé avec le soutien de familles et de professionnels du neurodéveloppement"
+    "trust": "Créé avec des familles, des thérapeutes et des spécialistes du neurodéveloppement."
+  },
+  "heroPreview": {
+    "greeting": "Bonjour, Ana",
+    "childDay": "La journée de Bento",
+    "row1Title": "Ergothérapie",
+    "row1Subtitle": "Dr. Marina · en ligne",
+    "row2Title": "Médicaments",
+    "row2Subtitle": "Confirmer l'administration",
+    "row3Title": "Orthophonie : lecture",
+    "row3Subtitle": "Cabinet",
+    "aiLabel": "Azul IA",
+    "aiMessage": "J'ai remarqué que Bento a mieux dormi ces cinq derniers jours. Maintenir la routine de 20h30 pourrait aider à préserver cette évolution."
   },
   "pillars": {
     "title": "Un écosystème, de nombreuses vies.",
@@ -32,6 +53,7 @@
   "modules": {
     "title": "Tout communique.",
     "subtitle": "Chaque activité alimente la chronologie, génère des rapports, alimente l'IA et ajuste les recommandations.",
+    "cta": "Commencer maintenant",
     "items": [
       "Profil clinique complet de l'enfant",
       "Chronologie unifiée de tout ce qui se passe",
@@ -55,6 +77,12 @@
     ],
     "disclaimer": "L'IA de Meu Mundo Azul est un outil de soutien. Elle ne remplace jamais les professionnels de la santé ou de l'éducation."
   },
+  "aiPreview": {
+    "name": "Azul IA",
+    "context": "Contexte actif · Bento, 6 ans",
+    "userMessage": "Crée une histoire pour Bento sur sa première visite chez le dentiste.",
+    "aiMessage": "Bien sûr ! « Aujourd'hui, Bento va rencontrer le dentiste. Il va s'asseoir sur une grande chaise qui monte et descend. La dentiste va compter jusqu'à 3 avant chaque étape... » Veux-tu que je continue et que j'ajoute des dessins ?"
+  },
   "security": {
     "title": "Conçu dans le respect absolu du RGPD.",
     "items": [
@@ -64,9 +92,92 @@
       "Données sensibles des mineurs traitées avec le soin qu'elles méritent"
     ]
   },
+  "awareness": {
+    "eyebrow": "Sensibilisation",
+    "title": "Le neurodéveloppement en chiffres",
+    "subtitle": "Données officielles qui renforcent l'urgence d'accueillir, d'informer et de connecter les familles, les professionnels et les écoles.",
+    "stats": [
+      {
+        "n": "1 sur 100",
+        "d": "enfants dans le monde est diagnostiqué avec le TSA (OMS, 2023)."
+      },
+      {
+        "n": "2,4 millions",
+        "d": "de Brésiliens vivent avec l'autisme, selon l'estimation de la Loi 13.977/2020."
+      },
+      {
+        "n": "1 sur 36",
+        "d": "enfants de 8 ans identifiés avec le TSA aux États-Unis (CDC, 2023)."
+      },
+      {
+        "n": "5% à 8%",
+        "d": "des enfants d'âge scolaire présentent un TDAH (Ministère de la Santé)."
+      }
+    ],
+    "sources": "Sources : Organisation Mondiale de la Santé, Centers for Disease Control and Prevention et Ministère de la Santé du Brésil."
+  },
   "cta": {
     "title": "Commencez aujourd'hui. Grandissez avec Meu Mundo Azul pendant de nombreuses années.",
     "subtitle": "La plateforme accompagne l'enfant à chaque étape, de la routine de sommeil à l'autonomie, de la communication aux thérapies.",
     "action": "Créer mon compte"
+  },
+  "plans": {
+    "backToApp": "Aller à l'application",
+    "trialBadge": "{{days}} jours gratuits sur n'importe quel forfait",
+    "title": "Un forfait pour chaque moment du parcours",
+    "subtitle": "Commencez par l'Essentiel, passez au Plus quand vous voulez plus d'IA et de rapports, et activez le Clinique si vous servez des familles professionnellement.",
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "yearlyDiscount": "-20 %",
+    "perMonth": " /mois",
+    "perYear": " /an",
+    "equivalentMonth": "Équivaut à {{price}} par mois",
+    "highlight": "Le plus choisi",
+    "cta": "Commencer l'essai gratuit",
+    "convertedNote": "Valeur approximative. Facturation traitée en Reais (BRL) équivalent à {{price}}.",
+    "footer": {
+      "rights": "Tous droits réservés.",
+      "lgpd": "RGPD",
+      "privacy": "Confidentialité",
+      "terms": "Conditions"
+    },
+    "items": {
+      "familia_essencial": {
+        "name": "Famille Essentiel",
+        "tagline": "L'essentiel bien fait pour la routine d'un enfant.",
+        "features": [
+          "1 enfant + jusqu'à 3 responsables",
+          "Routine, humeur, médicaments et chronologie",
+          "Calendrier unifié",
+          "IA Azul avec limite mensuelle",
+          "Support par e-mail"
+        ]
+      },
+      "familia_plus": {
+        "name": "Famille Plus",
+        "tagline": "Le parcours complet de la famille avec une IA illimitée.",
+        "features": [
+          "Jusqu'à 3 enfants + responsables illimités",
+          "Tout de l'Essentiel",
+          "IA Azul illimitée",
+          "Rapports hebdomadaires avec IA",
+          "Bibliothèque, auto-évaluations et communauté",
+          "Marketplace de professionnels",
+          "Partage avec l'école"
+        ]
+      },
+      "profissional_clinica": {
+        "name": "Professionnel Clinique",
+        "tagline": "Tableau de bord clinique complet pour les professionnels indépendants.",
+        "features": [
+          "Patients illimités",
+          "Dossier SOAP + évolution",
+          "Agenda intelligent",
+          "Échelles et rapports avec IA",
+          "Profil vérifié sur la marketplace",
+          "Chat avec les familles et les écoles"
+        ]
+      }
+    }
   }
 }
