@@ -112,6 +112,7 @@ describe("buildContext", () => {
     const sb = makeSupabase({
       consent_records: [], // nada consentido
       children: {
+        id: "c1",
         full_name: "Ana Silva",
         birth_date: "2018-01-01",
         declared_conditions: ["TEA"],
